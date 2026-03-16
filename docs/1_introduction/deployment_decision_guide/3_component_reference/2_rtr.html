@@ -1,0 +1,134 @@
+<h2 class="no_toc text-delta" id="table-of-contents">Table of contents</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#debezium" id="markdown-toc-debezium">Debezium</a></li>
+  <li><a href="#kafka-and-kafka-connect" id="markdown-toc-kafka-and-kafka-connect">Kafka and Kafka Connect</a></li>
+  <li><a href="#rtr-domain-services" id="markdown-toc-rtr-domain-services">RTR domain services</a></li>
+  <li><a href="#rdb_modern" id="markdown-toc-rdb_modern">RDB_Modern</a></li>
+</ol>
+
+<p>RTR works alongside the legacy MasterETL batch process during transition, with the goal of eventually replacing it. The following components are added to your NBS Core deployment when you choose NBS Core + RTR or NBS Complete.</p>
+
+<blockquote class="highlight">
+  <p>The primary benefit of RTR is speed. Data that previously took up to 24 hours to appear in reports is available within 5 minutes to 1 hour. For jurisdictions managing active outbreaks or time-sensitive disease investigations, this can meaningfully affect response time. But RTR adds infrastructure complexity and requires additional cloud resources, which will impact your operating costs.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="debezium">Debezium</h3>
+
+<p>An open-source Change Data Capture (CDC) platform.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Monitors the NBS database for changes in real time and streams those changes to Kafka as they occur. Debezium is the entry point for the RTR pipeline. Without it, downstream RTR components have no data to process.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires the NBS database (NBS_ODSE) as its source. Streams data to the Kafka cluster.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="kafka-and-kafka-connect">Kafka and Kafka Connect</h3>
+
+<p>Apache Kafka is an open source event-streaming platform. Kafka Connect is the framework that moves data between Kafka and other systems.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Acts as the message bus for the RTR pipeline. Kafka receives change events from Debezium and delivers them to the RTR domain services. Kafka Connect writes the processed output to RDB_Modern staging tables for post-processing and reporting.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Receives events from Debezium. Delivers messages to RTR domain services. Kafka Connect writes processed data to RDB_Modern. Requires sufficient cluster resources — Kafka is one of the more operationally demanding components in the RTR stack.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="rtr-domain-services">RTR domain services</h3>
+
+<p>A unified Spring Boot service that transforms streaming data from Kafka into reportable public health records. Previously implemented as five separate entity-specific services (investigation, person, observation, organization, and LDF data), these are being consolidated into a single <code class="language-plaintext highlighter-rouge">reporting-service</code> application to reduce deployment complexity and operational overhead.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Consumes Kafka messages for each entity type (investigations, patients, organizations, observations, and LDF data), runs stored procedures to retrieve and format the data, and produces processed records for downstream storage in RDB_Modern. A post-processing service then populates analytical datamarts and fact tables from the staging data.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires Kafka (message source) and NBS_ODSE (operational data store). Populates RDB_Modern staging tables, which are then consumed by the post-processing service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="note">
+  <p>The five entity-specific RTR services (investigation-service, person-service, observation-service, organization-service, ldfdata-service) are being consolidated into a single <code class="language-plaintext highlighter-rouge">reporting-service</code> as of early 2026. Check with your CDC NBS point of contact for the current deployment state.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="rdb_modern">RDB_Modern</h3>
+
+<p>The modern reporting database introduced by RTR.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Stores processed, structured public health records produced by the RTR domain services. Runs alongside the legacy RDB during migration. Downstream reporting and analytics tools connect to RDB_Modern rather than directly to the operational database.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Populated by RTR domain services. Required by any reporting or analytics tools that your jurisdiction connects to NBS 7.</td>
+    </tr>
+  </tbody>
+</table>
