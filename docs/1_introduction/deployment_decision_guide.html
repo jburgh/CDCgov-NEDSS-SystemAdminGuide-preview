@@ -1,0 +1,1490 @@
+<hr />
+<p>layout: default
+title: NBS 7 Deployment Decision Guide
+nav_order: 1
+has_children: true
+has_toc: false
+—</p>
+
+<h1 class="no_toc" id="nbs-7-deployment-decision-guide">NBS 7 Deployment Decision Guide</h1>
+
+<p>This guide helps your jurisdiction decide whether to adopt NBS 7 and, if so, plan your deployment configuration. Use it before you begin migration planning.</p>
+
+<p>This guide is written for <strong>STLT IT administrators</strong> who currently operate NBS 6 and are evaluating whether to migrate to NBS 7.</p>
+
+<p>Use this guide to:</p>
+
+<ul>
+  <li>Assess whether NBS 7 is the right fit for your jurisdiction</li>
+  <li>Understand what components make up NBS 7 and what each one does</li>
+  <li>Identify which configuration would be right for your jurisdiction if you move forward</li>
+  <li>Prepare a recommendation for your leadership</li>
+</ul>
+
+<p>If you are a <strong>health department leader</strong> trying to understand whether migrating to NBS 7 is the right decision for your jurisdiction, look for the <strong>What leadership needs to know</strong> callout boxes throughout this guide. These summarize the key points you need to make an informed go/no-go decision.</p>
+
+<h2 class="no_toc" id="in-this-guide">In this guide</h2>
+
+<ol>
+  <li><a href="#before-you-start">Before you start</a> — Readiness checks and prerequisites</li>
+  <li><a href="#choose-your-configuration">Choose your configuration</a> — Decision framework and decision tree</li>
+  <li><a href="#deploy-nbs-7">Deploy NBS 7</a> — Real-world deployment scenarios and a link to the <a href="https://cdcgov.github.io/NEDSS-SystemAdminGuide/">NBS 7 System Administrator Guide</a></li>
+  <li><a href="#component-reference">Component reference</a> — Documentation for each NBS 7 component</li>
+</ol>
+
+<h2 class="no_toc" id="how-this-guide-fits-into-the-nbs-7-process">How this guide fits into the NBS 7 process</h2>
+
+<p>Three documents support the NBS 6 to NBS 7 transition. Each serves a different purpose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Document</th>
+      <th style="text-align: left">Purpose</th>
+      <th style="text-align: left">When to use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>NBS 7 Deployment Decision Guide</strong> (this guide)</td>
+      <td style="text-align: left">Helps IT administrators and leadership evaluate NBS 7, understand hosting requirements, and choose a component configuration</td>
+      <td style="text-align: left">Use first</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>NBS 7 Migration Info Sheet</strong></td>
+      <td style="text-align: left">Guides your jurisdiction through the migration process, including timelines, roles, a compatibility checklist, and cutover planning</td>
+      <td style="text-align: left">Use after confirming NBS 7 is the right fit</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>NBS 7 System Administrator Guide</strong></td>
+      <td style="text-align: left">Provides step-by-step deployment instructions for your chosen configuration</td>
+      <td style="text-align: left">Use when ready to deploy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some prerequisites covered in this guide are also covered in the Migration Info Sheet. This guide reinforces the prerequisites so that your IT team can use it independently, before beginning the migration process.</p>
+
+<blockquote class="note">
+  <p>NBS 7 is under active development. Component availability and configuration options will change as development continues. Make sure you are reading the latest version of this guide before you begin to plan.</p>
+</blockquote>
+
+<hr />
+
+<h2 class="no_toc" id="before-you-start">Before you start</h2>
+
+<hr />
+<p>layout: default
+title: Before you start
+parent: NBS 7 Deployment Decision Guide
+nav_order: 1
+—</p>
+
+<h1 class="no_toc" id="before-you-start-1">Before you start</h1>
+
+<h2 class="no_toc text-delta" id="table-of-contents">Table of contents</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#state-it-security-approval" id="markdown-toc-state-it-security-approval">State IT security approval</a></li>
+  <li><a href="#cloud-infrastructure" id="markdown-toc-cloud-infrastructure">Cloud infrastructure</a></li>
+  <li><a href="#technical-staff-capacity" id="markdown-toc-technical-staff-capacity">Technical staff capacity</a></li>
+  <li><a href="#network-readiness" id="markdown-toc-network-readiness">Network readiness</a></li>
+  <li><a href="#nbs-6-status" id="markdown-toc-nbs-6-status">NBS 6 status</a></li>
+  <li><a href="#cdc-coordination" id="markdown-toc-cdc-coordination">CDC coordination</a></li>
+  <li><a href="#configuration-tiers" id="markdown-toc-configuration-tiers">Configuration tiers</a>    <ol>
+      <li><a href="#nbs-core" id="markdown-toc-nbs-core">NBS Core</a></li>
+      <li><a href="#nbs-core--real-time-reporting-rtr" id="markdown-toc-nbs-core--real-time-reporting-rtr">NBS Core + Real-Time Reporting (RTR)</a></li>
+      <li><a href="#nbs-core--data-ingestion-di-api" id="markdown-toc-nbs-core--data-ingestion-di-api">NBS Core + Data Ingestion (DI) API</a></li>
+      <li><a href="#nbs-complete" id="markdown-toc-nbs-complete">NBS Complete</a></li>
+    </ol>
+  </li>
+  <li><a href="#vendor-managed-deployment" id="markdown-toc-vendor-managed-deployment">Vendor-managed deployment</a></li>
+  <li><a href="#decision-tree" id="markdown-toc-decision-tree">Decision tree</a>    <ol>
+      <li><a href="#step-1-hosting-model" id="markdown-toc-step-1-hosting-model">Step 1: Hosting model</a></li>
+      <li><a href="#step-2-state-it-security-approval" id="markdown-toc-step-2-state-it-security-approval">Step 2: State IT security approval</a></li>
+      <li><a href="#step-3-internal-technical-capacity" id="markdown-toc-step-3-internal-technical-capacity">Step 3: Internal technical capacity</a></li>
+      <li><a href="#step-3a-external-assistance" id="markdown-toc-step-3a-external-assistance">Step 3a: External assistance</a></li>
+      <li><a href="#step-4-current-nbs-6-hosting" id="markdown-toc-step-4-current-nbs-6-hosting">Step 4: Current NBS 6 hosting</a></li>
+      <li><a href="#step-5-case-volume" id="markdown-toc-step-5-case-volume">Step 5: Case volume</a></li>
+      <li><a href="#step-6-data-intake-needs-lower-volume-jurisdictions" id="markdown-toc-step-6-data-intake-needs-lower-volume-jurisdictions">Step 6: Data intake needs (lower-volume jurisdictions)</a></li>
+      <li><a href="#step-7-reporting-needs-higher-volume-jurisdictions" id="markdown-toc-step-7-reporting-needs-higher-volume-jurisdictions">Step 7: Reporting needs (higher-volume jurisdictions)</a></li>
+      <li><a href="#step-8-data-intake-needs-higher-volume-jurisdictions" id="markdown-toc-step-8-data-intake-needs-higher-volume-jurisdictions">Step 8: Data intake needs (higher-volume jurisdictions)</a></li>
+      <li><a href="#deployment-scenario-small-jurisdiction-self-managed-aws" id="markdown-toc-deployment-scenario-small-jurisdiction-self-managed-aws">Deployment scenario: Small jurisdiction, self-managed, AWS</a></li>
+      <li><a href="#deployment-scenario-medium-jurisdiction-existing-middleware-rtr" id="markdown-toc-deployment-scenario-medium-jurisdiction-existing-middleware-rtr">Deployment scenario: Medium jurisdiction, existing middleware, RTR</a></li>
+      <li><a href="#deployment-scenario-large-jurisdiction-high-volume-vendor-managed" id="markdown-toc-deployment-scenario-large-jurisdiction-high-volume-vendor-managed">Deployment scenario: Large jurisdiction, high volume, vendor-managed</a></li>
+    </ol>
+  </li>
+  <li><a href="#quick-reference" id="markdown-toc-quick-reference">Quick reference</a></li>
+  <li><a href="#nbs-core-components" id="markdown-toc-nbs-core-components">NBS Core components</a>    <ol>
+      <li><a href="#legacy-nbs-6" id="markdown-toc-legacy-nbs-6">Legacy NBS 6</a></li>
+      <li><a href="#nbs-modernization-api" id="markdown-toc-nbs-modernization-api">NBS Modernization API</a></li>
+      <li><a href="#nbs-web-ui" id="markdown-toc-nbs-web-ui">NBS Web UI</a></li>
+      <li><a href="#nbs-gateway" id="markdown-toc-nbs-gateway">NBS Gateway</a></li>
+      <li><a href="#page-builder" id="markdown-toc-page-builder">Page Builder</a></li>
+      <li><a href="#report-execution-api" id="markdown-toc-report-execution-api">Report Execution API</a></li>
+      <li><a href="#elasticsearch" id="markdown-toc-elasticsearch">Elasticsearch</a></li>
+      <li><a href="#nifi" id="markdown-toc-nifi">Nifi</a></li>
+      <li><a href="#keycloak" id="markdown-toc-keycloak">Keycloak</a></li>
+      <li><a href="#database-nbs_odse-nbs_srte" id="markdown-toc-database-nbs_odse-nbs_srte">Database (NBS_ODSE, NBS_SRTE)</a></li>
+      <li><a href="#infrastructure-and-networking-layer-components" id="markdown-toc-infrastructure-and-networking-layer-components">Infrastructure and networking layer components</a></li>
+    </ol>
+  </li>
+  <li><a href="#add-on-real-time-reporting-rtr" id="markdown-toc-add-on-real-time-reporting-rtr">Add-on: Real-Time Reporting (RTR)</a>    <ol>
+      <li><a href="#debezium" id="markdown-toc-debezium">Debezium</a></li>
+      <li><a href="#kafka-and-kafka-connect" id="markdown-toc-kafka-and-kafka-connect">Kafka and Kafka Connect</a></li>
+      <li><a href="#rtr-domain-services" id="markdown-toc-rtr-domain-services">RTR domain services</a></li>
+      <li><a href="#rdb_modern" id="markdown-toc-rdb_modern">RDB_Modern</a></li>
+    </ol>
+  </li>
+  <li><a href="#add-on-data-ingestion-di-api" id="markdown-toc-add-on-data-ingestion-di-api">Add-on: Data Ingestion (DI) API</a>    <ol>
+      <li><a href="#di-api" id="markdown-toc-di-api">DI API</a></li>
+    </ol>
+  </li>
+</ol>
+
+<p>This section helps you assess whether NBS 7 is a viable option for your jurisdiction before you commit to a migration. Some prerequisites in this section are also covered in the <strong>NBS 7 Migration Info Sheet</strong>. If your jurisdiction has already begun the migration process, use that document alongside this one.</p>
+
+<p>If you work through this section and find that your jurisdiction does not meet one or more prerequisites, you might still be able to move forward. You can address some gaps with planning and lead time, but other gaps might indicate that NBS 7 is not the right fit for your jurisdiction right now.</p>
+
+<blockquote class="note">
+  <p>NBS 7 does not replace NBS 6 in a single cutover. You deploy NBS 7 components alongside your existing NBS 6 instance, and NBS 7 gradually takes over functionality while both systems run in parallel. Several of the prerequisites reflect this reality: your NBS 6 instance must remain operational during migration, and your network must support communication between both systems.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="state-it-security-approval">State IT security approval</h2>
+
+<p>Has your jurisdiction obtained state IT security approval for cloud hosting and the software technologies that NBS 7 requires, including Kubernetes, Terraform, and Docker?</p>
+
+<ul>
+  <li><strong>Yes, or approval is not required</strong> — Continue with the rest of this section.</li>
+  <li><strong>No, or unknown</strong> — Begin the approval process now. Approval timelines vary and can significantly affect your migration schedule. Work with your state IT office while you continue planning.</li>
+</ul>
+
+<blockquote class="highlight">
+  <p>State IT security approval is often the longest-lead item in an NBS 7 migration. If your jurisdiction has not started this process, start it now even if deployment is months away. Waiting until you are technically ready to deploy before you seek approval is one of the most common causes of migration delays.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="cloud-infrastructure">Cloud infrastructure</h2>
+
+<p>NBS 7 is a cloud-only system. It does not support on-premises deployment.</p>
+
+<p>You need an active account with a supported cloud provider:</p>
+
+<ul>
+  <li><strong>Amazon Web Services (AWS)</strong> — The primary supported option. NBS 7 has been fully tested on AWS.</li>
+  <li><strong>Microsoft Azure</strong> — Supported via Terraform. Use this option if your jurisdiction has an existing Azure commitment or a compliance requirement that mandates Azure.</li>
+</ul>
+
+<blockquote class="highlight">
+  <p>NBS 6 could run on-premises. NBS 7 cannot. Your jurisdiction needs a cloud account and ongoing budget to sustain cloud infrastructure costs. Cloud hosting costs scale with usage, which means your budget planning should account for both normal operations and surge scenarios such as outbreak response.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="technical-staff-capacity">Technical staff capacity</h2>
+
+<p>NBS 7 uses Kubernetes, a container orchestration platform. To deploy and maintain NBS 7, you need staff who can:</p>
+
+<ul>
+  <li>Deploy and manage Kubernetes clusters</li>
+  <li>Read and modify Terraform configuration files</li>
+  <li>Manage cloud networking, storage, and access control</li>
+  <li>Monitor system health and respond to alerts</li>
+</ul>
+
+<p>If your IT team does not have these skills, you have two options:</p>
+
+<ul>
+  <li><strong>Build capacity</strong> — Train existing staff or hire staff with these skills before you begin deployment.</li>
+  <li><strong>Use a vendor</strong> — Contract with a vendor to deploy or manage your NBS 7 infrastructure. See <a href="#vendor-managed-deployment">Vendor-managed deployment</a> for guidance on what to look for in a vendor.</li>
+</ul>
+
+<blockquote class="highlight">
+  <p>Migrating to NBS 7 requires different technical skills than running NBS 6. Assess the current capacity of your team before you commit to a migration timeline. If you underestimate the staffing requirement, it will likely result in your migration taking longer than expected.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="network-readiness">Network readiness</h2>
+
+<p>Before deployment, your network must meet the following requirements:</p>
+
+<ul>
+  <li><strong>NBS 6 and NBS 7 connectivity</strong> — Each NBS 7 instance requires network connectivity to a corresponding NBS 6 instance. If your NBS 6 runs in a Virtual Private Cloud (VPC), that VPC must be connected to your NBS 7 environment.</li>
+  <li><strong>VM co-location</strong> — Any virtual machines (VMs) that you use for NBS 7 components must exist within the same network.</li>
+  <li><strong>Encryption</strong> — Encryption is required for all virtual network traffic between NBS 6 and NBS 7 components.</li>
+  <li><strong>Outbound access</strong> — Your cloud environment needs outbound internet access to reach CDC systems.</li>
+  <li><strong>TLS/SSL certificate management</strong> — You need a process to provision and renew TLS/SSL certificates for encrypted traffic.</li>
+</ul>
+
+<p>Your specific network configuration will depend on your cloud provider and the existing infrastructure for your jurisdiction.</p>
+
+<hr />
+
+<h2 id="nbs-6-status">NBS 6 status</h2>
+
+<p>During migration, NBS 7 components gradually replace NBS 6 functionality while NBS 6 continues to run. This means:</p>
+
+<ul>
+  <li>Your jurisdiction will run both systems in parallel during the transition.</li>
+  <li>Your NBS 6 instance must remain operational and accessible during migration.</li>
+  <li>You need to know your current NBS 6 hosting setup before you begin — specifically, whether it is hosted on-premises or in the cloud, and if in the cloud, which provider.</li>
+  <li><strong>You must be running NBS 6.0.16.1 or higher</strong> before you can install any version of NBS 7. Verify your current NBS 6 version before you begin planning your migration timeline.</li>
+</ul>
+
+<blockquote class="highlight">
+  <p>Migration to NBS 7 is a gradual process, not a hard cutover. Plan for the operational complexity and cost of running two systems simultaneously for a period of time.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="cdc-coordination">CDC coordination</h2>
+
+<p>Contact your CDC NBS point of contact before you begin deployment. CDC provides deployment support at no cost and can help you:</p>
+
+<ul>
+  <li>Validate your technical readiness</li>
+  <li>Identify the right configuration for your jurisdiction</li>
+  <li>Connect you with other jurisdictions that have already migrated</li>
+</ul>
+
+<p><strong>Contact:</strong> <a href="mailto:nbs@cdc.gov">nbs@cdc.gov</a></p>
+
+<hr />
+
+<h2 class="no_toc" id="choose-your-configuration">Choose your configuration</h2>
+
+<hr />
+<p>layout: default
+title: Choose your configuration
+parent: NBS 7 Deployment Decision Guide
+nav_order: 2
+has_children: true
+has_toc: false
+—</p>
+
+<h1 class="no_toc" id="choose-your-configuration-1">Choose your configuration</h1>
+
+<p>NBS 7 is modular. Rather than a single fixed system, it is a set of components that you assemble based on the size, technical capacity, and public health needs of your jurisdiction. This section helps you understand your options and identify the right starting configuration for your jurisdiction.</p>
+
+<p>Work through the following sections in order:</p>
+
+<ol>
+  <li><a href="#configuration-tiers">Configuration tiers</a> — Understand the four NBS 7 configuration options</li>
+  <li><a href="#vendor-managed-deployment">Vendor-managed deployment</a> — Guidance if your jurisdiction plans to use a vendor</li>
+  <li><a href="#decision-tree">Decision tree</a> — Answer a series of questions to get a recommended starting configuration</li>
+</ol>
+
+<hr />
+
+<h2 id="configuration-tiers">Configuration tiers</h2>
+
+<p>There are four ways to deploy NBS 7:</p>
+
+<ul>
+  <li><a href="#nbs-core">NBS Core</a></li>
+  <li><a href="#nbs-core--real-time-reporting-rtr">NBS Core + Real-Time Reporting (RTR)</a></li>
+  <li><a href="#nbs-core--data-ingestion-di-api">NBS Core + Data Ingestion (DI) API</a></li>
+  <li><a href="#nbs-complete">NBS Complete</a></li>
+</ul>
+
+<blockquote class="highlight">
+  <p>You do not have to deploy everything at once. Most jurisdictions will start with NBS Core, then add RTR or the DI API as their team builds confidence with the platform. Starting smaller reduces deployment risk and gives your team time to learn the system before taking on additional complexity.</p>
+</blockquote>
+
+<h3 id="nbs-core">NBS Core</h3>
+
+<p>The minimum viable deployment. NBS Core gives your jurisdiction NBS 6 feature parity on modern, cloud-based infrastructure, plus foundational NBS 7 improvements such as real-time patient search.</p>
+
+<p>NBS Core components are organized into three layers. For details on what each component does and when you need it, see <a href="#nbs-core-components">NBS Core components</a>.</p>
+
+<p><strong>Networking layer</strong></p>
+
+<p>The networking layer manages traffic routing and secure communication between your NBS 6 and NBS 7 environments.</p>
+
+<ul>
+  <li>DNS infrastructure (Route 53 or equivalent)</li>
+  <li>Virtual Private Cloud (VPC) and routing groups</li>
+  <li>VPN connectivity between NBS 6 and NBS 7 instances</li>
+</ul>
+
+<p><strong>Infrastructure layer</strong></p>
+
+<p>The infrastructure layer provides the container orchestration platform and cloud services that host and run NBS 7 components.</p>
+
+<ul>
+  <li>Kubernetes cluster (EKS on AWS, AKS on Azure)</li>
+  <li>NGINX Ingress Controller (being replaced by Traefik in future releases)</li>
+  <li>AWS or Azure managed services</li>
+  <li>Terraform infrastructure automation modules</li>
+  <li>Load balancer</li>
+</ul>
+
+<p><strong>Application layer</strong></p>
+
+<p>The application layer contains the NBS 7 services and legacy NBS 6 components that users and administrators directly interact with.</p>
+
+<ul>
+  <li><a href="#legacy-nbs-6">Legacy NBS 6</a></li>
+  <li><a href="#nbs-modernization-api">NBS Modernization API</a></li>
+  <li><a href="#nbs-web-ui">NBS Web UI</a></li>
+  <li><a href="#nbs-gateway">NBS Gateway</a></li>
+  <li><a href="#page-builder">Page Builder</a></li>
+  <li><a href="#elasticsearch">Elasticsearch</a></li>
+  <li><a href="#nifi">Nifi</a></li>
+  <li><a href="#keycloak">Keycloak</a></li>
+  <li><a href="#infrastructure-and-networking-layer-components">ArgoCD, Cert Manager, FluentBit</a></li>
+  <li>Database (NBS_ODSE and NBS_SRTE)</li>
+</ul>
+
+<blockquote class="best-for">
+  <p>Best for jurisdictions with smaller IT teams, limited cloud experience, or a goal to establish a stable foundation before adding advanced features.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="nbs-core--real-time-reporting-rtr">NBS Core + Real-Time Reporting (RTR)</h3>
+
+<p>Core plus modern analytics. This configuration adds the Real-Time Reporting (RTR) pipeline, which we recommend using alongside the legacy MasterETL batch process during transition, with the goal of eventually replacing it.</p>
+
+<p><strong>With RTR, data is available within 5 minutes to 1 hour instead of 24 hours.</strong></p>
+
+<p>RTR adds the following components. For details, see <a href="#add-on-real-time-reporting-rtr">Add-on: Real-Time Reporting (RTR)</a>.</p>
+
+<ul>
+  <li><a href="#debezium">Debezium</a></li>
+  <li><a href="#kafka-and-kafka-connect">Kafka and Kafka Connect</a></li>
+  <li><a href="#rtr-domain-services">RTR domain services</a></li>
+  <li><a href="#rdb_modern">RDB_Modern</a></li>
+</ul>
+
+<blockquote class="best-for">
+  <p>Best for jurisdictions with higher case volumes, a need for faster data turnaround, or plans to connect to advanced analytics tools.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="nbs-core--data-ingestion-di-api">NBS Core + Data Ingestion (DI) API</h3>
+
+<p>Core plus a built-in data transit layer. This configuration adds the Data Ingestion (DI) API, which accepts incoming public health data in multiple formats and routes it into NBS without requiring third-party middleware.</p>
+
+<p>For details, see <a href="#add-on-data-ingestion-di-api">Add-on: Data Ingestion (DI) API</a>.</p>
+
+<blockquote class="best-for">
+  <p>Best for jurisdictions that do not currently use Rhapsody or Mirth Connect for data ingestion, and want a built-in path for getting data into NBS 7.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="nbs-complete">NBS Complete</h3>
+
+<p>The full NBS 7 deployment. NBS Complete includes NBS Core, RTR, and the DI API.</p>
+
+<blockquote class="best-for">
+  <p>Best for jurisdictions with larger IT teams, high case volumes, and advanced reporting or analytics needs.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="vendor-managed-deployment">Vendor-managed deployment</h2>
+
+<p>If you plan to use a vendor to host or maintain NBS 7, the guidance in this section applies to you.</p>
+
+<p>Before you engage a vendor, confirm that they can:</p>
+
+<ul>
+  <li>Deploy Kubernetes-based applications on AWS or Azure</li>
+  <li>Manage Terraform-based infrastructure provisioning</li>
+  <li>Support ongoing cloud infrastructure operations, including monitoring and incident response</li>
+</ul>
+
+<blockquote class="note">
+  <p>NBS 7 is a recent system with limited deployment history. Do not expect vendors to have direct NBS 7 experience. Evaluate vendors on their Kubernetes and cloud infrastructure expertise instead. You can share the <a href="#component-reference">component reference</a> section of this guide with vendors to help them scope the work accurately.</p>
+</blockquote>
+
+<p>Share the following with your vendor before scoping work:</p>
+
+<ul>
+  <li>The <a href="#component-reference">component reference</a> section of this guide</li>
+  <li>The <strong>NBS 7 Migration Info Sheet</strong> (available from CDC)</li>
+  <li>Your current NBS 6 hosting setup and data volumes</li>
+</ul>
+
+<p>Then:</p>
+
+<ol>
+  <li>Contact <a href="mailto:nbs@cdc.gov">nbs@cdc.gov</a> to let CDC know you are planning a vendor-managed deployment and to access vendor coordination resources.</li>
+  <li>Work with your vendor to complete steps 4–8 of the <a href="#decision-tree">decision tree</a> to identify your recommended configuration tier.</li>
+  <li>Return to the <a href="#component-reference">component reference</a> for the configuration parameters your vendor will need.</li>
+</ol>
+
+<blockquote class="highlight">
+  <p>Vendors with Kubernetes and cloud infrastructure expertise can deploy NBS 7, but they will need detailed technical guidance from CDC and from this guide to do it accurately. Plan for a close working relationship between your vendor and the CDC NBS team, especially during initial deployment. Also plan for the funding needed to sustain vendor support beyond initial deployment. Ongoing maintenance costs are a common planning gap.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="decision-tree">Decision tree</h2>
+
+<p>Use this decision tree to identify your recommended starting configuration. Answer each question in order, then validate your recommendation with the CDC NBS team before you begin deployment.</p>
+
+<blockquote class="highlight">
+  <p>The decision tree identifies a recommended starting point, not a final answer. CDC provides free pre-deployment consultation to help jurisdictions validate their configuration choice. Do not begin deployment without first connecting with the CDC NBS team at <a href="mailto:nbs@cdc.gov">nbs@cdc.gov</a>.</p>
+</blockquote>
+
+<h3 id="step-1-hosting-model">Step 1: Hosting model</h3>
+
+<p>Is your jurisdiction planning to self-host and self-maintain NBS 7, or will you use a vendor to host or maintain it?</p>
+
+<ul>
+  <li><strong>Self-hosted, self-maintained</strong> — Go to <a href="#step-2-state-it-security-approval">Step 2</a>.</li>
+  <li><strong>Vendor-hosted or vendor-maintained</strong> — Go to <a href="#vendor-managed-deployment">Vendor-managed deployment</a>.</li>
+</ul>
+
+<h3 id="step-2-state-it-security-approval">Step 2: State IT security approval</h3>
+
+<p>Has your jurisdiction obtained state IT security approval for cloud hosting and the required software technologies (Kubernetes, Terraform, Docker)?</p>
+
+<ul>
+  <li><strong>Yes, or approval is not required</strong> — Go to <a href="#step-3-internal-technical-capacity">Step 3</a>.</li>
+  <li><strong>No, or unknown</strong> — Begin the approval process now, then continue planning. Approval is required before deployment. Go to <a href="#step-3-internal-technical-capacity">Step 3</a>.</li>
+</ul>
+
+<h3 id="step-3-internal-technical-capacity">Step 3: Internal technical capacity</h3>
+
+<p>Does your jurisdiction have IT staff with skills in Kubernetes, Terraform, and cloud infrastructure management, roughly half or more of the required skill set?</p>
+
+<ul>
+  <li><strong>Yes</strong> — Go to <a href="#step-4-current-nbs-6-hosting">Step 4</a>.</li>
+  <li><strong>No</strong> — Go to <a href="#step-3a-external-assistance">Step 3a</a>.</li>
+</ul>
+
+<h3 id="step-3a-external-assistance">Step 3a: External assistance</h3>
+
+<p>Will your jurisdiction obtain external assistance from a contractor, vendor, or consultant for deployment and ongoing maintenance?</p>
+
+<ul>
+  <li><strong>Yes</strong> — Go to <a href="#step-4-current-nbs-6-hosting">Step 4</a>. Note that your vendor or contractor must be capable of Kubernetes-based deployments on AWS or Azure. See <a href="#vendor-managed-deployment">Vendor-managed deployment</a> for what to look for.</li>
+  <li><strong>No</strong> — <strong>Stop.</strong> Build internal capacity or identify a vendor before proceeding. Contact <a href="mailto:nbs@cdc.gov">nbs@cdc.gov</a> for support resources.</li>
+</ul>
+
+<h3 id="step-4-current-nbs-6-hosting">Step 4: Current NBS 6 hosting</h3>
+
+<p>Where does your NBS 6 currently run?</p>
+
+<ul>
+  <li><strong>Already on AWS</strong> — Lowest migration complexity. Go to <a href="#step-5-case-volume">Step 5</a>.</li>
+  <li><strong>Already on Azure</strong> — Low migration complexity; you will follow the Azure-specific deployment path. Go to <a href="#step-5-case-volume">Step 5</a>.</li>
+  <li><strong>On-premises</strong> — Your migration includes a cloud migration as well as an NBS 7 deployment. Plan for additional time and resources. Go to <a href="#step-5-case-volume">Step 5</a>.</li>
+</ul>
+
+<h3 id="step-5-case-volume">Step 5: Case volume</h3>
+
+<p>What is the approximate annual reportable disease case volume in your jurisdiction?</p>
+
+<ul>
+  <li><strong>Lower volume</strong> (fewer than approximately 50,000 cases per year) — Go to <a href="#step-6-data-intake-needs-lower-volume-jurisdictions">Step 6</a>.</li>
+  <li><strong>Higher volume</strong> (50,000+ cases per year), or significant growth expected — Go to <a href="#step-7-reporting-needs-higher-volume-jurisdictions">Step 7</a>.</li>
+</ul>
+
+<blockquote class="note">
+  <p>The 50,000 case threshold is a planning guideline, not a hard rule. Validate your volume assessment with CDC before making a final configuration decision.</p>
+</blockquote>
+
+<h3 id="step-6-data-intake-needs-lower-volume-jurisdictions">Step 6: Data intake needs (lower-volume jurisdictions)</h3>
+
+<p>Does your jurisdiction currently receive high volumes of electronic lab reports (ELRs) or electronic case reports (eCRs)?</p>
+
+<ul>
+  <li><strong>No</strong> — Recommended configuration: <strong>NBS Core</strong>. Validate with CDC before deploying.</li>
+  <li><strong>Yes</strong> — Recommended configuration: <strong>NBS Core + DI API</strong>. Validate with CDC before deploying.</li>
+</ul>
+
+<h3 id="step-7-reporting-needs-higher-volume-jurisdictions">Step 7: Reporting needs (higher-volume jurisdictions)</h3>
+
+<p>Does your jurisdiction need near-real-time reporting — data available within minutes to hours, rather than 24 hours?</p>
+
+<ul>
+  <li><strong>No</strong> — Contact <a href="mailto:nbs@cdc.gov">nbs@cdc.gov</a> to discuss your specific needs. <strong>NBS Core or NBS Core + DI API</strong> may be appropriate starting points.</li>
+  <li><strong>Yes</strong> — Go to <a href="#step-8-data-intake-needs-higher-volume-jurisdictions">Step 8</a>.</li>
+</ul>
+
+<h3 id="step-8-data-intake-needs-higher-volume-jurisdictions">Step 8: Data intake needs (higher-volume jurisdictions)</h3>
+
+<p>Does your jurisdiction currently receive high volumes of ELRs or eCRs?</p>
+
+<ul>
+  <li><strong>No</strong> — Recommended configuration: <strong>NBS Core + RTR</strong>. Validate with CDC before deploying.</li>
+  <li><strong>Yes</strong> — Recommended configuration: <strong>NBS Complete</strong>. Validate with CDC before deploying.</li>
+</ul>
+
+<hr />
+
+<h2 class="no_toc" id="deploy-nbs-7">Deploy NBS 7</h2>
+
+<hr />
+<p>layout: default
+title: Deploy NBS 7
+parent: NBS 7 Deployment Decision Guide
+nav_order: 3
+has_children: true
+has_toc: false
+—</p>
+
+<h1 class="no_toc" id="deploy-nbs-7-1">Deploy NBS 7</h1>
+
+<p>Once you have chosen your configuration, use the <a href="https://cdcgov.github.io/NEDSS-SystemAdminGuide/"><strong>NBS 7 System Administrator Guide</strong></a> for step-by-step deployment instructions.</p>
+
+<p>The following sections cover actual NBS 7 deployment scenarios as example use cases. No two jurisdictions have identical infrastructure, staffing, or data needs, so your configuration will not match any of these exactly. Use the examples to identify which profile is closest to your situation and to understand the tradeoffs that other jurisdictions encountered.</p>
+
+<hr />
+
+<h3 id="deployment-scenario-small-jurisdiction-self-managed-aws">Deployment scenario: Small jurisdiction, self-managed, AWS</h3>
+
+<p><em>Based on Montana’s deployment.</em></p>
+
+<p><strong>Profile</strong></p>
+
+<p>Small STLT with limited IT staff and a cloud-first infrastructure strategy. The jurisdiction prioritized simplicity and maintainability over advanced features.</p>
+
+<p><strong>Configuration</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Setting</th>
+      <th style="text-align: left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Tier</td>
+      <td style="text-align: left">NBS Core only</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Hosting</td>
+      <td style="text-align: left">AWS, STLT-managed</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Middleware</td>
+      <td style="text-align: left">No third-party middleware</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>What was deployed</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">Included</th>
+      <th style="text-align: left">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">NBS Core</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Full core deployment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Real-Time Reporting (RTR)</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Not required at this case volume</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DI API</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">No existing high-volume ELR or eCR intake</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key configuration decisions</strong></p>
+
+<ul>
+  <li>[Placeholder: specific AWS configuration choices, e.g. EKS node sizing, VPC setup]</li>
+  <li>[Placeholder: any components skipped within NBS Core and rationale]</li>
+  <li>[Placeholder: identity provider integration approach]</li>
+</ul>
+
+<p><strong>Lessons learned</strong></p>
+
+<ul>
+  <li>[Placeholder: what worked well]</li>
+  <li>[Placeholder: challenges encountered]</li>
+  <li>[Placeholder: what this jurisdiction would do differently]</li>
+</ul>
+
+<blockquote class="best-for">
+  <p>Might apply to jurisdictions that have a small IT team, limited cloud experience, or a goal to get NBS 7 running with minimal complexity before adding advanced features.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="deployment-scenario-medium-jurisdiction-existing-middleware-rtr">Deployment scenario: Medium jurisdiction, existing middleware, RTR</h3>
+
+<p><em>Based on Kentucky’s deployment.</em></p>
+
+<p><strong>Profile</strong></p>
+
+<p>Medium STLT with an existing Rhapsody middleware investment and a need for faster data turnaround than NBS 6 batch processing provides. The jurisdiction retained Rhapsody for data ingestion rather than replacing it with the DI API.</p>
+
+<p><strong>Configuration</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Setting</th>
+      <th style="text-align: left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Tier</td>
+      <td style="text-align: left">NBS Core + RTR</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Hosting</td>
+      <td style="text-align: left">Hybrid — cloud-hosted NBS 7, on-premises Rhapsody middleware</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Middleware</td>
+      <td style="text-align: left">Rhapsody (retained)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>What was deployed</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">Included</th>
+      <th style="text-align: left">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">NBS Core</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Full core deployment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Real-Time Reporting (RTR)</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Added for faster reporting turnaround</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DI API</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Rhapsody retained for data ingestion</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key configuration decisions</strong></p>
+
+<ul>
+  <li>Rhapsody integrates directly with the NBS database rather than routing through the DI API. Jurisdictions with existing Rhapsody investments should follow this pattern.</li>
+  <li>[Placeholder: RTR configuration specifics for this scale]</li>
+  <li>[Placeholder: how the hybrid hosting model was structured]</li>
+  <li>[Placeholder: custom integration points between Rhapsody and NBS 7]</li>
+</ul>
+
+<p><strong>Lessons learned</strong></p>
+
+<ul>
+  <li>[Placeholder: integration patterns that worked well]</li>
+  <li>[Placeholder: performance considerations at this scale]</li>
+  <li>[Placeholder: challenges encountered]</li>
+</ul>
+
+<blockquote class="best-for">
+  <p>Might apply to jurisdictions that have existing middleware such as Rhapsody or Mirth Connect that you want to retain, and you need faster reporting turnaround than NBS 6 provides.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="deployment-scenario-large-jurisdiction-high-volume-vendor-managed">Deployment scenario: Large jurisdiction, high volume, vendor-managed</h3>
+
+<p><em>Based on an enterprise-scale deployment.</em></p>
+
+<p><strong>Profile</strong></p>
+
+<p>Large STLT with high case volumes, sophisticated analytics needs, and a vendor-managed infrastructure model. This jurisdiction required high-availability configuration and advanced security hardening.</p>
+
+<p><strong>Configuration</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Setting</th>
+      <th style="text-align: left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Tier</td>
+      <td style="text-align: left">NBS Complete (NBS Core + RTR + DI API)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Hosting</td>
+      <td style="text-align: left">Cloud vendor-managed, or hybrid with significant cloud presence</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Middleware</td>
+      <td style="text-align: left">DI API (primary ingestion path)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>What was deployed</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">Included</th>
+      <th style="text-align: left">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">NBS Core</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Full core deployment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Real-Time Reporting (RTR)</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Required for high case volume and analytics needs</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DI API</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Primary path for ELR and eCR ingestion</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DataSync</td>
+      <td style="text-align: left">—</td>
+      <td style="text-align: left">Verify with CDC NBS point of contact</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="note">
+  <p>DataSync is not currently documented in this guide because it is only used by one jurisdiction and is not expected to be used long-term. Confirm with your CDC NBS point of contact before planning any DataSync integration.</p>
+</blockquote>
+
+<p><strong>Key configuration decisions</strong></p>
+
+<ul>
+  <li>[Placeholder: high-availability configuration specifics]</li>
+  <li>[Placeholder: performance optimization decisions]</li>
+  <li>[Placeholder: advanced security hardening approach]</li>
+  <li>[Placeholder: vendor coordination model and responsibilities]</li>
+</ul>
+
+<p><strong>Lessons learned</strong></p>
+
+<ul>
+  <li>[Placeholder: scaling considerations]</li>
+  <li>[Placeholder: cost management approach]</li>
+  <li>[Placeholder: challenges encountered with vendor-managed deployment]</li>
+</ul>
+
+<blockquote class="best-for">
+  <p>Might apply to jurisdictions that have a large IT team or vendor support, high case volumes, advanced reporting or analytics needs, and require high-availability infrastructure.</p>
+</blockquote>
+
+<hr />
+
+<h2 class="no_toc" id="component-reference">Component reference</h2>
+
+<hr />
+<p>layout: default
+title: Component reference
+parent: NBS 7 Deployment Decision Guide
+nav_order: 4
+has_children: true
+has_toc: false
+—</p>
+
+<h1 class="no_toc" id="component-reference-1">Component reference</h1>
+
+<p>This section describes each component in NBS 7. Use it to understand what each component does, why it is included in your configuration, and how it relates to other components.</p>
+
+<p>Components in this reference are organized by configuration tier:</p>
+
+<ul>
+  <li><a href="#nbs-core-components">NBS Core components</a></li>
+  <li><a href="#add-on-real-time-reporting-rtr">Add-on: Real-Time Reporting (RTR)</a></li>
+  <li><a href="#add-on-data-ingestion-di-api">Add-on: Data Ingestion (DI) API</a></li>
+</ul>
+
+<p>For deployment configuration details including configuration parameters, Helm chart values, and step-by-step setup instructions, see the <strong>NBS 7 System Administrator Guide</strong>.</p>
+
+<hr />
+
+<h2 id="quick-reference">Quick reference</h2>
+
+<p>The following table shows which components are included in each configuration tier.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: center">NBS Core</th>
+      <th style="text-align: center">Core + RTR</th>
+      <th style="text-align: center">Core + DI API</th>
+      <th style="text-align: center">NBS Complete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Legacy NBS 6</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NBS Modernization API</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NBS Web UI</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NBS Gateway</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Page Builder</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Elasticsearch</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Nifi</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Keycloak</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Database (NBS_ODSE, NBS_SRTE)</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Infrastructure and networking layer</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Debezium</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Kafka and Kafka Connect</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RTR domain services</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RDB_Modern</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DI API</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">✓</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="note">
+  <p>NBS Core components are required for all NBS 7 deployments. RTR and DI API are optional add-ons, so their components are only required if your jurisdiction chooses a configuration tier that includes them.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="nbs-core-components">NBS Core components</h2>
+
+<p>NBS Core includes three layers of components: the application layer, the infrastructure layer, and the networking layer. The application layer components are documented individually below. <a href="#infrastructure-and-networking-layer-components">Infrastructure and networking layer components</a> are summarized as a group.</p>
+
+<p>[architecture diagram]</p>
+
+<blockquote class="note">
+  <p>The NBS Modernization API, NBS Web UI, NBS Gateway, and Page Builder are deployed together from the NEDSS-Modernization repository. Each serves a distinct function, but vendors and admins scoping deployment work should be aware that they share a single deployment unit.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="legacy-nbs-6">Legacy NBS 6</h3>
+
+<p>The existing NBS 6 application. A WildFly-based UI and backend that most STLTs currently run.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">NBS Core does not replace NBS 6 immediately. Instead, it runs alongside it. During migration, the NBS Gateway routes requests between the legacy NBS 6 application and new NBS 7 services. NBS 6 continues to handle all functionality that has not yet been replaced by a modern NBS 7 equivalent.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. An operational NBS 6 instance is a prerequisite for any NBS 7 deployment. You must be running NBS 6.0.16.1 or newer before installing NBS 7.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Required by NBS Gateway, Elasticsearch (via Nifi), and the NBS Modernization API. Must maintain network connectivity to your NBS 7 environment throughout the migration period.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="nbs-modernization-api">NBS Modernization API</h3>
+
+<p>The modern backend API layer for NBS 7, built to replace NBS 6 functionality incrementally.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Provides modernized versions of core NBS features including patient search, event search, patient profile, and investigation management. As NBS 7 development progresses, additional NBS 6 features will migrate into this API layer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. The Modernization API is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires Legacy NBS 6 and NBS Gateway. Exposes functionality to the NBS Web UI.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="nbs-web-ui">NBS Web UI</h3>
+
+<p>The modern React/TypeScript frontend for NBS 7 features.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Provides the user interface for modernized NBS 7 functionality. STLT users see a composite interface — some screens are served by the new NBS Web UI, while others continue to be served by the legacy NBS 6 UI. The NBS Gateway manages which interface handles each request.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. The NBS Web UI is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires NBS Gateway and the NBS Modernization API.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="nbs-gateway">NBS Gateway</h3>
+
+<p>A routing service (built on Spring Cloud Gateway) that manages traffic between the legacy NBS 6 application and modern NBS 7 services.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Implements the strangler fig pattern by routing requests based on path. Requests for modernized features (such as patient search and Page Builder) go to NBS 7 services. All other requests go to Legacy NBS 6. This routing layer is what allows NBS 6 and NBS 7 to run simultaneously during migration without users needing to switch between systems.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. NBS Gateway is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires Legacy NBS 6, the NBS Modernization API, and the NBS Web UI. Sits behind the infrastructure layer ingress controller.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="page-builder">Page Builder</h3>
+
+<p>A tool for creating and editing the investigation forms used by STLT epidemiologists and disease investigators.</p>
+
+<blockquote class="note">
+  <p>This component is not yet confirmed for production. Verify current status with your CDC NBS point of contact before planning any Page Builder integrations.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Allows authorized users to configure the data collection forms associated with specific diseases and conditions. Maintains the ability to customize forms to meet jurisdiction-specific reporting requirements.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always, if your jurisdiction uses NBS to manage investigation forms. Page Builder is included in NBS Core.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires the NBS Modernization API.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="report-execution-api">Report Execution API</h3>
+
+<p>A Python FastAPI service intended to replace SAS-based report execution in NBS 7. SAS 9.4 is currently required for report execution and must be carried forward into NBS 7 deployments until this component is production-ready. Jurisdictions with significant SAS infrastructure or licensing costs should monitor this component as NBS 7 matures.</p>
+
+<blockquote class="note">
+  <p>This component is not yet confirmed for production. Check with your CDC NBS point of contact to find out whether it affects your deployment plan.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">[Pending SME verification]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">[Pending SME verification]</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="elasticsearch">Elasticsearch</h3>
+
+<p>An open source search and analytics engine optimized for speed and scalability.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Powers real-time patient and event search in NBS 7. NBS 6 required batch processing before search results reflected recent data, so this is a key improvement. <a href="#nifi">Nifi</a> populates Elasticsearch indices from the NBS database.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. Elasticsearch is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires Nifi to populate its indices from the NBS database. Search functionality in the NBS Web UI and Modernization API depends on Elasticsearch.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="nifi">Nifi</h3>
+
+<p>An open source data flow automation tool for moving and transforming data between systems.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Continuously moves data from the NBS database into Elasticsearch, keeping search indices current. Without Nifi, Elasticsearch indices would not reflect recent changes to patient and investigation records.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. Nifi is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires the NBS database (NBS_ODSE) as its data source and Elasticsearch as its destination.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="keycloak">Keycloak</h3>
+
+<p>An open source identity and access management platform.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Handles authentication for NBS 7, including token management and single sign-on (SSO) integration. Keycloak supports OAuth and SAML, which means your jurisdiction can integrate NBS 7 with an existing identity provider such as Okta or Active Directory Federation Services (ADFS) rather than managing a separate set of NBS credentials.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. Keycloak is a core component of NBS Core and is required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires network access to your identity provider if you are integrating with an existing SSO system. All NBS 7 services that require authentication depend on Keycloak.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="highlight">
+  <p>If your jurisdiction uses a centralized identity provider (such as Okta or Active Directory), Keycloak can integrate with it. This means NBS 7 users can log in with their existing jurisdiction credentials rather than managing a separate NBS login. Coordinate with your identity management team early. SSO integration configuration requires input from both the NBS deployment team and your identity provider administrators.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="database-nbs_odse-nbs_srte">Database (NBS_ODSE, NBS_SRTE)</h3>
+
+<p>The core SQL Server databases that store operational and reference data for NBS.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">NBS_ODSE (Operational Data Store) is the primary transactional database where case, patient, investigation, and event records are stored. NBS_SRTE (System Reference Tables) stores reference and metadata used across NBS, including LOINC, SNOMED CT, and other code sets used for data validation and mapping.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">Always. Both databases are required for all NBS 7 configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Required by Legacy NBS 6, the Modernization API, Nifi, Debezium (if using RTR), and the DI API (if using the DI API add-on).</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="infrastructure-and-networking-layer-components">Infrastructure and networking layer components</h3>
+
+<p>The following components make up the infrastructure and networking layers of NBS Core. They are provisioned and managed primarily through Terraform and Helm, and most do not require configuration decisions from IT admins during the planning phase. They are documented here for awareness.</p>
+
+<p>Full configuration guidance is in the <a href="https://cdcgov.github.io/NEDSS-SystemAdminGuide/">NBS 7 System Administrator Guide</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">What it does in NBS 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Kubernetes (EKS/AKS)</td>
+      <td style="text-align: left">Container orchestration platform that hosts and manages all NBS 7 services. EKS is used on AWS; AKS is used on Azure.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NGINX Ingress Controller</td>
+      <td style="text-align: left">Manages inbound traffic routing into the Kubernetes cluster. Currently being replaced by Traefik in future releases — confirm current status with your CDC NBS point of contact.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Terraform modules</td>
+      <td style="text-align: left">Infrastructure-as-code tooling that provisions your cloud environment, including VPC, Kubernetes cluster, storage, and managed services. Four modules cover network/VPC, NBS 6 database layer, NBS 7 cluster, and application services.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ArgoCD</td>
+      <td style="text-align: left">Continuous deployment tool that manages application delivery to the Kubernetes cluster. Keeps deployed services in sync with their defined configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Cert Manager</td>
+      <td style="text-align: left">Automates provisioning and renewal of TLS/SSL certificates for encrypted traffic within and into the NBS 7 environment.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FluentBit</td>
+      <td style="text-align: left">Lightweight log forwarding agent that collects and routes logs from NBS 7 services for monitoring and troubleshooting.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Linkerd</td>
+      <td style="text-align: left">Service mesh (provisioned via Terraform) that manages encrypted communication between NBS 7 services inside the Kubernetes cluster.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">DNS (Route 53 or equivalent)</td>
+      <td style="text-align: left">Routes user traffic to your NBS 7 environment. On AWS, Route 53 is the standard option; Azure and on-premises DNS services are also supported.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="add-on-real-time-reporting-rtr">Add-on: Real-Time Reporting (RTR)</h2>
+
+<p>RTR works alongside the legacy MasterETL batch process during transition, with the goal of eventually replacing it. The following components are added to your NBS Core deployment when you choose NBS Core + RTR or NBS Complete.</p>
+
+<blockquote class="highlight">
+  <p>The primary benefit of RTR is speed. Data that previously took up to 24 hours to appear in reports is available within 5 minutes to 1 hour. For jurisdictions managing active outbreaks or time-sensitive disease investigations, this can meaningfully affect response time. But RTR adds infrastructure complexity and requires additional cloud resources, which will impact your operating costs.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="debezium">Debezium</h3>
+
+<p>An open-source Change Data Capture (CDC) platform.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Monitors the NBS database for changes in real time and streams those changes to Kafka as they occur. Debezium is the entry point for the RTR pipeline. Without it, downstream RTR components have no data to process.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires the NBS database (NBS_ODSE) as its source. Streams data to the Kafka cluster.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="kafka-and-kafka-connect">Kafka and Kafka Connect</h3>
+
+<p>Apache Kafka is an open source event-streaming platform. Kafka Connect is the framework that moves data between Kafka and other systems.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Acts as the message bus for the RTR pipeline. Kafka receives change events from Debezium and delivers them to the RTR domain services. Kafka Connect writes the processed output to RDB_Modern staging tables for post-processing and reporting.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Receives events from Debezium. Delivers messages to RTR domain services. Kafka Connect writes processed data to RDB_Modern. Requires sufficient cluster resources — Kafka is one of the more operationally demanding components in the RTR stack.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="rtr-domain-services">RTR domain services</h3>
+
+<p>A unified Spring Boot service that transforms streaming data from Kafka into reportable public health records. Previously implemented as five separate entity-specific services (investigation, person, observation, organization, and LDF data), these are being consolidated into a single <code class="language-plaintext highlighter-rouge">reporting-service</code> application to reduce deployment complexity and operational overhead.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Consumes Kafka messages for each entity type (investigations, patients, organizations, observations, and LDF data), runs stored procedures to retrieve and format the data, and produces processed records for downstream storage in RDB_Modern. A post-processing service then populates analytical datamarts and fact tables from the staging data.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires Kafka (message source) and NBS_ODSE (operational data store). Populates RDB_Modern staging tables, which are then consumed by the post-processing service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="note">
+  <p>The five entity-specific RTR services (investigation-service, person-service, observation-service, organization-service, ldfdata-service) are being consolidated into a single <code class="language-plaintext highlighter-rouge">reporting-service</code> as of early 2026. Check with your CDC NBS point of contact for the current deployment state.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="rdb_modern">RDB_Modern</h3>
+
+<p>The modern reporting database introduced by RTR.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Stores processed, structured public health records produced by the RTR domain services. Runs alongside the legacy RDB during migration. Downstream reporting and analytics tools connect to RDB_Modern rather than directly to the operational database.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction chooses NBS Core + RTR or NBS Complete.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Populated by RTR domain services. Required by any reporting or analytics tools that your jurisdiction connects to NBS 7.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="add-on-data-ingestion-di-api">Add-on: Data Ingestion (DI) API</h2>
+
+<p>The DI API is a data transit layer built into NBS 7 that accepts incoming public health data and routes it into NBS without requiring third-party middleware. The DI API is added to your NBS Core deployment when you choose NBS Core + DI API or NBS Complete.</p>
+
+<blockquote class="highlight">
+  <p>The DI API is relevant if your jurisdiction uses middleware like Rhapsody to route incoming lab reports and case reports into NBS. While the DI API has the potential to reduce middleware licensing costs and simplify your data intake architecture, it is not yet a full replacement for existing middleware solutions. Jurisdictions with Rhapsody or Mirth Connect in place should continue using them for now. If your jurisdiction does not have existing middleware, the DI API is worth evaluating. Consider revisiting its viability as the product matures and new features are released.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="di-api">DI API</h3>
+
+<p>A modern data ingestion layer that accepts incoming public health data in multiple formats and routes it into NBS.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">What it does in NBS 7</td>
+      <td style="text-align: left">Accepts Electronic Case Reports (eCR), HL7 v2.x electronic lab reports (ELRs), and Public Health Document Container (PHDC) files. Validates, transforms, and routes incoming data to the appropriate NBS services. The DI API is designed to be more flexible and maintainable than legacy middleware solutions.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">When you need it</td>
+      <td style="text-align: left">When your jurisdiction receives high volumes of ELRs or eCRs, or when you want to replace or evaluate alternatives to your current middleware (such as Rhapsody). Required for NBS Core + DI API and NBS Complete configurations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependencies</td>
+      <td style="text-align: left">Requires NBS Core. Integrates with external data senders (laboratories, EHR systems, health information exchanges). Routes processed data into the NBS database via the Modernization API.</td>
+    </tr>
+  </tbody>
+</table>
