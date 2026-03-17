@@ -1133,23 +1133,23 @@
     
     "relUrl": "/docs/1_introduction/architecture_and_microservices.html#table-of-contents"
   },"162": {
-    "doc": "About this guide",
+    "doc": "NBS 7 Deployment Decision Guide",
     "title": "In this guide",
     "content": ". | Assess your readiness — Readiness checks and prerequisites | Choose your configuration — Decision framework and decision tree | Deploy NBS 7 — Real-world deployment scenarios and a link to the NBS 7 System Administrator Guide | Component reference — Documentation for each NBS 7 component | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html#in-this-guide",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide.html#in-this-guide"
   },"163": {
-    "doc": "About this guide",
+    "doc": "NBS 7 Deployment Decision Guide",
     "title": "How this guide fits into the NBS 7 process",
     "content": "Three documents support the NBS 6 to NBS 7 transition. Each serves a different purpose: . | Document | Purpose | When to use | . | NBS 7 Deployment Decision Guide (this guide) | Helps IT administrators and leadership evaluate NBS 7, understand hosting requirements, and choose a component configuration | Use first | . | NBS 7 Migration Info Sheet | Guides your jurisdiction through the migration process, including timelines, roles, a compatibility checklist, and cutover planning | Use after confirming NBS 7 is the right fit | . | NBS 7 System Administrator Guide | Provides step-by-step deployment instructions for your chosen configuration | Use when ready to deploy | . Some prerequisites covered in this guide are also covered in the Migration Info Sheet. This guide reinforces the prerequisites so that your IT team can use it independently, before beginning the migration process. NBS 7 is under active development. Component availability and configuration options will change as development continues. Make sure you are reading the latest version of this guide before you begin to plan. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process"
   },"164": {
-    "doc": "About this guide",
-    "title": "About this guide",
-    "content": "This guide helps your jurisdiction decide whether to adopt NBS 7 and, if so, plan your deployment configuration. Use it before you begin migration planning. This guide is written for STLT IT administrators who currently operate NBS 6 and are evaluating whether to migrate to NBS 7. Use this guide to: . | Assess whether NBS 7 is the right fit for your jurisdiction | Understand what components make up NBS 7 and what each one does | Identify which configuration would be right for your jurisdiction if you move forward | Prepare a recommendation for your leadership | . If you are a health department leader trying to understand whether migrating to NBS 7 is the right decision for your jurisdiction, look for the What leadership needs to know callout boxes throughout this guide. These summarize the key points you need to make an informed go/no-go decision. ",
+    "doc": "NBS 7 Deployment Decision Guide",
+    "title": "NBS 7 Deployment Decision Guide",
+    "content": "This guide helps your jurisdiction decide whether to adopt NBS 7 and, if so, plan your deployment configuration. Use it before you begin migration planning. This guide is for STLT IT administrators who operate NBS 6 and are evaluating whether to migrate to NBS 7. Use this guide to: . | Assess whether NBS 7 is the right fit for your jurisdiction | Understand what components make up NBS 7 and what each one does | Identify which configuration would be right for your jurisdiction if you move forward | Prepare a recommendation for your leadership | . If you are a health department leader trying to understand whether migrating to NBS 7 is the right decision for your jurisdiction, look for the What leadership needs to know callout boxes throughout this guide. These summarize the key points you need to make an informed go/no-go decision. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide.html"
