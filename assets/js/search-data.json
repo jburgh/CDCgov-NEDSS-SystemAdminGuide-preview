@@ -314,117 +314,117 @@
     
     "relUrl": "/docs/7_feature_preview/2_debezium-rtr.html"
   },"45": {
+    "doc": "Decision tree",
+    "title": "NBS 7 configuration decision tree",
+    "content": "Use the decision tree to identify your recommended starting configuration. Answer each question in order, then validate your recommendation with the CDC NBS team before you begin deployment. | Step 1: Hosting model | Step 2: State IT security approval | Step 3: Internal technical capacity | Step 3a: External assistance | Step 4: Current NBS 6 hosting | Step 5: Case volume | Step 6: Data intake needs (lower-volume jurisdictions) | Step 7: Reporting needs (higher-volume jurisdictions) | Step 8: Data intake needs (higher-volume jurisdictions) | . The decision tree identifies a recommended starting point, not a final answer. CDC provides free pre-deployment consultation to help jurisdictions validate their configuration choice. Do not begin deployment without first connecting with the CDC NBS team at nbs@cdc.gov. Step 1: Hosting model . Is your jurisdiction planning to self-host and self-maintain NBS 7, or will you use a vendor to host or maintain it? . | Self-hosted, self-maintained — Go to Step 2. | Vendor-hosted or vendor-maintained — Go to Vendor-managed deployment. | . Step 2: State IT security approval . Has your jurisdiction obtained state IT security approval for cloud hosting and the required software technologies (Kubernetes, Terraform, Docker)? . | Yes, or approval is not required — Go to Step 3. | No, or unknown — Begin the approval process now, then continue planning. Approval is required before deployment. Go to Step 3. | . Step 3: Internal technical capacity . Does your jurisdiction have IT staff with skills in Kubernetes, Terraform, and cloud infrastructure management, roughly half or more of the required skill set? . | Yes — Go to Step 4. | No — Go to Step 3a. | . Step 3a: External assistance . Will your jurisdiction obtain external assistance from a contractor, vendor, or consultant for deployment and ongoing maintenance? . | Yes — Go to Step 4. Note that your vendor or contractor must be capable of Kubernetes-based deployments on AWS or Azure. See Vendor-managed deployment for what to look for. | No — Stop. Build internal capacity or identify a vendor before proceeding. Contact nbs@cdc.gov for support resources. | . Step 4: Current NBS 6 hosting . Where does your NBS 6 currently run? . | Already on AWS — Lowest migration complexity. Go to Step 5. | Already on Azure — Low migration complexity; you will follow the Azure-specific deployment path. Go to Step 5. | On-premises — Your migration includes a cloud migration as well as an NBS 7 deployment. Plan for additional time and resources. Go to Step 5. | . Step 5: Case volume . What is the approximate annual reportable disease case volume in your jurisdiction? . | Lower volume (fewer than approximately 50,000 cases per year) — Go to Step 6. | Higher volume (50,000+ cases per year), or significant growth expected — Go to Step 7. | . The 50,000 case threshold is a planning guideline, not a hard rule. Validate your volume assessment with CDC before making a final configuration decision. Step 6: Data intake needs (lower-volume jurisdictions) . Does your jurisdiction currently receive high volumes of electronic lab reports (ELRs) or electronic case reports (eCRs)? . | No — Recommended configuration: NBS Core. Validate with CDC before deploying. | Yes — Recommended configuration: NBS Core + DI API. Validate with CDC before deploying. | . Step 7: Reporting needs (higher-volume jurisdictions) . Does your jurisdiction need near-real-time reporting — data available within minutes to hours, rather than 24 hours? . | No — Contact nbs@cdc.gov to discuss your specific needs. NBS Core or NBS Core + DI API may be appropriate starting points. | Yes — Go to Step 8. | . Step 8: Data intake needs (higher-volume jurisdictions) . Does your jurisdiction currently receive high volumes of ELRs or eCRs? . | No — Recommended configuration: NBS Core + RTR. Validate with CDC before deploying. | Yes — Recommended configuration: NBS Complete. Validate with CDC before deploying. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_decision_tree.html#nbs-7-configuration-decision-tree",
+    
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_decision_tree.html#nbs-7-configuration-decision-tree"
+  },"46": {
+    "doc": "Decision tree",
+    "title": "Decision tree",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_decision_tree.html",
+    
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_decision_tree.html"
+  },"47": {
     "doc": "Deploy NBS 7",
     "title": "Deploy NBS 7",
     "content": "The following sections cover actual NBS 7 deployment scenarios as example use cases. No two jurisdictions have identical infrastructure, staffing, or data needs, so your configuration will not match any of these exactly. Use the examples to identify which profile is closest to your situation and to understand the tradeoffs that other jurisdictions encountered. After you have chosen your configuration, use the NBS 7 System Administrator Guide for step-by-step deployment instructions. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7.html#deploy-nbs-7",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7.html#deploy-nbs-7"
-  },"46": {
+  },"48": {
     "doc": "Deploy NBS 7",
     "title": "Deploy NBS 7",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7.html"
-  },"47": {
+  },"49": {
     "doc": "Enable Keycloak Auth",
     "title": "Table of contents",
     "content": ". | Enable Keycloak Auth | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/2_enable_keycloak_auth.html#table-of-contents",
     
     "relUrl": "/docs/5_keycloak/2_enable_keycloak_auth.html#table-of-contents"
-  },"48": {
+  },"50": {
     "doc": "Enable Keycloak Auth",
     "title": "Enable Keycloak Auth",
     "content": ". | a. Confirm the keycloak is running kubectl get pods . | b. Make sure you are authenticated to Keycloak kubectl --namespace default port-forward \"&lt;pod_name&gt;\" 8080 . | c. Make sure you are logged in Keycloak webui as an admin | d. Run json for nbs-users realm from charts/keycloak/extra/02-nbs-users-realm.json . | a. Create realm menu top left option | b. Upload or paste the 02-nbs-users-realm.json file and click on create | c. Verify new realm exists | . | e. Run partial import for following files from charts/keycloak/extra/ . | a. 03-nbs-users-base-users.json | b. 04-nbs-users-development-clients.json | . | f. Make sure you select the nbs-users realm . | a. Realm settings → Action → Partial import | b. Paste or upload 03-nbs-users-base-users.json and select the 3 users and click on Import | c. Repeat above steps to paste or upload 04-nbs-users-development-clients.json and select the 1 client and click on Import | . | g. Make sure oidc is enabled when deploying modernization-api and nbs-gateway services below. This will be done in the Microservices Deployment section. | h. When deploying nbs-gateway service, also make sure to update the client secret (from Keycloak webui) under oidc in values.yaml. This will be done in the Microservices Deployment section. | a. Select nbs-users realm | b. Clients → nbs-modernization → Credentials → Client Secret | c. Copy the above secret and update in charts/nbs-gateway/values.yaml under oidc settings | . | i. You may select the pre-populated NBS login theme, keep the default, or create your own. The keycloak helm chart loads a sample theme in a persistent volume that is mounted on /opt/keycloak/themes/nbs. | a. Select nbs-users realm | b. Realm settings → Themes → Login | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/2_enable_keycloak_auth.html",
     
     "relUrl": "/docs/5_keycloak/2_enable_keycloak_auth.html"
-  },"49": {
+  },"51": {
     "doc": "Medium jurisdiction, existing middleware, RTR",
     "title": "Case study: Medium jurisdiction, existing middleware, RTR",
     "content": "Based on Kentucky’s deployment. | Profile | Configuration | What was deployed | Key configuration decisions | Lessons learned | . Profile . Medium STLT with an existing Rhapsody middleware investment and a need for faster data turnaround than NBS 6 batch processing provides. The jurisdiction retained Rhapsody for data ingestion rather than replacing it with the DI API. Configuration . | Setting | Value | . | Tier | NBS Core + RTR | . | Hosting | Hybrid — cloud-hosted NBS 7, on-premises Rhapsody middleware | . | Middleware | Rhapsody (retained) | . What was deployed . | Component | Included | Notes | . | NBS Core | Yes | Full core deployment | . | Real-Time Reporting (RTR) | Yes | Added for faster reporting turnaround | . | DI API | No | Rhapsody retained for data ingestion | . Key configuration decisions . | Rhapsody integrates directly with the NBS database rather than routing through the DI API. Jurisdictions with existing Rhapsody investments should follow this pattern. | [Placeholder: RTR configuration specifics for this scale] | [Placeholder: how the hybrid hosting model was structured] | [Placeholder: custom integration points between Rhapsody and NBS 7] | . Lessons learned . | [Placeholder: integration patterns that worked well] | [Placeholder: performance considerations at this scale] | [Placeholder: challenges encountered] | . Might apply to jurisdictions that have existing middleware such as Rhapsody or Mirth Connect that you want to retain, and you need faster reporting turnaround than NBS 6 provides. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/2_medium_jurisdiction.html#case-study-medium-jurisdiction-existing-middleware-rtr",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/2_medium_jurisdiction.html#case-study-medium-jurisdiction-existing-middleware-rtr"
-  },"50": {
+  },"52": {
     "doc": "Medium jurisdiction, existing middleware, RTR",
     "title": "Medium jurisdiction, existing middleware, RTR",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/2_medium_jurisdiction.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/2_medium_jurisdiction.html"
-  },"51": {
+  },"53": {
     "doc": "Modernization API",
     "title": "Table of contents",
     "content": ". | Deploy Modernization API via helm chart | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/2_modernization_api.html#table-of-contents",
     
     "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html#table-of-contents"
-  },"52": {
+  },"54": {
     "doc": "Modernization API",
     "title": "Deploy Modernization API via helm chart",
     "content": ". | The helm chart for modernization should be available under charts/modernization-api. | In the values.yaml file, replace all occurrences of app.EXAMPLE_DOMAIN with the URL of your modern app and app-classic.EXAMPLE_DOMAIN with the URL of your existing NBS 6 as shown in the Table. | Ensure the image repository and tags are populated with the following: image: repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/modernization-api\" tag: &lt;release-version-tag&gt; e.g v1.0.1 . | Populate the jdbc section (refer Table) in the values file in the following format jdbc: connectionString: \"jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=EXAMPLE_DB_NAME;user=EXAMPLE_ODSE_DB_USER;password=EXAMPLE_ODSE_DB_USER_PASSWORD;encrypt=true;trustServerCertificate=true;\" user: \"EXAMPLE_ODSE_DB_USER\" password: \"EXAMPLE_ODSE_DB_USER_PASSWORD\" . | Verify page-builder is disabled pageBuilder: enabled: \"false\" . | Update token secret and parameter secret to encrypt JWT (use token secret generated for pagebuilder-api above, generate parameter secret with openssl rand -base64 32 | cut -c1-32 ) security: tokenSecret: \"EXAMPLE_TOKEN_SECRET\" parameterSecret: \"EXAMPLE_PARAMETER_SECRET\" . | Verify OIDC is enabled for keycloak login authentication Oidc: enabled: \"true\" . | After updating the values file, run the following command to install modernization API. helm install modernization-api -f ./modernization-api/values.yaml modernization-api . | To check ingress for RTR services kubectl describe ingress main-ingress-resource . | IMPORTANT: Confirm the pod is running before proceeding with the next deployment using the below command. If the pod is still creating (or in any other state other than running), wait and/or troubleshoot. kubectl get pods . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/2_modernization_api.html#deploy-modernization-api-via-helm-chart",
     
     "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html#deploy-modernization-api-via-helm-chart"
-  },"53": {
+  },"55": {
     "doc": "Modernization API",
     "title": "Modernization API",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/2_modernization_api.html",
     
     "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html"
-  },"54": {
+  },"56": {
     "doc": "Nginx Ingress Deployment",
     "title": "Table of contents",
     "content": ". | Deploy NGINX ingress controller on the Kubernetes cluster | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#table-of-contents",
     
     "relUrl": "/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#table-of-contents"
-  },"55": {
+  },"57": {
     "doc": "Nginx Ingress Deployment",
     "title": "Deploy NGINX ingress controller on the Kubernetes cluster",
     "content": ". | NGINX will use the values in charts/nginx-ingress/values.yaml as a part of nbs-helm-vX.Y.Z zip file. These values have been preconfigured to setup Prometheus to scrape metrics and also to instruct NGINX controller to create AWS network load balancer instead of classic load balancer in front of the k8 NGINX ingress. | a. The result of the command below should create NGINX controller within Kubernetes. helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx -f ./nginx-ingress/values.yaml --namespace ingress-nginx --create-namespace --version 4.11.5 . | b. Monitor the status of the nginx deployment kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller . NOTE: Use Ctrl+c to exit if the command is still running. | c. You may also check that a network load balancer was created in the AWS web console and the target groups are pointing to the EKS cluster List of load balancers | d. Run the following command to confirm at least one NGINX controller pod is running kubectl get pods -n=ingress-nginx . | . | You will need to manually create some DNS entries. Ensure that the following DNS entries (A records) point to the new network load balancer in front of your Kubernetes cluster (make sure this is the ACTIVE NLB just provisioned via nginx-ingress). This should be done in your DNS service (For eg: Route 53). Please replace example.com with the appropriate domain_name from the Table below. | a. Modernized NBS Application - Eg: app.site_name.example_domain.com | b. Data Services - data.site_name.example_domain.com | c. NIFI application - Eg: nifi.example.com [Note: NIFI has reported vulnerabiltiies. Please expose only if you absolutely need it and want to adminsiter it. Otherwise, dont add NIFI]. These are the 5 required URL’s for NBS | . | Parameter | Template Value | Example | . | nbs domain | site_name.example_domain.com | fts3.nbspreview.com | . | classic sub_domain (NBS 6) | app-classic.site_name.example_domain.com | app-classic.fts3.nbspreview.com | . | app sub_domain (Modern NBS 7) | app.site_name.example_domain.com | app.fts3.nbspreview.com | . | nifi sub_domain (Nifi) [Optional, only if you want to administer NIFI] | nifi.site_name.example_domain.com | nifi.fts3.nbspreview.com | . | data ingestion sub_domain (DI) | data.site_name.example_domain.com | data.fts3.nbspreview.com | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#deploy-nginx-ingress-controller-on-the-kubernetes-cluster",
     
     "relUrl": "/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#deploy-nginx-ingress-controller-on-the-kubernetes-cluster"
-  },"56": {
+  },"58": {
     "doc": "Nginx Ingress Deployment",
     "title": "Nginx Ingress Deployment",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html",
     
     "relUrl": "/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html"
-  },"57": {
+  },"59": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Component reference: Real-Time Reporting (RTR) add-on",
     "content": "RTR works alongside the legacy MasterETL batch process during transition, with the goal of eventually replacing it. The following components are added to your NBS Core deployment when you choose NBS Core + RTR or NBS Complete. | Debezium | Kafka and Kafka Connect | RTR domain services | RDB_Modern | . What leadership needs to know . The primary benefit of RTR is speed. Data that previously took up to 24 hours to appear in reports is available within 5 minutes to 1 hour. For jurisdictions managing active outbreaks or time-sensitive disease investigations, this can meaningfully affect response time. But RTR adds infrastructure complexity and requires additional cloud resources, which will impact your operating costs. Debezium . An open-source Change Data Capture (CDC) platform. | Attribute | Description | . | What it does in NBS 7 | Monitors the NBS database for changes in real time and streams those changes to Kafka as they occur. Debezium is the entry point for the RTR pipeline. Without it, downstream RTR components have no data to process. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Requires the NBS database (NBS_ODSE) as its source. Streams data to the Kafka cluster. | . Kafka and Kafka Connect . Apache Kafka is an open source event-streaming platform. Kafka Connect is the framework that moves data between Kafka and other systems. | Attribute | Description | . | What it does in NBS 7 | Acts as the message bus for the RTR pipeline. Kafka receives change events from Debezium and delivers them to the RTR domain services. Kafka Connect writes the processed output to RDB_Modern staging tables for post-processing and reporting. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Receives events from Debezium. Delivers messages to RTR domain services. Kafka Connect writes processed data to RDB_Modern. Requires sufficient cluster resources — Kafka is one of the more operationally demanding components in the RTR stack. | . RTR domain services . A unified Spring Boot service that transforms streaming data from Kafka into reportable public health records. Previously implemented as five separate entity-specific services (investigation, person, observation, organization, and LDF data), these are being consolidated into a single reporting-service application to reduce deployment complexity and operational overhead. | Attribute | Description | . | What it does in NBS 7 | Consumes Kafka messages for each entity type (investigations, patients, organizations, observations, and LDF data), runs stored procedures to retrieve and format the data, and produces processed records for downstream storage in RDB_Modern. A post-processing service then populates analytical datamarts and fact tables from the staging data. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Requires Kafka (message source) and NBS_ODSE (operational data store). Populates RDB_Modern staging tables, which are then consumed by the post-processing service. | . The five entity-specific RTR services (investigation-service, person-service, observation-service, organization-service, ldfdata-service) are being consolidated into a single reporting-service as of early 2026. Check with your CDC NBS point of contact for the current deployment state. RDB_Modern . The modern reporting database introduced by RTR. | Attribute | Description | . | What it does in NBS 7 | Stores processed, structured public health records produced by the RTR domain services. Runs alongside the legacy RDB during migration. Downstream reporting and analytics tools connect to RDB_Modern rather than directly to the operational database. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Populated by RTR domain services. Required by any reporting or analytics tools that your jurisdiction connects to NBS 7. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/2_rtr.html#component-reference-real-time-reporting-rtr-add-on",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/2_rtr.html#component-reference-real-time-reporting-rtr-add-on"
-  },"58": {
+  },"60": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Add-on: Real-Time Reporting (RTR)",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/2_rtr.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/2_rtr.html"
-  },"59": {
-    "doc": "Vendor-managed deployment",
-    "title": "Vendor-managed deployment",
-    "content": "If you plan to use a vendor to host or maintain NBS 7, confirm that they can: . | Deploy Kubernetes-based applications on AWS or Azure | Manage Terraform-based infrastructure provisioning | Support ongoing cloud infrastructure operations, including monitoring and incident response | . NBS 7 is a recent system with limited deployment history. Do not expect vendors to have direct NBS 7 experience. Evaluate vendors on their Kubernetes and cloud infrastructure expertise instead. You can share the component reference section of this guide with vendors to help them scope the work accurately. Share the following with your vendor before scoping work: . | The component reference section of this guide | The NBS 7 Migration Info Sheet (available from CDC) | Your current NBS 6 hosting setup and data volumes | . Then: . | Contact nbs@cdc.gov to let CDC know you are planning a vendor-managed deployment and to access vendor coordination resources. | Work with your vendor to complete steps 4–8 of the decision tree to identify your recommended configuration tier. | Return to the component reference for the configuration parameters your vendor will need. | . Vendors with Kubernetes and cloud infrastructure expertise can deploy NBS 7, but they will need detailed technical guidance from CDC and from this guide to do it accurately. Plan for a close working relationship between your vendor and the CDC NBS team, especially during initial deployment. Also plan for the funding needed to sustain vendor support beyond initial deployment. Ongoing maintenance costs are a common planning gap. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_vendor_managed_deployment.html#vendor-managed-deployment",
-    
-    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_vendor_managed_deployment.html#vendor-managed-deployment"
-  },"60": {
-    "doc": "Vendor-managed deployment",
-    "title": "Vendor-managed deployment",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_vendor_managed_deployment.html",
-    
-    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/2_vendor_managed_deployment.html"
   },"61": {
     "doc": "Cert Manager",
     "title": "Table of contents",
@@ -468,89 +468,89 @@
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference.html"
   },"67": {
-    "doc": "Decision tree",
-    "title": "NBS 7 configuration decision tree",
-    "content": "Use the decision tree to identify your recommended starting configuration. Answer each question in order, then validate your recommendation with the CDC NBS team before you begin deployment. | Step 1: Hosting model | Step 2: State IT security approval | Step 3: Internal technical capacity | Step 3a: External assistance | Step 4: Current NBS 6 hosting | Step 5: Case volume | Step 6: Data intake needs (lower-volume jurisdictions) | Step 7: Reporting needs (higher-volume jurisdictions) | Step 8: Data intake needs (higher-volume jurisdictions) | . The decision tree identifies a recommended starting point, not a final answer. CDC provides free pre-deployment consultation to help jurisdictions validate their configuration choice. Do not begin deployment without first connecting with the CDC NBS team at nbs@cdc.gov. Step 1: Hosting model . Is your jurisdiction planning to self-host and self-maintain NBS 7, or will you use a vendor to host or maintain it? . | Self-hosted, self-maintained — Go to Step 2. | Vendor-hosted or vendor-maintained — Go to Vendor-managed deployment. | . Step 2: State IT security approval . Has your jurisdiction obtained state IT security approval for cloud hosting and the required software technologies (Kubernetes, Terraform, Docker)? . | Yes, or approval is not required — Go to Step 3. | No, or unknown — Begin the approval process now, then continue planning. Approval is required before deployment. Go to Step 3. | . Step 3: Internal technical capacity . Does your jurisdiction have IT staff with skills in Kubernetes, Terraform, and cloud infrastructure management, roughly half or more of the required skill set? . | Yes — Go to Step 4. | No — Go to Step 3a. | . Step 3a: External assistance . Will your jurisdiction obtain external assistance from a contractor, vendor, or consultant for deployment and ongoing maintenance? . | Yes — Go to Step 4. Note that your vendor or contractor must be capable of Kubernetes-based deployments on AWS or Azure. See Vendor-managed deployment for what to look for. | No — Stop. Build internal capacity or identify a vendor before proceeding. Contact nbs@cdc.gov for support resources. | . Step 4: Current NBS 6 hosting . Where does your NBS 6 currently run? . | Already on AWS — Lowest migration complexity. Go to Step 5. | Already on Azure — Low migration complexity; you will follow the Azure-specific deployment path. Go to Step 5. | On-premises — Your migration includes a cloud migration as well as an NBS 7 deployment. Plan for additional time and resources. Go to Step 5. | . Step 5: Case volume . What is the approximate annual reportable disease case volume in your jurisdiction? . | Lower volume (fewer than approximately 50,000 cases per year) — Go to Step 6. | Higher volume (50,000+ cases per year), or significant growth expected — Go to Step 7. | . The 50,000 case threshold is a planning guideline, not a hard rule. Validate your volume assessment with CDC before making a final configuration decision. Step 6: Data intake needs (lower-volume jurisdictions) . Does your jurisdiction currently receive high volumes of electronic lab reports (ELRs) or electronic case reports (eCRs)? . | No — Recommended configuration: NBS Core. Validate with CDC before deploying. | Yes — Recommended configuration: NBS Core + DI API. Validate with CDC before deploying. | . Step 7: Reporting needs (higher-volume jurisdictions) . Does your jurisdiction need near-real-time reporting — data available within minutes to hours, rather than 24 hours? . | No — Contact nbs@cdc.gov to discuss your specific needs. NBS Core or NBS Core + DI API may be appropriate starting points. | Yes — Go to Step 8. | . Step 8: Data intake needs (higher-volume jurisdictions) . Does your jurisdiction currently receive high volumes of ELRs or eCRs? . | No — Recommended configuration: NBS Core + RTR. Validate with CDC before deploying. | Yes — Recommended configuration: NBS Complete. Validate with CDC before deploying. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_decision_tree.html#nbs-7-configuration-decision-tree",
-    
-    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_decision_tree.html#nbs-7-configuration-decision-tree"
-  },"68": {
-    "doc": "Decision tree",
-    "title": "Decision tree",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_decision_tree.html",
-    
-    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_decision_tree.html"
-  },"69": {
     "doc": "Add-on: Data Ingestion (DI) API",
     "title": "Component reference: Data Ingestion (DI) API add-on",
     "content": "The DI API is a data transit layer built into NBS 7 that accepts incoming public health data and routes it into NBS without requiring third-party middleware. The DI API is added to your NBS Core deployment when you choose NBS Core + DI API or NBS Complete. What leadership needs to know . The DI API is relevant if your jurisdiction uses middleware like Rhapsody to route incoming lab reports and case reports into NBS. While the DI API has the potential to reduce middleware licensing costs and simplify your data intake architecture, it is not yet a full replacement for existing middleware solutions. Jurisdictions with Rhapsody or Mirth Connect in place should continue using them for now. If your jurisdiction does not have existing middleware, the DI API is worth evaluating. Consider revisiting its viability as the product matures and new features are released. DI API . A modern data ingestion layer that accepts incoming public health data in multiple formats and routes it into NBS. | Attribute | Description | . | What it does in NBS 7 | Accepts Electronic Case Reports (eCR), HL7 v2.x electronic lab reports (ELRs), and Public Health Document Container (PHDC) files. Validates, transforms, and routes incoming data to the appropriate NBS services. The DI API is designed to be more flexible and maintainable than legacy middleware solutions. | . | When you need it | When your jurisdiction receives high volumes of ELRs or eCRs, or when you want to replace or evaluate alternatives to your current middleware (such as Rhapsody). Required for NBS Core + DI API and NBS Complete configurations. | . | Dependencies | Requires NBS Core. Integrates with external data senders (laboratories, EHR systems, health information exchanges). Routes processed data into the NBS database via the Modernization API. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/3_di_api.html#component-reference-data-ingestion-di-api-add-on",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/3_di_api.html#component-reference-data-ingestion-di-api-add-on"
-  },"70": {
+  },"68": {
     "doc": "Add-on: Data Ingestion (DI) API",
     "title": "Add-on: Data Ingestion (DI) API",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/3_di_api.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/3_di_api.html"
-  },"71": {
+  },"69": {
     "doc": "Kafka connector",
     "title": "Table of contents",
     "content": ". | Kafka Connector | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/3_kafka_connector.html#table-of-contents",
     
     "relUrl": "/docs/7_feature_preview/3_kafka_connector.html#table-of-contents"
-  },"72": {
+  },"70": {
     "doc": "Kafka connector",
     "title": "Kafka Connector",
     "content": ". | The helm chart for Kafka connector should be available under charts/kafka-connect-sink. | Validate image repository and tag: image: confluentinc/cp-kafka-connect tag: &lt;release-version-tag&gt; e.g v1.0.1 . | Configurations for the following should be on hand to update the values.yaml file- RDB_modern hostname, username, password and kafka bootstrap server names. sqlServerConnector: config: connection.url: jdbc:sqlserver://nbs-db.EXAMPLE_FIXME.nbspreview.com:1433;databaseName=rdb;encrypt=true;trustServerCertificate=true;, connection.user: EXAMPLE_FIXME, connection.password: EXAMPLE_FIXME, kafka: bootstrapServers: \"EXAMPLE_FIXME\" . | Install pod helm install -f ./kafka-connect-sink/values.yaml cp-kafka-connect-server ./kafka-connect-sink/ . | Verify if pod is running kubectl get pods . | Validate service . | a. This is an internal service with no ingress. Validation should be part of RTR Pipeline Validation | b. If the service has any trouble connecting with the database, run this command to reset the ConfigMap. kubectl delete configmap cp-kafka-connect-sqlserver-connect . | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/3_kafka_connector.html#kafka-connector",
     
     "relUrl": "/docs/7_feature_preview/3_kafka_connector.html#kafka-connector"
-  },"73": {
+  },"71": {
     "doc": "Kafka connector",
     "title": "Kafka connector",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/3_kafka_connector.html",
     
     "relUrl": "/docs/7_feature_preview/3_kafka_connector.html"
-  },"74": {
+  },"72": {
     "doc": "Large jurisdiction, high volume, vendor-managed",
     "title": "Case study: Large jurisdiction, high volume, vendor-managed",
     "content": "Based on an enterprise-scale deployment. | Profile | Configuration | What was deployed | Key configuration decisions | Lessons learned | . Profile . Large STLT with high case volumes, sophisticated analytics needs, and a vendor-managed infrastructure model. This jurisdiction required high-availability configuration and advanced security hardening. Configuration . | Setting | Value | . | Tier | NBS Complete (NBS Core + RTR + DI API) | . | Hosting | Cloud vendor-managed, or hybrid with significant cloud presence | . | Middleware | DI API (primary ingestion path) | . What was deployed . | Component | Included | Notes | . | NBS Core | Yes | Full core deployment | . | Real-Time Reporting (RTR) | Yes | Required for high case volume and analytics needs | . | DI API | Yes | Primary path for ELR and eCR ingestion | . | DataSync | — | Verify with CDC NBS point of contact | . DataSync is not currently documented in this guide because it is only used by one jurisdiction and is not expected to be used long-term. Confirm with your CDC NBS point of contact before planning any DataSync integration. Key configuration decisions . | [Placeholder: high-availability configuration specifics] | [Placeholder: performance optimization decisions] | [Placeholder: advanced security hardening approach] | [Placeholder: vendor coordination model and responsibilities] | . Lessons learned . | [Placeholder: scaling considerations] | [Placeholder: cost management approach] | [Placeholder: challenges encountered with vendor-managed deployment] | . Might apply to jurisdictions that have a large IT team or vendor support, high case volumes, advanced reporting or analytics needs, and require high-availability infrastructure. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/3_large_jurisdiction.html#case-study-large-jurisdiction-high-volume-vendor-managed",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/3_large_jurisdiction.html#case-study-large-jurisdiction-high-volume-vendor-managed"
-  },"75": {
+  },"73": {
     "doc": "Large jurisdiction, high volume, vendor-managed",
     "title": "Large jurisdiction, high volume, vendor-managed",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/3_large_jurisdiction.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/3_large_jurisdiction.html"
-  },"76": {
+  },"74": {
     "doc": "Nifi",
     "title": "Table of contents",
     "content": ". | Deploy Nifi via helm chart | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/3_nifi.html#table-of-contents",
     
     "relUrl": "/docs/6_microservices_deployment/3_nifi.html#table-of-contents"
-  },"77": {
+  },"75": {
     "doc": "Nifi",
     "title": "Deploy Nifi via helm chart",
     "content": ". | Important Note: The NIFI ingress is intentionally disabled by default to enhance security. Consequently, the NIFI admin UI is not accessible out of the box. To enable access to the NIFI admin interface, it is necessary to activate the ingress feature by setting “ingress:enabled: true” within the values.yaml file before initiating the installation process using the Helm chart. For the sake of heightened security, it is strongly advised to establish a privately accessible domain name instead of a public one, considering the presence of known security vulnerabilities within NIFI. | The helm chart for nifi should be available under charts/nifi-efs. | In the values.yaml file, replace all occurrences of nifi.EXAMPLE_DOMAIN with your domain name as shown in Table. | Ensure the image repository and tags are populated with the following: image: repository: quay.io/us-cdcgov/cdc-nbs-modernization/nifi tag: &lt;release-version-tag&gt; e.g v1.0.1 . | Update the efsFileSystemId with the efs-id. | Populate jdbc connection string with the same information (refer Table) as before which includes the username and password. jdbcConnectionString: \"jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=EXAMPLE_DB_NAME;user=EXAMPLE_ODSE_DB_USER;password=EXAMPLE_ODSE_DB_USER_PASSWORD;encrypt=true;trustServerCertificate=true;\" . | Populate singleUserCredentialsUsername to change the default of “admin“ username | Populate singleUserCredentialsPassword with the password for the NIFI admin UI. This can be any password of your choice. | After updating the values file, run the following command to install nifi. helm install nifi -f ./nifi-efs/values.yaml nifi-efs . | IMPORTANT: Confirm the pod is running before proceeding with the next deployment using the below command. If the pod is still creating (or in any other state other than running), wait and/or troubleshoot. kubectl get pods . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/3_nifi.html#deploy-nifi-via-helm-chart",
     
     "relUrl": "/docs/6_microservices_deployment/3_nifi.html#deploy-nifi-via-helm-chart"
-  },"78": {
+  },"76": {
     "doc": "Nifi",
     "title": "Nifi",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/3_nifi.html",
     
     "relUrl": "/docs/6_microservices_deployment/3_nifi.html"
+  },"77": {
+    "doc": "Vendor-managed deployment",
+    "title": "Vendor-managed deployment",
+    "content": "If you plan to use a vendor to host or maintain NBS 7, confirm that they can: . | Deploy Kubernetes-based applications on AWS or Azure | Manage Terraform-based infrastructure provisioning | Support ongoing cloud infrastructure operations, including monitoring and incident response | . NBS 7 is a recent system with limited deployment history. Do not expect vendors to have direct NBS 7 experience. Evaluate vendors on their Kubernetes and cloud infrastructure expertise instead. You can share the component reference section of this guide with vendors to help them scope the work accurately. Share the following with your vendor before scoping work: . | The component reference section of this guide | The NBS 7 Migration Info Sheet (available from CDC) | Your current NBS 6 hosting setup and data volumes | . Then: . | Contact nbs@cdc.gov to let CDC know you are planning a vendor-managed deployment and to access vendor coordination resources. | Work with your vendor to complete steps 4–8 of the decision tree to identify your recommended configuration tier. | Return to the component reference for the configuration parameters your vendor will need. | . Vendors with Kubernetes and cloud infrastructure expertise can deploy NBS 7, but they will need detailed technical guidance from CDC and from this guide to do it accurately. Plan for a close working relationship between your vendor and the CDC NBS team, especially during initial deployment. Also plan for the funding needed to sustain vendor support beyond initial deployment. Ongoing maintenance costs are a common planning gap. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_vendor_managed_deployment.html#vendor-managed-deployment",
+    
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_vendor_managed_deployment.html#vendor-managed-deployment"
+  },"78": {
+    "doc": "Vendor-managed deployment",
+    "title": "Vendor-managed deployment",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_vendor_managed_deployment.html",
+    
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_vendor_managed_deployment.html"
   },"79": {
     "doc": "Linkerd and Cluster Autoscaler",
     "title": "Table of contents",
@@ -1210,26 +1210,26 @@
     
     "relUrl": "/docs/1_introduction/architecture_and_microservices.html#table-of-contents"
   },"173": {
-    "doc": "NBS 7 Deployment Decision Guide",
-    "title": "NBS 7 Deployment Decision Guide",
+    "doc": "Getting started",
+    "title": "NBS 7 preparation and decision guide",
     "content": "This guide is for STLT IT administrators who operate NBS 6 and are evaluating whether to migrate to NBS 7. It aims to help your jurisdiction decide whether to adopt NBS 7 and, if so, plan your deployment configuration. Review the decision guide before you begin migration planning. Use this guide to: . | Assess whether NBS 7 is the right fit for your jurisdiction | Identify which configuration would be right for your jurisdiction if you move forward | Understand what components make up NBS 7 and what each one does | Prepare a recommendation for your leadership | . What leadership needs to know . If you are a health department leader trying to understand whether migrating to NBS 7 is the right decision for your jurisdiction, look for these What leadership needs to know callout boxes throughout the decision guide for key points that help you make an informed go/no-go decision. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html#nbs-7-deployment-decision-guide",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#nbs-7-preparation-and-decision-guide",
     
-    "relUrl": "/docs/1_introduction/deployment_decision_guide.html#nbs-7-deployment-decision-guide"
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#nbs-7-preparation-and-decision-guide"
   },"174": {
-    "doc": "NBS 7 Deployment Decision Guide",
+    "doc": "Getting started",
     "title": "How this guide fits into the NBS 7 process",
     "content": "Three documents support the NBS 6 to NBS 7 transition. Each serves a different purpose: . | Document | Purpose | When to use | . | NBS 7 Deployment Decision Guide (this guide) | Helps IT administrators and leadership evaluate NBS 7, understand hosting requirements, and choose a component configuration | Use first | . | NBS 7 Migration Info Sheet | Guides your jurisdiction through the migration process, including timelines, roles, a compatibility checklist, and cutover planning | Use after confirming NBS 7 is the right fit | . | NBS 7 System Administrator Guide | Provides step-by-step deployment instructions for your chosen configuration | Use when ready to deploy | . Some prerequisites covered in this guide are also covered in the Migration Info Sheet. This guide reinforces the prerequisites so that your IT team can use it independently, before beginning the migration process. NBS 7 is under active development. Component availability and configuration options will change as development continues. Make sure you are reading the latest version of this guide before you begin to plan. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process",
     
-    "relUrl": "/docs/1_introduction/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process"
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process"
   },"175": {
-    "doc": "NBS 7 Deployment Decision Guide",
-    "title": "NBS 7 Deployment Decision Guide",
+    "doc": "Getting started",
+    "title": "Getting started",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html",
     
-    "relUrl": "/docs/1_introduction/deployment_decision_guide.html"
+    "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html"
   },"176": {
     "doc": "Introduction",
     "title": "Introduction",
