@@ -56,11 +56,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html"
   },"8": {
     "doc": "AWS Infrastructure",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | AWS Infrastructure . | NBS 7 Deployment | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/3_base_application/0_base_application.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/3_base_application/0_base_application.html#on-this-page",
     
-    "relUrl": "/docs/3_base_application/0_base_application.html#table-of-contents"
+    "relUrl": "/docs/3_base_application/0_base_application.html#on-this-page"
   },"9": {
     "doc": "AWS Infrastructure",
     "title": "AWS Infrastructure",
@@ -70,11 +70,11 @@
     "relUrl": "/docs/3_base_application/0_base_application.html"
   },"10": {
     "doc": "Initial Kubernetes Deployment",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Initial Kubernetes Bootstrapping | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/0_kubernetes_bootstrapping.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/0_kubernetes_bootstrapping.html#on-this-page",
     
-    "relUrl": "/docs/4_initial_kubernetes_deployment/0_kubernetes_bootstrapping.html#table-of-contents"
+    "relUrl": "/docs/4_initial_kubernetes_deployment/0_kubernetes_bootstrapping.html#on-this-page"
   },"11": {
     "doc": "Initial Kubernetes Deployment",
     "title": "Initial Kubernetes Bootstrapping",
@@ -91,11 +91,11 @@
     "relUrl": "/docs/4_initial_kubernetes_deployment/0_kubernetes_bootstrapping.html"
   },"13": {
     "doc": "Microservices Deployment",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | NBS Microservices Deployment | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/0_microservices_deployment.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/0_microservices_deployment.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/0_microservices_deployment.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/0_microservices_deployment.html#on-this-page"
   },"14": {
     "doc": "Microservices Deployment",
     "title": "NBS Microservices Deployment",
@@ -112,11 +112,11 @@
     "relUrl": "/docs/6_microservices_deployment/0_microservices_deployment.html"
   },"16": {
     "doc": "Real Time Reporting (Preview)",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Real Time Reporting via helm chart . | Database Setup for Onboarding . | Onboarding: Prerequisites | Onboarding: UAT Database Setup | Onboarding: Service Users and Setup Scripts | Continuous Integration for Real Time Reporting Database | . | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/0_rtr.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/0_rtr.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/0_rtr.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/0_rtr.html#on-this-page"
   },"17": {
     "doc": "Real Time Reporting (Preview)",
     "title": "Deploy Real Time Reporting via helm chart",
@@ -168,11 +168,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/1_configuration_tiers.html"
   },"24": {
     "doc": "Creating Kubernetes Secrets",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Create Kubernetes Secret Within Cluster | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/1_creating_kubernetes_secrets.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/1_creating_kubernetes_secrets.html#on-this-page",
     
-    "relUrl": "/docs/4_initial_kubernetes_deployment/1_creating_kubernetes_secrets.html#table-of-contents"
+    "relUrl": "/docs/4_initial_kubernetes_deployment/1_creating_kubernetes_secrets.html#on-this-page"
   },"25": {
     "doc": "Creating Kubernetes Secrets",
     "title": "Create Kubernetes Secret Within Cluster",
@@ -189,11 +189,11 @@
     "relUrl": "/docs/4_initial_kubernetes_deployment/1_creating_kubernetes_secrets.html"
   },"27": {
     "doc": "Elasticsearch",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Elasticsearch-efs via helm chart | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/1_elasticsearch.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/1_elasticsearch.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/1_elasticsearch.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/1_elasticsearch.html#on-this-page"
   },"28": {
     "doc": "Elasticsearch",
     "title": "Deploy Elasticsearch-efs via helm chart",
@@ -210,11 +210,11 @@
     "relUrl": "/docs/6_microservices_deployment/1_elasticsearch.html"
   },"30": {
     "doc": "Keycloak Installation",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | KeyCloak Installation | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/1_keycloak_installation.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/1_keycloak_installation.html#on-this-page",
     
-    "relUrl": "/docs/5_keycloak/1_keycloak_installation.html#table-of-contents"
+    "relUrl": "/docs/5_keycloak/1_keycloak_installation.html#on-this-page"
   },"31": {
     "doc": "Keycloak Installation",
     "title": "KeyCloak Installation",
@@ -231,11 +231,11 @@
     "relUrl": "/docs/5_keycloak/1_keycloak_installation.html"
   },"33": {
     "doc": "Liquibase",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Liquibase Deployment | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/1_liquibase.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/1_liquibase.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/1_liquibase.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/1_liquibase.html#on-this-page"
   },"34": {
     "doc": "Liquibase",
     "title": "Liquibase Deployment",
@@ -280,11 +280,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/1_small_jurisdiction.html"
   },"40": {
     "doc": "Terraform Deployment",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Terraform Deployment | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/3_base_application/1_terraform-deployment.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/3_base_application/1_terraform-deployment.html#on-this-page",
     
-    "relUrl": "/docs/3_base_application/1_terraform-deployment.html#table-of-contents"
+    "relUrl": "/docs/3_base_application/1_terraform-deployment.html#on-this-page"
   },"41": {
     "doc": "Terraform Deployment",
     "title": "Terraform Deployment",
@@ -294,11 +294,11 @@
     "relUrl": "/docs/3_base_application/1_terraform-deployment.html"
   },"42": {
     "doc": "Debezium",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Debezium Source Connector/debezium-connect | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/2_debezium-rtr.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/2_debezium-rtr.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/2_debezium-rtr.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/2_debezium-rtr.html#on-this-page"
   },"43": {
     "doc": "Debezium",
     "title": "Debezium Source Connector/debezium-connect",
@@ -343,11 +343,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7.html"
   },"49": {
     "doc": "Enable Keycloak Auth",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Enable Keycloak Auth | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/2_enable_keycloak_auth.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/5_keycloak/2_enable_keycloak_auth.html#on-this-page",
     
-    "relUrl": "/docs/5_keycloak/2_enable_keycloak_auth.html#table-of-contents"
+    "relUrl": "/docs/5_keycloak/2_enable_keycloak_auth.html#on-this-page"
   },"50": {
     "doc": "Enable Keycloak Auth",
     "title": "Enable Keycloak Auth",
@@ -371,11 +371,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/2_medium_jurisdiction.html"
   },"53": {
     "doc": "Modernization API",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Modernization API via helm chart | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/2_modernization_api.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/2_modernization_api.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html#on-this-page"
   },"54": {
     "doc": "Modernization API",
     "title": "Deploy Modernization API via helm chart",
@@ -392,11 +392,11 @@
     "relUrl": "/docs/6_microservices_deployment/2_modernization_api.html"
   },"56": {
     "doc": "Nginx Ingress Deployment",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy NGINX ingress controller on the Kubernetes cluster | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#on-this-page",
     
-    "relUrl": "/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#table-of-contents"
+    "relUrl": "/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#on-this-page"
   },"57": {
     "doc": "Nginx Ingress Deployment",
     "title": "Deploy NGINX ingress controller on the Kubernetes cluster",
@@ -427,11 +427,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/2_rtr.html"
   },"61": {
     "doc": "Cert Manager",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Configure Cert manager Cluster Issuer (Optional automatic certificates) | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/3_cert_manager_cluster_issuer.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/3_cert_manager_cluster_issuer.html#on-this-page",
     
-    "relUrl": "/docs/4_initial_kubernetes_deployment/3_cert_manager_cluster_issuer.html#table-of-contents"
+    "relUrl": "/docs/4_initial_kubernetes_deployment/3_cert_manager_cluster_issuer.html#on-this-page"
   },"62": {
     "doc": "Cert Manager",
     "title": "Configure Cert manager Cluster Issuer (Optional automatic certificates)",
@@ -483,11 +483,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/3_di_api.html"
   },"69": {
     "doc": "Kafka connector",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Kafka Connector | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/3_kafka_connector.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/3_kafka_connector.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/3_kafka_connector.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/3_kafka_connector.html#on-this-page"
   },"70": {
     "doc": "Kafka connector",
     "title": "Kafka Connector",
@@ -518,11 +518,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/2_deploy_nbs7/3_large_jurisdiction.html"
   },"74": {
     "doc": "Nifi",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Nifi via helm chart | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/3_nifi.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/3_nifi.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/3_nifi.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/3_nifi.html#on-this-page"
   },"75": {
     "doc": "Nifi",
     "title": "Deploy Nifi via helm chart",
@@ -553,11 +553,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/1_choose_configuration/3_vendor_managed_deployment.html"
   },"79": {
     "doc": "Linkerd and Cluster Autoscaler",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Linkerd - Annotate default namespace | Cluster Autoscaler Installation | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/4_linkerd_and_autoscaler.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/4_initial_kubernetes_deployment/4_linkerd_and_autoscaler.html#on-this-page",
     
-    "relUrl": "/docs/4_initial_kubernetes_deployment/4_linkerd_and_autoscaler.html#table-of-contents"
+    "relUrl": "/docs/4_initial_kubernetes_deployment/4_linkerd_and_autoscaler.html#on-this-page"
   },"80": {
     "doc": "Linkerd and Cluster Autoscaler",
     "title": "Linkerd - Annotate default namespace",
@@ -581,11 +581,11 @@
     "relUrl": "/docs/4_initial_kubernetes_deployment/4_linkerd_and_autoscaler.html"
   },"83": {
     "doc": "NBS Gateway",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy nbs-gateway via helm chart | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/4_nbs_gateway.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/4_nbs_gateway.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/4_nbs_gateway.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/4_nbs_gateway.html#on-this-page"
   },"84": {
     "doc": "NBS Gateway",
     "title": "Deploy nbs-gateway via helm chart",
@@ -602,11 +602,11 @@
     "relUrl": "/docs/6_microservices_deployment/4_nbs_gateway.html"
   },"86": {
     "doc": "Real Time Reporting (RTR) Java services",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Real Time Reporting(RTR) Java services | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/4_rtr_java_reporting_services.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/4_rtr_java_reporting_services.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/4_rtr_java_reporting_services.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/4_rtr_java_reporting_services.html#on-this-page"
   },"87": {
     "doc": "Real Time Reporting (RTR) Java services",
     "title": "Real Time Reporting(RTR) Java services",
@@ -623,11 +623,11 @@
     "relUrl": "/docs/7_feature_preview/4_rtr_java_reporting_services.html"
   },"89": {
     "doc": "RTR Pipeline Validation",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | RTR Pipeline Validation | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/5_rtr_pipeline_validation.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/5_rtr_pipeline_validation.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/5_rtr_pipeline_validation.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/5_rtr_pipeline_validation.html#on-this-page"
   },"90": {
     "doc": "RTR Pipeline Validation",
     "title": "RTR Pipeline Validation",
@@ -637,11 +637,11 @@
     "relUrl": "/docs/7_feature_preview/5_rtr_pipeline_validation.html"
   },"91": {
     "doc": "Validate ES, Mapi and Nifi",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Validate Elasticsearch, Modernization-API and Nifi | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5_validate_es_mapi_nifi.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5_validate_es_mapi_nifi.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/5_validate_es_mapi_nifi.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/5_validate_es_mapi_nifi.html#on-this-page"
   },"92": {
     "doc": "Validate ES, Mapi and Nifi",
     "title": "Validate Elasticsearch, Modernization-API and Nifi",
@@ -658,11 +658,11 @@
     "relUrl": "/docs/6_microservices_deployment/5_validate_es_mapi_nifi.html"
   },"94": {
     "doc": "Manual Validation",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Manual Steps | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5a_manual_validation_es_mapi_nifi.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5a_manual_validation_es_mapi_nifi.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/5a_manual_validation_es_mapi_nifi.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/5a_manual_validation_es_mapi_nifi.html#on-this-page"
   },"95": {
     "doc": "Manual Validation",
     "title": "Manual Steps",
@@ -679,11 +679,11 @@
     "relUrl": "/docs/6_microservices_deployment/5a_manual_validation_es_mapi_nifi.html"
   },"97": {
     "doc": "API Smoke Test (Scripted)",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | API Smoke Test (Scripted) | USAGE | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5b_api_smoke_test.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5b_api_smoke_test.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/5b_api_smoke_test.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/5b_api_smoke_test.html#on-this-page"
   },"98": {
     "doc": "API Smoke Test (Scripted)",
     "title": "API Smoke Test (Scripted)",
@@ -700,11 +700,11 @@
     "relUrl": "/docs/6_microservices_deployment/5b_api_smoke_test.html#usage"
   },"100": {
     "doc": "Web UI Smoke Test (Scripted)",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Web UI Smoke Test (Scripted) | USAGE | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5c_web_ui_smoke_test.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/5c_web_ui_smoke_test.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/5c_web_ui_smoke_test.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/5c_web_ui_smoke_test.html#on-this-page"
   },"101": {
     "doc": "Web UI Smoke Test (Scripted)",
     "title": "Web UI Smoke Test (Scripted)",
@@ -721,11 +721,11 @@
     "relUrl": "/docs/6_microservices_deployment/5c_web_ui_smoke_test.html#usage"
   },"103": {
     "doc": "Data Compare Tool",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Data Compare (Optional Validation Tool for RTR) . | Overview | Requirements | Components . | 1. Data Compare API | 2. Data Compare Processor | . | Database Setup | Keycloak Configuration | . | Deploy via Helm . | Data Compare API . | Validate the image tag | Update JDBC and other configurations | Install Pod | Verify Pod | Validate the service | . | Data Compare Processor . | Validate the image tag | Update JDBC and other configurations | Install Pod | Verify Pod | . | Ingress Setup | . | Spot Testing &amp; Validation | How to Use Data Compare . | Invoke Comparison Endpoint . | Required Headers: | . | Data Flow | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/6_data_compare_tool.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/7_feature_preview/6_data_compare_tool.html#on-this-page",
     
-    "relUrl": "/docs/7_feature_preview/6_data_compare_tool.html#table-of-contents"
+    "relUrl": "/docs/7_feature_preview/6_data_compare_tool.html#on-this-page"
   },"104": {
     "doc": "Data Compare Tool",
     "title": "Deploy Data Compare (Optional Validation Tool for RTR)",
@@ -763,11 +763,11 @@
     "relUrl": "/docs/7_feature_preview/6_data_compare_tool.html"
   },"109": {
     "doc": "Data Ingestion",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Ingestion Installation . | SQL Server - Databases | Manual Sql script for DI | DI Liquibase: | Liquibase DB change verification: | Deploy Data Ingestion via Helm chart | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6_data_ingestion.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6_data_ingestion.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/6_data_ingestion.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/6_data_ingestion.html#on-this-page"
   },"110": {
     "doc": "Data Ingestion",
     "title": "Data Ingestion Installation",
@@ -784,11 +784,11 @@
     "relUrl": "/docs/6_microservices_deployment/6_data_ingestion.html"
   },"112": {
     "doc": "DI Wildfly Server Config",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Wildfly Server Config | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6a_di_wildfly_Server_config.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6a_di_wildfly_Server_config.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/6a_di_wildfly_Server_config.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/6a_di_wildfly_Server_config.html#on-this-page"
   },"113": {
     "doc": "DI Wildfly Server Config",
     "title": "Wildfly Server Config",
@@ -805,11 +805,11 @@
     "relUrl": "/docs/6_microservices_deployment/6a_di_wildfly_Server_config.html"
   },"115": {
     "doc": "Data Ingestion Smoke Test",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Ingestion Smoke Test . | Overview | Prerequisite | Scope | Run Data Ingestion Smoke Test | 1. Token Generation API: | 2. Ingesting Data API: | 3. Checking detailed status of Ingested Data API in Classic NBS: | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6b_data_ingestion_smoke_test.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6b_data_ingestion_smoke_test.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/6b_data_ingestion_smoke_test.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/6b_data_ingestion_smoke_test.html#on-this-page"
   },"116": {
     "doc": "Data Ingestion Smoke Test",
     "title": "Data Ingestion Smoke Test",
@@ -819,11 +819,11 @@
     "relUrl": "/docs/6_microservices_deployment/6b_data_ingestion_smoke_test.html"
   },"117": {
     "doc": "Data Ingestion Service Integrations",
-    "title": "Table of contents",
-    "content": ". | TOC | . Data Ingestion Rhapsody Route Integration . Data Ingestion Rhapsody Route Integration.pdf . Data Ingestion SFTP Manual File Drop Off . Data Ingestion SFTP Manual File Drop Off.pdf . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6c_di_service_integrations.html#table-of-contents",
+    "title": "On this page",
+    "content": ". | Data Ingestion Rhapsody Route Integration | Data Ingestion SFTP Manual File Drop Off | . Data Ingestion Rhapsody Route Integration . Data Ingestion Rhapsody Route Integration.pdf . Data Ingestion SFTP Manual File Drop Off . Data Ingestion SFTP Manual File Drop Off.pdf . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6c_di_service_integrations.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/6c_di_service_integrations.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/6c_di_service_integrations.html#on-this-page"
   },"118": {
     "doc": "Data Ingestion Service Integrations",
     "title": "Data Ingestion Service Integrations",
@@ -833,11 +833,11 @@
     "relUrl": "/docs/6_microservices_deployment/6c_di_service_integrations.html"
   },"119": {
     "doc": "Data Ingestion API Testing",
-    "title": "Table of contents",
-    "content": ". | TOC | . Data Ingestion API Testing . Data Ingestion API Testing.pdf . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6d_di_data_ingestion_API_testing.html#table-of-contents",
+    "title": "On this page",
+    "content": ". | Data Ingestion API Testing | . Data Ingestion API Testing . Data Ingestion API Testing.pdf . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/6d_di_data_ingestion_API_testing.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/6d_di_data_ingestion_API_testing.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/6d_di_data_ingestion_API_testing.html#on-this-page"
   },"120": {
     "doc": "Data Ingestion API Testing",
     "title": "Data Ingestion API Testing",
@@ -847,11 +847,11 @@
     "relUrl": "/docs/6_microservices_deployment/6d_di_data_ingestion_API_testing.html"
   },"121": {
     "doc": "Data Processing",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Processing Service Introduction | Flow Diagram | Deploy RTI ( Real Time Ingestion “data-processing-service”) via helm chart . | RTI micro service | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/7_data_processing.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/7_data_processing.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/7_data_processing.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/7_data_processing.html#on-this-page"
   },"122": {
     "doc": "Data Processing",
     "title": "Data Processing Service Introduction",
@@ -882,11 +882,11 @@
     "relUrl": "/docs/6_microservices_deployment/7_data_processing.html"
   },"126": {
     "doc": "API Testing and Integration",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Processing API Testing and Integration | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/7a_data_processing_api_testing.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/7a_data_processing_api_testing.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/7a_data_processing_api_testing.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/7a_data_processing_api_testing.html#on-this-page"
   },"127": {
     "doc": "API Testing and Integration",
     "title": "Data Processing API Testing and Integration",
@@ -903,11 +903,11 @@
     "relUrl": "/docs/6_microservices_deployment/7a_data_processing_api_testing.html"
   },"129": {
     "doc": "NND Service (Data Sync)",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Data Sync Service API via helm chart . | Data Sync Microservice | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8_nnd.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8_nnd.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/8_nnd.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/8_nnd.html#on-this-page"
   },"130": {
     "doc": "NND Service (Data Sync)",
     "title": "Deploy Data Sync Service API via helm chart",
@@ -924,11 +924,11 @@
     "relUrl": "/docs/6_microservices_deployment/8_nnd.html"
   },"132": {
     "doc": "Validating API endpoints",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Validating API endpoints | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8a_nnd_api_tesing.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8a_nnd_api_tesing.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/8a_nnd_api_tesing.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/8a_nnd_api_tesing.html#on-this-page"
   },"133": {
     "doc": "Validating API endpoints",
     "title": "Validating API endpoints",
@@ -938,11 +938,11 @@
     "relUrl": "/docs/6_microservices_deployment/8a_nnd_api_tesing.html"
   },"134": {
     "doc": "On-Prem Deployment for  NND Sync",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | NNDSS On-Prem Data Sync Deployment (NND Sync) | Pre-requisites | Components for NND Data Sync Service | Setting up the Data Sync Service for NNDSS . | Step 1: Configure command/execute script (.cmd file) | Step 2: Build/Reuse the Database and Database Objects | Step 3: Update Connection Details on Rhapsody Routes | Step 4: Configuring/Verifying PHINMS and SAMS . | PHINMS | SAMS | . | . | Repo Reference | Final Note | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8b_nnd_stlt_on_prem_configuration_nnd_sync.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8b_nnd_stlt_on_prem_configuration_nnd_sync.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/8b_nnd_stlt_on_prem_configuration_nnd_sync.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/8b_nnd_stlt_on_prem_configuration_nnd_sync.html#on-this-page"
   },"135": {
     "doc": "On-Prem Deployment for  NND Sync",
     "title": "NNDSS On-Prem Data Sync Deployment (NND Sync)",
@@ -994,11 +994,11 @@
     "relUrl": "/docs/6_microservices_deployment/8b_nnd_stlt_on_prem_configuration_nnd_sync.html"
   },"142": {
     "doc": "On-Prem Deployment for Data Sync",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Availability On-Prem Deployment | Overview | Pre-requisites | Components for Data Availability Service | Setting up the Data Availability Service . | Step 0: Choose the Option for Data Availability Service | Step 1: Creating the Data Config Table . | Default Setup for Data Availability | Custom Setup for Data Availability | . | Config Table Scripts | Step 2: Configuring the .cmd Files | . | Repo Reference | Appendix: Data Sync Service . | Setup for Downloading Data into SQL Database (On-Prem) | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8c_nnd_stlt_on_prem_configuration_data_sync.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/8c_nnd_stlt_on_prem_configuration_data_sync.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/8c_nnd_stlt_on_prem_configuration_data_sync.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/8c_nnd_stlt_on_prem_configuration_data_sync.html#on-this-page"
   },"143": {
     "doc": "On-Prem Deployment for Data Sync",
     "title": "Data Availability On-Prem Deployment",
@@ -1057,11 +1057,11 @@
     "relUrl": "/docs/6_microservices_deployment/8c_nnd_stlt_on_prem_configuration_data_sync.html"
   },"151": {
     "doc": "Case Notification",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Check List before Deployment | Case Notification Dependency | Case Notification Overview | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9_case_notification.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9_case_notification.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9_case_notification.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9_case_notification.html#on-this-page"
   },"152": {
     "doc": "Case Notification",
     "title": "Check List before Deployment",
@@ -1092,11 +1092,11 @@
     "relUrl": "/docs/6_microservices_deployment/9_case_notification.html"
   },"156": {
     "doc": "Debezium Case Notification",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Deploy Debezium Case Notifications Kafka Source Connector | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9a_debezium_case_notifications.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9a_debezium_case_notifications.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9a_debezium_case_notifications.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9a_debezium_case_notifications.html#on-this-page"
   },"157": {
     "doc": "Debezium Case Notification",
     "title": "Deploy Debezium Case Notifications Kafka Source Connector",
@@ -1113,11 +1113,11 @@
     "relUrl": "/docs/6_microservices_deployment/9a_debezium_case_notifications.html"
   },"159": {
     "doc": "Keycloak Configuration",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Keycloak Configuration | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9b_keycloak_configuration.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9b_keycloak_configuration.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9b_keycloak_configuration.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9b_keycloak_configuration.html#on-this-page"
   },"160": {
     "doc": "Keycloak Configuration",
     "title": "Keycloak Configuration",
@@ -1127,11 +1127,11 @@
     "relUrl": "/docs/6_microservices_deployment/9b_keycloak_configuration.html"
   },"161": {
     "doc": "Xml Hl7 Parser",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Xml Hl7 Parser Service | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9c_xml_hl7_parser.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9c_xml_hl7_parser.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9c_xml_hl7_parser.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9c_xml_hl7_parser.html#on-this-page"
   },"162": {
     "doc": "Xml Hl7 Parser",
     "title": "Xml Hl7 Parser Service",
@@ -1148,11 +1148,11 @@
     "relUrl": "/docs/6_microservices_deployment/9c_xml_hl7_parser.html"
   },"164": {
     "doc": "Data Extraction",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Data Extraction Service | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9d_data_extraction_service.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9d_data_extraction_service.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9d_data_extraction_service.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9d_data_extraction_service.html#on-this-page"
   },"165": {
     "doc": "Data Extraction",
     "title": "Data Extraction Service",
@@ -1169,11 +1169,11 @@
     "relUrl": "/docs/6_microservices_deployment/9d_data_extraction_service.html"
   },"167": {
     "doc": "Case Notification Service",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Case Notification Service | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9e_case_notification.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9e_case_notification.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9e_case_notification.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9e_case_notification.html#on-this-page"
   },"168": {
     "doc": "Case Notification Service",
     "title": "Case Notification Service",
@@ -1183,11 +1183,11 @@
     "relUrl": "/docs/6_microservices_deployment/9e_case_notification.html"
   },"169": {
     "doc": "API Testing",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Ingress setup | PHIMNS Properties | Extra Note and troubleshooting . | Case Notification Environment Variable | Case Notification Liquibase | Liquibase DB Change Verification | Kafka | Additional Case Notification Technical Documentations | . | . Ingress setup . | All 3 case notification services are using the same data ingestion ingess. Use this existing setup as needed . | Data Extraction: NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm . | Case Notification: NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm . | HL7 Parser: NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm . | . | . PHIMNS Properties . | For the services to be fully functional, the STLT need to provide CDC their PHIMS properties. This ensures the data in the TransportQ_Out table gets updated correctly when the data is being processed by the CDC Case Notification. These data can be pulled from the existing NND Rhapsody route’s Variable Manager on the STLT level. | Require . | nbs_certificate_url – STLT most likely will have this hardcoded in the Rhapsody Variable Manager | . | Optional – these are optional, some STLT might have or need them: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Once the data has been provided by the STLT, CDC should update the existing config on the CDC Case Notification config table: . | Table Name: NBS_Case_Notification_Config | Update record where config name is: NON_STD_CASE_NOTIFICATION | Update value: Any values provided by STLT should be matched with the reflected column in the config table . | Update Script - DB: NBS_MSGOUTE . UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_encryption = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_route = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_signature = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_address= 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_base_dn= 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_dn = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_recipient = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_priority = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . | . Extra Note and troubleshooting . Case Notification Environment Variable . | Case-Notification-Service . | a. NEDSS-NNDSS-Case-Notifications/README.md at main · CDCgov/NEDSS-NNDSS-Case-Notifications | b. NEDSS-Helm/charts/case-notification-service/templates/deployment.yaml at main · CDCgov/NEDSS-Helm | . | Data-Extraction-Service . | a. NEDSS-NNDSS-Case-Notifications/README.md at main · CDCgov/NEDSS-NNDSS-Case-Notifications | b. NEDSS-Helm/charts/data-extraction-service/templates/deployment.yaml at main · CDCgov/NEDSS-Helm | . | Xml-Hl7-Parser-Service . | a. NEDSS-NNDSS-Case-Notifications/README.md at main · CDCgov/NEDSS-NNDSS-Case-Notifications | b. NEDSS-Helm/charts/xml-hl7-parser-service/templates/deployment.yaml at main · CDCgov/NEDSS-Helm | . | . Case Notification Liquibase . | Case Notification comes with a built-in Liquibase that automatically handles any DB changes upon deployment. | DB changes detail can be reviewed here: . | NEDSS-NNDSS-Case-Notifications/case-notification-service/src/main/resources/db at main · CDCgov/NEDSS-NNDSS-Case-Notifications | . | Please refer to Deploy Data Ingestion via Helm chart for how to deploy DI. | . | . Liquibase DB Change Verification . | To verify whether the database changes were applied, first ensure the Case Notification container is stable and running; since the container manages Liquibase, it won’t start if Liquibase fails. | If there is failure by Liquibase, the DI pod will be unstable, and a specific error can be found within the container log. | . Kafka . | Use either one of the two Kafka broker endpoints (Private endpoints - Plaintext) in the Helm values file. | Required Debezium Source Connector on NBS_ODSE..CN_TranportQ_Out deployed first prior to the services deployment . | a. Detail link . | i. NEDSS-Helm/charts/debezium/values.yaml at main · CDCgov/NEDSS-Helm | . | . | . Additional Case Notification Technical Documentations . Technical Document . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9f_testing.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/6_microservices_deployment/9f_testing.html#on-this-page",
     
-    "relUrl": "/docs/6_microservices_deployment/9f_testing.html#table-of-contents"
+    "relUrl": "/docs/6_microservices_deployment/9f_testing.html#on-this-page"
   },"170": {
     "doc": "API Testing",
     "title": "API Testing",
@@ -1204,11 +1204,11 @@
     "relUrl": "/docs/1_introduction/architecture_and_microservices.html"
   },"172": {
     "doc": "NBS 7 Architecture and Microservices",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Infrastructure as Code (IaC) | NBS Microservices | NGINX Ingress | Shared Services Tools and Containers | Data Ingestion Service | Real Time Reporting (RTR) Microservices | Data Processing Service | NND Service | Keycloak | AWS Managed Services | . The deployment of Modern NBS 7 will complement and build upon the existing NBS 6.0.16 (or newer version) system, integrating them seamlessly through the strangler fig pattern. Users will experience a smooth transition between the modern NBS features and legacy NBS. The Modern NBS will be hosted on a separate Virtual Private Cloud (VPC) to prevent any disruptions to the existing Classic NBS. These two VPCs will be interconnected to facilitate RDS access and other communication requirements. The architecture diagram below illustrates the key components of the Modernized NBS. Infrastructure as Code (IaC) . The cloud environment for hosting NBS 7 is set up and configured using an infrastructure as code approach. Terraform code is used to provision and manage the cloud hosting environment, and Helm is used to manage workloads in the Kubernetes cluster. The code will be distributed from GitHub. | The Terraform modules provided will establish the NBS infrastructure within a dedicated VPC. This includes deploying AWS EKS, nodes, EBS storage, and provisioning EFS for persistent storage. | Terraform will also handle the creation of essential networking resources, such as private/public subnets, NAT gateways, Internet Gateways, and VPC peering. | Additionally, Terraform will automate the setup of Helm charts, including Fluent Bit and Cert Manager, and configure AWS-managed services such as AMP and AMG. | . NBS Microservices . NBS 7 introduces microservices for the modernized system, deployed using Helm charts: . | Modernization API Service: This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc. | NBS-gateway Service: Leveraging Spring Cloud Gateway, this service efficiently manages intricate strangler routing logic between modern and legacy NBS. | Data Ingestion API Service: Our dedicated service provides essential APIs that enable NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system. | . NGINX Ingress . Serving as the entry point into the Kubernetes cluster, NGINX Ingress will intelligently route users based on predefined routing rules. Users will be directed to the modernized NBS 7 features (Modernization API Service) or classic NBS 6 features (NBS-gateway Service). The deployment of NGINX Ingress will be orchestrated using Helm charts and values files. Shared Services Tools and Containers . | Cert Manager: This tool automates TLS certificate management and will be integrated into the infrastructure via Terraform. The certificate issuer connects to Let’s Encrypt CA by default, and will be installed using YAML manifests and kubectl commands. | Apache NiFi: As an ETL tool, Apache NiFi populates Elasticsearch indices from the NBS database. Deployment of NiFi will follow Helm charts and values files. | Elasticsearch: NBS relies on Elasticsearch for lightning-fast searches. The deployment of Elasticsearch will use Helm chart and values files. | Fluent Bit: Fluent Bit serves as the log aggregator, collecting logs from various microservices and Kubernetes components and, by default, pushing them to designated S3 buckets and CloudWatch. | . Data Ingestion Service . Provides necessary foundational pieces to track and route ELR data flowing into NBS, and lays the groundwork to provide additional ingestion options for NBS. | Accepts a variety of electronic lab reports using different versions and fields | Saves all incoming messages for auditing, debugging, and disaster recovery and you can configure how long messages are saved | Verifies all input data (HL7) against standard rules and provides an error when rejected | Supports both positive and negative lab results with the appropriate code | Provides both syntactic and semantic validations | Removes unwanted data such as extraneous logs using filters | Provides duplication checks to see if the data has made it through the system before | Includes error handling and logging for both business data and operation data for situational awareness | Supports traffic and system health monitoring | . Real Time Reporting (RTR) Microservices . Real Time Reporting (RTR) provides rapid transformation and delivery of data from the transactional database (NBS_ODSE) to the reporting database (RDB). For detailed RTR deployment instructions, see the Real Time Reporting section. There are 9 RTR services: . | Liquibase job: Database version control management that deploys stored procedures, tables and views required for RTR pipeline. | Person service: Processes Patient and Provider change events. | Observation services: Processes Observation change events. | Organization service: Processes Organization change events. | LDF service: Processes LDF or State-defined field data change events. | Investigation service: Processes Public_health_case change events. This service also provides information for page builder investigation, notifications, confirmation method and updates the PublicHealthCaseFact_Modern datamart. | Post-processing service: Calls the post-processing stored procedures to hydrate dimensions, fact tables, and datamarts. | Debezium service: Monitors and streams the selected list of NBS_ODSE and NBS_SRTE tables to Kafka topics. | Kafka sink service: Persists the data from the Kafka topics to the RDB_Modern database tables. | . Data Processing Service . Provides a seamless way to process ELR in near real-time instead of depending on the system-bounded ELR batch job. This eliminates the need for the STLT to set up a batch job on their system. NND Service . The Data Sync service provides a secure API to connect to the databases in the NBS cloud, with an API endpoint service and without interrupting any operations On-Prem at Jurisdictions. Keycloak . | At our core, we rely on Keycloak as our primary Identity Provider (IdP) and Data Ingestion APIs. | We also leverage Keycloak for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc. | . AWS Managed Services . | AWS Elastic Kubernetes Service (EKS): Terraform scripts will set up the instance of EKS that NBS 7 will use. This managed service handles all lifecycle events for the Kubernetes runtime (e.g., keeping the underlying nodes patched and up to date). | AWS Elastic File System (EFS): The NBS 7 system uses a network filesystem for persistent data storage. | AWS Managed Prometheus (AMP): NBS will harness AWS-managed Prometheus to capture metrics from Kubernetes ingress and various microservices. | AWS Managed Grafana (AMG): NBS will leverage AWS Managed Grafana to visualize metrics from AMP and host operational dashboards. The initial set includes three dashboards, encompassing error rates, total request volume, and latency. | AWS Key Management Service (KMS): AWS infrastructure storage services like AWS EKS, EFS, and RDS utilize a managed key management store for persistence and encryption, ensuring a robust layer of security. | AWS Relational Database Service (RDS): Optionally, the database underlying the NBS 6 and 7 system may be configured to run as a fully managed MS SQL Server database instance. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/architecture_and_microservices.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/architecture_and_microservices.html#on-this-page",
     
-    "relUrl": "/docs/1_introduction/architecture_and_microservices.html#table-of-contents"
+    "relUrl": "/docs/1_introduction/architecture_and_microservices.html#on-this-page"
   },"173": {
     "doc": "NBS 7 Deployment Decision Guide",
     "title": "NBS 7 preparation and decision guide",
@@ -1281,11 +1281,11 @@
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html"
   },"183": {
     "doc": "Prerequisites",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | AWS environment | Hardware Requirements (AWS) | . You must have the following prerequisites in place before proceeding with the installation. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#on-this-page",
     
-    "relUrl": "/docs/2_prerequisites/prereq.html#table-of-contents"
+    "relUrl": "/docs/2_prerequisites/prereq.html#on-this-page"
   },"184": {
     "doc": "Prerequisites",
     "title": "AWS environment",
@@ -1344,11 +1344,11 @@
     "relUrl": "/docs/quickstart.html"
   },"192": {
     "doc": "Quickstart",
-    "title": "Table of contents",
+    "title": "On this page",
     "content": ". | Following resources will be installed and configured with this guide . | Terraform | Manual | NBS7 Core Services | . | Prerequisites | Environment Requirements | Set Up AWS Infrastructure - Terraform | Deploy Core Kubernetes Services - Helm | Install Keycloak . | Install Keycloak Container | Port forward to access Keycloak admin interface | Configure Realm, Users and Clients | . | Deploy NBS Microservices - Helm | Validate Installation | Cleanup | Support | . This quick guide provides a simple step-by-step approach for deploying the NBS 7 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. This guide is NOT meant for a production deployment. Please review AWS Infrastructure for a full production deployment and guidelines. Following resources will be installed and configured with this guide . Terraform . | Modern VPC, Subnets, Route Tables | EKS Cluster, Nodes | Network Load Balancer | MSK | Amazon Prometheus | Amazon Grafana | EFS | KMS | S3 Bucket | . Manual . | Route53 Updates: Need to create dns entries in route53 to point app and data urls to network load balancer | . NBS7 Core Services . | Elasticsearch - For lightning-fast searches. | Modernization API - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc. | Nifi - Populates Elasticsearch indices from the NBS database. | NBS Gateway - Efficiently manages intricate strangler routing logic between modern and legacy NBS. | Data Ingestion - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system. | Keycloak - Primary Identity Provider (IdP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#table-of-contents",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#on-this-page",
     
-    "relUrl": "/docs/quickstart.html#table-of-contents"
+    "relUrl": "/docs/quickstart.html#on-this-page"
   },"193": {
     "doc": "Quickstart",
     "title": "Prerequisites",
