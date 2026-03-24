@@ -1,7 +1,7 @@
 {"0": {
     "doc": "Assess your readiness",
     "title": "Assess your readiness for NBS 7",
-    "content": "This section helps you assess whether NBS 7 is a viable option for your jurisdiction before you commit to a migration. Some prerequisites in this section are also covered in the NBS 7 Migration Info Sheet. If your jurisdiction has already begun the migration process, use that document alongside this one. ",
+    "content": "This section helps you assess whether NBS 7 is a viable option for your jurisdiction before you commit to a migration. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#assess-your-readiness-for-nbs-7",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#assess-your-readiness-for-nbs-7"
@@ -22,7 +22,7 @@
   },"3": {
     "doc": "Assess your readiness",
     "title": "Cloud infrastructure",
-    "content": "NBS 7 is a cloud-only system. It does not support on-premises deployment. You need an active account with a supported cloud provider: . | Amazon Web Services (AWS) — The primary supported option. NBS 7 has been fully tested on AWS. | Microsoft Azure — Supported via Terraform. Use this option if your jurisdiction has an existing Azure commitment or a compliance requirement that mandates Azure. | . ",
+    "content": "NBS 7 has not been tested for on-premises deployment and CDC does not plan to support it. You need an active account with a supported cloud provider: . | Amazon Web Services (AWS) — The primary supported option. NBS 7 has been fully tested on AWS. | Microsoft Azure — Supported via Terraform. Use this option if your jurisdiction has an existing Azure commitment or a compliance requirement that mandates Azure. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#cloud-infrastructure",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#cloud-infrastructure"
@@ -43,7 +43,7 @@
   },"6": {
     "doc": "Assess your readiness",
     "title": "NBS 6 status",
-    "content": "During migration, NBS 7 components gradually replace NBS 6 functionality while NBS 6 continues to run. This means: . | Your jurisdiction will run both systems in parallel during the transition. | Your NBS 6 instance must remain operational and accessible during migration. | You need to know your current NBS 6 hosting setup before you begin — specifically, whether it is hosted on-premises or in the cloud, and if in the cloud, which provider. | You must be running NBS 6.0.16.1 or higher before you can install any version of NBS 7. Verify your current NBS 6 version before you begin planning your migration timeline. | . ",
+    "content": "During migration, NBS 7 components gradually replace NBS 6 functionality while NBS 6 continues to run. This means: . | Your jurisdiction will run both systems in parallel during the transition. | Your NBS 6 instance must remain operational and accessible during migration. | You need to know your current NBS 6 hosting setup before you begin. Specifically, whether it is hosted on-premises or in the cloud, and if in the cloud, which provider. | You must be running a compatible NBS 6.x version before you can install any version of NBS 7. For more information, see the NBS 6 and NBS 7 compatibility table. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#nbs-6-status",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/0_assess_readiness.html#nbs-6-status"
@@ -337,7 +337,7 @@
   },"48": {
     "doc": "NBS 7 core components",
     "title": "Legacy NBS 6",
-    "content": "The existing NBS 6 application. A WildFly-based UI and backend that most STLTs currently run. | Attribute | Description | . | What it does in NBS 7 | NBS Core does not replace NBS 6 immediately. Instead, it runs alongside it. During migration, the NBS Gateway routes requests between the legacy NBS 6 application and new NBS 7 services. NBS 6 continues to handle all functionality that has not yet been replaced by a modern NBS 7 equivalent. | . | When you need it | Always. An operational NBS 6 instance is a prerequisite for any NBS 7 deployment. You must be running NBS 6.0.16.1 or newer before installing NBS 7. | . | Dependencies | Required by NBS Gateway, Elasticsearch (via Nifi), and the NBS Modernization API. Must maintain network connectivity to your NBS 7 environment throughout the migration period. | . ",
+    "content": "The existing NBS 6 application. A WildFly-based UI and backend that most STLTs currently run. | Attribute | Description | . | What it does in NBS 7 | NBS Core does not replace NBS 6 immediately. Instead, it runs alongside it. During migration, the NBS Gateway routes requests between the legacy NBS 6 application and new NBS 7 services. NBS 6 continues to handle all functionality that has not yet been replaced by a modern NBS 7 equivalent. | . | When you need it | Always. An operational NBS 6 instance is a prerequisite for any NBS 7 deployment. You must be running a compatible NBS 6 version before installing NBS 7. | . | Dependencies | Required by NBS Gateway, Elasticsearch (via Nifi), and the NBS Modernization API. Must maintain network connectivity to your NBS 7 environment throughout the migration period. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/1_nbs_core_components.html#legacy-nbs-6",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/1_nbs_core_components.html#legacy-nbs-6"
@@ -407,7 +407,7 @@
   },"58": {
     "doc": "NBS 7 core components",
     "title": "Infrastructure and networking layer components",
-    "content": "The following components make up the infrastructure and networking layers of NBS Core. They are provisioned and managed primarily through Terraform and Helm, and most do not require configuration decisions from IT admins during the planning phase. They are documented here for awareness. Full configuration guidance is in the NBS 7 System Administrator Guide. | Component | What it does in NBS 7 | . | Kubernetes (EKS/AKS) | Container orchestration platform that hosts and manages all NBS 7 services. EKS is used on AWS; AKS is used on Azure. | . | NGINX Ingress Controller | Manages inbound traffic routing into the Kubernetes cluster. Currently being replaced by Traefik in future releases — confirm current status with your CDC NBS point of contact. | . | Terraform modules | Infrastructure-as-code tooling that provisions your cloud environment, including VPC, Kubernetes cluster, storage, and managed services. Four modules cover network/VPC, NBS 6 database layer, NBS 7 cluster, and application services. | . | ArgoCD | Continuous deployment tool that manages application delivery to the Kubernetes cluster. Keeps deployed services in sync with their defined configurations. | . | Cert Manager | Automates provisioning and renewal of TLS/SSL certificates for encrypted traffic within and into the NBS 7 environment. | . | FluentBit | Lightweight log forwarding agent that collects and routes logs from NBS 7 services for monitoring and troubleshooting. | . | Linkerd | Service mesh (provisioned via Terraform) that manages encrypted communication between NBS 7 services inside the Kubernetes cluster. | . | DNS (Route 53 or equivalent) | Routes user traffic to your NBS 7 environment. On AWS, Route 53 is the standard option; Azure and on-premises DNS services are also supported. | . ",
+    "content": "The following components make up the infrastructure and networking layers of NBS Core. They are provisioned and managed primarily through Terraform and Helm, and most do not require configuration decisions from IT admins during the planning phase. They are documented here for awareness. Full configuration guidance is in the NBS 7 System Administrator Guide. | Component | What it does in NBS 7 | . | Kubernetes (EKS/AKS) | Container orchestration platform that hosts and manages all NBS 7 services. EKS is used on AWS; AKS is used on Azure. | . | NGINX Ingress Controller | Manages inbound traffic routing into the Kubernetes cluster. Currently being replaced by Traefik in future releases — confirm current status with your CDC NBS point of contact. | . | Terraform modules | Infrastructure-as-code tooling that provisions your cloud environment, including VPC, Kubernetes cluster, storage, and managed services. Four modules cover network/VPC, NBS 6 database layer, NBS 7 cluster, and application services. | . | Cert Manager | Automates provisioning and renewal of TLS/SSL certificates for encrypted traffic within and into the NBS 7 environment. | . | FluentBit | Lightweight log forwarding agent that collects and routes logs from NBS 7 services for monitoring and troubleshooting. | . | Linkerd | Service mesh (provisioned via Terraform) that manages encrypted communication between NBS 7 services inside the Kubernetes cluster. | . | DNS (Route 53 or equivalent) | Routes user traffic to your NBS 7 environment. On AWS, Route 53 is the standard option; Azure and on-premises DNS services are also supported. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/3_component_reference/1_nbs_core_components.html#infrastructure-and-networking-layer-components",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/3_component_reference/1_nbs_core_components.html#infrastructure-and-networking-layer-components"
@@ -1497,265 +1497,272 @@
     
     "relUrl": "/docs/1_introduction/architecture_and_microservices.html#on-this-page"
   },"214": {
+    "doc": "NBS 6 and NBS 7 compatibility",
+    "title": "NBS 6 and NBS 7 compatibility",
+    "content": "NBS 7 integrates with and is tested against supported versions of NBS 6. Use this table to verify that your NBS 6 version is compatible with your target NBS 7 version before you begin deployment. Running the latest supported version of NBS 6 is recommended. As of the most recent release, that version is NBS 6.0.19.1. ✓ Compatible - this version combination has been tested and verified to function correctly. ✗ Not tested - compatibility for this version combination has not been established or verified. | NBS 7 version | 6.0.18 | 6.0.17 | 6.0.16.2 | 6.0.16.1 | 6.0.16 | . | 7.11.1 | ✓ Compatible | ✓ Compatible | ✗ Not tested | ✗ Not tested | ✗ Not tested | . | 7.10 | ✗ Not tested | ✓ Compatible | ✓ Compatible | ✗ Not tested | ✗ Not tested | . | 7.9 | ✗ Not tested | ✓ Compatible | ✓ Compatible | ✗ Not tested | ✗ Not tested | . | 7.8.1 | ✗ Not tested | ✗ Not tested | ✓ Compatible | ✗ Not tested | ✗ Not tested | . | 7.8.0 | ✗ Not tested | ✗ Not tested | ✓ Compatible | ✓ Compatible | ✗ Not tested | . | 7.7 | ✗ Not tested | ✗ Not tested | ✗ Not tested | ✓ Compatible | ✗ Not tested | . | 7.6 | ✗ Not tested | ✗ Not tested | ✗ Not tested | ✓ Compatible | ✗ Not tested | . | 7.5 | ✗ Not tested | ✗ Not tested | ✗ Not tested | ✗ Not tested | ✓ Compatible | . This table reflects verified compatibility data as of NBS 7.11.1. Compatibility data for versions not listed has not been established. Check the release notes for the latest updates to this table. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/compatibility.html",
+    
+    "relUrl": "/docs/2_prerequisites/compatibility.html"
+  },"215": {
     "doc": "NBS 7 Deployment Decision Guide",
     "title": "NBS 7 Deployment Decision Guide",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html"
-  },"215": {
+  },"216": {
     "doc": "NBS 7 Deployment Decision Guide",
     "title": "On this page",
     "content": ". | Overview | How this guide fits into the NBS 7 process | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#on-this-page",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#on-this-page"
-  },"216": {
+  },"217": {
     "doc": "NBS 7 Deployment Decision Guide",
     "title": "Overview",
-    "content": "This guide is for STLT IT administrators who operate NBS 6 and are evaluating whether to migrate to NBS 7. It aims to help your jurisdiction decide whether to adopt NBS 7 and, if so, plan your deployment. Review the decision guide before you begin migration planning. Use this guide to: . | Assess whether NBS 7 is the right fit for your jurisdiction | Identify the right starting configuration for your jurisdiction: NBS 7 alone, or NBS 7 with one or both optional add-ons | Understand the components that make up NBS 7 and what each one does | Prepare a recommendation for your deployment | . Some factors that affect NBS 7 migration extend beyond infrastructure and configuration. For a summary of organizational, financial, and operational considerations, see Operational considerations. ",
+    "content": "This guide is for STLT IT administrators who operate NBS 6 and are evaluating whether to migrate to NBS 7. It covers whether NBS 7 is the right fit for your jurisdiction and, if so, how to plan your deployment. The guide surfaces decisions that might affect your timeline and configuration choices, so start here before you begin migration planning. Use this guide to: . | Assess whether NBS 7 is the right fit for your jurisdiction | Identify the right starting configuration for your jurisdiction: NBS 7 alone, or NBS 7 with one or both optional add-ons | Understand the components that make up NBS 7 and what each one does | Prepare a recommendation for your deployment | . Some factors that affect NBS 7 migration extend beyond infrastructure and configuration. For a summary of organizational, financial, and operational considerations, see Operational considerations. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#overview",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#overview"
-  },"217": {
+  },"218": {
     "doc": "NBS 7 Deployment Decision Guide",
     "title": "How this guide fits into the NBS 7 process",
-    "content": "Three documents support the NBS 6 to NBS 7 transition. Each serves a different purpose: . | Document | Purpose | When to use | . | NBS 7 Deployment Decision Guide (this guide) | Helps IT administrators and leadership evaluate NBS 7, understand hosting requirements, and choose a component configuration | Use first | . | NBS 7 Migration Info Sheet | Guides your jurisdiction through the migration process, including timelines, roles, a compatibility checklist, and cutover planning | Use after confirming NBS 7 is the right fit | . | NBS 7 System Administrator Guide | Provides step-by-step deployment instructions for your chosen configuration | Use when ready to deploy | . Some prerequisites covered in this guide are also covered in the Migration Info Sheet. This guide reinforces the prerequisites so that your IT team can use it independently, before beginning the migration process. NBS 7 is under active development. Component availability and configuration options will change as development continues. Make sure you are reading the latest version of this guide before you begin to plan. ",
+    "content": "Three documents support the NBS 6 to NBS 7 transition. Each serves a different purpose: . | Document | Purpose | When to use | . | NBS 7 Deployment Decision Guide (this guide) | Helps IT administrators and leadership evaluate NBS 7, understand hosting requirements, and choose a component configuration | Use first | . | NBS 7 Migration Info Sheet | Guides your jurisdiction through the migration process, including timelines, roles, a compatibility checklist, and cutover planning | Use after confirming NBS 7 is the right fit | . | NBS 7 System Administrator Guide | Provides step-by-step deployment instructions for your chosen configuration | Use when ready to deploy | . Some prerequisites covered in this guide are also covered in the Migration Info Sheet. This guide reinforces the prerequisites so that your IT team can use it independently, before they begin the migration process. NBS 7 is under active development. Component availability and configuration options will change as development continues. Make sure you are reading the latest version of this guide before you begin to plan. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/deployment_decision_guide.html#how-this-guide-fits-into-the-nbs-7-process"
-  },"218": {
+  },"219": {
     "doc": "Introduction",
     "title": "Introduction",
     "content": "The Modernized NBS 7 system is built to provide a straightforward transition from classic NBS Version 6 systems. It integrates seamlessly, layering on improved interfaces and functions, with the with classic systems that have already been deployed. Users will see a composite of the new features from NBS 7 Modernized and old features from classic NBS 6. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/",
     
     "relUrl": "/"
-  },"219": {
+  },"220": {
     "doc": "Introduction",
     "title": "Revision History",
     "content": "| Date | Description | Author | . | August 19, 2025 | 7.11.0 Minor Release | Anand Logan, Upasana Pattnaik, Kashyap Ramakur, Aaron Chapman, Duc Nguyen, Chuck Moss, Serban Zamfir | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/#revision-history",
     
     "relUrl": "/#revision-history"
-  },"220": {
+  },"221": {
     "doc": "Introduction",
     "title": "Purpose",
     "content": "The purpose of this document is to help an NBS system administrator deploy the NBS 7 infrastructure and microservices in an AWS environment. It will provide the information needed to set up the required environment, as well as convey a common understanding of the initial install. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/#purpose",
     
     "relUrl": "/#purpose"
-  },"221": {
+  },"222": {
     "doc": "Introduction",
     "title": "Runtime Environment Support",
     "content": "NBS 7 supports AWS and Azure as runtime options. The underlying system itself has been developed using a cloud-agnostic approach. This guide targets the AWS runtime. For more information on Azure, please contact nbs@cdc.gov. Future versions of this guide will cover other cloud runtime environments that support Kubernetes such as Google Cloud Platform and Azure. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/#runtime-environment-support",
     
     "relUrl": "/#runtime-environment-support"
-  },"222": {
+  },"223": {
     "doc": "Introduction",
     "title": "Intended Audience",
     "content": "This guide is intended to be used to install NBS 7, a complex cloud-native application. It assumes familiarity with cloud technologies and tools: knowledge of your cloud service provider (e.g. AWS), runtime environment (e.g. Kubernetes), experience running Terraform and Helm, and experience debugging routine systems and infrastructure problems. You will need administrator-level access to your runtime environment, and access to a local system with a set of installed prerequisites. Please see the Prerequisites and Dependencies section below. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/#intended-audience",
     
     "relUrl": "/#intended-audience"
-  },"223": {
+  },"224": {
     "doc": "Operational considerations",
     "title": "Operational considerations",
     "content": "This page covers organizational, financial, and operational factors that affect NBS 7 migration planning. Some of these factors involve decisions or timelines that extend beyond the technical team and might be worth raising with others in your organization early in your planning process. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html"
-  },"224": {
+  },"225": {
     "doc": "Operational considerations",
     "title": "On this page",
     "content": ". | Migration is gradual, not a cutover | State IT security approval takes time | Cloud infrastructure requires ongoing budget | Technical staffing requirements differ from NBS 6 | Real-Time Reporting adds capability and cost | The Data Ingestion API is not yet a full middleware replacement | Single Sign-On requires early coordination | . For technical deployment guidance, refer to the Assess your readiness section and the rest of this guide. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#on-this-page",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#on-this-page"
-  },"225": {
+  },"226": {
     "doc": "Operational considerations",
     "title": "Migration is gradual, not a cutover",
     "content": "NBS 7 does not replace NBS 6 in a single switch. Both systems run in parallel during the transition. NBS 7 components gradually take over functionality while NBS 6 continues to operate. The length of this parallel period depends on your jurisdiction’s pace of deployment and configuration choices. Planning for the operational complexity and cost of maintaining two systems simultaneously is a common part of migration preparation. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#migration-is-gradual-not-a-cutover",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#migration-is-gradual-not-a-cutover"
-  },"226": {
+  },"227": {
     "doc": "Operational considerations",
     "title": "State IT security approval takes time",
     "content": "State IT security approval is often the longest-lead item in an NBS 7 migration. NBS 7 requires approval for cloud hosting and specific technologies including Kubernetes, Terraform, and Docker. Jurisdictions that start this process early, even when deployment is still months away, might avoid one of the most common causes of migration delays. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#state-it-security-approval-takes-time",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#state-it-security-approval-takes-time"
-  },"227": {
+  },"228": {
     "doc": "Operational considerations",
     "title": "Cloud infrastructure requires ongoing budget",
     "content": "NBS 6 could run on-premises, but NBS 7 is a cloud-only system. Your jurisdiction needs an active cloud account (AWS or Azure) and an ongoing budget to sustain cloud infrastructure costs. Cloud hosting costs scale with usage, so budget planning might account for both normal operations and surge scenarios such as outbreak response. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#cloud-infrastructure-requires-ongoing-budget",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#cloud-infrastructure-requires-ongoing-budget"
-  },"228": {
+  },"229": {
     "doc": "Operational considerations",
     "title": "Technical staffing requirements differ from NBS 6",
     "content": "Migrating to NBS 7 involves skills that might differ from what your current NBS 6 team uses, including Kubernetes, Terraform, and cloud infrastructure management. Jurisdictions that assess their team’s capacity early are poised to set more accurate migration timelines. Those without the necessary in-house expertise have typically built capacity or engaged a vendor before deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#technical-staffing-requirements-differ-from-nbs-6",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#technical-staffing-requirements-differ-from-nbs-6"
-  },"229": {
+  },"230": {
     "doc": "Operational considerations",
     "title": "Real-Time Reporting adds capability and cost",
     "content": "The Real-Time Reporting (RTR) add-on reduces the time for data to appear in reports from up to 24 hours to between 5 minutes and 1 hour. For jurisdictions managing active outbreaks or time-sensitive disease investigations, this improvement can meaningfully affect response time. RTR also adds infrastructure complexity and requires additional cloud resources. The reporting speed benefit and the additional operating cost are both worth weighing against your jurisdiction’s case volume and reporting needs. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#real-time-reporting-adds-capability-and-cost",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#real-time-reporting-adds-capability-and-cost"
-  },"230": {
+  },"231": {
     "doc": "Operational considerations",
     "title": "The Data Ingestion API is not yet a full middleware replacement",
     "content": "The Data Ingestion (DI) API is a built-in data transit layer that can receive lab reports and case reports without third-party middleware. If your jurisdiction currently uses Rhapsody or Mirth Connect, the DI API is not yet a full replacement. Continuing to use your existing middleware for now is the current guidance. If your jurisdiction does not have existing middleware, the DI API is worth evaluating. Its capabilities are expected to expand as the product matures. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#the-data-ingestion-api-is-not-yet-a-full-middleware-replacement",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#the-data-ingestion-api-is-not-yet-a-full-middleware-replacement"
-  },"231": {
+  },"232": {
     "doc": "Operational considerations",
     "title": "Single Sign-On requires early coordination",
     "content": "NBS 7 uses Keycloak for identity management. If your jurisdiction uses a centralized identity provider such as Okta or Active Directory, Keycloak can integrate with it, allowing NBS 7 users to log in with their existing jurisdiction credentials. This integration requires coordination between your NBS deployment team and your identity provider administrators. We recommend that you start that coordination early rather than addressing it later in the deployment process. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#single-sign-on-requires-early-coordination",
     
     "relUrl": "/docs/1_introduction/deployment_decision_guide/leadership_considerations.html#single-sign-on-requires-early-coordination"
-  },"232": {
+  },"233": {
     "doc": "Prerequisites",
     "title": "Installation prerequisites",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#installation-prerequisites",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#installation-prerequisites"
-  },"233": {
+  },"234": {
     "doc": "Prerequisites",
     "title": "On this page",
     "content": ". | Installation prerequisites . | AWS environment | Hardware Requirements (AWS) . | Method 1: Enable at SQL Server Startup (Persistent) | Method 2: Enable on Running Instance (No Restart Required) | Verifying Trace Flag Status | Benefits for NBS Operations | . | . | . You must have the following prerequisites in place before proceeding with the installation. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#on-this-page",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#on-this-page"
-  },"234": {
+  },"235": {
     "doc": "Prerequisites",
     "title": "AWS environment",
     "content": "Your AWS environment must: . | Contain a pre-existing AWS account that contains a production instance of NBS 6.0.16 (or newer version) and related 3rd party products such as Rhapsody and SAS. | Have a properly configured DNS routing infrastructure. | Be configured to enable you to create security groups and IAM roles. | Provide access to NBS 6 databases that are located on an MS SQL Server instance (RDS or EC2). | Have access to an S3 bucket to store Terraform (TF) state. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#aws-environment",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#aws-environment"
-  },"235": {
+  },"236": {
     "doc": "Prerequisites",
     "title": "Hardware Requirements (AWS)",
     "content": "High Volume STLTs . | Type | Resource | Size | . | Container runtime environment | EKS | 4 Nodes - Linux (4 cores/32 GB RAM, 100GB block storage) r5.xlarge | . | Relational Database | SQL Server 2017+ Standard or Enterprise | New NBS 6.X.X Deployment Recommendations: 📝 Implementation and Support FAQs | . | Persistent Store | EFS | 1 TB | . Low Volume STLTs . | Type | Resource | Size | . | Container runtime environment | EKS | 4 Nodes - Linux (4 cores/32 GB RAM, 100GB block storage) r5.xlarge | . | Relational Database | Cloud Managed MS SQL Server Standard or Enterprise | New NBS 6.X.X Deployment Recommendations: 📝 Implementation and Support FAQs | . | Persistent Store | EFS | 500 GB | . Software Requirements . | Software | Version | Comments | . | Kubernetes | 1.25+ | Deployed as EKS by default | . | Cert Manager | 1.13 | Deployed in Kubernetes | . | Elasticsearch | 7.17 | Deployed by default in Kubernetes | . | Apache NiFi | 1.19 | Deployed in Kubernetes | . | NGINX Ingress | 3.0.2 | Must be deployed in Kubernetes | . | Prometheus | 2.44 | Deployed as AMP by default | . | Grafana | 9.5.x | Deployed as AMG by default | . | FluentBit | 1.9.x | Deployed in Kubernetes. Log storage can be configured. | . | NBS Classic | NBS 6.0.16 (or newer version) | Reuse current NBS instance | . | SQL Server | 2017+ | Reuse current NBS instance | . | Kafka | 2.8.1 | Deployed as MSK. Needed only if running Data Ingestion Service. | . | Keycloak | 22.0.5+ | Deployed in Kubernetes | . SQL Server Configuration . Enabling Verbose Truncation Warnings . SQL Server Trace Flag 460 provides detailed error messages when string or binary data truncation occurs. This is particularly useful for diagnosing data truncation errors when saving investigations in NBS, as it includes column names and data types in error messages rather than generic truncation warnings. For more information, see the Microsoft SQL Server documentation on VERBOSE_TRUNCATION_WARNINGS. Method 1: Enable at SQL Server Startup (Persistent) . To enable Trace Flag 460 permanently across SQL Server restarts: . | Open SQL Server Configuration Manager | Navigate to SQL Server Services | Right-click on your SQL Server instance and select Properties | Go to the Startup Parameters tab | Add the parameter: -T460 | Click Add then Apply | Restart the SQL Server service for the change to take effect | . Method 2: Enable on Running Instance (No Restart Required) . To enable Trace Flag 460 on a live SQL Server instance without restarting: . -- Enable trace flag 460 globally for all connections DBCC TRACEON(460, -1); . Note: This method enables the trace flag immediately but it will be disabled when SQL Server restarts. For persistent configuration across restarts, use Method 1. Verifying Trace Flag Status . To verify that Trace Flag 460 is enabled: . -- Check if trace flag 460 is enabled DBCC TRACESTATUS(460); . Expected output when enabled: . TraceFlag Status Global Session 460 1 1 0 . Benefits for NBS Operations . When Trace Flag 460 is enabled, truncation errors will provide detailed information such as: . | The specific column name where truncation occurred | The data type and size of the column | The actual length of the data being inserted | . This detailed information significantly reduces troubleshooting time when diagnosing data integrity issues during investigation saves or other database operations in NBS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#hardware-requirements-aws",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#hardware-requirements-aws"
-  },"236": {
+  },"237": {
     "doc": "Prerequisites",
     "title": "Encryption Management",
     "content": "AWS infrastructure storage services like AWS EBS, EFS, and RDS utilize AWS Key Management Store (KMS) for encryption, ensuring a robust layer of security. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#encryption-management",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#encryption-management"
-  },"237": {
+  },"238": {
     "doc": "Prerequisites",
     "title": "End User Authentication",
     "content": "The NBS 7 system will support end user authentication by integrating with a standards-based SSO system. It is designed to be deployed as a protected endpoint within your preexisting SSO ecosystem, and can be configured to work with a wide variety of standards compliant Identity Providers (e.g. Okta, AD). This is similar to NBS 6. As documented in “NEDSS Base System Release 4.4.1 Hardening NBS Perimeter Security” (September 20, 2012 Requires access on NBS central), NBS 6 does not authenticate users. Instead, it delegates authentication to a security proxy, which each State, Tribal, Local, and Territorial (STLT) must provide in order to deploy NBS. The NBS 7 release requires that prospective users already have a working NBS 6 instance, and therefore assumes that a user authentication mechanism is already in place. NBS 7 extends functionality that is available to the authenticated user. NBS 7 therefore works alongside the existing authentication mechanism. No additional steps are needed to authenticate users for NBS 7. To assist those who are integrating NBS into their SSO ecosystem, a proof of concept in which authentication is performed using an Identity Provider (IdP) and a proxy is available on request. To request it, please create a ticket here . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#end-user-authentication",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#end-user-authentication"
-  },"238": {
+  },"239": {
     "doc": "Prerequisites",
     "title": "Management Machine Setup",
     "content": "You will also need a local or cloud hosted workstation (e.g. CloudShell) with the set of tools required to configure, deploy and maintain the NBS 7 system. The following tools should be installed on a local or cloud-based management machine to support this work: . | AWS CLI: Download and installation instructions can be found here . | Instructions for getting and using AWS credentials for use with the CLI can be found here | . | GitHub CLI: Download and installation instructions are here: https://cli.github.com/ . | Terraform CLI: Download and installation instructions are here (Tested through 1.5.5 Terraform, suggest install that specific version rather than the latest non-open source version) . | Helm CLI: Download and installation instructions are here . | Kubernetes CLI: Download and installation instructions are here . | Optional, but nice to have, eksctl: Download and installation instructions are here | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#management-machine-setup",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#management-machine-setup"
-  },"239": {
+  },"240": {
     "doc": "Prerequisites",
     "title": "Network and Database Access",
     "content": "Installation of the NBS 7 Modern infrastructure and microservices will occur using a new VPC, which is provisioned using the Terraform scripts included in the steps below. You must ensure that there is network access available from the location of modern NBS 7 components to the classic NBS 6 components, including the database server. The database server or RDS should allow access to the nbs7 vpc address space. As a best practice, it is recommended to use a private route for this network access, rather than making it publicly accessible. Furthermore, you should have a team member who is familiar with Terraform and has experience using it to create infrastructure. This individual should have operational knowledge of Terraform, even if they are not a dedicated Terraform developer. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html#network-and-database-access",
     
     "relUrl": "/docs/2_prerequisites/prereq.html#network-and-database-access"
-  },"240": {
+  },"241": {
     "doc": "Prerequisites",
     "title": "Prerequisites",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/2_prerequisites/prereq.html",
     
     "relUrl": "/docs/2_prerequisites/prereq.html"
-  },"241": {
+  },"242": {
     "doc": "Quickstart",
     "title": "Quickstart",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html",
     
     "relUrl": "/docs/quickstart.html"
-  },"242": {
+  },"243": {
     "doc": "Quickstart",
     "title": "On this page",
     "content": ". | Following resources will be installed and configured with this guide . | Terraform | Manual | NBS7 Core Services | . | Prerequisites | Environment Requirements | Set Up AWS Infrastructure - Terraform | Deploy Core Kubernetes Services - Helm | Install Keycloak . | Install Keycloak Container | Port forward to access Keycloak admin interface | Configure Realm, Users and Clients | . | Deploy NBS Microservices - Helm | Validate Installation | Cleanup | Support | . This quick guide provides a simple step-by-step approach for deploying the NBS 7 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. This guide is NOT meant for a production deployment. Please review AWS Infrastructure for a full production deployment and guidelines. Following resources will be installed and configured with this guide . Terraform . | Modern VPC, Subnets, Route Tables | EKS Cluster, Nodes | Network Load Balancer | MSK | Amazon Prometheus | Amazon Grafana | EFS | KMS | S3 Bucket | . Manual . | Route53 Updates: Need to create dns entries in route53 to point app and data urls to network load balancer | . NBS7 Core Services . | Elasticsearch - For lightning-fast searches. | Modernization API - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc. | Nifi - Populates Elasticsearch indices from the NBS database. | NBS Gateway - Efficiently manages intricate strangler routing logic between modern and legacy NBS. | Data Ingestion - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system. | Keycloak - Primary Identity Provider (IdP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#on-this-page",
     
     "relUrl": "/docs/quickstart.html#on-this-page"
-  },"243": {
+  },"244": {
     "doc": "Quickstart",
     "title": "Prerequisites",
     "content": "Tools to Install . | AWS CLI (v2.15+) | Terraform (v1.5.5) | Helm (v3.12+) | kubectl (v1.27+) | eksctl (optional but recommended) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#prerequisites",
     
     "relUrl": "/docs/quickstart.html#prerequisites"
-  },"244": {
+  },"245": {
     "doc": "Quickstart",
     "title": "Environment Requirements",
     "content": ". | AWS Account with NBS 6.0.16 access (or newer) | DNS routing infrastructure: Domain info for modernized nbs application (e.g app.site_name.domain.com) | IAM Roles for Terraform and Kubernetes | Access to NBS 6 (sql server) databases to run scripts | S3 bucket for Terraform state | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#environment-requirements",
     
     "relUrl": "/docs/quickstart.html#environment-requirements"
-  },"245": {
+  },"246": {
     "doc": "Quickstart",
     "title": "Set Up AWS Infrastructure - Terraform",
     "content": ". Prepare the Directory . mkdir -p ~/nbs-setup/terraform/aws/nbs7-mySTLT-test cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test . Download Terraform Configuration . Clone the infrastructure repo: . git clone https://github.com/CDCgov/NEDSS-Infrastructure.git . Copy standard template: . cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test . Customize Variables . | Update the terraform.tfvars and terraform.tf with your environment-specific values by following the instructions here. | . ℹ️ Review the inbound rules on the security groups attached to your database instance and ensure that the CIDR you intend to use with your NBS 7 VPC (modern-cidr) is allowed to access the database. Initialize and Apply Terraform . terraform init terraform plan terraform apply . Validate Infrastructure . | Confirm VPC, EKS cluster, subnets, and node groups are created. | Verify EKS cluster authentication and running pods &amp; nodes: | . aws eks --region us-east-1 update-kubeconfig --name &lt;clustername&gt; e.g. cdc-nbs-sandbox kubectl get pods --namespace=cert-manager kubectl get nodes . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#set-up-aws-infrastructure---terraform",
     
     "relUrl": "/docs/quickstart.html#set-up-aws-infrastructure---terraform"
-  },"246": {
+  },"247": {
     "doc": "Quickstart",
     "title": "Deploy Core Kubernetes Services - Helm",
     "content": "Install NGINX Ingress . helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx helm install ingress-nginx ingress-nginx/ingress-nginx kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller kubectl get pods -n=ingress-nginx . Create DNS Entries in Route53 . | Modernized NBS application pointed to the new network load balancer in front of your Kubernetes cluster | . app.&lt;site_name&gt;.&lt;domain&gt;.com . | Data Services pointed to the new network load balancer in front of your Kubernetes cluster | . data.&lt;site_name&gt;.&lt;domain&gt;.com . Install Cert Manager (Optional) . helm repo add jetstack https://charts.jetstack.io helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true . Install and Verify LinkerD (Optional) . kubectl annotate namespace default \"linkerd.io/inject=enabled\" kubectl get namespace default -o=jsonpath='{.metadata.annotations}' . Install Cluster Autoscaler (Optional) . helm repo add autoscaler https://kubernetes.github.io/autoscaler helm install cluster-autoscaler autoscaler/cluster-autoscaler -n kube-system . Verify Services are Running . kubectl get pods -A . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#deploy-core-kubernetes-services---helm",
     
     "relUrl": "/docs/quickstart.html#deploy-core-kubernetes-services---helm"
-  },"247": {
+  },"248": {
     "doc": "Quickstart",
     "title": "Install Keycloak",
     "content": "Create Keycloak Database. Make sure to update the database password. use master IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'keycloak') BEGIN CREATE DATABASE keycloak END GO USE keycloak GO BEGIN CREATE LOGIN NBS_keycloak WITH PASSWORD = 'EXAMPLE_KCDB_PASS8675309'; CREATE USER NBS_keycloak FOR LOGIN NBS_keycloak; EXEC sp_addrolemember N'db_owner', N'NBS_keycloak' END . Install Keycloak Container . Edit the following parameters in &lt;helm extract directory&gt;/charts/keycloak/values.yml: . | kcDbPassword | kcDbUrl | keycloakAdminPassword | efsFileSystemId | . helm install keycloak --namespace default --create-namespace -f keycloak/values.yaml . Port forward to access Keycloak admin interface . kubectl --namespace default port-forward \"$POD_NAME\" 8080; http://127.0.0.1:8080/auth . Configure Realm, Users and Clients . | Login as Keycloak admin user | Upload /charts/keycloak/extra/01-NBS-realm-with-DI-client.json . | Upload /charts/keycloak/extra/05-nbs-users-nnd-client.json . | Upload NBS Users helm from /charts/keycloak/extra/02-nbs-users-realm.json . | Run partial import from nbs-users realm for /charts/keycloak/extra/03-nbs-users-base-users.json . | Run partial import from nbs-users realm for /charts/keycloak/extra/04-nbs-users-development-clients.json . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#install-keycloak",
     
     "relUrl": "/docs/quickstart.html#install-keycloak"
-  },"248": {
+  },"249": {
     "doc": "Quickstart",
     "title": "Deploy NBS Microservices - Helm",
     "content": "Deploy the helm charts in the following order. | elasticsearch-efs | modernization-api | nifi-efs | nbs-gateway | dataingestion | . ℹ️ Run the below commands from &lt;helm extract directory&gt;/charts directory . Deploy Elasticsearch . Update the required parameters in values.yaml by following the table here . helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs . Deploy Modernization API . Update the required parameters in values.yaml by following the table here . helm install modernization-api -f ./modernization-api/values.yaml modernization-api . Deploy NiFi . Update the required parameters in values.yaml by following the table here . helm install nifi -f ./nifi-efs/values.yaml nifi-efs . Deploy NBS Gateway . Update the required parameters in values.yaml by following the table here . helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway . Deploy DataIngestion . Data Ingest DB creation and user permission should be executed prior to the deployment of the data ingestion: . IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest') BEGIN CREATE DATABASE NBS_DataIngest END GO USE NBS_DataIngest GO . use [NBS_ODSE]; GO USE [NBS_DataIngest] GO CREATE USER [nbs_ods] FOR LOGIN [nbs_ods] GO USE [NBS_DataIngest] GO ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo] GO USE [NBS_DataIngest] GO ALTER ROLE [db_owner] ADD MEMBER [nbs_ods] GO . Update the required parameters in values.yaml by following the table here . helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service . Verify Services . | Confirm all pods are running before moving on. | . kubectl get pods -A . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#deploy-nbs-microservices---helm",
     
     "relUrl": "/docs/quickstart.html#deploy-nbs-microservices---helm"
-  },"249": {
+  },"250": {
     "doc": "Quickstart",
     "title": "Validate Installation",
     "content": "Manual Tests . | Login to the NBS UI (e.g., https://app.example.com/nbs/login) | Check basic patient search functionality. | . Automated Tests . | Use nbs-test-api.sh and nbs-test-webui.sh for basic API and UI smoke tests. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#validate-installation",
     
     "relUrl": "/docs/quickstart.html#validate-installation"
-  },"250": {
+  },"251": {
     "doc": "Quickstart",
     "title": "Cleanup",
     "content": "Follow the steps below to cleanup environment . # Remove DNS entries 1. app.&lt;site_name&gt;.&lt;domain&gt;.com 2. data.&lt;site_name&gt;.&lt;domain&gt;.com # Remove nlb and ingress routing helm list --namespace ingress-nginx helm uninstall --namespace ingress-nginx ingress-nginx # Empty fluentbit s3 bucket manually terraform destroy . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/quickstart.html#cleanup",
     
     "relUrl": "/docs/quickstart.html#cleanup"
-  },"251": {
+  },"252": {
     "doc": "Quickstart",
     "title": "Support",
     "content": ". | For support, contact NBSSupport@cdc.gov. | For ongoing updates, check the GitHub repo for new releases. | . ",
