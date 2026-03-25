@@ -7943,4 +7943,9 @@ blockquote.warning-title > p:last-child {
   font-size: 18px !important;
 }
 
+.text-green {
+  color: #008A17;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=just-the-docs-dark.css.map */
