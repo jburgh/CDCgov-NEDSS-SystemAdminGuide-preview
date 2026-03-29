@@ -7619,14 +7619,14 @@ div.opaque {
 }
 
 p.highlight, blockquote.highlight {
-  background: rgba(231, 175, 6, 0.2);
-  border-left: 4px solid #ffeb82;
+  background: rgba(56, 24, 133, 0.2);
+  border-left: 4px solid #7253ed;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.highlight > .highlight-title, blockquote.highlight > .highlight-title {
-  color: #ffeb82;
+  color: #7253ed;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7635,8 +7635,8 @@ p.highlight > .highlight-title, blockquote.highlight > .highlight-title {
 }
 
 p.highlight-title, blockquote.highlight-title {
-  background: rgba(231, 175, 6, 0.2);
-  border-left: 4px solid #ffeb82;
+  background: rgba(56, 24, 133, 0.2);
+  border-left: 4px solid #7253ed;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7644,7 +7644,7 @@ p.highlight-title, blockquote.highlight-title {
 p.highlight-title > p:first-child, blockquote.highlight-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: #ffeb82;
+  color: #7253ed;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7675,14 +7675,14 @@ blockquote.highlight-title > p:last-child {
 }
 
 p.important, blockquote.important {
-  background: rgba(24, 51, 133, 0.2);
-  border-left: 4px solid #2c84fa;
+  background: rgba(231, 175, 6, 0.2);
+  border-left: 4px solid #ffeb82;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.important::before, blockquote.important::before {
-  color: #2c84fa;
+  color: #ffeb82;
   content: "Important";
   display: block;
   font-weight: bold;
@@ -7691,7 +7691,7 @@ p.important::before, blockquote.important::before {
   padding-bottom: 0.125rem;
 }
 p.important > .important-title, blockquote.important > .important-title {
-  color: #2c84fa;
+  color: #ffeb82;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7700,8 +7700,8 @@ p.important > .important-title, blockquote.important > .important-title {
 }
 
 p.important-title, blockquote.important-title {
-  background: rgba(24, 51, 133, 0.2);
-  border-left: 4px solid #2c84fa;
+  background: rgba(231, 175, 6, 0.2);
+  border-left: 4px solid #ffeb82;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7709,7 +7709,7 @@ p.important-title, blockquote.important-title {
 p.important-title > p:first-child, blockquote.important-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: #2c84fa;
+  color: #ffeb82;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7805,14 +7805,14 @@ blockquote.new-title > p:last-child {
 }
 
 p.note, blockquote.note {
-  background: rgba(231, 175, 6, 0.2);
-  border-left: 4px solid #ffeb82;
+  background: rgba(24, 51, 133, 0.2);
+  border-left: 4px solid #2c84fa;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.note::before, blockquote.note::before {
-  color: #ffeb82;
+  color: #2c84fa;
   content: "Note";
   display: block;
   font-weight: bold;
@@ -7821,7 +7821,7 @@ p.note::before, blockquote.note::before {
   padding-bottom: 0.125rem;
 }
 p.note > .note-title, blockquote.note > .note-title {
-  color: #ffeb82;
+  color: #2c84fa;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7830,8 +7830,8 @@ p.note > .note-title, blockquote.note > .note-title {
 }
 
 p.note-title, blockquote.note-title {
-  background: rgba(231, 175, 6, 0.2);
-  border-left: 4px solid #ffeb82;
+  background: rgba(24, 51, 133, 0.2);
+  border-left: 4px solid #2c84fa;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7839,7 +7839,7 @@ p.note-title, blockquote.note-title {
 p.note-title > p:first-child, blockquote.note-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: #ffeb82;
+  color: #2c84fa;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
