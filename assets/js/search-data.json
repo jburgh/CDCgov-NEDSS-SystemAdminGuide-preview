@@ -743,7 +743,7 @@
   },"106": {
     "doc": "Deploy NBS 7 microservices",
     "title": "Overview",
-    "content": "We will use HELM CLI to deploy NBS microservices into Kubernetes cluster. Please deploy the helm charts in the following order. Verify that each microservice has started successfully before moving on to the next service. | elasticsearch-efs | modernization-api | nifi-efs | nbs-gateway | dataingestion | data-processing | nnd (data-sync) | case notifications | . Have the jdbc connection details handy for modernization-api, nifi-efs, data-ingestion, data processing and case notifications services . | Parameter | Example | . | db_endpoint | mySTLT-dbname.abcdefghij.us-east-1.rds.amazonaws.com | . | port | 1433 | . | databaseName | NBS_ODSE | . | DBUsername | nbs_ods | . | DBPassword | myrandompassword | . NOTE - Run the helm install commands from the charts directory for all the microservices. And before running the helm install commands, make sure you are authenticated to aws with aws sts get-caller-identity . ",
+    "content": "Use the Helm CLI to deploy NBS 7 microservices into your Kubernetes cluster. Deploy the Helm charts in the following order. Verify that each microservice starts successfully before moving to the next service. | elasticsearch-efs | modernization-api | nifi-efs | nbs-gateway | dataingestion-service | data-processing | nnd-service (Data Sync) | case-notification | . Have JDBC connection details available for modernization-api, nifi-efs, dataingestion-service, data-processing, and case-notification. | Parameter | Example | . | db_endpoint | mySTLT-dbname.abcdefghij.us-east-1.rds.amazonaws.com | . | port | 1433 | . | databaseName | NBS_ODSE | . | DBUsername | nbs_ods | . | DBPassword | myrandompassword | . Run Helm install commands from the charts directory for all microservices. Before you run Helm install commands, verify you are authenticated to AWS by running aws sts get-caller-identity. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/deploy-nbs7-microservices.html#overview",
     
     "relUrl": "/docs/deploy-nbs7/deploy-nbs7-microservices.html#overview"
@@ -1722,71 +1722,71 @@
     "relUrl": "/docs/deploy-nbs7/aws-infrastructure/provision-aws.html"
   },"246": {
     "doc": "Quick start (AWS)",
-    "title": "Quick start guide for AWS deployments",
-    "content": "This quick guide provides a streamlined step-by-step approach for deploying the NBS 7 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#quick-start-guide-for-aws-deployments",
+    "title": "Quick start (AWS)",
+    "content": "This page provides a streamlined path to deploy NBS 7 infrastructure and core microservices in AWS. It is intended for experienced administrators familiar with AWS, Kubernetes, Helm, and Terraform. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html",
     
-    "relUrl": "/docs/deploy-nbs7/quickstart.html#quick-start-guide-for-aws-deployments"
+    "relUrl": "/docs/deploy-nbs7/quickstart.html"
   },"247": {
     "doc": "Quick start (AWS)",
     "title": "On this page",
-    "content": ". | Prerequisites | Environment Requirements | Set Up AWS Infrastructure - Terraform | Deploy Core Kubernetes Services - Helm | Install Keycloak | Deploy NBS Microservices - Helm | Validate Installation | Cleanup | Support | . This guide is NOT meant for a production deployment. For full production deployment steps and guidelines, start here. The following resources will be installed and configured with this guide: . Terraform . | Modern VPC, Subnets, Route Tables | EKS Cluster, Nodes | Network Load Balancer | MSK | Amazon Prometheus | Amazon Grafana | EFS | KMS | S3 Bucket | . Manual . | Route53 Updates: Need to create dns entries in route53 to point app and data urls to network load balancer | . NBS7 Core Services . | Elasticsearch - For lightning-fast searches. | Modernization API - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc. | Nifi - Populates Elasticsearch indices from the NBS database. | NBS Gateway - Efficiently manages intricate strangler routing logic between modern and legacy NBS. | Data Ingestion - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system. | Keycloak - Primary Identity Provider (IdP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc. | . ",
+    "content": ". | Scope and limitations | Prerequisites | Set up AWS infrastructure (Terraform) | Deploy core Kubernetes services (Helm) | Install Keycloak | Deploy NBS 7 microservices (Helm) | Validate installation | Cleanup | Support | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#on-this-page"
   },"248": {
     "doc": "Quick start (AWS)",
+    "title": "Scope and limitations",
+    "content": "This guide is not intended for production deployment. For full production steps and guidance, see Deploy NBS 7. This quick start installs and configures the following resources. Terraform-managed resources . | Modern VPC, subnets, and route tables | EKS cluster and nodes | Network load balancer | MSK | Amazon Managed Service for Prometheus | Amazon Managed Grafana | EFS | KMS | S3 bucket | . Manual configuration . | Route53 updates: create DNS entries in Route53 to point app and data URLs to the network load balancer. | . NBS 7 core services . | Elasticsearch: Search indexing and query support. | Modernization API: Modern NBS capabilities, including patient and event search. | NiFi: Elasticsearch index population from the NBS database. | NBS Gateway: Routing between modern and legacy NBS. | Data ingestion: HL7 ingestion from labs and other sources. | Keycloak: Primary identity provider (IdP), token management, and SSO integration. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#scope-and-limitations",
+    
+    "relUrl": "/docs/deploy-nbs7/quickstart.html#scope-and-limitations"
+  },"249": {
+    "doc": "Quick start (AWS)",
     "title": "Prerequisites",
-    "content": "Tools to Install . | AWS CLI (v2.15+) | Terraform (v1.5.5) | Helm (v3.12+) | kubectl (v1.27+) | eksctl (optional but recommended) | . ",
+    "content": "Install these tools . | AWS CLI (v2.15+) | Terraform (v1.5.5) | Helm (v3.12+) | kubectl (v1.27+) | eksctl (optional but recommended) | . Environment requirements . | AWS Account with NBS 6.0.16 access (or newer) | DNS routing infrastructure: domain information for modernized NBS application URLs (for example, app.site_name.domain.com) | IAM roles for Terraform and Kubernetes | Access to NBS 6 (SQL Server) databases to run scripts | S3 bucket for Terraform state | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#prerequisites"
-  },"249": {
-    "doc": "Quick start (AWS)",
-    "title": "Environment Requirements",
-    "content": ". | AWS Account with NBS 6.0.16 access (or newer) | DNS routing infrastructure: Domain info for modernized nbs application (e.g app.site_name.domain.com) | IAM Roles for Terraform and Kubernetes | Access to NBS 6 (sql server) databases to run scripts | S3 bucket for Terraform state | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#environment-requirements",
-    
-    "relUrl": "/docs/deploy-nbs7/quickstart.html#environment-requirements"
   },"250": {
     "doc": "Quick start (AWS)",
-    "title": "Set Up AWS Infrastructure - Terraform",
-    "content": ". Prepare the Directory . mkdir -p ~/nbs-setup/terraform/aws/nbs7-mySTLT-test cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test . Download Terraform Configuration . Clone the infrastructure repo: . git clone https://github.com/CDCgov/NEDSS-Infrastructure.git . Copy standard template: . cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test . Customize Variables . | Update the terraform.tfvars and terraform.tf with your environment-specific values by following the instructions here. | . ℹ️ Review the inbound rules on the security groups attached to your database instance and ensure that the CIDR you intend to use with your NBS 7 VPC (modern-cidr) is allowed to access the database. Initialize and Apply Terraform . terraform init terraform plan terraform apply . Validate Infrastructure . | Confirm VPC, EKS cluster, subnets, and node groups are created. | Verify EKS cluster authentication and running pods &amp; nodes: | . aws eks --region us-east-1 update-kubeconfig --name &lt;clustername&gt; e.g. cdc-nbs-sandbox kubectl get pods --namespace=cert-manager kubectl get nodes . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#set-up-aws-infrastructure---terraform",
+    "title": "Set up AWS infrastructure (Terraform)",
+    "content": ". Prepare the directory . mkdir -p ~/nbs-setup/terraform/aws/nbs7-mySTLT-test cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test . Download Terraform configuration . Clone the infrastructure repo: . git clone https://github.com/CDCgov/NEDSS-Infrastructure.git . Copy standard template: . cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test . Customize variables . | Update the terraform.tfvars and terraform.tf with your environment-specific values by following the instructions here. | . Review inbound rules on the security groups attached to your database instance. Ensure the CIDR you intend to use with your NBS 7 VPC (modern-cidr) is allowed to access the database. Initialize and apply Terraform . terraform init terraform plan terraform apply . Validate infrastructure . | Confirm VPC, EKS cluster, subnets, and node groups are created. | Verify EKS cluster authentication and running pods &amp; nodes: | . aws eks --region us-east-1 update-kubeconfig --name &lt;clustername&gt; e.g. cdc-nbs-sandbox kubectl get pods --namespace=cert-manager kubectl get nodes . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#set-up-aws-infrastructure-terraform",
     
-    "relUrl": "/docs/deploy-nbs7/quickstart.html#set-up-aws-infrastructure---terraform"
+    "relUrl": "/docs/deploy-nbs7/quickstart.html#set-up-aws-infrastructure-terraform"
   },"251": {
     "doc": "Quick start (AWS)",
-    "title": "Deploy Core Kubernetes Services - Helm",
-    "content": "Install NGINX Ingress . helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx helm install ingress-nginx ingress-nginx/ingress-nginx kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller kubectl get pods -n=ingress-nginx . Create DNS Entries in Route53 . | Modernized NBS application pointed to the new network load balancer in front of your Kubernetes cluster | . app.&lt;site_name&gt;.&lt;domain&gt;.com . | Data Services pointed to the new network load balancer in front of your Kubernetes cluster | . data.&lt;site_name&gt;.&lt;domain&gt;.com . Install Cert Manager (Optional) . helm repo add jetstack https://charts.jetstack.io helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true . Install and Verify LinkerD (Optional) . kubectl annotate namespace default \"linkerd.io/inject=enabled\" kubectl get namespace default -o=jsonpath='{.metadata.annotations}' . Install Cluster Autoscaler (Optional) . helm repo add autoscaler https://kubernetes.github.io/autoscaler helm install cluster-autoscaler autoscaler/cluster-autoscaler -n kube-system . Verify Services are Running . kubectl get pods -A . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#deploy-core-kubernetes-services---helm",
+    "title": "Deploy core Kubernetes services (Helm)",
+    "content": "Install NGINX Ingress . helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx helm install ingress-nginx ingress-nginx/ingress-nginx kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller kubectl get pods -n=ingress-nginx . Create DNS entries in Route53 . | Point the modernized NBS application URL to the new network load balancer in front of your Kubernetes cluster. | . app.&lt;site_name&gt;.&lt;domain&gt;.com . | Point the data services URL to the new network load balancer in front of your Kubernetes cluster. | . data.&lt;site_name&gt;.&lt;domain&gt;.com . Install Cert Manager (optional) . helm repo add jetstack https://charts.jetstack.io helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true . Install and verify Linkerd (optional) . kubectl annotate namespace default \"linkerd.io/inject=enabled\" kubectl get namespace default -o=jsonpath='{.metadata.annotations}' . Install Cluster Autoscaler (optional) . helm repo add autoscaler https://kubernetes.github.io/autoscaler helm install cluster-autoscaler autoscaler/cluster-autoscaler -n kube-system . Verify services are running . kubectl get pods -A . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#deploy-core-kubernetes-services-helm",
     
-    "relUrl": "/docs/deploy-nbs7/quickstart.html#deploy-core-kubernetes-services---helm"
+    "relUrl": "/docs/deploy-nbs7/quickstart.html#deploy-core-kubernetes-services-helm"
   },"252": {
     "doc": "Quick start (AWS)",
     "title": "Install Keycloak",
-    "content": "Create Keycloak Database. Make sure to update the database password. use master IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'keycloak') BEGIN CREATE DATABASE keycloak END GO USE keycloak GO BEGIN CREATE LOGIN NBS_keycloak WITH PASSWORD = 'EXAMPLE_KCDB_PASS8675309'; CREATE USER NBS_keycloak FOR LOGIN NBS_keycloak; EXEC sp_addrolemember N'db_owner', N'NBS_keycloak' END . Install Keycloak Container . Edit the following parameters in &lt;helm extract directory&gt;/charts/keycloak/values.yml: . | kcDbPassword | kcDbUrl | keycloakAdminPassword | efsFileSystemId | . helm install keycloak --namespace default --create-namespace -f keycloak/values.yaml . Port forward to access Keycloak admin interface . kubectl --namespace default port-forward \"$POD_NAME\" 8080; http://127.0.0.1:8080/auth . Configure Realm, Users and Clients . | Login as Keycloak admin user | Upload /charts/keycloak/extra/01-NBS-realm-with-DI-client.json . | Upload /charts/keycloak/extra/05-nbs-users-nnd-client.json . | Upload NBS Users helm from /charts/keycloak/extra/02-nbs-users-realm.json . | Run partial import from nbs-users realm for /charts/keycloak/extra/03-nbs-users-base-users.json . | Run partial import from nbs-users realm for /charts/keycloak/extra/04-nbs-users-development-clients.json . | . ",
+    "content": "Create the Keycloak database. Make sure to update the database password. use master IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'keycloak') BEGIN CREATE DATABASE keycloak END GO USE keycloak GO BEGIN CREATE LOGIN NBS_keycloak WITH PASSWORD = 'EXAMPLE_KCDB_PASS8675309'; CREATE USER NBS_keycloak FOR LOGIN NBS_keycloak; EXEC sp_addrolemember N'db_owner', N'NBS_keycloak' END . Install Keycloak container . Edit the following parameters in &lt;helm extract directory&gt;/charts/keycloak/values.yml: . | kcDbPassword | kcDbUrl | keycloakAdminPassword | efsFileSystemId | . helm install keycloak --namespace default --create-namespace -f keycloak/values.yaml . Port forward to access Keycloak admin interface . kubectl --namespace default port-forward \"$POD_NAME\" 8080; http://127.0.0.1:8080/auth . Configure realms, users, and clients . | Log in as the Keycloak admin user. | Upload &lt;helm extract directory&gt;/charts/keycloak/extra/01-NBS-realm-with-DI-client.json. | Upload &lt;helm extract directory&gt;/charts/keycloak/extra/05-nbs-users-nnd-client.json. | Upload &lt;helm extract directory&gt;/charts/keycloak/extra/02-nbs-users-realm.json. | Run partial import from the nbs-users realm for &lt;helm extract directory&gt;/charts/keycloak/extra/03-nbs-users-base-users.json. | Run partial import from the nbs-users realm for &lt;helm extract directory&gt;/charts/keycloak/extra/04-nbs-users-development-clients.json. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#install-keycloak",
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#install-keycloak"
   },"253": {
     "doc": "Quick start (AWS)",
-    "title": "Deploy NBS Microservices - Helm",
-    "content": "Deploy the helm charts in the following order. | elasticsearch-efs | modernization-api | nifi-efs | nbs-gateway | dataingestion | . ℹ️ Run the below commands from &lt;helm extract directory&gt;/charts directory . Deploy Elasticsearch . Update the required parameters in values.yaml by following the table here . helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs . Deploy Modernization API . Update the required parameters in values.yaml by following the table here . helm install modernization-api -f ./modernization-api/values.yaml modernization-api . Deploy NiFi . Update the required parameters in values.yaml by following the table here . helm install nifi -f ./nifi-efs/values.yaml nifi-efs . Deploy NBS Gateway . Update the required parameters in values.yaml by following the table here . helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway . Deploy DataIngestion . Data Ingest DB creation and user permission should be executed prior to the deployment of the data ingestion: . IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest') BEGIN CREATE DATABASE NBS_DataIngest END GO USE NBS_DataIngest GO . use [NBS_ODSE]; GO USE [NBS_DataIngest] GO CREATE USER [nbs_ods] FOR LOGIN [nbs_ods] GO USE [NBS_DataIngest] GO ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo] GO USE [NBS_DataIngest] GO ALTER ROLE [db_owner] ADD MEMBER [nbs_ods] GO . Update the required parameters in values.yaml by following the table here . helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service . Verify Services . | Confirm all pods are running before moving on. | . kubectl get pods -A . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#deploy-nbs-microservices---helm",
+    "title": "Deploy NBS 7 microservices (Helm)",
+    "content": "Deploy the Helm charts in the following order. | elasticsearch-efs | modernization-api | nifi-efs | nbs-gateway | dataingestion-service | . Run the following commands from the &lt;helm extract directory&gt;/charts directory. Deploy Elasticsearch . Update the required parameters in values.yaml by following the table here . helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs . Deploy Modernization API . Update the required parameters in values.yaml by following the table here . helm install modernization-api -f ./modernization-api/values.yaml modernization-api . Deploy NiFi . Update the required parameters in values.yaml by following the table here . helm install nifi -f ./nifi-efs/values.yaml nifi-efs . Deploy NBS Gateway . Update the required parameters in values.yaml by following the table here . helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway . Deploy Data ingestion service . Create the Data Ingest database and set user permissions before deploying data ingestion: . IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest') BEGIN CREATE DATABASE NBS_DataIngest END GO USE NBS_DataIngest GO . use [NBS_ODSE]; GO USE [NBS_DataIngest] GO CREATE USER [nbs_ods] FOR LOGIN [nbs_ods] GO USE [NBS_DataIngest] GO ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo] GO USE [NBS_DataIngest] GO ALTER ROLE [db_owner] ADD MEMBER [nbs_ods] GO . Update the required parameters in values.yaml by following the table here . helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service . Verify services . | Confirm all pods are running before moving on. | . kubectl get pods -A . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#deploy-nbs-7-microservices-helm",
     
-    "relUrl": "/docs/deploy-nbs7/quickstart.html#deploy-nbs-microservices---helm"
+    "relUrl": "/docs/deploy-nbs7/quickstart.html#deploy-nbs-7-microservices-helm"
   },"254": {
     "doc": "Quick start (AWS)",
-    "title": "Validate Installation",
-    "content": "Manual Tests . | Login to the NBS UI (e.g., https://app.example.com/nbs/login) | Check basic patient search functionality. | . Automated Tests . | Use nbs-test-api.sh and nbs-test-webui.sh for basic API and UI smoke tests. | . ",
+    "title": "Validate installation",
+    "content": "Manual tests . | Log in to the NBS UI (for example, https://app.example.com/nbs/login). | Confirm basic patient search functionality. | . Automated tests . | Use nbs-test-api.sh and nbs-test-webui.sh for basic API and UI smoke tests. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#validate-installation",
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#validate-installation"
   },"255": {
     "doc": "Quick start (AWS)",
     "title": "Cleanup",
-    "content": "Follow the steps below to cleanup environment . # Remove DNS entries 1. app.&lt;site_name&gt;.&lt;domain&gt;.com 2. data.&lt;site_name&gt;.&lt;domain&gt;.com # Remove nlb and ingress routing helm list --namespace ingress-nginx helm uninstall --namespace ingress-nginx ingress-nginx # Empty fluentbit s3 bucket manually terraform destroy . ",
+    "content": "Follow these steps to clean up the environment. | Remove DNS entries: . | app.&lt;site_name&gt;.&lt;domain&gt;.com | data.&lt;site_name&gt;.&lt;domain&gt;.com | . | . # Remove nlb and ingress routing helm list --namespace ingress-nginx helm uninstall --namespace ingress-nginx ingress-nginx # Empty fluentbit s3 bucket manually terraform destroy . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html#cleanup",
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#cleanup"
@@ -1798,356 +1798,349 @@
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#support"
   },"257": {
-    "doc": "Quick start (AWS)",
-    "title": "Quick start (AWS)",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/quickstart.html",
-    
-    "relUrl": "/docs/deploy-nbs7/quickstart.html"
-  },"258": {
     "doc": "Real-time reporting (preview)",
     "title": "Deploy real-time reporting",
     "content": "This guide details steps to use Helm charts to install the real-time reporting add-on end to end. Real-time reporting provides rapid transformation and delivery of data from transactional database NBS_ODSE to the reporting database RDB. Changes are captured by enabling Change Data Capture on select NBS_ODSE and NBS_SRTE tables (list under Onboarding: Service Users and Setup Scripts). Row-level changes from these tables are published into Kafka topics and consumed by domain-specific Java services that extract and load data into RDB. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-real-time-reporting",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-real-time-reporting"
-  },"259": {
+  },"258": {
     "doc": "Real-time reporting (preview)",
     "title": "On this page",
     "content": ". | Prerequisites | Create rdb_modern database (optional) | Create service users and database objects | Ongoing database upgrades | Deploy RTR services | . This feature is in Beta preview and not production ready. The database scripts referenced in the guide are maintained in the DataReporting repository. The required database objects can be configured either by database change management tool Liquibase or manually executed. Both references will be provided within the same sections. If there are problems encountered during Database Setup, please reach out to our support team(email nbs@cdc.gov). ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#on-this-page"
-  },"260": {
+  },"259": {
     "doc": "Real-time reporting (preview)",
     "title": "Prerequisites",
     "content": ". | Database Release Version: Verify the underlying database release version returned is 6.0.17. Execute the following query to verify the baseline NBS Release version: . USE NBS_ODSE; SELECT max(Version) current_version FROM NBS_ODSE.dbo.NBS_Release; . Or use the below query to check the config value: . use [NBS_ODSE]; select * from NBS_configuration where config_key = 'CODE_BASE' . | Classic ETL: Please ensure the following ETL batch jobs have run successfully before setting up the reporting database for Real Time Reporting. | a. ETL scheduled jobs: | MasterEtl.bat | PHCMartETL.bat | covid19ETL.bat | b. Note: Ensure to take a backup of rdb database before proceeding with the next steps | c. Database setup: | Option 1: Using RDB is the default database for Real Time Reporting. Please turn off the classic ETL batch jobs and proceed with the onboarding steps. | Option 2: Creating a separate database (rdb_modern) for Real Time Reporting. Steps are listed under Onboarding: UAT Database Setup section. | . | Environment Variable: Set the appropriate environment variable to define the reporting database context. This ensures that scripts execute against the correct reporting database. | a. Option 1: RDB as default database. Please insert the following to NBS_configuration to default to RDB. IF NOT EXISTS(SELECT 1 FROM NBS_ODSE.DBO.NBS_configuration WHERE config_key ='ENV' AND config_value ='PROD') INSERT INTO NBS_ODSE.dbo.NBS_configuration (config_key, config_value, short_name, desc_txt, default_value, valid_values, category, add_release, version_ctrl_nbr, add_user_id, add_time, last_chg_user_id, last_chg_time, status_cd, status_time, admin_comment, system_usage, config_value_large) VALUES(N'ENV', N'PROD', N'RTR reporting database', N'Indicates scripts should be run against RDB database', NULL, N'UAT, PROD', N'RTR', N'7.11.0', 1, 0, getdate(), 0, getdate(), N'A', getdate(), NULL, NULL, NULL); . | b. Option 2: rdb_modern as default database. This setting overrides the default RDB during script execution, unless the script explicitly prompts specification of a database. IF NOT EXISTS(SELECT 1 FROM NBS_ODSE.DBO.NBS_configuration WHERE config_key ='ENV' AND config_value ='UAT') INSERT INTO NBS_ODSE.dbo.NBS_configuration (config_key, config_value, short_name, desc_txt, default_value, valid_values, category, add_release, version_ctrl_nbr, add_user_id, add_time, last_chg_user_id, last_chg_time, status_cd, status_time, admin_comment, system_usage, config_value_large) VALUES(N'ENV', N'UAT', N'RTR reporting database', N'Indicates scripts should be run against UAT rdb_modern database', NULL, N'UAT, PROD', N'RTR', N'7.11.0', 1, 0, getdate(), 0, getdate(), N'A', getdate(), NULL, NULL, NULL); . | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#prerequisites"
-  },"261": {
+  },"260": {
     "doc": "Real-time reporting (preview)",
     "title": "Create rdb_modern database (optional)",
     "content": "[Optional] Restore RDB as rdb_modern database: If a separate database is required as part of UAT, please create a restored backup of the RDB as rdb_modern. This ensures availability of classic ETL hydrated RDB and to host necessary components for Real Time Reporting. If you have AWS RDS, please run the following steps. | i. Backup RDB . | a. Login into AWS Account. | b. Navigate to RDS. | c. Ensure the RDS SQL Server has the Option for Backup and Restore Enabled in Options group. | d. Open any SQL Client and connect to SQL Server RDS instance. | e. Backup database to AWS S3. | Run this procedure to back up the SQL Server database to S3. exec msdb.dbo.rds_backup_database @source_db_name='RDB', @s3_arn_to_backup_to='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_2024_07_22_5pmet.bak', @type='FULL' . | Run the procedure to check the status. exec msdb.dbo.rds_task_status; . | . | ii. Restore rdb_modern: . | a. Open any SQL Client and connect to SQL Server RDS instance. | b. Restore RDB as rdb_modern by executing the following procedure. | . exec msdb.dbo.rds_restore_database @restore_db_name='rdb_modern', @s3_arn_to_restore_from='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_gdit_07_10_5pmet.bak', @type='FULL'; . | Run the procedure to check the status. | . exec msdb.dbo.rds_task_status; . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-rdb_modern-database-optional",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-rdb_modern-database-optional"
-  },"262": {
+  },"261": {
     "doc": "Real-time reporting (preview)",
     "title": "Create service users and database objects",
     "content": "One time onboarding steps required for Real Time Reporting setup. | Create database users: Each user will be provided with permissions it needs to do its job and nothing more! Please review the scripts and update the PASSWORD field for before executing. | . | a. Create admin user: User provides Liquibase required permissions to maintain necessary database components for Real Time Reporting, and enable Change Data Capture for tables. | Script location: NEDSS-DataReporting/create-rtr-admin-user | . | b. Create Real Time Reporting microservice user logins: Create dedicated user accounts for each Real Time Reporting microservice. These users are wired in Helm for each Real Time Reporting services. | Script location: NEDSS-DataReporting/service-user-login-script | Script location: NEDSS-DataReporting/service-database-user-creation | . | . | Create kubernetes secrets: Kubernetes secrets are required for Real Time Reporting services to access the database. The secrets should be created for each service user created in step 1. (Ignore this if kubernetes secrets are created in step kuberetes secrets) | . | a. Create secrets for each service user, including the admin user created in step 1a. The secrets should include the database username and password for each service user.: . | Script location: NEDSS-DataReporting/create-kubernetes-secrets | . | . | Create required database objects: Scripts required for Real Time Reporting can be executed via Liquibase or manually. | . | Option 1: If Liquibase is the preferred approach, please refer to steps in the Liquibase/liquibase section to create all necessary objects before moving to step 4. | Option 2: The required database objects can also be manually created. Documentation on script execution sequence and supplemental db_upgrade.bat file is provided to support manual setup. | Script location: NEDSS-DataReporting/db-upgrade | Please specify the database and proceed: | upgrade_db.bat server_name &lt;database&gt; username password | . | . | Load data and enable Change Data Capture: One time onboarding step is required after all database objects are created in Step 3. | . | a. Option 1: Manual execution of scripts. Please review and execute scripts within the data_load folder. | i. Load metadata rows from NBS_ODSE and NBS_SRTE database tables to the reporting database. | Script location: 000-nrt_metadata_load.sql | . | ii. Data load to nrt_&lt;&gt;_key tables | Run remaining onboarding scripts starting from /02_onboarding_script_data_load/001-*. | Script location: /02_onboarding_script_data_load/001-*.sql | iii.Enable Change Data Capture on NBS_ODSE and NBS_SRTE databases and tables: | These are the final scripts that should be run before go-live. | a. 1002-enable_cdc_on_odse_database.sql | b. 1003-enable_cdc_on_srte_database.sql | c. 1004-enable_cdc_on_odse_tables.sql | d. 1005-enable_cdc_on_srte_tables.sql | . | . | b. Option 2: db_upgrade.bat file with --load-data flag run against the master database. | Script location: NEDSS-DataReporting/db-upgrade | upgrade_db.bat --load-data server_name master username password | . --Verify change data capture. is_cdc_enabled=1 indicates successful configuration. SELECT name, is_cdc_enabled FROM sys.databases; --View ODSE tables with CDC enabled. USE NBS_ODSE; SELECT name, case when is_tracked_by_cdc = 1 then 'YES' else 'NO' end as is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; -- View SRTE tables with CDC enabled USE NBS_SRTE; SELECT name, case when is_tracked_by_cdc = 1 then 'YES' else 'NO' end as is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; . | . Troubleshooting tip: After rdb_modern is restored, if the Change Data Capture is not producing data, run the following script: . -- Change DB owner after backup/restore USE NBS_ODSE; EXEC sp_changedbowner 'sa'; . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-service-users-and-database-objects",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-service-users-and-database-objects"
-  },"263": {
+  },"262": {
     "doc": "Real-time reporting (preview)",
     "title": "Ongoing database upgrades",
     "content": "After onboarding, future enhancements will be delivered using these two approaches. | Option 1: Execute Liquibase with the provided release tag. If Liquibase is the preferred method, please refer to steps in the Liquibase/liquibase section. | Option 2: Manually executing the scripts located under https://github.com/CDCgov/NEDSS-DataReporting/tree/main/liquibase-service/src/main/resources/stlt/manual_deployment. Onboarding scripts are excluded. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#ongoing-database-upgrades",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#ongoing-database-upgrades"
-  },"264": {
+  },"263": {
     "doc": "Real-time reporting (preview)",
     "title": "Deploy RTR services",
     "content": "Real Time Reporting services should be deployed in the following order: . | liquibase | debezium-connect | cp-kafka-connect-server | observation-reporting-service | person-reporting-service | organization-reporting-service | investigation-reporting-service | ldfdata-reporting-service | post-processing-reporting-service. | . Real Time Reporting services leverage Kubernetes secrets for accessing database credentials. Please refer to section Creating Kubernetes Secrets section.) for setting up secrets within the cluster. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-rtr-services",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-rtr-services"
-  },"265": {
+  },"264": {
     "doc": "Real-time reporting (preview)",
     "title": "Real-time reporting (preview)",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html"
-  },"266": {
+  },"265": {
     "doc": "Removal and cleanup",
     "title": "Removal and cleanup",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/removal-and-cleanup.html",
     
     "relUrl": "/docs/deploy-nbs7/removal-and-cleanup.html"
-  },"267": {
+  },"266": {
     "doc": "Java services",
     "title": "Real-Time Reporting (RTR) Java services",
     "content": ". | The helm chart for all RTR java services should be available under charts/rtr. | Validate the Kubernetes secret for the database credentials: . kubectl get secret/database-access -o yaml . a. Ensure that the secret contains the correct database username and password, kafka cluster, and other necessary configurations. If the secret does not exist, create it using the following command or by applying the provided YAML file (Make sure to replace the placeholders with actual values): Script location: NEDSS-DataReporting/create-kubernetes-secrets . kubectl apply -f k8-manifests/nbs-secrets.yaml . | Validate image repository: . global.image.repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/data-reporting-service\" . | Update any feature flag for each of the services: . | a. Please ensure PHCMartETL.bat is turned off before enabling updates to PublicHealthCaseFact datamart via RTR. featureFlag: investigation-reporting: phcDatamartEnable: '''true''' . | . | . 5.Install helm chart for all the RTR java services . helm install rtr . -f values.yaml . 6.Verify if pods are all running . kubectl get pods . Example Expected output: . NAME READY STATUS RESTARTS AGE rtr-java-services-investigation-reporting-&lt;hash&gt; 1/1 Running 0 2m6s rtr-java-services-ldfdata-reporting-&lt;hash&gt; 1/1 Running 0 2m6s rtr-java-services-observation-reporting-&lt;hash&gt; 1/1 Running 0 2m6s rtr-java-services-organization-reporting-&lt;hash&gt; 1/1 Running 0 2m6s rtr-java-services-person-reporting-&lt;hash&gt; 1/1 Running 0 2m6s rtr-java-services-post-processing-reporting-&lt;hash&gt; 1/1 Running 0 2m6s ``` 7.Validate services (on browser). The following services should be available at the specified URLs. Replace `&lt;exampledomain&gt;` with your actual domain. Replace `app.EXAMPLE_DOMAIN` with the URL of your modern app as shown in [Table](/NEDSS-SystemAdminGuide/docs/4_initial_kubernetes_deployment/2_nginx_ingress_deployment.html#deploy-nginx-ingress-controller-on-the-kubernetes-cluster) a. investigation-svc ```text https://data.&lt;exampledomain&gt;/reporting/investigation-svc/status Expected: Investigation Service Status OK . b. person-svc . https://data.&lt;exampledomain&gt;/reporting/person-svc/status Expected: Person Service Status OK . c. observation-svc . https://data.&lt;exampledomain&gt;/reporting/observation-svc/status Expected: Observation Service Status OK . d. organization-svc . https://data.&lt;exampledomain&gt;/reporting/organization-svc/status Expected: Organization Service Status OK . e. ldfdata-svc . https://data.&lt;exampledomain&gt;/reporting/ldfdata-svc/status Expected: LDFData Service Status OK . f. post-processing-svc . https://data.&lt;exampledomain&gt;/reporting/post-processing-svc/status Expected: Post Processing Service Status OK . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/rtr-java-services.html#real-time-reporting-rtr-java-services",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/rtr-java-services.html#real-time-reporting-rtr-java-services"
-  },"268": {
+  },"267": {
     "doc": "Java services",
     "title": "Java services",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/rtr-java-services.html",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/rtr-java-services.html"
-  },"269": {
+  },"268": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Component reference: Real-Time Reporting (RTR) add-on",
     "content": "For information on migration planning, staffing, and budget, see Operational considerations. RTR works alongside the legacy MasterETL batch process during transition, with the goal of eventually replacing it. The following components are added to your NBS 7 deployment when you choose to deploy the RTR add-on. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#component-reference-real-time-reporting-rtr-add-on",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#component-reference-real-time-reporting-rtr-add-on"
-  },"270": {
+  },"269": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "On this page",
     "content": ". | Debezium | Kafka and Kafka Connect | RTR domain services | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#on-this-page",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#on-this-page"
-  },"271": {
+  },"270": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Debezium",
     "content": "An open-source Change Data Capture (CDC) platform. | Attribute | Description | . | What it does in NBS 7 | Monitors the NBS database for changes in real time and streams those changes to Kafka as they occur. Debezium is the entry point for the RTR pipeline. Without it, downstream RTR components have no data to process. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Requires the NBS database (NBS_ODSE) as its source. Streams data to the Kafka cluster. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#debezium",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#debezium"
-  },"272": {
+  },"271": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Kafka and Kafka Connect",
     "content": "Apache Kafka is an open source event-streaming platform. Kafka Connect is the framework that moves data between Kafka and other systems. | Attribute | Description | . | What it does in NBS 7 | Acts as the message bus for the RTR pipeline. Kafka receives change events from Debezium and delivers them to the RTR domain services. Kafka Connect writes the processed output to RDB_Modern staging tables for post-processing and reporting. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Receives events from Debezium. Delivers messages to RTR domain services. Kafka Connect writes processed data to RDB_Modern. Requires sufficient cluster resources — Kafka is one of the more operationally demanding components in the RTR stack. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#kafka-and-kafka-connect",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#kafka-and-kafka-connect"
-  },"273": {
+  },"272": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "RTR domain services",
     "content": "A unified Spring Boot service that transforms streaming data from Kafka into reportable public health records. Previously implemented as five separate entity-specific services (investigation, person, observation, organization, and LDF data), these are being consolidated into a single reporting-pipeline-service application to reduce deployment complexity and operational overhead. | Attribute | Description | . | What it does in NBS 7 | Consumes Kafka messages for each entity type (investigations, patients, organizations, observations, and LDF data), runs stored procedures to retrieve and format the data, and produces processed records for downstream storage in RDB_Modern. A post-processing service then populates analytical datamarts and fact tables from the staging data. | . | When you need it | When your jurisdiction chooses NBS Core + RTR or NBS Complete. | . | Dependencies | Requires Kafka (message source) and NBS_ODSE (operational data store). Populates RDB_Modern staging tables, which are then consumed by the post-processing service. | . The five entity-specific RTR services (investigation-service, person-service, observation-service, organization-service, ldfdata-service) are being consolidated into a single reporting-pipeline-service as of early 2026. Check with your CDC NBS point of contact for the current deployment state. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#rtr-domain-services",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#rtr-domain-services"
-  },"274": {
+  },"273": {
     "doc": "Add-on: Real-Time Reporting (RTR)",
     "title": "Add-on: Real-Time Reporting (RTR)",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html"
-  },"275": {
+  },"274": {
     "doc": "Service integrations",
     "title": "Service integrations for data ingestion",
     "content": "To install Rhapsody or SFTP service integrations, see the following documents: . | Data Ingestion Rhapsody Route Integration.pdf | Data Ingestion SFTP Manual File Drop Off.pdf | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion"
-  },"276": {
+  },"275": {
     "doc": "Service integrations",
     "title": "Service integrations",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html"
-  },"277": {
+  },"276": {
     "doc": "Deploy cloud infrastructure",
     "title": "Deploy cloud infrastructure",
     "content": "NBS 7 is fully supported on AWS and Azure. This section covers provisioning the underlying cloud infrastructure (the virtual network, container runtime, and storage services) before you install Kubernetes services. NBS 7 is fully supported on both AWS and Azure. Both providers host the same NBS 7 Kubernetes workloads, and once infrastructure is provisioned, the Bootstrap Kubernetes services and microservices deployment steps are identical. The difference is only in how the underlying cloud environment is provisioned. Choose the guide that matches your cloud environment. | Deploy on AWS - Provision the AWS VPC, EKS cluster, and supporting services using Terraform. | Deploy on Azure - Provision the Azure virtual network, AKS cluster, and supporting services using Terraform. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/set-up-cloud-infrastructure.html",
     
     "relUrl": "/docs/deploy-nbs7/set-up-cloud-infrastructure.html"
-  },"278": {
+  },"277": {
     "doc": "Small jurisdiction, self-managed, AWS",
     "title": "Case study: Small jurisdiction, self-managed, AWS",
     "content": "Based on Montana’s deployment. Profile . Small STLT with limited IT staff and a cloud-first infrastructure strategy. The jurisdiction prioritized simplicity and maintainability over advanced features. Configuration . | Setting | Value | . | Tier | NBS Core only | . | Hosting | AWS, STLT-managed | . | Middleware | No third-party middleware | . What was deployed . | Component | Included | Notes | . | NBS Core | Yes | Full core deployment | . | Real-Time Reporting (RTR) | No | Not required at this case volume | . | DI API | No | No existing high-volume ELR or eCR intake | . Key configuration decisions . | [Placeholder: specific AWS configuration choices, e.g. EKS node sizing, VPC setup] | [Placeholder: any components skipped within NBS Core and rationale] | [Placeholder: identity provider integration approach] | . Lessons learned . | [Placeholder: what worked well] | [Placeholder: challenges encountered] | [Placeholder: what this jurisdiction would do differently] | . Might apply to jurisdictions that have a small IT team, limited cloud experience, or a goal to get NBS 7 running with minimal complexity before adding advanced features. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/deployment-scenarios/small-jurisdiction.html#case-study-small-jurisdiction-self-managed-aws",
     
     "relUrl": "/docs/before-you-deploy/deployment-scenarios/small-jurisdiction.html#case-study-small-jurisdiction-self-managed-aws"
-  },"279": {
+  },"278": {
     "doc": "Small jurisdiction, self-managed, AWS",
     "title": "Small jurisdiction, self-managed, AWS",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/deployment-scenarios/small-jurisdiction.html",
     
     "relUrl": "/docs/before-you-deploy/deployment-scenarios/small-jurisdiction.html"
-  },"280": {
+  },"279": {
     "doc": "Smoke test",
     "title": "Smoke test for data ingestion",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion"
-  },"281": {
+  },"280": {
     "doc": "Smoke test",
     "title": "On this page",
     "content": ". | Overview | Prerequisite | Scope | Run Data Ingestion Smoke Test | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page"
-  },"282": {
+  },"281": {
     "doc": "Smoke test",
     "title": "Overview",
     "content": "The Data Ingestion service is integrated with the Keycloak server to authenticate the DI service’s public API endpoints. As the Client Credentials Grant type flow is used for authentication in the DI Service, we require the Client Id and Client Secret values to create the JWT token and make API calls. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview"
-  },"283": {
+  },"282": {
     "doc": "Smoke test",
     "title": "Prerequisite",
     "content": ". | Keycloak server and the necessary configurations are setup. | Installation of Postman application to test the end to end flow. | If you already have postman application in your system, skip this step. | Visit the official Postman website at www.postman.com and navigate to the Downloads section Download Postman | Click on the link to download the version appropriate for your OS. Once the download is complete open and install it accordingly. | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisite",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisite"
-  },"284": {
+  },"283": {
     "doc": "Smoke test",
     "title": "Scope",
     "content": ". | Only ELR Data that are HL7 messages with ORU RO1 Data type are in scope. | Only HL7 messages with versions 2.3.1 and 2.5.1 are in scope. | The DI service supports the transmit of HL7 messages with FHS header segments. | . Note: Posting the same HL7 message more than once is allowed, but be aware that due to a duplicate check, the validation will fail within the Data Ingestion system. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope"
-  },"285": {
+  },"284": {
     "doc": "Smoke test",
     "title": "Run Data Ingestion Smoke Test",
     "content": "Open Postman application and click on import option. A pop up window shows up and then select New-Data-Ingestion.postman_collection.json file included in the release package and click on open to load Data Ingestion collection that has all API’s related to the Data Ingestion service. Step 1: Token Generation API . Click on the Token Generation API in New-Data-Ingestion Postman collection. Update the clientid and clientsecret values and then click Send to generate a new token. Note: Tokens expire after 1 hour. They must be regenerated using the same token endpoint after 1 hour or when they expire in order to make DI Service API calls. Step 2: Ingesting Data API . Click on Ingesting Data API in New-Data-Ingestionpostman collection and then click on Authorization tab and select ‘Bearer Token’ as Type. Paste the token that was generated via Token Generation API in previous step into the token text box. Click on the Headers section and enter the values within the clientid and clientsecret headers. A sample HL7 message has already been added to the request body section. Click on Send button. UUID is displayed as a response. Please save this UUID which is useful to determine the status of the HL7 message. Note: Give 10-20 seconds before checking the status of Ingested Data API in Classic NBS as it takes few seconds to generate an XML record into the NBS_Interface table after we post the HL7 message. Step 3: Checking detailed status of Ingested Data API in Classic NBS . Click on the Checking Status of Ingested Data API in New-Data-Ingestionpostman collection and then click on Authorization tab. Paste the token that was generated via Token Generation API into the token text box. Click on the Headers section and enter the values within the clientid and clientsecret headers. Within the API URL, append the UUID generated as part of the response from the Ingesting Data API. Click on Send button. By Default, all the status goes to QUEUED status. The Classic Wildfly scheduler runs the batch job and processes this record. Currently, the scheduler is set to pick up and process the records every 2 minutes. So please wait for roughly 2 minutes and then click on Send button again. This time, the status should be changed to Success. The below API provides the ELR Ingestion status: . This concludes the smoke test where the user posted the HL7 message via Data ingestion service which validated the incoming data. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test"
-  },"286": {
+  },"285": {
     "doc": "Smoke test",
     "title": "Smoke test",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html"
-  },"287": {
+  },"286": {
     "doc": "SQL Server configuration",
     "title": "SQL Server configuration",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/sql-server-configuration.html",
     
     "relUrl": "/docs/maintain-nbs7/sql-server-configuration.html"
-  },"288": {
+  },"287": {
     "doc": "SQL Server configuration",
     "title": "On this page",
     "content": ". | Enabling Verbose Truncation Warnings | Verifying Trace Flag Status | Benefits for NBS Operations | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/sql-server-configuration.html#on-this-page",
     
     "relUrl": "/docs/maintain-nbs7/sql-server-configuration.html#on-this-page"
-  },"289": {
+  },"288": {
     "doc": "SQL Server configuration",
     "title": "Enabling Verbose Truncation Warnings",
     "content": "SQL Server Trace Flag 460 provides detailed error messages when string or binary data truncation occurs. This is particularly useful for diagnosing data truncation errors when saving investigations in NBS, as it includes column names and data types in error messages rather than generic truncation warnings. For more information, see the Microsoft SQL Server documentation on VERBOSE_TRUNCATION_WARNINGS. Method 1: Enable at SQL Server Startup (Persistent) . To enable Trace Flag 460 permanently across SQL Server restarts: . | Open SQL Server Configuration Manager | Navigate to SQL Server Services | Right-click on your SQL Server instance and select Properties | Go to the Startup Parameters tab | Add the parameter: -T460 | Click Add then Apply | Restart the SQL Server service for the change to take effect | . Method 2: Enable on Running Instance (No Restart Required) . To enable Trace Flag 460 on a live SQL Server instance without restarting: . -- Enable trace flag 460 globally for all connections DBCC TRACEON(460, -1); . Note: This method enables the trace flag immediately but it will be disabled when SQL Server restarts. For persistent configuration across restarts, use Method 1. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/sql-server-configuration.html#enabling-verbose-truncation-warnings",
     
     "relUrl": "/docs/maintain-nbs7/sql-server-configuration.html#enabling-verbose-truncation-warnings"
-  },"290": {
+  },"289": {
     "doc": "SQL Server configuration",
     "title": "Verifying Trace Flag Status",
     "content": "To verify that Trace Flag 460 is enabled: . -- Check if trace flag 460 is enabled DBCC TRACESTATUS(460); . Expected output when enabled: . TraceFlag Status Global Session 460 1 1 0 . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/sql-server-configuration.html#verifying-trace-flag-status",
     
     "relUrl": "/docs/maintain-nbs7/sql-server-configuration.html#verifying-trace-flag-status"
-  },"291": {
+  },"290": {
     "doc": "SQL Server configuration",
     "title": "Benefits for NBS Operations",
     "content": "When Trace Flag 460 is enabled, truncation errors will provide detailed information such as: . | The specific column name where truncation occurred | The data type and size of the column | The actual length of the data being inserted | . This detailed information significantly reduces troubleshooting time when diagnosing data integrity issues during investigation saves or other database operations in NBS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/sql-server-configuration.html#benefits-for-nbs-operations",
     
     "relUrl": "/docs/maintain-nbs7/sql-server-configuration.html#benefits-for-nbs-operations"
-  },"292": {
+  },"291": {
     "doc": "Support",
     "title": "Support",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/support.html",
     
     "relUrl": "/docs/deploy-nbs7/support.html"
-  },"293": {
+  },"292": {
     "doc": "Validate deployment",
     "title": "Validate the deployment",
     "content": "This phase confirms that your NBS 7 environment is functioning correctly before you go live. Run smoke tests, inspect monitoring and admin interfaces, and complete the cutover checklist. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validate-the-deployment",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validate-the-deployment"
-  },"294": {
+  },"293": {
     "doc": "Validate deployment",
     "title": "Validate deployment",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html"
-  },"295": {
+  },"294": {
     "doc": "Validate API endpoints",
     "title": "Validate API endpoints",
     "content": "Use this check to confirm that your environment can reach the Data Sync API before you sync data. In production, the Data Sync service calls these endpoints. System administrators still need to validate connectivity and credentials during setup. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html"
-  },"296": {
+  },"295": {
     "doc": "Validate API endpoints",
     "title": "On this page",
     "content": ". | Validate token generation in Postman | Validate service endpoints in Swagger | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page"
-  },"297": {
+  },"296": {
     "doc": "Validate API endpoints",
     "title": "Validate token generation in Postman",
     "content": "The token endpoint returns a JWT token that clients use to access secured Data Sync endpoints. Endpoint: https://data.&lt;your-site&gt;.&lt;your-domain&gt;.com/data-sync/api/auth/token . Prerequisite: The STLT administrator must create values for clientid and clientsecret. HTTP method: POST . Authorization type: NONE . | Open Postman and send a POST request to the token endpoint. | Add two request headers: . | clientid | clientsecret | . | . | Select Send. | Confirm that the response status is 200 OK and that a JWT token returns. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman"
-  },"298": {
+  },"297": {
     "doc": "Validate API endpoints",
     "title": "Validate service endpoints in Swagger",
     "content": "After token generation succeeds, validate the service endpoints in Swagger: . https://&lt;host&gt;/data-sync/swagger-ui/index.html . Use Postman for endpoint validation. You can also use Swagger to inspect and test endpoints. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger"
-  },"299": {
+  },"298": {
     "doc": "Vendor-managed deployment",
     "title": "Vendor-managed deployment",
     "content": "If you plan to use a vendor to host or maintain NBS 7, confirm that they can: . | Deploy Kubernetes-based applications on AWS or Azure | Manage Terraform-based infrastructure provisioning | Support ongoing cloud infrastructure operations, including monitoring and incident response | . NBS 7 is a recent system with limited deployment history. Do not expect vendors to have direct NBS 7 experience. Evaluate vendors on their Kubernetes and cloud infrastructure expertise instead. You can share the component reference section of this guide with vendors to help them scope the work accurately. Share the following with your vendor before scoping work: . | The component reference section of this guide | The NBS 7 Migration Info Sheet (available from CDC) | Your current NBS 6 hosting setup and data volumes | . Then: . | Contact nbs@cdc.gov to let CDC know you are planning a vendor-managed deployment and to access vendor coordination resources. | Work with your vendor to complete steps 4–8 of the decision tree to identify your recommended configuration tier. | Return to the component reference for the configuration parameters your vendor will need. | . Vendors with Kubernetes and cloud infrastructure expertise can deploy NBS 7, but they will need detailed technical guidance from CDC and from this guide to do it accurately. Plan for a close working relationship between your vendor and the CDC NBS team, especially during initial deployment. Also plan for the funding needed to sustain vendor support beyond initial deployment. Ongoing maintenance costs are a common planning gap. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/vendor-managed-deployment.html",
     
     "relUrl": "/docs/before-you-deploy/choose-your-configuration/vendor-managed-deployment.html"
-  },"300": {
+  },"299": {
     "doc": "Web UI Smoke Test (Scripted)",
     "title": "Web UI Smoke Test (Scripted)",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html"
-  },"301": {
+  },"300": {
     "doc": "Web UI Smoke Test (Scripted)",
     "title": "On this page",
     "content": ". | USAGE | . nbs-test-webui.sh script is included in the infrastructure zip file (scripts/observability/nbs-test-webui) . It will: . | login | save all needed tokens | navigate to advanced search | search for all female patients and check count | if count is 0, note error; if greater than zero, good! | . It is a bash script that can be run via CloudShell if NBS is hosted in AWS or by any system with bash installed. Curl is the only other dependency. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page"
-  },"302": {
+  },"301": {
     "doc": "Web UI Smoke Test (Scripted)",
     "title": "USAGE",
     "content": "nbs-test-webui.sh [-h] [-?] [-d] [-D] [-P] [-H BASE_HOST] [-U USER ] [-c count ] . e.g./nbs-test-webui.sh -d -H http://app.&lt;your-site&gt;.&lt;your-domain&gt;.com -U exampleuser . | Flag | Description | . | -h | will echo usage | . | -? | will echo usage | . | -d | will turn on debugging | . | -D | will turn on debugging | . | -P | will prompt at each step | . | -H | base host for hitting webui | . | -B | baseurl url for hitting API | . | -U | user in the database with access to create and delete patients | . | -c | count number of iterations, default is 1 | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#usage",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#usage"
-  },"303": {
+  },"302": {
     "doc": "Wildfly server",
     "title": "WildFly server configuration",
     "content": "Configure the Windows Task Scheduler on your NBS 6 WildFly server to run the ELR Importer batch process. | Connect to the NBS 6 Windows server using a remote desktop client such as Microsoft Remote Desktop. You will need the server’s hostname or IP address, username, and password. | Follow the Windows Task Scheduler for ELR Importer (PDF) guide to create and configure the scheduled task. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
-  },"304": {
+  },"303": {
     "doc": "Wildfly server",
     "title": "Wildfly server",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html"
-  },"305": {
+  },"304": {
     "doc": "Xml Hl7 parser",
     "title": "On this page",
     "content": ". | Xml Hl7 Parser Service | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/xml-hl7-parser.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/xml-hl7-parser.html#on-this-page"
-  },"306": {
+  },"305": {
     "doc": "Xml Hl7 parser",
     "title": "Xml Hl7 Parser Service",
     "content": ". | Helm chart can be found under chart/xml-hl7-parser-service | Validate the image tag . image: repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/nnd-case-notification-service/xml-hl7-parser-service\" pullPolicy: IfNotPresent tag: &lt;release-version-tag&gt; e.g v1.0.1 . | Update the jdbc configurations . ingressHost: \"data.EXAMPLE_DOMAIN\" jdbc: dbserver: \"EXAMPLE_DB_ENDPOINT\" username: \"EXAMPLE_ODSE_DB_USER\" password: \"EXAMPLE_ODSE_DB_USER_PASSWORD\" authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . | Install Pod . helm install xml-hl7-parser-service -f ./xml-hl7-parser-service/values.yaml xml-hl7-parser-service . | Verify Pod . kubectl get pods . | Validate the service . https://&lt;data.EXAMPLE_DOMAIN&gt;/hl7-parser/actuator/info https://&lt;data.EXAMPLE_DOMAIN&gt;/hl7-parser/actuator/health . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/xml-hl7-parser.html#xml-hl7-parser-service",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/xml-hl7-parser.html#xml-hl7-parser-service"
-  },"307": {
+  },"306": {
     "doc": "Xml Hl7 parser",
     "title": "Xml Hl7 parser",
     "content": " ",
