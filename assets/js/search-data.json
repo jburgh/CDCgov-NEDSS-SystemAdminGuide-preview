@@ -421,7 +421,7 @@
   },"60": {
     "doc": "Choose your configuration",
     "title": "Add-on: Data Ingestion (DI) API",
-    "content": "The DI API is an optional add-on that provides a built-in data transit layer. It accepts incoming public health data in multiple formats and routes it into NBS without requiring third-party middleware. For details, see Add-on: Data Ingestion (DI) API. Best for . Jurisdictions that do not currently use Rhapsody or Mirth Connect for data ingestion, and want a built-in path for getting data into NBS 7. ",
+    "content": "The DI API is an optional add-on that provides a built-in data transit layer. It provides a REST API interface for writing data to NBS, acting as a secure intermediary between your middleware and the database. | Integration Method | Rationale | . | Direct SQL Write | Standard for jurisdictions where middleware (Rhapsody) can access the database network directly. | . | DI API | Used when security policies prohibit direct database access from third-party tools or when middleware cannot be co-located with NBS. | . The DI API is not a replacement for middleware. An integration engine like Rhapsody is still required to preprocess and format data before it is sent to the DI API. For details, see Add-on: Data Ingestion (DI) API. Best for . Jurisdictions with security constraints that prevent third-party tools from writing directly to the network or database. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration.html#add-on-data-ingestion-di-api",
     
     "relUrl": "/docs/before-you-deploy/choose-your-configuration.html#add-on-data-ingestion-di-api"
@@ -652,7 +652,7 @@
   },"93": {
     "doc": "Decision tree",
     "title": "On this page",
-    "content": ". | Step 1: Hosting model | Step 2: State IT security approval | Step 3: Internal technical capacity | Step 3a: External assistance | Step 4: Current NBS 6 hosting | Step 5: Reporting needs | Step 6a: Data intake needs (real-time reporting path) | Step 6b: Data intake needs (batch reporting path) | Next steps: Estimate infrastructure costs | . The decision tree identifies a potential starting point, not a final answer. CDC provides free pre-deployment consultation to help jurisdictions validate their configuration choice. Connect with the CDC NBS team at nbs@cdc.gov before you begin deployment. ",
+    "content": ". | Step 1: Hosting model | Step 2: State IT security approval | Step 3: Internal technical capacity | Step 3a: External assistance | Step 4: Current NBS 6 hosting | Step 5: Reporting needs | Step 6a: Database access requirements (real-time reporting path) | Step 6b: Database access requirements (legacy batch reporting path) | Next steps: Estimate infrastructure costs | . The decision tree identifies a potential starting point, not a final answer. CDC provides free pre-deployment consultation to help jurisdictions validate their configuration choice. Connect with the CDC NBS team at nbs@cdc.gov before you begin deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#on-this-page",
     
     "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#on-this-page"
@@ -687,7 +687,7 @@
   },"98": {
     "doc": "Decision tree",
     "title": "Step 4: Current NBS 6 hosting",
-    "content": "Where does your NBS 6 currently run? . | Already on AWS or Azure → Staying on the same provider avoids additional procurement and approval steps. Go to Step 5. | On-premises → Your migration includes a cloud migration as well as an NBS 7 deployment. Plan for additional time and resources. Go to Step 5. | . For more information, see Your cloud provider depends on your existing environment on the Operational Considerations page. ",
+    "content": "Where does your NBS 6 currently run? . | Already on AWS or Azure → Staying on the same provider avoids additional procurement and approval steps. Go to Step 5. | On-premises → Your migration includes a cloud migration as well as an NBS 7 deployment. Plan for additional time and resources. Go to Step 5. | . This step is informational and does not impact your suggested deployment configuration. For more information, see Your cloud provider depends on your existing environment on the Operational Considerations page. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-4-current-nbs-6-hosting",
     
     "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-4-current-nbs-6-hosting"
@@ -700,18 +700,18 @@
     "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-5-reporting-needs"
   },"100": {
     "doc": "Decision tree",
-    "title": "Step 6a: Data intake needs (real-time reporting path)",
-    "content": "Does your jurisdiction receive high volumes of electronic lab reports (ELRs) or electronic case reports (eCRs)? . | Yes → Suggested starting point: NBS 7 + RTR + DI API add-ons. | No → Suggested starting point: NBS 7 + RTR add-on. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6a-data-intake-needs-real-time-reporting-path",
+    "title": "Step 6a: Database access requirements (real-time reporting path)",
+    "content": "Some jurisdictions have security policies that prohibit third-party tools from writing directly to the database or require an intermediary layer when middleware and the database cannot be co-located. Does your jurisdiction require an API layer to abstract database access? . | Yes → Suggested starting point: NBS 7 + RTR + DI API add-ons. | No → Suggested starting point: NBS 7 + RTR add-on. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6a-database-access-requirements-real-time-reporting-path",
     
-    "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6a-data-intake-needs-real-time-reporting-path"
+    "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6a-database-access-requirements-real-time-reporting-path"
   },"101": {
     "doc": "Decision tree",
-    "title": "Step 6b: Data intake needs (batch reporting path)",
-    "content": "Does your jurisdiction receive high volumes of electronic lab reports (ELRs) or electronic case reports (eCRs)? . | Yes → Suggested starting point: NBS 7 + DI API add-on. | No → Suggested starting point: NBS 7 (no add-ons). | . The Data Ingestion (DI) API does not replace middleware such as Rhapsody or Mirth Connect. For more information, see The Data Ingestion API adds a secure integration option on the Operational Considerations page. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6b-data-intake-needs-batch-reporting-path",
+    "title": "Step 6b: Database access requirements (legacy batch reporting path)",
+    "content": "Some jurisdictions have security policies that prohibit third-party tools from writing directly to the database or require an intermediary layer when middleware and the database cannot be co-located. Does your jurisdiction require an API layer to abstract database access? . | Yes → Suggested starting point: NBS 7 + DI API add-on. | No → Suggested starting point: NBS 7 (no add-ons). | . The Data Ingestion (DI) API does not replace middleware such as Rhapsody or Mirth Connect. For more information, see The Data Ingestion API adds a secure integration option on the Operational Considerations page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6b-database-access-requirements-legacy-batch-reporting-path",
     
-    "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6b-data-intake-needs-batch-reporting-path"
+    "relUrl": "/docs/before-you-deploy/choose-your-configuration/decision-tree.html#step-6b-database-access-requirements-legacy-batch-reporting-path"
   },"102": {
     "doc": "Decision tree",
     "title": "Next steps: Estimate infrastructure costs",
