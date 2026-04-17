@@ -666,7 +666,7 @@
   },"95": {
     "doc": "Introduction",
     "title": "Revision history",
-    "content": "| Date | Description | Author | . | April 17, 2026 | Full site restructure | Jill Shaheen, Skylight Digital | . | August 19, 2025 | 7.11.0 Minor Release | Anand Logan, Upasana Pattnaik, Kashyap Ramakur, Aaron Chapman, Duc Nguyen, Chuck Moss, Serban Zamfir | . ",
+    "content": "| Date | Description | Author | . | April 17, 2026 | Full site restructure | Jill Shaheen (Skylight Digital) | . | August 19, 2025 | 7.11.0 Minor Release | Anand Logan, Upasana Pattnaik, Kashyap Ramakur, Aaron Chapman, Duc Nguyen, Chuck Moss, Serban Zamfir | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/#revision-history",
     
     "relUrl": "/#revision-history"
