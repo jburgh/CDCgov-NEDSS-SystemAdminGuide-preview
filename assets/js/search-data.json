@@ -568,7 +568,7 @@
   },"81": {
     "doc": "Elasticsearch",
     "title": "Deploy Elasticsearch using Helm",
-    "content": ". | Locate the Helm chart at charts/elasticsearch-efs. | Set efsFileSystemId in values.yaml to the EFS file system ID from the AWS console. | Set the image repository and tag: . image: repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/elasticsearch\" tag: &lt;release-version-tag&gt; # for example, v1.0.1 . | Install Elasticsearch: . helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs . | Confirm the pod is running before proceeding to the next deployment: . kubectl get pods . If the pod is still creating or in any other state, wait and troubleshoot before continuing. | . ",
+    "content": ". | Locate the Helm chart at charts/elasticsearch-efs. | Set efsFileSystemId in values.yaml to the EFS file system ID from the AWS console. | Set the image repository and tag: . image: repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/elasticsearch\" tag: &lt;release-version-tag&gt; // for example, v1.0.2 . | Install Elasticsearch: . helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs . | Confirm the pod is running before proceeding to the next deployment: . kubectl get pods . If the pod is still creating or in any other state, wait and troubleshoot before continuing. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/elasticsearch.html#deploy-elasticsearch-using-helm",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/elasticsearch.html#deploy-elasticsearch-using-helm"
