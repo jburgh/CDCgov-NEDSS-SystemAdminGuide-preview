@@ -7933,4 +7933,18 @@ blockquote.warning-title > p:last-child {
   font-weight: bold;
 }
 
+.version-banner {
+  padding: 0.35rem 1.5rem;
+  font-size: 0.75rem;
+  color: #5c5962;
+  background-color: #27262b;
+  border-bottom: 1px solid #44434d;
+}
+
+.version-banner--archived {
+  background-color: #fdf3cd;
+  color: #7a5c00;
+  border-bottom-color: #f0d060;
+}
+
 /*# sourceMappingURL=just-the-docs-dark.css.map */
