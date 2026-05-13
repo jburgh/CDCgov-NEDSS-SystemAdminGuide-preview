@@ -28,95 +28,95 @@
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/api-smoke-test.html"
   },"4": {
     "doc": "API testing",
-    "title": "API testing for data ingestion",
-    "content": "For data ingestion-related diagnostics and troubleshooting, see the Data Ingestion API Testing (PDF) guide. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html#api-testing-for-data-ingestion",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html#api-testing-for-data-ingestion"
-  },"5": {
-    "doc": "API testing",
-    "title": "API testing",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html"
-  },"6": {
-    "doc": "API testing",
     "title": "Test and integrate case notification APIs",
     "content": "Use this page to validate ingress, PHIMNS property configuration, and supporting dependencies for case notification services. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis"
-  },"7": {
+  },"5": {
     "doc": "API testing",
     "title": "On this page",
     "content": ". | Ingress setup | PHIMNS properties | Additional notes and troubleshooting | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page"
-  },"8": {
+  },"6": {
     "doc": "API testing",
     "title": "Ingress setup",
     "content": ". | Each notification service uses the same Data Ingestion ingress. Reuse the existing setup as needed. | Data Extraction: NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm . | Case Notification: NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm . | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#ingress-setup",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#ingress-setup"
-  },"9": {
+  },"7": {
     "doc": "API testing",
     "title": "PHIMNS properties",
     "content": ". | For services to be fully functional, STLT partners must provide CDC their PHIMS properties. This ensures data in the TransportQ_Out table is updated correctly when processed by CDC Case Notification. These values can be pulled from the existing NND Rhapsody route Variable Manager at the STLT level. | Required . | nbs_certificate_url: STLTs commonly keep this value hardcoded in the Rhapsody Variable Manager. | . | Optional: Some STLTs may have or need these: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Once STLT values are provided, CDC should update the existing configuration in the case notification config table: . | Table Name: NBS_Case_Notification_Config | Update record where config name is: NON_STD_CASE_NOTIFICATION | Update value: Match STLT-provided values to the corresponding columns in the config table. | Update Script - DB: NBS_MSGOUTE . UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_encryption = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_route = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_signature = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_address= 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_base_dn= 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_public_key_dn = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_recipient = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED', phin_priority = 'REPLACE WITH VALUE, REMOVE IF NON IS PROVIDED' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#phimns-properties",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#phimns-properties"
-  },"10": {
+  },"8": {
     "doc": "API testing",
     "title": "Additional notes and troubleshooting",
     "content": "Case notification environment variables . | Case-Notification-Service . | NEDSS-NNDSS-Case-Notifications/README.md at v7.12.0 · CDCgov/NEDSS-NNDSS-Case-Notifications | NEDSS-Helm/charts/case-notification-service/templates/deployment.yaml at v7.12.0 · CDCgov/NEDSS-Helm | . | Data-Extraction-Service . | NEDSS-NNDSS-Case-Notifications/README.md at v7.12.0 · CDCgov/NEDSS-NNDSS-Case-Notifications | NEDSS-Helm/charts/data-extraction-service/templates/deployment.yaml at v7.12.0 · CDCgov/NEDSS-Helm | . | . Case notification Liquibase . | Case Notification includes a built-in Liquibase integration that automatically applies database changes during deployment. | DB changes detail can be reviewed here: . | NEDSS-NNDSS-Case-Notifications/case-notification-service/src/main/resources/db at v7.12.0 · CDCgov/NEDSS-NNDSS-Case-Notifications | See Deploy Data Ingestion using Helm for Data Ingestion deployment guidance. | . | . Liquibase DB change verification . | To verify database changes were applied, first ensure the case notification container is stable and running. Because the container manages Liquibase, it will not start if Liquibase fails. | If Liquibase fails, the DI pod will be unstable, and specific errors can be found in container logs. | . Kafka . | Use either one of the two Kafka broker endpoints (Private endpoints - Plaintext) in the Helm values file. | Deploy the required Debezium Source Connector on NBS_ODSE..CN_TranportQ_Out before deploying the services. | . Details: NEDSS-Helm/charts/debezium/values.yaml at v7.12.0 · CDCgov/NEDSS-Helm . Additional case notification technical documentation . Technical Document . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#additional-notes-and-troubleshooting",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#additional-notes-and-troubleshooting"
-  },"11": {
+  },"9": {
     "doc": "API testing",
     "title": "API testing",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html"
-  },"12": {
+  },"10": {
     "doc": "API testing and integration",
     "title": "Test RTI API integration for Data Processing",
     "content": "Use this page to validate Real Time Ingestion (RTI) by sending ELR data through the Data Ingestion endpoint and verifying RTI processing outcomes. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing"
-  },"13": {
+  },"11": {
     "doc": "API testing and integration",
     "title": "On this page",
     "content": ". | Run the integration test | Validate ingestion and RTI processing status | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page"
-  },"14": {
+  },"12": {
     "doc": "API testing and integration",
     "title": "Run the integration test",
     "content": ". | Follow the Data Ingestion API testing guide to submit ELR payloads. | Add the version request header in the ELR ingestion API call: . | version: 1 uses the legacy batch importer flow. | version: 2 bypasses the legacy batch importer and triggers RTI. | . For RTI testing, this header is the only required API change. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test"
-  },"15": {
+  },"13": {
     "doc": "API testing and integration",
     "title": "Validate ingestion and RTI processing status",
     "content": "Use the DI status endpoint to verify processing status after submission. | Legacy flow status values in NBS_Interface: QUEUED, FAILED, SUCESS. | RTI flow status values in NBS_Interface: RTI_QUEUED, RTI_FAILURE, RTI_SUCESS_STEP_N. | . RTI processing can complete in three status steps: . | RTI_SUCESS_STEP_1: Data passed through core processing and should be available in the ODSE database. | RTI_SUCESS_STEP_2: Applies when a WDS algorithm is configured; the service runs WDS comparison. | RTI_SUCESS_STEP_3: Triggered after WDS completes; the service assigns the appropriate action for the ingested payload. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status"
-  },"16": {
+  },"14": {
     "doc": "API testing and integration",
     "title": "API testing and integration",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html"
+  },"15": {
+    "doc": "API testing",
+    "title": "API testing for data ingestion",
+    "content": "For data ingestion-related diagnostics and troubleshooting, see the Data Ingestion API Testing (PDF) guide. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/api-testing.html#api-testing-for-data-ingestion",
+    
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/api-testing.html#api-testing-for-data-ingestion"
+  },"16": {
+    "doc": "API testing",
+    "title": "API testing",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/api-testing.html",
+    
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/api-testing.html"
   },"17": {
     "doc": "Architecture overview",
     "title": "NBS 7 architecture and microservices",
@@ -559,40 +559,40 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/data-extraction.html"
   },"80": {
-    "doc": "Data ingestion",
-    "title": "Deploy the Data Ingestion service for NBS 7",
-    "content": "This page walks through deploying the Data Ingestion service, including database setup and Helm chart installation. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#deploy-the-data-ingestion-service-for-nbs-7",
+    "doc": "Deploy data ingestion service (DI API)",
+    "title": "Deploy data ingestion service (DI API) for NBS 7",
+    "content": "This page walks through deploying the DI API, including database setup and Helm chart installation. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/data-ingestion.html#deploy-data-ingestion-service-di-api-for-nbs-7",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#deploy-the-data-ingestion-service-for-nbs-7"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/data-ingestion.html#deploy-data-ingestion-service-di-api-for-nbs-7"
   },"81": {
-    "doc": "Data ingestion",
+    "doc": "Deploy data ingestion service (DI API)",
     "title": "On this page",
     "content": ". | Before you begin | Deploy Data Ingestion using Helm | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#on-this-page",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/data-ingestion.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/data-ingestion.html#on-this-page"
   },"82": {
-    "doc": "Data ingestion",
+    "doc": "Deploy data ingestion service (DI API)",
     "title": "Before you begin",
-    "content": "The DataIngestion service utilizes three databases: NBS_Msgoute, NBS_ODSE and NBS_DataIngest. NBS_DataIngest is a new database essential for ingesting, validating Electronic Lab Reports (ELR), converting them into XML payloads, and integrating these XMLs into the NBS_MSGOUT database. It must be created before deploying the app on the Amazon EKS cluster. Create the NBS_DataIngest database . Run the following SQL scripts before deploying the Data Ingestion service. | Create the database: . IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest') BEGIN CREATE DATABASE NBS_DataIngest END GO USE NBS_DataIngest GO . | Grant permissions for the nbs_ods user: . USE [NBS_DataIngest] GO CREATE USER [nbs_ods] FOR LOGIN [nbs_ods] GO USE [NBS_DataIngest] GO ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo] GO USE [NBS_DataIngest] GO ALTER ROLE [db_owner] ADD MEMBER [nbs_ods] GO . | . Liquibase . | Data Ingestion includes a built-in Liquibase integration that automatically applies database schema changes on deployment. | DB changes detail can be reviewed here: NEDSS-DataIngestion/data-ingestion-service/src/main/resources/db at v7.12.0 · CDCgov/NEDSS-DataIngestion | See Deploy Data Ingestion using Helm for deployment steps. | . Liquibase DB change verification . | To verify whether the database changes were applied, first ensure the DI container is stable and running; since the container manages Liquibase, it won’t start if Liquibase fails. | If there is failure by Liquibase, the DI pod will be unstable, and specific error can be found within the container log. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#before-you-begin",
+    "content": "The DI API utilizes three databases: NBS_Msgoute, NBS_ODSE and NBS_DataIngest. NBS_DataIngest is a new database essential for ingesting, validating Electronic Lab Reports (ELR), converting them into XML payloads, and integrating these XMLs into the NBS_MSGOUT database. It must be created before deploying the app on the Amazon EKS cluster. Create the NBS_DataIngest database . Run the following SQL scripts before deploying the Data Ingestion service. | Create the database: . IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest') BEGIN CREATE DATABASE NBS_DataIngest END GO USE NBS_DataIngest GO . | Grant permissions for the nbs_ods user: . USE [NBS_DataIngest] GO CREATE USER [nbs_ods] FOR LOGIN [nbs_ods] GO USE [NBS_DataIngest] GO ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo] GO USE [NBS_DataIngest] GO ALTER ROLE [db_owner] ADD MEMBER [nbs_ods] GO . | . Liquibase . | Data Ingestion includes a built-in Liquibase integration that automatically applies database schema changes on deployment. | DB changes detail can be reviewed here: NEDSS-DataIngestion/data-ingestion-service/src/main/resources/db at v7.12.0 · CDCgov/NEDSS-DataIngestion | See Deploy Data Ingestion using Helm for deployment steps. | . Liquibase DB change verification . | To verify whether the database changes were applied, first ensure the DI container is stable and running; since the container manages Liquibase, it won’t start if Liquibase fails. | If there is failure by Liquibase, the DI pod will be unstable, and specific error can be found within the container log. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/data-ingestion.html#before-you-begin",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#before-you-begin"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/data-ingestion.html#before-you-begin"
   },"83": {
-    "doc": "Data ingestion",
+    "doc": "Deploy data ingestion service (DI API)",
     "title": "Deploy Data Ingestion using Helm",
     "content": ". | Locate the Data Ingestion Service Helm chart in the NEDSS-Helm repository. Set the ECR repository, ECR image tag, database server endpoints, MSK (Kafka) bootstrap server, and ingress host values in values.yaml. | Confirm that DNS entries for the following host were created and point to the Network Load Balancer (NLB) in front of your Kubernetes cluster (this must be the ACTIVE NLB provisioned in the base install steps). Make this change in your authoritative DNS service (for example, Route 53). Replace EXAMPLE_DOMAIN with your domain name in values.yaml. See the Deploy Traefik ingress controller for reference. DataIngestion service application: data.site_name.example_domain.com | Set the image repository and tag: . image: repository: \"quay.io/us-cdcgov/cdc-nbs-modernization/data-ingestion-service\" pullPolicy: IfNotPresent tag: &lt;release-version-tag&gt; # for example, v1.0.1 . | To enable RTR ingress, set reportingService.enabled to \"true\". Set it to \"false\" if RTR services are not used: . reportingService: enabled: \"true\" . | Set the JDBC connection values. NBS_DataIngest is the newly created database for the Data Ingestion service. NBS_MSGOUTE and NBS_ODSE are existing NBS databases. The dbserver value is the database server endpoint only; do not include the port number. jdbc: dbserver: \"EXAMPLE_DB_ENDPOINT\" username: \"EXAMPLE_ODSE_DB_USER\" password: \"EXAMPLE_ODSE_DB_USER_PASSWORD\" . | Set the Kafka broker endpoint. Use either of the two private (plaintext) endpoints: . kafka: cluster: \"EXAMPLE_MSK_KAFKA_ENDPOINT\" . | Set efsFileSystemId to the EFS file system ID from the AWS console: . efsFileSystemId: \"EXAMPLE_EFS_ID\" . | Set the Keycloak auth URI. In the default configuration this value should not need to change unless the name or namespace of the Keycloak pod is modified: . authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . | Optional: Configure SFTP for manual ELR file drop-off. Data Ingestion can poll ELRs from an external SFTP server. To enable this, set sftp.enabled to \"enabled\" and provide the appropriate host, username, and password. If the SFTP server is unavailable or not needed, set sftp.enabled to \"disabled\" or leave it empty: . sftp: enabled: \"EXAMPLE_SFTP_ENABLED\" host: \"\"EXAMPLE_SFTP_HOST username: \"EXAMPLE_SFTP_USER\" password: \"EXAMPLE_SFTP_PASS\" elrFileExtns: \"txt,hl7\" filePaths: \"/\" . | . For more information about SFTP support, please see: data-ingestion-sftp-support . | Install the Data Ingestion service: . helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service . Confirm the pod is running before continuing: . kubectl get pods . | Validate the service: . https://&lt;data.EXAMPLE_DOMAIN&gt;/ingestion/actuator/info https://&lt;data.EXAMPLE_DOMAIN&gt;/ingestion/actuator/health . | To enable Swagger for testing (disabled by default in production), set springBootProfile to dev under charts/dataingestion-service/values.yaml: . https://&lt;data.EXAMPLE_DOMAIN&gt;/ingestion/swagger-ui/index.html#/ . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#deploy-data-ingestion-using-helm",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/data-ingestion.html#deploy-data-ingestion-using-helm",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion.html#deploy-data-ingestion-using-helm"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/data-ingestion.html#deploy-data-ingestion-using-helm"
   },"84": {
-    "doc": "Data ingestion",
-    "title": "Data ingestion",
+    "doc": "Deploy data ingestion service (DI API)",
+    "title": "Deploy data ingestion service (DI API)",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/data-ingestion.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion.html"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/data-ingestion.html"
   },"85": {
     "doc": "Data processing",
     "title": "Deploy the Data Processing service for NBS 7",
@@ -793,20 +793,20 @@
     "doc": "Deploy NBS 7 microservices",
     "title": "Deploy NBS 7 microservices",
     "content": "This phase deploys the NBS 7 application services into your Kubernetes cluster using Helm. Deploy services in the order listed — each service has dependencies on the ones before it. The pages in this section apply to NBS 7.12. Github repo links are pinned to v7.12.0. After completing this phase, proceed to Validate the deployment. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/deploy-nbs7-microservices.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/deploy-nbs7-microservices.html",
     
-    "relUrl": "/docs/deploy-nbs7/deploy-nbs7-microservices.html"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/deploy-nbs7-microservices.html"
   },"114": {
     "doc": "Deploy NBS 7 microservices",
     "title": "Overview",
     "content": "Use the Helm CLI to deploy NBS 7 microservices into your Kubernetes cluster. Deploy the Helm charts in the following order. Verify that each microservice starts successfully before moving to the next service. | elasticsearch-efs | modernization-api | nifi-efs | Validate ES, Mapi and Nifi | nbs-gateway | dataingestion-service | data-processing | nnd-service (Data Sync) | case-notification | . Have JDBC connection details available for modernization-api, nifi-efs, dataingestion-service, data-processing, and case-notification. | Parameter | Example | . | db_endpoint | mySTLT-dbname.abcdefghij.us-east-1.rds.amazonaws.com | . | port | 1433 | . | databaseName | NBS_ODSE | . | DBUsername | nbs_ods | . | DBPassword | myrandompassword | . Run Helm install commands from the charts directory for all microservices. Before you run Helm install commands, verify you are authenticated to AWS by running aws sts get-caller-identity. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/deploy-nbs7-microservices.html#overview",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/deploy-nbs7-microservices.html#overview",
     
-    "relUrl": "/docs/deploy-nbs7/deploy-nbs7-microservices.html#overview"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/deploy-nbs7-microservices.html#overview"
   },"115": {
     "doc": "Deploy NBS 7",
     "title": "Deploy NBS 7.12",
-    "content": "This section covers the full NBS 7 deployment process, from prerequisites and infrastructure setup through microservices deployment and go-live. The procedures in this section reflect NBS 7.12. For earlier releases, see Previous Versions in the sidebar. Before you begin, confirm that your NBS 6 version is compatible with your target NBS 7 version in the NBS 6 and NBS 7 compatibility matrix. NBS 7 deployment comprises four main phases that you should complete in order: . | Deploy cloud infrastructure: Deploy your AWS or Azure cloud environment | Deploy cluster infrastructure: Install core Kubernetes infrastructure services (NGINX Ingress, Cert Manager, etc.) | Deploy NBS 7 microservices: Install and configure NBS 7 application services using Helm | Validate the deployment: Perform smoke tests and inspect monitoring, console, and admin interfaces | . ",
+    "content": "This section covers the full NBS 7 deployment process, from prerequisites and infrastructure setup through microservices deployment and go-live. The procedures in this section reflect NBS 7.12. For earlier releases, see Previous Versions in the sidebar. Before you begin, confirm that your NBS 6 version is compatible with your target NBS 7 version in the NBS 6 and NBS 7 compatibility matrix. NBS 7 deployment comprises the following main phases that you should complete in order: . | Deploy cloud infrastructure: Deploy your AWS or Azure cloud environment | Deploy cluster infrastructure: Install core Kubernetes infrastructure services (NGINX Ingress, Cert Manager, etc.) | Deploy NBS 7 microservices: Install and configure NBS 7 application services using Helm | Deploy real-time reporting: Install components that stream ODSE and SRTE changes to RDB | Deploy data ingestion (DI) API: Install the DI API data transit layer for writing data to NBS | Validate the deployment: Perform smoke tests and inspect monitoring, console, and admin interfaces | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7.html#deploy-nbs-712",
     
     "relUrl": "/docs/deploy-nbs7.html#deploy-nbs-712"
@@ -2085,57 +2085,57 @@
     
     "relUrl": "/docs/deploy-nbs7/quickstart.html#support"
   },"298": {
-    "doc": "Real-time reporting (preview)",
-    "title": "Deploy the real-time reporting (RTR) add-on",
-    "content": "This feature is in Beta preview and not production ready. Real-time reporting (RTR) is an optional add-on for NBS 7. RTR reduces reporting latency from as long as 24 hours to between 5 minutes and 1 hour. It uses Kafka Connect to stream row-level changes from source tables, which reduces reliance on the MasterETL batch process. This guide covers steps to install RTR with Helm charts. RTR transfers data from the transactional database NBS_ODSE to the reporting database RDB. Change Data Capture on select NBS_ODSE and NBS_SRTE tables detects row-level changes (see Create service users and database objects for the full table list). Those changes publish to Kafka topics, where RTR services extract and load the data into RDB. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-the-real-time-reporting-rtr-add-on",
+    "doc": "Deploy real-time reporting",
+    "title": "Deploy real-time reporting (RTR)",
+    "content": "This feature is in Beta preview and not production ready. Real-time reporting (RTR) is an NBS 7 capability that reduces reporting latency from as long as 24 hours to between 5 minutes and 1 hour. It uses Kafka Connect to stream row-level changes from source tables, which reduces reliance on the MasterETL batch process. This guide covers steps to install RTR with Helm charts. RTR transfers data from the transactional database NBS_ODSE to the reporting database RDB. Change Data Capture on select NBS_ODSE and NBS_SRTE tables detects row-level changes (see Create service users and database objects for the full table list). Those changes publish to Kafka topics, where RTR services extract and load the data into RDB. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-real-time-reporting-rtr",
     
-    "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-the-real-time-reporting-rtr-add-on"
+    "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-real-time-reporting-rtr"
   },"299": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "On this page",
     "content": ". | Prerequisites | Set up the rdb_modern database | Create service users and database objects | Ongoing database upgrades | Deploy RTR services | . The database scripts referenced throughout this guide are maintained in the NEDSS-DataReporting repository. You can create the required database objects through Liquibase, which will automatically implement database schema changes, or you can manually install database schema changes. Both options are referenced in the relevant sections. If you encounter issues during database setup, contact support at nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#on-this-page"
   },"300": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "Prerequisites",
     "content": ". | RTR installation requires NBS 6.0.17 or higher. To verify your baseline NBS release version, run one of the following queries: . USE NBS_ODSE; SELECT max(Version) current_version FROM NBS_ODSE.dbo.NBS_Release; . Or: . USE [NBS_ODSE]; SELECT * FROM NBS_configuration WHERE config_key = 'CODE_BASE'; . | Verify that the following classic ETL batch jobs have completed successfully: . | MasterETL.bat | PHCMartETL.bat | covid19ETL.bat | . Back up the RDB database before you proceed. This step cannot be undone. | Choose a database path and use it consistently throughout this guide. Both paths support Liquibase or manual installation. | RDB path: Use RDB as the default reporting database. Turn off the classic ETL batch jobs and proceed to the next step. | rdb_modern path: Create a separate reporting database. To create the database, see Create rdb_modern database before moving on to the next step. | . | Set the environment variable for your chosen path. RDB path: Insert the following value into NBS_configuration: . IF NOT EXISTS(SELECT 1 FROM NBS_ODSE.DBO.NBS_configuration WHERE config_key ='ENV' AND config_value ='PROD') INSERT INTO NBS_ODSE.dbo.NBS_configuration (config_key, config_value, short_name, desc_txt, default_value, valid_values, category, add_release, version_ctrl_nbr, add_user_id, add_time, last_chg_user_id, last_chg_time, status_cd, status_time, admin_comment, system_usage, config_value_large) VALUES(N'ENV', N'PROD', N'RTR reporting database', N'Indicates scripts should be run against RDB database', NULL, N'UAT, PROD', N'RTR', N'7.11.0', 1, 0, getdate(), 0, getdate(), N'A', getdate(), NULL, NULL, NULL); . rdb_modern path: This setting overrides the default RDB during script execution unless a script explicitly prompts for a database. IF NOT EXISTS(SELECT 1 FROM NBS_ODSE.DBO.NBS_configuration WHERE config_key ='ENV' AND config_value ='UAT') INSERT INTO NBS_ODSE.dbo.NBS_configuration (config_key, config_value, short_name, desc_txt, default_value, valid_values, category, add_release, version_ctrl_nbr, add_user_id, add_time, last_chg_user_id, last_chg_time, status_cd, status_time, admin_comment, system_usage, config_value_large) VALUES(N'ENV', N'UAT', N'RTR reporting database', N'Indicates scripts should be run against UAT rdb_modern database', NULL, N'UAT, PROD', N'RTR', N'7.11.0', 1, 0, getdate(), 0, getdate(), N'A', getdate(), NULL, NULL, NULL); . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#prerequisites"
   },"301": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "Set up the rdb_modern database",
     "content": "If you are on the rdb_modern path, complete this section. If you are on the RDB path, skip this section. If a separate database is required, restore RDB as rdb_modern. This keeps the classic ETL-hydrated RDB available while hosting components needed for RTR. The following steps use Amazon RDS stored procedures (rds_backup_database, rds_restore_database). If you are not using Amazon RDS, consult your database administrator for equivalent backup and restore procedures. | Back up RDB: . | Sign in to the AWS Management Console and navigate to RDS. | In the Options group, verify that the Backup and Restore option is enabled for your RDS SQL Server instance. | Open a SQL client and connect to the SQL Server RDS instance. | Run the following procedure to back up the SQL Server database to S3: . exec msdb.dbo.rds_backup_database @source_db_name='RDB', @s3_arn_to_backup_to='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_2024_07_22_5pmet.bak', @type='FULL' . | Run the following procedure to check the status: . exec msdb.dbo.rds_task_status; . | . | Restore rdb_modern: . | Open a SQL client and connect to the SQL Server RDS instance. | Run the following procedure to restore RDB as rdb_modern: . exec msdb.dbo.rds_restore_database @restore_db_name='rdb_modern', @s3_arn_to_restore_from='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_gdit_07_10_5pmet.bak', @type='FULL'; . | Run the following procedure to check the status: . exec msdb.dbo.rds_task_status; . | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#set-up-the-rdb_modern-database",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#set-up-the-rdb_modern-database"
   },"302": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "Create service users and database objects",
     "content": "Complete these one-time onboarding steps for RTR setup. Generate passwords for each service user before running the scripts. Password generation can take several minutes. Do not use spaces, equal signs (=), or colons (:). These characters cause script execution failures. | Create database users. Each user should have only the permissions required for its role. Review the scripts and update the PASSWORD values before execution. | Create admin user: This user provides Liquibase permissions to maintain required database components for RTR and enable Change Data Capture on tables. | Script location: NEDSS-DataReporting onboarding user creation scripts | . | Create RTR microservice user logins: Create dedicated user accounts for each RTR microservice. These users are referenced in Helm values for RTR services. | Script location: NEDSS-DataReporting onboarding user creation scripts | . | . | Create Kubernetes secrets. Kubernetes secrets are required for RTR services to access the database. Create secrets for each service user from step 1. Skip this step if you already created secrets in Create secrets in your cluster. | Create secrets for each service user: Include the admin user from step 1a. Each secret should include the database username and password. | Script location: NEDSS-DataReporting/create-kubernetes-secrets | . | . | Create required database objects. Run the scripts for your chosen path: . | Liquibase: See Deploy Liquibase to create all necessary objects, then return here to complete step 4. | Manual: See the script execution sequence and db_upgrade script in NEDSS-DataReporting/db-upgrade. Run: . | . upgrade_db.bat server_name &lt;database&gt; username password . | Load data and enable Change Data Capture. This one-time step is required after all database objects are created in step 3. | Liquibase: The --load-data flag is not required when using Liquibase. Proceed to Deploy RTR services. | Manual: Navigate to the 02_onboarding_script_data_load and run all of the scripts in the order listed in the repository. | . | Verify Change Data Capture. is_cdc_enabled=1 indicates successful configuration. SELECT name, is_cdc_enabled FROM sys.databases; -- View ODSE tables with CDC enabled USE NBS_ODSE; SELECT name, CASE WHEN is_tracked_by_cdc = 1 THEN 'YES' ELSE 'NO' END AS is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; -- View SRTE tables with CDC enabled USE NBS_SRTE; SELECT name, CASE WHEN is_tracked_by_cdc = 1 THEN 'YES' ELSE 'NO' END AS is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; . The following images show expected query results for a successful Change Data Capture configuration. CDC-enabled tables in NBS_ODSE: CDC-enabled tables in NBS_SRTE: | Back up all databases. Before going live, take backups of NBS_ODSE, NBS_SRTE, RDB, and rdb_modern (if applicable). | . If Change Data Capture is not producing data after rdb_modern is restored, run the following script: . USE NBS_ODSE; EXEC sp_changedbowner 'sa'; . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-service-users-and-database-objects",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#create-service-users-and-database-objects"
   },"303": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "Ongoing database upgrades",
     "content": "After onboarding, future enhancements are delivered using one of these approaches: . | Liquibase: Run Liquibase with the provided release tag. See Deploy Liquibase. | Manual: Run the scripts in manual_deployment. Onboarding scripts are excluded from upgrade runs. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#ongoing-database-upgrades",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#ongoing-database-upgrades"
   },"304": {
-    "doc": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
     "title": "Deploy RTR services",
     "content": "RTR services use Kubernetes secrets for database credentials. Create secrets for each microservice user and the admin user. The secrets should include the database username and password for each service user. For more information, see Create secrets in your cluster. Deploy the RTR services in the following order: . | Liquibase | Debezium | Kafka connector | Java services | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-rtr-services",
     
     "relUrl": "/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html#deploy-rtr-services"
   },"305": {
-    "doc": "Real-time reporting (preview)",
-    "title": "Real-time reporting (preview)",
+    "doc": "Deploy real-time reporting",
+    "title": "Deploy real-time reporting",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/real-time-reporting/real-time-reporting.html",
     
@@ -2270,20 +2270,20 @@
     "doc": "Service integrations",
     "title": "Service integrations for data ingestion",
     "content": "To install Rhapsody or SFTP service integrations, see the following documents: . | Data Ingestion Rhapsody Route Integration.pdf | Data Ingestion SFTP Manual File Drop Off.pdf | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion"
   },"325": {
     "doc": "Service integrations",
     "title": "Service integrations",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/service-integrations.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/service-integrations.html"
   },"326": {
     "doc": "Deploy cloud infrastructure",
     "title": "Deploy cloud infrastructure",
-    "content": "NBS 7 is fully supported on AWS and Azure. This section covers provisioning the underlying cloud infrastructure (the virtual network, container runtime, and storage services) before you install Kubernetes services. NBS 7 is fully supported on both AWS and Azure. Both providers host the same NBS 7 Kubernetes workloads, and once infrastructure is provisioned, the Bootstrap Kubernetes services and microservices deployment steps are identical. The difference is only in how the underlying cloud environment is provisioned. Choose the guide that matches your cloud environment. | Deploy on AWS - Provision the AWS VPC, Amazon Elastic Kubernetes Service (Amazon EKS) cluster, and supporting services using Terraform. | Deploy on Azure - Provision the Azure virtual network, Azure Kubernetes Service (AKS) cluster, and supporting services using Terraform. | . ",
+    "content": "This section covers provisioning the underlying cloud infrastructure (the virtual network, container runtime, and storage services) before you install Kubernetes services. NBS 7 is fully supported on both AWS and Azure. Both providers host the same NBS 7 Kubernetes workloads, and once infrastructure is provisioned, the Bootstrap Kubernetes services and microservices deployment steps are identical. The difference is only in how the underlying cloud environment is provisioned. Choose the guide that matches your cloud environment. | Deploy on AWS - Provision the AWS VPC, Amazon Elastic Kubernetes Service (Amazon EKS) cluster, and supporting services using Terraform. | Deploy on Azure - Provision the Azure virtual network, Azure Kubernetes Service (AKS) cluster, and supporting services using Terraform. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/set-up-cloud-infrastructure.html",
     
     "relUrl": "/docs/deploy-nbs7/set-up-cloud-infrastructure.html"
@@ -2305,51 +2305,51 @@
     "doc": "Smoke test",
     "title": "Smoke test for data ingestion",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion"
   },"330": {
     "doc": "Smoke test",
     "title": "On this page",
     "content": ". | Overview | Prerequisite | Scope | Run Data Ingestion Smoke Test | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#on-this-page"
   },"331": {
     "doc": "Smoke test",
     "title": "Overview",
     "content": "The Data Ingestion service is integrated with the Keycloak server to authenticate the DI service’s public API endpoints. As the Client Credentials Grant type flow is used for authentication in the DI Service, we require the Client Id and Client Secret values to create the JWT token and make API calls. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#overview",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#overview"
   },"332": {
     "doc": "Smoke test",
     "title": "Prerequisite",
     "content": ". | Keycloak server and the necessary configurations are setup. | Installation of Postman application to test the end to end flow. | If you already have postman application in your system, skip this step. | Visit the official Postman website at www.postman.com and navigate to the Downloads section Download Postman | Click on the link to download the version appropriate for your OS. Once the download is complete open and install it accordingly. | . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisite",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#prerequisite",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisite"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#prerequisite"
   },"333": {
     "doc": "Smoke test",
     "title": "Scope",
     "content": ". | Only ELR Data that are HL7 messages with ORU RO1 Data type are in scope. | Only HL7 messages with versions 2.3.1 and 2.5.1 are in scope. | The DI service supports the transmit of HL7 messages with FHS header segments. | . Note: Posting the same HL7 message more than once is allowed, but be aware that due to a duplicate check, the validation will fail within the Data Ingestion system. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#scope",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#scope"
   },"334": {
     "doc": "Smoke test",
     "title": "Run Data Ingestion Smoke Test",
     "content": "Open Postman application and click on import option. A pop up window shows up and then select New-Data-Ingestion.postman_collection.json file included in the release package and click on open to load Data Ingestion collection that has all API’s related to the Data Ingestion service. Step 1: Token Generation API . Click on the Token Generation API in New-Data-Ingestion Postman collection. Update the clientid and clientsecret values and then click Send to generate a new token. Note: Tokens expire after 1 hour. They must be regenerated using the same token endpoint after 1 hour or when they expire in order to make DI Service API calls. Step 2: Ingesting Data API . Click on Ingesting Data API in New-Data-Ingestionpostman collection and then click on Authorization tab and select ‘Bearer Token’ as Type. Paste the token that was generated via Token Generation API in previous step into the token text box. Click on the Headers section and enter the values within the clientid and clientsecret headers. A sample HL7 message has already been added to the request body section. Click on Send button. UUID is displayed as a response. Please save this UUID which is useful to determine the status of the HL7 message. Note: Give 10-20 seconds before checking the status of Ingested Data API in Classic NBS as it takes few seconds to generate an XML record into the NBS_Interface table after we post the HL7 message. Step 3: Checking detailed status of Ingested Data API in Classic NBS . Click on the Checking Status of Ingested Data API in New-Data-Ingestion postman collection and then click on Authorization tab. Paste the token that was generated via Token Generation API into the token text box. Click on the Headers section and enter the values within the clientid and clientsecret headers. Within the API URL, append the UUID generated as part of the response from the Ingesting Data API. Click on Send button. By Default, all the status goes to QUEUED status. The Classic Wildfly scheduler runs the batch job and processes this record. Currently, the scheduler is set to pick up and process the records every 2 minutes. So please wait for roughly 2 minutes and then click on Send button again. This time, the status should be changed to Success. The below API provides the ELR Ingestion status: . This concludes the smoke test where the user posted the HL7 message via Data ingestion service which validated the incoming data. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test"
   },"335": {
     "doc": "Smoke test",
     "title": "Smoke test",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/smoke-test.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/smoke-test.html"
   },"336": {
     "doc": "Validate ES, MAPI, and NiFi",
     "title": "Validate Elasticsearch, Modernization API, and NiFi",
@@ -2395,7 +2395,7 @@
   },"342": {
     "doc": "Validate deployment",
     "title": "Validation sequence",
-    "content": "Work through the areas in this table in order. Resolve failures before moving to the next area. | Validation area | What it confirms | Documentation | . | Elasticsearch, Modernization API, and NiFi (manual validation) | Name resolution is working; routing between NBS 6 and NBS 7 subsystems is correct; database connectivity from NBS 7 components is working; search indices are created and populated | Manual validation | . | Modernization API smoke test | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search smoke test | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion smoke test | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API testing | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing RTI integration | Real Time Ingestion processes ELR data correctly and returns expected status codes | API testing and integration | . | Case notification API testing | Case notification service is processing and routing notifications correctly | API testing | . | NND service API endpoints | Data sync API endpoints are reachable and credentials are valid | Validate API endpoints | . | RTR pipeline validation (if deployed) | Streaming updates flow from ingestion through to reporting datamart tables | Pipeline validation | . ",
+    "content": "Work through the areas in this table in order. Resolve failures before moving to the next area. | Validation area | What it confirms | Documentation | . | Elasticsearch, Modernization API, and NiFi (manual validation) | Name resolution is working; routing between NBS 6 and NBS 7 subsystems is correct; database connectivity from NBS 7 components is working; search indices are created and populated | Manual validation | . | Modernization API smoke test | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search smoke test | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion smoke test | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API testing | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing RTI integration | Real Time Ingestion processes ELR data correctly and returns expected status codes | API testing and integration | . | Case notification API testing | Case notification service is processing and routing notifications correctly | API testing | . | NND service API endpoints | Data sync API endpoints are reachable and credentials are valid | Validate API endpoints | . | RTR pipeline validation | Streaming updates flow from ingestion through to reporting datamart tables | Pipeline validation | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence"
@@ -2536,15 +2536,15 @@
     "doc": "Wildfly server",
     "title": "WildFly server configuration",
     "content": "Configure the Windows Task Scheduler on your NBS 6 WildFly server to run the ELR Importer batch process. | Connect to the NBS 6 Windows server using a remote desktop client such as Microsoft Remote Desktop. You will need the server’s hostname or IP address, username, and password. | Follow the Windows Task Scheduler for ELR Importer (PDF) guide to create and configure the scheduled task. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
   },"363": {
     "doc": "Wildfly server",
     "title": "Wildfly server",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html"
+    "relUrl": "/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html"
   }
 }
