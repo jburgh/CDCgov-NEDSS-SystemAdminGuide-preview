@@ -101,13 +101,13 @@ The following pages require manual content review beyond link verification:
 
 | Page | What to review |
 |------|----------------|
-| `docs/deploy-nbs7/real-time-reporting.md` | Update the version number in the 2 code blocks to set the environment variables |
 | `docs/deploy-nbs7/real-time-reporting/rtr-java-services.md` | Review the consolidation warning callout for accuracy. |
 | `docs/deploy-nbs7/real-time-reporting/data-compare-tool.md` | The NEDSS-DataCompare link is pinned to `main` — that repo has no version tags. Confirm this is still correct. |
 | `docs/deploy-nbs7/microservices-deployment/nnd-service/on-prem-data-sync.md` | Confirm the NEDSS-NNDSS release at the new tag includes a `vX.Y.Z.NEDSS.NBS.Modernized.Documentation.zip` asset. If missing, coordinate with the dev team before publishing. |
 | `docs/deploy-nbs7/microservices-deployment/nnd-service/on-prem-nnd-sync.md` | Same documentation zip caveat as `on-prem-data-sync.md`. |
 | `docs/maintain-nbs7/eks-upgrade.md` | Update the Kubernetes versions table. Confirm the conditional add-ons step still reflects correct module version behavior. *(Page not yet created as of 7.12.)* |
 | `docs/deploy-nbs7/microservices-deployment/modernization-api.md` | Confirm the example release-version-tag on line 35 |
+| `docs/supported-versions.md` | Update as needed. If this release is a patch (7.x.y), decide patch inheritance for the Supported NBS versions page. |
 
 > Add rows to this table as pages requiring manual review are identified.
 
