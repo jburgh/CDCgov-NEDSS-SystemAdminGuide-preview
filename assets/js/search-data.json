@@ -1882,251 +1882,286 @@
     
     "relUrl": "/docs/support.html#release-and-documentation-updates"
   },"269": {
+    "doc": "Supported NBS versions",
+    "title": "Supported NBS versions",
+    "content": "NBS 7 integrates with and is tested against specific versions of NBS 6. Use this page to verify that your NBS 6 version is supported and compatible with your target NBS 7 version before you begin deployment. Migrating from the latest supported NBS 6 version to the latest NBS 7 version provides the smoothest path to NBS 7. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-versions",
+    
+    "relUrl": "/docs/supported-versions.html#supported-nbs-versions"
+  },"270": {
+    "doc": "Supported NBS versions",
+    "title": "Supported NBS 7 versions",
+    "content": "The following NBS 7 versions are supported: . | 7.13.0 | 7.12.0 | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-7-versions",
+    
+    "relUrl": "/docs/supported-versions.html#supported-nbs-7-versions"
+  },"271": {
+    "doc": "Supported NBS versions",
+    "title": "Supported NBS 6 versions",
+    "content": "The following NBS 6 versions are supported: . | 6.0.19.1 (requires NBS 7.13.0) | 6.0.18.1 | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-6-versions",
+    
+    "relUrl": "/docs/supported-versions.html#supported-nbs-6-versions"
+  },"272": {
+    "doc": "Supported NBS versions",
+    "title": "Supported NBS 6 and NBS 7 version combinations",
+    "content": "Use the following table to verify that your NBS 6 version is compatible with your target NBS 7 version before you begin deployment. | Supported NBS 6 version | Works with 7.13.0 | Works with 7.12.0 | . | 6.0.19.1 | ✓ Yes | No | . | 6.0.18.1 | ✓ Yes | ✓ Yes | . This table lists the supported NBS version combinations as of the latest NBS 7 release. Versions not listed are not supported, even if a combination appears to work in your environment. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-6-and-nbs-7-version-combinations",
+    
+    "relUrl": "/docs/supported-versions.html#supported-nbs-6-and-nbs-7-version-combinations"
+  },"273": {
+    "doc": "Supported NBS versions",
+    "title": "Supported NBS versions",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html",
+    
+    "relUrl": "/docs/supported-versions.html"
+  },"274": {
     "doc": "Undeploy NBS 7",
     "title": "Remove an NBS 7 environment",
     "content": "Use this procedure to decommission an NBS 7 environment that was deployed using Terraform and Helm. This applies to development, staging, and production environments. Complete the steps in the order shown. Helm resources must be removed before you run terraform destroy. These steps are irreversible. Removing ingress resources immediately interrupts access to NBS 7 endpoints in this environment. Running terraform destroy permanently deletes all infrastructure managed by this Terraform workspace. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-an-nbs-7-environment",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-an-nbs-7-environment"
-  },"270": {
+  },"275": {
     "doc": "Undeploy NBS 7",
     "title": "Before you begin",
     "content": ". | Confirm that this is the correct environment and that you have approval to decommission it | Verify that any data you need to retain has been exported or backed up | Confirm that no active users or dependent systems are connected to this environment | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#before-you-begin",
     
     "relUrl": "/docs/undeploy-nbs7.html#before-you-begin"
-  },"271": {
+  },"276": {
     "doc": "Undeploy NBS 7",
     "title": "Remove DNS entries",
     "content": "Remove the DNS records for this environment from your DNS provider: . | app.&lt;site_name&gt;.&lt;domain&gt;.com | data.&lt;site_name&gt;.&lt;domain&gt;.com | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-dns-entries",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-dns-entries"
-  },"272": {
+  },"277": {
     "doc": "Undeploy NBS 7",
     "title": "Remove Helm ingress resources",
     "content": "List the current Helm releases in the ingress-nginx namespace and verify the release name before uninstalling: . helm list --namespace ingress-nginx helm uninstall --namespace ingress-nginx ingress-nginx . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-helm-ingress-resources",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-helm-ingress-resources"
-  },"273": {
+  },"278": {
     "doc": "Undeploy NBS 7",
     "title": "Empty the OTEL collector S3 bucket",
     "content": "Empty the S3 bucket used by the OpenTelemetry (OTEL) collector (splunk-otel-collector) for log storage before running terraform destroy. Terraform cannot delete a non-empty S3 bucket and the destroy will fail if this step is skipped. Complete this step manually in the AWS Console or using the AWS CLI. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#empty-the-otel-collector-s3-bucket",
     
     "relUrl": "/docs/undeploy-nbs7.html#empty-the-otel-collector-s3-bucket"
-  },"274": {
+  },"279": {
     "doc": "Undeploy NBS 7",
     "title": "Destroy Terraform-managed infrastructure",
     "content": "terraform destroy . Review the plan output carefully before confirming. Terraform will display a summary of all resources it will delete. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#destroy-terraform-managed-infrastructure",
     
     "relUrl": "/docs/undeploy-nbs7.html#destroy-terraform-managed-infrastructure"
-  },"275": {
+  },"280": {
     "doc": "Undeploy NBS 7",
     "title": "Undeploy NBS 7",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html",
     
     "relUrl": "/docs/undeploy-nbs7.html"
-  },"276": {
+  },"281": {
     "doc": "Validate Elasticsearch, Modernization API, NiFi",
     "title": "Validate Elasticsearch, Modernization API, and NiFi",
     "content": "After deploying Elasticsearch, Modernization API, and NiFi, validate all three services before continuing with the remaining microservices. Successful validation confirms that: . | Name resolution is working | Traffic routing between NBS 6 and NBS 7 is working | Routing from NBS 7 components to the database is working | Search indices have been created, populated, and are available | . Search indices may take longer to populate depending on the size of your database. A larger database could take 3-6 hours. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#validate-elasticsearch-modernization-api-and-nifi",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#validate-elasticsearch-modernization-api-and-nifi"
-  },"277": {
+  },"282": {
     "doc": "Validate Elasticsearch, Modernization API, NiFi",
     "title": "In this section",
     "content": "This mid-point validation covers the following: . | Manual validation for Elasticsearch, Modernization API, and NiFi: Test end-to-end functionality by searching patient records in the NBS UI. | API smoke test for Modernization API: Run the nbs-test-api.sh smoke test against the Modernization API. | Web UI smoke test for NBS interface and search: Run the nbs-test-webui.sh smoke test against the NBS web interface. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#in-this-section",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#in-this-section"
-  },"278": {
+  },"283": {
     "doc": "Validate Elasticsearch, Modernization API, NiFi",
     "title": "Validate Elasticsearch, Modernization API, NiFi",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html"
-  },"279": {
+  },"284": {
     "doc": "Validate deployment",
     "title": "Validate your NBS 7 deployment",
     "content": "Before go-live, confirm that all deployed components are functioning correctly and that data flows as expected from ingestion through to the NBS interface. Work through validation in sequence: start with core microservices, then confirm ingestion and notification pipelines, then run system-level checks across the NBS UI. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment"
-  },"280": {
+  },"285": {
     "doc": "Validate deployment",
     "title": "On this page",
     "content": ". | Before you validate | Validation sequence | System-level checks | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#on-this-page"
-  },"281": {
+  },"286": {
     "doc": "Validate deployment",
     "title": "Before you validate",
     "content": "Confirm the following before starting: . | Deployment of all required microservices is complete for your chosen configuration | A development or staging environment is available with representative test data | You have admin credentials to access the NBS UI | Your NBS 6 database refresh is complete and accessible from the test environment | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate"
-  },"282": {
+  },"287": {
     "doc": "Validate deployment",
     "title": "Validation sequence",
     "content": "Work through the areas in this table in order. Resolve failures before moving to the next area. | Validation area | What it confirms | Documentation | . | Elasticsearch, Modernization API, and NiFi (manual validation) | Name resolution is working; routing between NBS 6 and NBS 7 subsystems is correct; database connectivity from NBS 7 components is working; search indices are created and populated | Manual validation | . | Modernization API smoke test | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search smoke test | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion smoke test | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API testing | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing RTI integration | Real Time Ingestion processes ELR data correctly and returns expected status codes | API testing and integration | . | Case notification API testing | Case notification service is processing and routing notifications correctly | API testing | . | NND service API endpoints | Data sync API endpoints are reachable and credentials are valid | Validate API endpoints | . | RTR pipeline validation | Streaming updates flow from ingestion through to reporting datamart tables | Pipeline validation | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence"
-  },"283": {
+  },"288": {
     "doc": "Validate deployment",
     "title": "System-level checks",
     "content": "After all component-level validation passes, confirm overall system behavior before proceeding to go-live: . | Log in to the NBS UI (for example, https://app.example.com/nbs/login). | Verify that patient search returns results using test records. | Create a test investigation and confirm it appears correctly in the UI. | Confirm that ELR data ingested during testing is visible and correctly attributed. | Review application logs across services for unexpected errors or warnings. | Confirm that monitoring and alerting are configured and capturing baseline metrics. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#system-level-checks",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#system-level-checks"
-  },"284": {
+  },"289": {
     "doc": "Validate deployment",
     "title": "Next steps",
     "content": "When all validation areas pass, finalize your cutover checklist and launch NBS 7 in production. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#next-steps"
-  },"285": {
+  },"290": {
     "doc": "Validate deployment",
     "title": "Validate deployment",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html"
-  },"286": {
+  },"291": {
     "doc": "Validate API endpoints",
     "title": "Validate API endpoints",
     "content": "Use this check to confirm that your environment can reach the Data Sync API before you sync data. In production, the Data Sync service calls these endpoints. System administrators still need to validate connectivity and credentials during setup. This page is part of the optional NND Service (Data Sync) section. CDC is evaluating long-term support for this service. If your STLT has a use case, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html"
-  },"287": {
+  },"292": {
     "doc": "Validate API endpoints",
     "title": "On this page",
     "content": ". | Prerequisites | Validate token generation in Postman | Validate service endpoints in Swagger | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page"
-  },"288": {
+  },"293": {
     "doc": "Validate API endpoints",
     "title": "Prerequisites",
     "content": "This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. You need a Keycloak client ID and client secret for the Data Sync service. Retrieve these from your Keycloak instance. See Access the Keycloak admin interface for port forwarding instructions and steps to access the Keycloak UI. In the NBS realm, go to Clients &gt; nnd-keycloak-client &gt; Credentials &gt; Client Secret. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#prerequisites"
-  },"289": {
+  },"294": {
     "doc": "Validate API endpoints",
     "title": "Validate token generation in Postman",
     "content": "The token endpoint returns a JWT token that clients use to access secured Data Sync endpoints. Send a POST request to the following endpoint: . https://data.&lt;your-site&gt;.&lt;your-domain&gt;.com/data-sync/api/auth/token . Use NONE as the authorization type. | Open Postman and send a POST request to the token endpoint. | Add two request headers using the credentials from your Keycloak instance: . | clientid | clientsecret | . The following screenshot shows the request configured in Postman: . | Select Send. | Confirm that the response status is 200 OK and that a JWT token returns. The following screenshot shows an example successful response: . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman"
-  },"290": {
+  },"295": {
     "doc": "Validate API endpoints",
     "title": "Validate service endpoints in Swagger",
     "content": "After token generation succeeds, validate the service endpoints in Swagger: . https://&lt;host&gt;/data-sync/swagger-ui/index.html . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger"
-  },"291": {
+  },"296": {
     "doc": "Enable verbose truncation warnings",
     "title": "Enable SQL Server verbose truncation warnings",
     "content": "SQL Server Trace Flag 460 provides detailed error messages when string or binary data truncation occurs. This is particularly useful for diagnosing data truncation errors when saving investigations in NBS, as it includes column names and data types in error messages rather than generic truncation warnings. For more information, see the Microsoft SQL Server documentation on VERBOSE_TRUNCATION_WARNINGS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#enable-sql-server-verbose-truncation-warnings",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#enable-sql-server-verbose-truncation-warnings"
-  },"292": {
+  },"297": {
     "doc": "Enable verbose truncation warnings",
     "title": "On this page",
     "content": ". | Benefits for NBS Operations | Method 1: Enable at SQL Server Startup (Persistent) | Method 2: Enable on Running Instance (No Restart Required) | Verifying Trace Flag Status | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#on-this-page",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#on-this-page"
-  },"293": {
+  },"298": {
     "doc": "Enable verbose truncation warnings",
     "title": "Benefits for NBS Operations",
     "content": "When Trace Flag 460 is enabled, truncation errors will provide detailed information such as: . | The specific column name where truncation occurred | The data type and size of the column | The actual length of the data being inserted | . This detailed information significantly reduces troubleshooting time when diagnosing data integrity issues during investigation saves or other database operations in NBS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#benefits-for-nbs-operations",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#benefits-for-nbs-operations"
-  },"294": {
+  },"299": {
     "doc": "Enable verbose truncation warnings",
     "title": "Method 1: Enable at SQL Server Startup (Persistent)",
     "content": "To enable Trace Flag 460 permanently across SQL Server restarts: . | Open SQL Server Configuration Manager | Navigate to SQL Server Services | Right-click on your SQL Server instance and select Properties | Go to the Startup Parameters tab | Add the parameter: -T460 | Click Add then Apply | Restart the SQL Server service for the change to take effect | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#method-1-enable-at-sql-server-startup-persistent",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#method-1-enable-at-sql-server-startup-persistent"
-  },"295": {
+  },"300": {
     "doc": "Enable verbose truncation warnings",
     "title": "Method 2: Enable on Running Instance (No Restart Required)",
     "content": "To enable Trace Flag 460 on a live SQL Server instance without restarting: . -- Enable trace flag 460 globally for all connections DBCC TRACEON(460, -1); . Note: This method enables the trace flag immediately but it will be disabled when SQL Server restarts. For persistent configuration across restarts, use Method 1. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#method-2-enable-on-running-instance-no-restart-required",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#method-2-enable-on-running-instance-no-restart-required"
-  },"296": {
+  },"301": {
     "doc": "Enable verbose truncation warnings",
     "title": "Verifying Trace Flag Status",
     "content": "To verify that Trace Flag 460 is enabled: . -- Check if trace flag 460 is enabled DBCC TRACESTATUS(460); . Expected output when enabled: . TraceFlag Status Global Session 460 1 1 0 . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#verifying-trace-flag-status",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#verifying-trace-flag-status"
-  },"297": {
+  },"302": {
     "doc": "Enable verbose truncation warnings",
     "title": "Enable verbose truncation warnings",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html"
-  },"298": {
+  },"303": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test for NBS interface and search",
     "content": "The nbs-test-webui.sh script tests end-to-end functionality through the NBS web interface by logging in, navigating to Advanced Search, and searching for patient records. Use this test to confirm that the NBS UI, search, and authentication are working correctly after deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search"
-  },"299": {
+  },"304": {
     "doc": "Web UI smoke test",
     "title": "On this page",
     "content": ". | Prerequisites | Run the smoke test | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page"
-  },"300": {
+  },"305": {
     "doc": "Web UI smoke test",
     "title": "Prerequisites",
     "content": "To run the smoke test, you need: . | Authenticated access to your NBS environment | A database user with access to patient records | A shell environment with curl installed (AWS CloudShell works if you use it, or any system with Bash and curl available) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites"
-  },"301": {
+  },"306": {
     "doc": "Web UI smoke test",
     "title": "Run the smoke test",
     "content": "Run the nbs-test-webui.sh script from the NEDSS-Infrastructure repository. See the README in that folder for usage instructions and current script status. After successfully completing the validation steps, continue to deploy the NBS Gateway service. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test"
-  },"302": {
+  },"307": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html"
-  },"303": {
+  },"308": {
     "doc": "Wildfly server",
     "title": "WildFly server configuration",
     "content": "Configure the Windows Task Scheduler on your NBS 6 WildFly server to run the ELR Importer batch process. | Connect to the NBS 6 Windows server using a remote desktop client such as Microsoft Remote Desktop. You will need the server’s hostname or IP address, username, and password. | Follow the Windows Task Scheduler for ELR Importer (PDF) guide to create and configure the scheduled task. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
     
     "relUrl": "/docs/deploy-nbs7/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
-  },"304": {
+  },"309": {
     "doc": "Wildfly server",
     "title": "Wildfly server",
     "content": " ",
