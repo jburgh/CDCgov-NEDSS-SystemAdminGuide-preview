@@ -34,47 +34,47 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/api-smoke-test.html"
   },"5": {
-    "doc": "API testing",
-    "title": "Test and integrate case notification APIs",
-    "content": "Use this page to validate PHIMNS property configuration and supporting dependencies for case notification services. Deploy the Notification service before starting this page. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis",
+    "doc": "API testing and integration",
+    "title": "Test RTI API integration for Data Processing",
+    "content": "Use this page to validate Real Time Ingestion (RTI) by sending ELR data through the data ingestion endpoint and verifying RTI processing outcomes. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing"
   },"6": {
-    "doc": "API testing",
+    "doc": "API testing and integration",
     "title": "On this page",
-    "content": ". | Configure PHIMNS properties | Verify Kafka configuration | Verify deployment and database changes | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page",
+    "content": ". | Prerequisites | Run the integration test | Validate ingestion and RTI processing status | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page"
   },"7": {
-    "doc": "API testing",
-    "title": "Configure PHIMNS properties",
-    "content": "The case notification service requires PHINMS (Public Health Information Network Messaging System) properties to route case notifications correctly. Complete the following steps to configure them. | Retrieve the following values from your integration engine configuration: . | Required property: . | nbs_certificate_url | . | Optional properties: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Share the values with your CDC partners. CDC will update the NBS_Case_Notification_Config table in NBS_MSGOUTE using the following script: . USE NBS_MSGOUTE; UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = '&lt;value&gt;', phin_encryption = '&lt;value&gt;', phin_route = '&lt;value&gt;', phin_signature = '&lt;value&gt;', phin_public_key_address = '&lt;value&gt;', phin_public_key_base_dn = '&lt;value&gt;', phin_public_key_dn = '&lt;value&gt;', phin_recipient = '&lt;value&gt;', phin_priority = '&lt;value&gt;' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . If you host NBS on-premises without CDC support, you have full database access and can run this script yourself. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties",
+    "doc": "API testing and integration",
+    "title": "Prerequisites",
+    "content": "This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites"
   },"8": {
-    "doc": "API testing",
-    "title": "Verify Kafka configuration",
-    "content": "The case notification service uses Kafka to receive events from the Debezium source connector. Correct Kafka configuration ensures that new records inserted into NBS_ODSE.CN_transportq_out are detected and routed through the pipeline. | Configure Kafka broker: Use one of the available Kafka broker endpoints (Private endpoints - Plaintext) in the values file located in the NEDSS-Helm/charts/debezium-case-notifications directory. The number of brokers varies by environment. | Confirm Debezium connector: Confirm that the Debezium source connector deployed in Deploy the Debezium Kafka source connector is running on the NBS_ODSE.CN_transportq_out table before proceeding. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration",
+    "doc": "API testing and integration",
+    "title": "Run the integration test",
+    "content": "This section covers submitting an ELR payload and triggering RTI processing. | Follow the Data Ingestion API (DI API) testing guide to submit ELR payloads. | In the API testing guide, locate the ELR ingestion endpoint (/api/elrs) and add the version header to that endpoint in the ELR ingestion API call: . | version: 1 uses the legacy batch importer flow. | version: 2 bypasses the legacy batch importer and triggers RTI. | . For RTI testing, this header is the only required API change. The following screenshot shows the version header set to 2 in Postman: . | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test"
   },"9": {
-    "doc": "API testing",
-    "title": "Verify deployment and database changes",
-    "content": "The case notification service includes a built-in Liquibase integration that automatically applies database changes during deployment. Use the following checks to confirm the service deployed successfully and data is routing correctly. | Confirm pod status: Confirm that the case-notification-service pod is stable and running. The pod will not start if Liquibase fails. | If Liquibase fails: Check the pod logs for errors. Database change details can be reviewed in the NEDSS-NNDSS-Case-Notifications repository. | If notifications do not appear: Check the dead letter table (DLT). Faulty events that cannot be processed are routed to MSGOUTE.case_notification_dlt. Check this table if case notifications are not appearing in the expected output tables (MSGOUTE.transportq_out or MSGOUTE.netsstransportq_out). | . After verifying these configurations, proceed to deploy the data ingestion service (DI API) or real-time reporting (RTR) based on your deployment plan. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes",
+    "doc": "API testing and integration",
+    "title": "Validate ingestion and RTI processing status",
+    "content": "Use the DI API status endpoint (/api/elrs/status-details) to verify processing status after submission. | Legacy flow status values in NBS_Interface: QUEUED, FAILED, SUCCESS. | RTI flow status values in NBS_Interface: RTI_QUEUED, RTI_FAILURE, RTI_SUCCESS_STEP_N. | . RTI processing can complete in three status steps: . | RTI_SUCCESS_STEP_1: Data passed through core processing and should be available in the ODSE database. | RTI_SUCCESS_STEP_2: Applies when a WDS algorithm is configured; the service runs WDS comparison. | RTI_SUCCESS_STEP_3: Triggered after WDS completes; the service assigns the appropriate action for the ingested payload. | . The following screenshot shows an example response from the status endpoint with an RTI_SUCCESS_STEP_1 result: . The following screenshot shows an example response with an RTI_SUCCESS_STEP_3 result: . If ingestion and RTI processing are not working as expected, troubleshoot before continuing to deploy NND Service (Data Sync). ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status"
   },"10": {
-    "doc": "API testing",
-    "title": "API testing",
+    "doc": "API testing and integration",
+    "title": "API testing and integration",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html"
   },"11": {
     "doc": "API testing",
     "title": "API testing for data ingestion",
@@ -90,47 +90,47 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html"
   },"13": {
-    "doc": "API testing and integration",
-    "title": "Test RTI API integration for Data Processing",
-    "content": "Use this page to validate Real Time Ingestion (RTI) by sending ELR data through the data ingestion endpoint and verifying RTI processing outcomes. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing",
+    "doc": "API testing",
+    "title": "Test and integrate case notification APIs",
+    "content": "Use this page to validate PHIMNS property configuration and supporting dependencies for case notification services. Deploy the Notification service before starting this page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis"
   },"14": {
-    "doc": "API testing and integration",
+    "doc": "API testing",
     "title": "On this page",
-    "content": ". | Prerequisites | Run the integration test | Validate ingestion and RTI processing status | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page",
+    "content": ". | Configure PHIMNS properties | Verify Kafka configuration | Verify deployment and database changes | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page"
   },"15": {
-    "doc": "API testing and integration",
-    "title": "Prerequisites",
-    "content": "This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites",
+    "doc": "API testing",
+    "title": "Configure PHIMNS properties",
+    "content": "The case notification service requires PHINMS (Public Health Information Network Messaging System) properties to route case notifications correctly. Complete the following steps to configure them. | Retrieve the following values from your integration engine configuration: . | Required property: . | nbs_certificate_url | . | Optional properties: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Share the values with your CDC partners. CDC will update the NBS_Case_Notification_Config table in NBS_MSGOUTE using the following script: . USE NBS_MSGOUTE; UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = '&lt;value&gt;', phin_encryption = '&lt;value&gt;', phin_route = '&lt;value&gt;', phin_signature = '&lt;value&gt;', phin_public_key_address = '&lt;value&gt;', phin_public_key_base_dn = '&lt;value&gt;', phin_public_key_dn = '&lt;value&gt;', phin_recipient = '&lt;value&gt;', phin_priority = '&lt;value&gt;' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . If you host NBS on-premises without CDC support, you have full database access and can run this script yourself. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties"
   },"16": {
-    "doc": "API testing and integration",
-    "title": "Run the integration test",
-    "content": "This section covers submitting an ELR payload and triggering RTI processing. | Follow the Data Ingestion API (DI API) testing guide to submit ELR payloads. | In the API testing guide, locate the ELR ingestion endpoint (/api/elrs) and add the version header to that endpoint in the ELR ingestion API call: . | version: 1 uses the legacy batch importer flow. | version: 2 bypasses the legacy batch importer and triggers RTI. | . For RTI testing, this header is the only required API change. The following screenshot shows the version header set to 2 in Postman: . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test",
+    "doc": "API testing",
+    "title": "Verify Kafka configuration",
+    "content": "The case notification service uses Kafka to receive events from the Debezium source connector. Correct Kafka configuration ensures that new records inserted into NBS_ODSE.CN_transportq_out are detected and routed through the pipeline. | Configure Kafka broker: Use one of the available Kafka broker endpoints (Private endpoints - Plaintext) in the values file located in the NEDSS-Helm/charts/debezium-case-notifications directory. The number of brokers varies by environment. | Confirm Debezium connector: Confirm that the Debezium source connector deployed in Deploy the Debezium Kafka source connector is running on the NBS_ODSE.CN_transportq_out table before proceeding. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration"
   },"17": {
-    "doc": "API testing and integration",
-    "title": "Validate ingestion and RTI processing status",
-    "content": "Use the DI API status endpoint (/api/elrs/status-details) to verify processing status after submission. | Legacy flow status values in NBS_Interface: QUEUED, FAILED, SUCCESS. | RTI flow status values in NBS_Interface: RTI_QUEUED, RTI_FAILURE, RTI_SUCCESS_STEP_N. | . RTI processing can complete in three status steps: . | RTI_SUCCESS_STEP_1: Data passed through core processing and should be available in the ODSE database. | RTI_SUCCESS_STEP_2: Applies when a WDS algorithm is configured; the service runs WDS comparison. | RTI_SUCCESS_STEP_3: Triggered after WDS completes; the service assigns the appropriate action for the ingested payload. | . The following screenshot shows an example response from the status endpoint with an RTI_SUCCESS_STEP_1 result: . The following screenshot shows an example response with an RTI_SUCCESS_STEP_3 result: . If ingestion and RTI processing are not working as expected, troubleshoot before continuing to deploy NND Service (Data Sync). ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status",
+    "doc": "API testing",
+    "title": "Verify deployment and database changes",
+    "content": "The case notification service includes a built-in Liquibase integration that automatically applies database changes during deployment. Use the following checks to confirm the service deployed successfully and data is routing correctly. | Confirm pod status: Confirm that the case-notification-service pod is stable and running. The pod will not start if Liquibase fails. | If Liquibase fails: Check the pod logs for errors. Database change details can be reviewed in the NEDSS-NNDSS-Case-Notifications repository. | If notifications do not appear: Check the dead letter table (DLT). Faulty events that cannot be processed are routed to MSGOUTE.case_notification_dlt. Check this table if case notifications are not appearing in the expected output tables (MSGOUTE.transportq_out or MSGOUTE.netsstransportq_out). | . After verifying these configurations, proceed to deploy the data ingestion service (DI API) or real-time reporting (RTR) based on your deployment plan. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes"
   },"18": {
-    "doc": "API testing and integration",
-    "title": "API testing and integration",
+    "doc": "API testing",
+    "title": "API testing",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html"
   },"19": {
     "doc": "Architecture overview",
     "title": "NBS 7 architecture and microservices",
@@ -260,7 +260,7 @@
   },"37": {
     "doc": "Notification service",
     "title": "Deploy the Case Notification service using Helm",
-    "content": "Complete the following steps to deploy the ‘case-notification-service’ Helm chart from the charts/case-notification-service/ directory of your cloned NEDSS-Helm repository: . | In the case-notification-service/values.yaml file, search for EXAMPLE and fill in your environment-specific values for the ingress host, JDBC connection, and Kafka cluster endpoint. The dbserver value is the database server endpoint only; do not include the port number. The Helm values reference lists the values to use. For a full list of environment variables, see the NEDSS-NNDSS-Case-Notifications README and the case-notification-service deployment template. | Set the Keycloak auth URI: . authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . | Install the Case Notification service: . helm install \"case-notification-service\" ./case-notification-service -f ./case-notification-service/values.yaml . | Confirm the pod is running before continuing: . kubectl get pods . | . ",
+    "content": "Complete the following steps to deploy the ‘case-notification-service’ Helm chart from the charts/case-notification-service/ directory of your cloned NEDSS-Helm repository: . | In the case-notification-service/values.yaml file, search for EXAMPLE and fill in your environment-specific values for the ingress host, JDBC connection, and Kafka cluster endpoint. The dbserver value is the database server endpoint only; do not include the port number. The Helm values reference lists the values to use. For a full list of environment variables, see the NEDSS-NNDSS-Case-Notifications README and the case-notification-service deployment template. | Install the Case Notification service: . helm install \"case-notification-service\" ./case-notification-service -f ./case-notification-service/values.yaml . | Confirm the pod is running before continuing: . kubectl get pods . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/case-notification-service.html#deploy-the-case-notification-service-using-helm",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/case-notification-service.html#deploy-the-case-notification-service-using-helm"
@@ -344,14 +344,14 @@
   },"49": {
     "doc": "Cloud prerequisites",
     "title": "Database and Windows Server requirements",
-    "content": "Your existing NBS 6 environment provides the database server that NBS 7 reuses. Confirm that your existing server meets the following requirements. The compute, storage, and container resources for NBS 7 do not exist yet. Terraform creates them in Provision cloud environment. | Software | Version | . | NBS Classic | See Supported NBS versions | . | Microsoft Windows Server | Windows Server 2022 - preferred, Windows Server 2025 | . | Microsoft SQL Server | SQL Server 2022 (16.x) - preferred, SQL Server 2025 (17.x) | . ",
+    "content": "Your existing NBS 6 environment provides the database server that NBS 7 reuses. Confirm that your existing server meets the following requirements. The compute, storage, and container resources for NBS 7 do not exist yet. Terraform creates them in Provision cloud environment. | Software | Supported versions | . | NBS Classic | See Supported NBS versions | . | Microsoft Windows Server | Windows Server 2022 - preferred Windows Server 2025 | . | Microsoft SQL Server | SQL Server 2022 (16.x) - preferred SQL Server 2025 (17.x) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/cloud-prerequisites.html#database-and-windows-server-requirements",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/cloud-prerequisites.html#database-and-windows-server-requirements"
   },"50": {
     "doc": "Cloud prerequisites",
     "title": "Management workstation setup",
-    "content": "To configure, deploy, and maintain NBS 7, you need a local workstation or a cloud-hosted shell such as AWS CloudShell or Azure Cloud Shell. Install the following tools on that workstation. Each item links to download and installation instructions. For information about supported software versions, see NBS 7 prerequisites. | Cloud provider CLI: . | AWS: AWS CLI (the aws command). To set up credentials, see the AWS CLI credential configuration guide. | Azure: Azure CLI (the az command). Also install kubelogin, which kubectl requires for Azure authentication. | . | Terraform CLI (the terraform command). | Helm CLI (the helm command). | kubectl (the Kubernetes CLI). | . ",
+    "content": "To configure, deploy, and maintain NBS 7, you need a local workstation or a cloud-hosted shell such as AWS CloudShell or Azure Cloud Shell. Install the following tools on that workstation. Each item links to download and installation instructions. For information about supported software versions for these tools, see NBS 7 prerequisites. | Cloud provider CLI: . | AWS: AWS CLI (the aws command). To set up credentials, see the AWS CLI credential configuration guide. | Azure: Azure CLI (the az command). Also install kubelogin, which kubectl requires for Azure authentication. | . | Terraform CLI (the terraform command). | Helm CLI (the helm command). | kubectl (the Kubernetes CLI). | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/cloud-prerequisites.html#management-workstation-setup",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/cloud-prerequisites.html#management-workstation-setup"
@@ -407,7 +407,7 @@
   },"58": {
     "doc": "Data Compare",
     "title": "Prerequisites",
-    "content": "Before deploying the Data Compare tool, verify the following: . | Access to a cloud storage bucket for data exchange between the API and Processor services. These steps currently use Amazon S3. If you are not using Amazon S3, consult your cloud administrator for equivalent storage configuration. For AWS deployments, an IAM role granting the Data Compare pods access to S3 must be provisioned before deployment. This role is created by Terraform in NEDSS-Infrastructure when create_datacompare_irsa = true is set in your terraform.tfvars. The role is named &lt;eks-cluster-name&gt;-datacompare-role. See Provision the AWS environment for details. | Keycloak configured with the Data Compare API profile: NEDSS-Helm/charts/keycloak/extra . | . If your Keycloak pod uses a name or namespace other than the default, update the authUri in your values.yaml: . authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . These steps require a Unix-compatible shell. On Windows, use Git Bash, WSL, or an equivalent terminal emulator. Verify that you are connected to the correct Kubernetes cluster before proceeding. To confirm, run kubectl config current-context. ",
+    "content": "Before deploying the Data Compare tool, verify the following: . | Access to a cloud storage bucket for data exchange between the API and Processor services. These steps currently use Amazon S3. If you are not using Amazon S3, consult your cloud administrator for equivalent storage configuration. For AWS deployments, an IAM role granting the Data Compare pods access to S3 must be provisioned before deployment. Terraform in NEDSS-Infrastructure creates this role when you enable the Data Compare resources in the 1-nbs7 layer. The role is named &lt;eks-cluster-name&gt;-datacompare-role. See Prepare Terraform files and configuration for details. | Keycloak configured with the Data Compare API profile: NEDSS-Helm/charts/keycloak/extra . | . If your Keycloak pod uses a name or namespace other than the default, update the authUri in your values.yaml: . authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . These steps require a Unix-compatible shell. On Windows, use Git Bash, WSL, or an equivalent terminal emulator. Verify that you are connected to the correct Kubernetes cluster before proceeding. To confirm, run kubectl config current-context. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/data-compare-tool.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/data-compare-tool.html#prerequisites"
@@ -531,89 +531,89 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing.html"
   },"76": {
-    "doc": "Debezium Kafka connector",
-    "title": "Deploy the Debezium Kafka source connector for NBS 7 case notifications",
-    "content": "This page walks through enabling Change Data Capture (CDC) and deploying the Debezium source connector used by case notification services. Complete Case notifications before starting this page. After you finish the connector deployment, proceed to deploying the case notification service. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications"
-  },"77": {
-    "doc": "Debezium Kafka connector",
-    "title": "On this page",
-    "content": ". | Prerequisites | Enable Change Data Capture | Deploy the Debezium connector using Helm | Troubleshooting | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page"
-  },"78": {
-    "doc": "Debezium Kafka connector",
-    "title": "Prerequisites",
-    "content": "This page assumes you’ve completed Before you begin for the microservices phase and Data Processing deployment. If your deployment plan includes NND Service (Data Sync), complete it before this page. | Have your database credentials, domain values, and Kafka endpoint available. See the Helm values reference for help determining any values. | Confirm that the case-notification-service Keycloak client has been imported. See Import service clients and retrieve secrets if you need help. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites"
-  },"79": {
-    "doc": "Debezium Kafka connector",
-    "title": "Enable Change Data Capture",
-    "content": "Enable Change Data Capture on NBS_ODSE before deploying the connector. Sysadmin permissions are required. | Enable Change Data Capture on NBS_ODSE: . exec msdb.dbo.rds_cdc_enable_db 'NBS_ODSE'; . | Verify the configuration. A value of is_cdc_enabled=1 indicates successful configuration: . SELECT name, is_cdc_enabled FROM sys.databases; . | Enable Change Data Capture for the required table in NBS_ODSE: . USE NBS_ODSE; exec sys.sp_cdc_enable_table @source_schema = N'dbo', @source_name = N'CN_transportq_out', @role_name = NULL; . | Verify Change Data Capture is enabled for ODSE tables: . USE NBS_ODSE; SELECT name, case when is_tracked_by_cdc = 1 then 'YES' else 'NO' end as is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture"
-  },"80": {
-    "doc": "Debezium Kafka connector",
-    "title": "Deploy the Debezium connector using Helm",
-    "content": "Complete the following steps to deploy the ‘debezium-case-notifications’ Helm chart from the charts/debezium-case-notifications/ directory of your cloned NEDSS-Helm repository: . | In the debezium-case-notifications/values.yaml file, search for EXAMPLE and fill in your environment-specific values for the NBS_ODSE hostname, database credentials, and Kafka bootstrap server endpoints. The Helm values reference lists the values to use. The connector’s SQL Server config is preconfigured for the NBS_ODSE database and doesn’t need to change: . sqlserverconnector: config: database.port: 1433 database.dbname: nbs_odse database.names: nbs_odse database.server.name: odse . | Install the connector: . helm install \"debezium-case-notification-service-connect\" ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml . | Confirm the pod is running: . kubectl get pods . | . If the pod is not in a running state, wait and troubleshoot before continuing to deploy the case notification service. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm"
-  },"81": {
-    "doc": "Debezium Kafka connector",
-    "title": "Troubleshooting",
-    "content": "If the service has trouble connecting to the database, delete the ConfigMap and then reinstall the chart to recreate it: . | Delete the ConfigMap: . kubectl delete configmap case-notification-connect . | Reinstall the chart: . helm upgrade \"debezium-case-notification-service-connect\" ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting"
-  },"82": {
-    "doc": "Debezium Kafka connector",
-    "title": "Debezium Kafka connector",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html"
-  },"83": {
     "doc": "Debezium",
     "title": "Deploy Debezium for real-time reporting (RTR)",
     "content": "This page covers steps to deploy the Debezium connector that captures change data from source tables and publishes events to Kafka topics for RTR processing. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr"
-  },"84": {
+  },"77": {
     "doc": "Debezium",
     "title": "On this page",
     "content": ". | Installing Debezium | Troubleshooting | . These steps require a Unix-compatible shell. On Windows, use Git Bash, WSL, or an equivalent terminal emulator. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page"
-  },"85": {
+  },"78": {
     "doc": "Debezium",
     "title": "Installing Debezium",
     "content": "Follow these steps to configure and deploy the Debezium Helm chart for RTR. Verify that you are connected to the correct Kubernetes cluster before proceeding. To confirm, run kubectl config current-context. | Locate the Debezium Helm chart in the NEDSS-Helm repository. | Configure values.yaml. Replace all placeholder values before installation. To retrieve your Kafka bootstrap server endpoints, see Get bootstrap brokers in the AWS MSK documentation. image: # Debezium connector image repository: quay.io/debezium/connect # Replace with the target release version tag, e.g. v1.0.1 tag: &lt;release-version-tag&gt; properties: # Kafka bootstrap server endpoint from AWS MSK bootstrap_server: \"EXAMPLE_KAFKA_ENDPOINT\" # Connector for NBS_ODSE transactional data sqlserverconnector_odse: config: database.hostname: \"nbs-db.private-EXAMPLE_DOMAIN\" database.port: \"1433\" database.user: \"EXAMPLE_ODSE_DB_USER\" database.password: \"EXAMPLE_ODSE_DB_USER_PASSWORD\" database.dbname: \"nbs_odse\" database.names: \"nbs_odse\" database.server.name: \"odse\" database.history.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" schema.history.internal.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" # Connector for NBS_ODSE metadata sqlserverconnector_odse_meta: config: database.hostname: \"nbs-db.private-EXAMPLE_DOMAIN\" database.port: \"1433\" database.user: \"EXAMPLE_ODSE_DB_USER\" database.password: \"EXAMPLE_ODSE_DB_USER_PASSWORD\" database.dbname: \"nbs_odse\" database.names: \"nbs_odse\" database.server.name: \"odse-meta\" database.history.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" schema.history.internal.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" # Connector for NBS_SRTE reference and terminology data sqlserverconnector_srte: config: database.hostname: \"nbs-db.private-EXAMPLE_DOMAIN\" database.port: \"1433\" database.user: \"EXAMPLE_SRTE_DB_USER\" database.password: \"EXAMPLE_SRTE_DB_USER_PASSWORD\" database.dbname: \"nbs_srte\" database.names: \"nbs_srte\" database.server.name: \"srte\" database.history.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" schema.history.internal.kafka.bootstrap.servers: \"EXAMPLE_KAFKA_ENDPOINT\" env: # Kafka bootstrap server endpoint from AWS MSK - name: BOOTSTRAP_SERVERS value: \"EXAMPLE_KAFKA_ENDPOINT\" . | Install the pod: . helm install -f ./debezium/values.yaml debezium-connect ./debezium/ . | Verify the pod is running: . kubectl get pods . | Validate the service. Debezium is an internal service with no ingress. Validate it as part of RTR pipeline validation. | . After Debezium deploys successfully, continue to Deploy Kafka connector. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#installing-debezium",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#installing-debezium"
-  },"86": {
+  },"79": {
     "doc": "Debezium",
     "title": "Troubleshooting",
     "content": "If issues persist after initial troubleshooting, contact support at nbs@cdc.gov. Database connection errors . If the service has trouble connecting to the database, run the following command to reset the ConfigMap: . kubectl delete configmap cp-kafka-connect-sqlserver-connect . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshooting",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshooting"
-  },"87": {
+  },"80": {
     "doc": "Debezium",
     "title": "Debezium",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html"
+  },"81": {
+    "doc": "Debezium Kafka connector",
+    "title": "Deploy the Debezium Kafka source connector for NBS 7 case notifications",
+    "content": "This page walks through enabling Change Data Capture (CDC) and deploying the Debezium source connector used by case notification services. Complete Case notifications before starting this page. After you finish the connector deployment, proceed to deploying the case notification service. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications"
+  },"82": {
+    "doc": "Debezium Kafka connector",
+    "title": "On this page",
+    "content": ". | Prerequisites | Enable Change Data Capture | Deploy the Debezium connector using Helm | Troubleshooting | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page"
+  },"83": {
+    "doc": "Debezium Kafka connector",
+    "title": "Prerequisites",
+    "content": "This page assumes you’ve completed Before you begin for the microservices phase and Data Processing deployment. If your deployment plan includes NND Service (Data Sync), complete it before this page. | Have your database credentials, domain values, and Kafka endpoint available. See the Helm values reference for help determining any values. | Confirm that the case-notification-service Keycloak client has been imported. See Import service clients and retrieve secrets if you need help. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites"
+  },"84": {
+    "doc": "Debezium Kafka connector",
+    "title": "Enable Change Data Capture",
+    "content": "Enable Change Data Capture on NBS_ODSE before deploying the connector. Sysadmin permissions are required. | Enable Change Data Capture on NBS_ODSE: . exec msdb.dbo.rds_cdc_enable_db 'NBS_ODSE'; . | Verify the configuration. A value of is_cdc_enabled=1 indicates successful configuration: . SELECT name, is_cdc_enabled FROM sys.databases; . | Enable Change Data Capture for the required table in NBS_ODSE: . USE NBS_ODSE; exec sys.sp_cdc_enable_table @source_schema = N'dbo', @source_name = N'CN_transportq_out', @role_name = NULL; . | Verify Change Data Capture is enabled for ODSE tables: . USE NBS_ODSE; SELECT name, case when is_tracked_by_cdc = 1 then 'YES' else 'NO' end as is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; . | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture"
+  },"85": {
+    "doc": "Debezium Kafka connector",
+    "title": "Deploy the Debezium connector using Helm",
+    "content": "Complete the following steps to deploy the ‘debezium-case-notifications’ Helm chart from the charts/debezium-case-notifications/ directory of your cloned NEDSS-Helm repository: . | In the debezium-case-notifications/values.yaml file, search for EXAMPLE and fill in your environment-specific values for the NBS_ODSE hostname, database credentials, and Kafka bootstrap server endpoints. The Helm values reference lists the values to use. The connector’s SQL Server config is preconfigured for the NBS_ODSE database and doesn’t need to change: . sqlserverconnector: config: database.port: 1433 database.dbname: nbs_odse database.names: nbs_odse database.server.name: odse . | Install the connector: . helm install \"debezium-case-notification-service-connect\" ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml . | Confirm the pod is running: . kubectl get pods . | . If the pod is not in a running state, wait and troubleshoot before continuing to deploy the case notification service. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm"
+  },"86": {
+    "doc": "Debezium Kafka connector",
+    "title": "Troubleshooting",
+    "content": "If the service has trouble connecting to the database, delete the ConfigMap and then reinstall the chart to recreate it: . | Delete the ConfigMap: . kubectl delete configmap case-notification-connect . | Reinstall the chart: . helm upgrade \"debezium-case-notification-service-connect\" ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml . | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting"
+  },"87": {
+    "doc": "Debezium Kafka connector",
+    "title": "Debezium Kafka connector",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html"
   },"88": {
     "doc": "Deploy core services",
     "title": "Deploy core Kubernetes services",
@@ -638,7 +638,7 @@
   },"91": {
     "doc": "Deploy core services",
     "title": "Deploy Traefik ingress controller",
-    "content": "The Traefik Helm chart in the NEDSS-Helm repository sets up Prometheus metrics, configures Linkerd sidecar injection for the traefik Kubernetes deployment, sets timeouts, and instructs the Traefik controller to create a Network Load Balancer (NLB) in AWS or an internal load balancer in Azure. This section covers how to deploy the Traefik controller, deploy the NBS ingress resources, and create the DNS records that route traffic to them. Deploy the Traefik controller . | In the traefik chart directory, open the values file for your cloud provider: . | AWS: traefik/values.yaml | Azure: traefik/values-azure.yaml | . | Confirm that the deployment section of that file contains the following pod annotation: . podAnnotations: linkerd.io/inject: enabled . | Optional: To make the kubectl logs command return more information if you encounter issues, change INFO to DEBUG in the following snippet in that file: . logs: general: level: INFO . | Add the Traefik Helm chart repository and update it: . helm repo add traefik https://traefik.github.io/charts helm repo update . | Deploy the Traefik controller to your Kubernetes cluster with the command for your cloud provider: . | AWS: . helm install traefik traefik/traefik --namespace traefik --create-namespace -f ./traefik/values.yaml . | Azure: . helm install traefik traefik/traefik --namespace traefik --create-namespace -f ./traefik/values-azure.yaml . | . If your AKS cluster has Windows node pools, for example for NBS 6, append the following option to the Azure command so that Traefik is scheduled on a Linux node: --set nodeSelector.\"kubernetes\\.io/os\"=linux . | Wait for the deployment to complete: Run the following command and verify that it prints that the deployment was successfully rolled out: . $ kubectl rollout status deployment/traefik -n traefik deployment \"traefik\" successfully rolled out . | Confirm the Traefik pod is healthy: Run the following command and verify that the pod has a STATUS of Running and that the two numbers in the READY column match: . $ kubectl get pods -n traefik NAME READY STATUS RESTARTS AGE traefik-&lt;POD-TEMPLATE-HASH&gt;-&lt;RANDOM-STRING&gt; 2/2 Running 0 5m . | Get the Traefik load balancer address: Run the following command and confirm that ports 80 and 443 are listed under the PORT(S) column. The example output is from AWS: . $ kubectl get svc -n traefik NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE traefik LoadBalancer 172.xx.xxx.xxx [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80:[NODEPORT1]/TCP,443:[NODEPORT1]/TCP 6m . | . Each instance of [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com on this page refers to the same value: the address of your Traefik load balancer. For AWS, this is an NLB hostname. For Azure, this is an IP address. Deploy NBS ingress resources . The nbs-ingress Helm chart manages all ingress routing between the NBS 7 applications deployed to your Kubernetes cluster. Complete these steps to deploy it: . | In the nbs-ingress/values.yaml file (the same file is used for AWS and Azure), search for EXAMPLE and fill in your environment-specific values. The Helm values reference for NBS 7 microservices lists the values to use. | Deploy the ingress resources to your Kubernetes cluster: . helm install nbs-ingress ./nbs-ingress -n default -f ./nbs-ingress/values.yaml . | Verify that the ingress resources were created. If you use PowerShell, replace grep -E with Select-String. The example output is from AWS: . $ kubectl get ingress -A | grep -E \"NAME|traefik\" NAMESPACE NAME CLASS HOSTS ADDRESS PORTS AGE default nbs-ingress-dataingestion traefik &lt;YOUR-DATA-HOSTNAME&gt; [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80, 443 5m default nbs-ingress-main traefik &lt;YOUR-APP-HOSTNAME&gt; [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80, 443 5m . | . Create DNS records . Create A records in your Domain Name System (DNS) service, such as Amazon Route 53 or Azure DNS, that point to the address of the Traefik load balancer: . | Retrieve the load balancer address: The kubectl get svc -n traefik command in Deploy the Traefik controller printed the address of the Traefik load balancer under the EXTERNAL-IP column. Rerun that command if you need to retrieve the address again. | Create the records: Create an A record for each hostname in the following table. Replace &lt;DOMAIN_NAME.TLD&gt; with your site and domain names from the Helm values reference for NBS 7 microservices: . | Subdomain description | Hostname | Example | . | NBS application | app.&lt;DOMAIN_NAME.TLD&gt; | app.nbsdemo.com | . | Data services | data.&lt;DOMAIN_NAME.TLD&gt; | data.nbsdemo.com | . | NiFi (use with caution) | nifi.&lt;DOMAIN_NAME.TLD&gt; | nifi.nbsdemo.com | . NiFi has known security vulnerabilities. Add a NiFi DNS record only if you need to administer NiFi directly. Otherwise, omit it. To create the records in your cloud provider: . | AWS: In the AWS Management Console, go to Route 53 &gt; Hosted Zones and select your hosted zone. Make note of your Hosted zone ID, because the verification step uses it. Create or edit each A record from the table so that its Route traffic to target is the hostname of your Traefik load balancer. | Azure: In the Azure Portal, go to DNS Zones and select your DNS zone. Create or edit each A record from the table so that it points to the IP address of your Traefik load balancer. | . | Verify the records: For each record you created, run the following nslookup command and verify that it does not print an error such as server can't find. Records typically propagate within 60 seconds. If you encounter an error, rerun the command periodically for up to 5 minutes until it prints no error: . nslookup app.&lt;DOMAIN_NAME.TLD&gt; . For Azure, verify that the command prints the IP address of your Traefik load balancer. For AWS, the nslookup command prints other IP addresses, so run the following command instead to verify the record target. Fill in your values in the strings surrounded by angle brackets, and verify that the output is the hostname of your Traefik load balancer: . $ aws route53 list-resource-record-sets \\ --hosted-zone-id &lt;YOUR_AWS_ROUTE53_HOSTED_ZONE_ID&gt; \\ --query \"ResourceRecordSets[?Name=='app.&lt;DOMAIN_NAME.TLD&gt;.'].AliasTarget.DNSName\" \\ --output text [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com . | . Troubleshoot Traefik . If you encounter issues when you deploy or verify Traefik, the following sections provide suggestions. Access the Traefik dashboard . The Traefik dashboard lets you inspect routers, services, and middleware: . | Run the following command, which creates a secure, temporary network tunnel between your local machine and the traefik pod in your Kubernetes cluster. Leave the command running: . $ kubectl port-forward -n traefik deployment/traefik 9000:9000 Forwarding from 127.0.0.1:9000 -&gt; 9000 Forwarding from [::1]:9000 -&gt; 9000 . | Go to http://localhost:9000/dashboard/ in your browser to access the Traefik dashboard. The following screenshot shows the dashboard: . | When you finish using the dashboard, press Ctrl+C in the terminal that is running the port-forward command to stop the tunnel. | . View Traefik logs . To print the most recent Traefik log entries, run the following command: . kubectl logs -n traefik deployment/traefik -c traefik --tail=100 . Common Traefik issue . | 502 Bad Gateway: Run the following command and confirm that ports 8443 and 8000 are listed under the ENDPOINTS column: . $ kubectl get endpoints -n traefik NAME ENDPOINTS AGE traefik [POD-IP-ADDRESS]:8443,[POD-IP-ADDRESS]:8000 10m . | . Get support . If issues persist after you complete the troubleshooting steps, email nbs@cdc.gov. ",
+    "content": "The Traefik Helm chart in the NEDSS-Helm repository sets up Prometheus metrics, configures Linkerd sidecar injection for the traefik Kubernetes deployment, sets timeouts, and instructs the Traefik controller to create a Network Load Balancer (NLB) in AWS or an internal load balancer in Azure. This section covers how to deploy the Traefik controller, deploy the NBS ingress resources, and create the DNS records that route traffic to them. Deploy the Traefik controller . | In the traefik chart directory, open the values file for your cloud provider: . | AWS: traefik/values.yaml | Azure: traefik/values-azure.yaml | . | Confirm that the deployment section of that file contains the following pod annotation: . podAnnotations: linkerd.io/inject: enabled . | Optional: To make the kubectl logs command return more information if you encounter issues, change INFO to DEBUG in the following snippet in that file: . logs: general: level: INFO . | Add the Traefik Helm chart repository and update it: . helm repo add traefik https://traefik.github.io/charts helm repo update . | Deploy the Traefik controller to your Kubernetes cluster with the command for your cloud provider: . | AWS: . helm install traefik traefik/traefik --namespace traefik --create-namespace -f ./traefik/values.yaml . | Azure: . helm install traefik traefik/traefik --namespace traefik --create-namespace -f ./traefik/values-azure.yaml . | . If your AKS cluster has Windows node pools, for example for NBS 6, append the following option to the Azure command so that Traefik is scheduled on a Linux node: --set nodeSelector.\"kubernetes\\.io/os\"=linux . | Wait for the deployment to complete: Run the following command and verify that it prints that the deployment was successfully rolled out: . $ kubectl rollout status deployment/traefik -n traefik deployment \"traefik\" successfully rolled out . | Confirm the Traefik pod is healthy: Run the following command and verify that the pod has a STATUS of Running and that the two numbers in the READY column match: . $ kubectl get pods -n traefik NAME READY STATUS RESTARTS AGE traefik-&lt;POD-TEMPLATE-HASH&gt;-&lt;RANDOM-STRING&gt; 2/2 Running 0 5m . | Get the Traefik load balancer address: Run the following command and confirm that ports 80 and 443 are listed under the PORT(S) column. The example output is from AWS: . $ kubectl get svc -n traefik NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE traefik LoadBalancer 172.xx.xxx.xxx [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80:[NODEPORT1]/TCP,443:[NODEPORT1]/TCP 6m . | . Each instance of [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com on this page refers to the same value: the address of your Traefik load balancer. For AWS, this is an NLB hostname. For Azure, this is an IP address. Deploy NBS ingress resources . The nbs-ingress Helm chart manages all ingress routing between the NBS 7 applications deployed to your Kubernetes cluster. Complete these steps to deploy it: . | In the nbs-ingress/values.yaml file (the same file is used for AWS and Azure), search for EXAMPLE and fill in your environment-specific values. The Helm values reference for NBS 7 microservices lists the values to use. | Deploy the ingress resources to your Kubernetes cluster: . helm install nbs-ingress ./nbs-ingress -n default -f ./nbs-ingress/values.yaml . | Verify that the ingress resources were created. If you use PowerShell, replace grep -E with Select-String. The example output is from AWS: . $ kubectl get ingress -A | grep -E \"NAME|traefik\" NAMESPACE NAME CLASS HOSTS ADDRESS PORTS AGE default nbs-ingress-dataingestion traefik &lt;YOUR-DATA-HOSTNAME&gt; [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80, 443 5m default nbs-ingress-main traefik &lt;YOUR-APP-HOSTNAME&gt; [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com 80, 443 5m . | . Create DNS records . Create A records in your Domain Name System (DNS) service, such as Amazon Route 53 or Azure DNS, that point to the address of the Traefik load balancer: . | Retrieve the load balancer address: The kubectl get svc -n traefik command in Deploy the Traefik controller printed the address of the Traefik load balancer under the EXTERNAL-IP column. Rerun that command if you need to retrieve the address again. | Create the records: Create an A record for each hostname in the following table. Replace &lt;DOMAIN_NAME.TLD&gt; with your site and domain names from the Helm values reference for NBS 7 microservices: . | Subdomain description | Hostname | Example | . | NBS application | app.&lt;DOMAIN_NAME.TLD&gt; | app.nbsdemo.com | . | Data services | data.&lt;DOMAIN_NAME.TLD&gt; | data.nbsdemo.com | . | NiFi (use with caution) | nifi.&lt;DOMAIN_NAME.TLD&gt; | nifi.nbsdemo.com | . NiFi has known security vulnerabilities. Add a NiFi DNS record only if you need to administer NiFi directly. Otherwise, omit it. To create the records in your cloud provider: . | AWS: In the AWS Management Console, go to Route 53 &gt; Hosted Zones and select your hosted zone. Make note of your Hosted zone ID, because the verification step uses it. Create or edit each A record from the table so that its Route traffic to target is the hostname of your Traefik load balancer. | Azure: In the Azure Portal, go to DNS Zones and select your DNS zone. Create or edit each A record from the table so that it points to the IP address of your Application Gateway. | . | Verify the records: For each record you created, run the following nslookup command and verify that it does not print an error such as server can't find. Records typically propagate within 60 seconds. If you encounter an error, rerun the command periodically for up to 5 minutes until it prints no error: . nslookup app.&lt;DOMAIN_NAME.TLD&gt; . For Azure, verify that the command prints the IP address of your Traefik load balancer. For AWS, the nslookup command prints other IP addresses, so run the following command instead to verify the record target. Fill in your values in the strings surrounded by angle brackets, and verify that the output is the hostname of your Traefik load balancer: . $ aws route53 list-resource-record-sets \\ --hosted-zone-id &lt;YOUR_AWS_ROUTE53_HOSTED_ZONE_ID&gt; \\ --query \"ResourceRecordSets[?Name=='app.&lt;DOMAIN_NAME.TLD&gt;.'].AliasTarget.DNSName\" \\ --output text [HASH]-[RANDOM-ID].elb.[YOUR-REGION].amazonaws.com . | . Troubleshoot Traefik . If you encounter issues when you deploy or verify Traefik, the following sections provide suggestions. Access the Traefik dashboard . The Traefik dashboard lets you inspect routers, services, and middleware: . | Run the following command, which creates a secure, temporary network tunnel between your local machine and the traefik pod in your Kubernetes cluster. Leave the command running: . $ kubectl port-forward -n traefik deployment/traefik 9000:9000 Forwarding from 127.0.0.1:9000 -&gt; 9000 Forwarding from [::1]:9000 -&gt; 9000 . | Go to http://localhost:9000/dashboard/ in your browser to access the Traefik dashboard. The following screenshot shows the dashboard: . | When you finish using the dashboard, press Ctrl+C in the terminal that is running the port-forward command to stop the tunnel. | . View Traefik logs . To print the most recent Traefik log entries, run the following command: . kubectl logs -n traefik deployment/traefik -c traefik --tail=100 . Common Traefik issue . | 502 Bad Gateway: Run the following command and confirm that ports 8443 and 8000 are listed under the ENDPOINTS column: . $ kubectl get endpoints -n traefik NAME ENDPOINTS AGE traefik [POD-IP-ADDRESS]:8443,[POD-IP-ADDRESS]:8000 10m . | . Get support . If issues persist after you complete the troubleshooting steps, email nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-core-services.html#deploy-traefik-ingress-controller",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-core-services.html#deploy-traefik-ingress-controller"
@@ -694,7 +694,7 @@
   },"99": {
     "doc": "Deploy Data Sync service API",
     "title": "Configure values and install",
-    "content": "Complete the following steps to deploy the ‘nnd-service’ Helm chart from the charts/nnd-service/ directory of your cloned NEDSS-Helm repository: . | Confirm that the following DNS entry was created and points to the Network Load Balancer (NLB) in front of your Kubernetes cluster. Use the active NLB provisioned during base install. Do this in your authoritative DNS service, such as Route 53. Replace example.com with the appropriate domain name in values.yaml: . | NND service application, for example: data.example.com | . | Search values.yaml for EXAMPLE and fill in the JDBC connection values and EFS file system ID. The dbserver value is the database server endpoint only; do not include the port number. The Helm values reference lists the values to use. The following screenshot shows the database endpoint in the Amazon RDS console: . The following screenshot shows the file system ID in the Amazon EFS console: . | Set the Keycloak auth URI. In the default configuration, this value does not change unless the name or namespace of the Keycloak pod is modified: . authUri: \"http://keycloak.default.svc.cluster.local/auth/realms/NBS\" . | Install the nnd-service chart: . helm install \"nnd-service\" ./nnd-service -f ./nnd-service/values.yaml . | Confirm the pod is running before continuing: . kubectl get pods . | . ",
+    "content": "Complete the following steps to deploy the ‘nnd-service’ Helm chart from the charts/nnd-service/ directory of your cloned NEDSS-Helm repository: . | Confirm that the following DNS entry was created and points to the Network Load Balancer (NLB) in front of your Kubernetes cluster. Use the active NLB provisioned during base install. Do this in your authoritative DNS service, such as Route 53. Replace example.com with the appropriate domain name in values.yaml: . | NND service application, for example: data.example.com | . | Search values.yaml for EXAMPLE and fill in the JDBC connection values and EFS file system ID. The dbserver value is the database server endpoint only; do not include the port number. The Helm values reference lists the values to use. The following screenshot shows the database endpoint in the Amazon RDS console: . The following screenshot shows the file system ID in the Amazon EFS console: . | Install the nnd-service chart: . helm install \"nnd-service\" ./nnd-service -f ./nnd-service/values.yaml . | Confirm the pod is running before continuing: . kubectl get pods . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/deploy-data-sync-service-api-cloud.html#configure-values-and-install",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/deploy-data-sync-service-api-cloud.html#configure-values-and-install"
@@ -736,14 +736,14 @@
   },"105": {
     "doc": "Deploy and configure Keycloak",
     "title": "Configure the Helm chart",
-    "content": ". | In values.yml, update the following parameters: . | Parameter | Template value | Description | . | adminUser | admin | Keycloak admin account for the web UI. Keep the template value or change it to match your organization’s naming conventions. | . | adminPassword | EXAMPLE_KC_PASS8675309 | Password for the Keycloak admin user. Use a complex password that meets your organization’s standards. | . | KC_DB | mssql | Database type. Keep the template value. | . | KC_DB_URL | jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true; | Replace EXAMPLE_DB_ENDPOINT with your database endpoint. | . | KC_DB_USERNAME | NBS_keycloak | Keycloak database account. Keep the template value or change it to match your organization’s naming conventions. | . | KC_DB_PASSWORD | EXAMPLE_KCDB_PASS8675309 | Must match the password you set in Create the Keycloak database. | . | efsFileSystemId | EXAMPLE_EFS_ID | In AWS deployments: The Amazon EFS file system ID from the AWS console or CLI. Provides persistent storage for themes. In Azure deployments: Azure Files requires different configuration. | . | . ",
+    "content": "In values.yml, update the following parameters: . | Parameter | Template value | Description | . | adminUser | admin | Keycloak admin account for the web UI. Keep the template value or change it to match your organization’s naming conventions. | . | adminPassword | EXAMPLE_KC_PASS8675309 | Password for the Keycloak admin user. Use a complex password that meets your organization’s standards. | . | KC_DB | mssql | Database type. Keep the template value. | . | KC_DB_URL | jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true; | Replace EXAMPLE_DB_ENDPOINT with your database endpoint. | . | KC_DB_USERNAME | NBS_keycloak | Keycloak database account. Keep the template value or change it to match your organization’s naming conventions. | . | KC_DB_PASSWORD | EXAMPLE_KCDB_PASS8675309 | Must match the password you set in Create the Keycloak database. | . | efsFileSystemId | EXAMPLE_EFS_ID | In AWS deployments: The Amazon EFS file system ID from the AWS console or CLI. Provides persistent storage for themes. In Azure deployments: Azure Files requires different configuration. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-keycloak.html#configure-the-helm-chart",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-keycloak.html#configure-the-helm-chart"
   },"106": {
     "doc": "Deploy and configure Keycloak",
     "title": "Deploy Keycloak",
-    "content": "Install the Keycloak Helm chart and verify the pod is running before you continue. | From the charts directory, install the Keycloak Helm chart. This step takes at least 5 minutes while the init container becomes available. See the README in charts/keycloak for details. helm install keycloak --namespace default -f keycloak/values.yml keycloak . After installation completes, the Keycloak database populates with its application tables, as shown in the following screenshot. | Verify the pod is running before you continue: . kubectl get pods -n default . | . ",
+    "content": "Use the following steps to install the Keycloak Helm chart and verify the pod is running. | From the charts directory, install the Keycloak Helm chart. This step takes at least 5 minutes while the init container becomes available. See the README in charts/keycloak for details. helm install keycloak --namespace default -f keycloak/values.yml keycloak . After installation completes, the Keycloak database populates with its application tables, as shown in the following screenshot. | Verify the pod is running before you continue: . kubectl get pods -n default . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-keycloak.html#deploy-keycloak",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup/deploy-keycloak.html#deploy-keycloak"
@@ -890,7 +890,7 @@
   },"127": {
     "doc": "NBS 7 full deployment",
     "title": "In this section",
-    "content": ". | Prerequisites: Verify your NBS 6 readiness, network access, DNS, security, and management workstation requirements. | Provision cloud infrastructure: Verify your cloud requirements, then use Terraform to create the virtual network, Kubernetes cluster, and supporting services in AWS or Azure. | Set up Kubernetes: Deploy the core Kubernetes services, then deploy and configure Keycloak. | Deploy NBS 7 microservices: Install and configure the NBS 7 application services with Helm. | Clean up after deployment: Remove temporary deployment artifacts and tighten access after a successful installation. | . ",
+    "content": ". | NBS 7 prerequisites: Prerequisites for NBS 7 deployment, including NBS 6 readiness, network access, DNS, security, and local management machine setup. | Provision cloud infrastructure: Provision cloud infrastructure for NBS 7 on AWS or Azure before installing Kubernetes services. | Deploy cluster services: Enable Linkerd, deploy the core Kubernetes services, and deploy and configure Keycloak before you install the NBS 7 microservices. | Deploy NBS 7 microservices: Install and configure NBS 7 application services using Helm, including Elasticsearch, NiFi, and the Modernization API. | Post-deploy cleanup: Steps to remove temporary deployment artifacts and tighten access after a successful NBS 7 installation. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy.html#in-this-section",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy.html#in-this-section"
@@ -1133,29 +1133,29 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/kafka-connector.html"
   },"162": {
-    "doc": "Set up Kubernetes",
-    "title": "Set up Kubernetes for NBS 7",
+    "doc": "Deploy cluster services",
+    "title": "Deploy cluster services for NBS 7",
     "content": "This phase performs the deployments and configuration in your Kubernetes cluster that the NBS 7 microservices depend on. You first enable Linkerd for the namespace that the microservices deploy into, then deploy the core Kubernetes services, and then deploy and configure Keycloak. The kubectl commands in this phase require the cluster connection you configured in Connect to Kubernetes cluster. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#set-up-kubernetes-for-nbs-7",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#deploy-cluster-services-for-nbs-7",
     
-    "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#set-up-kubernetes-for-nbs-7"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#deploy-cluster-services-for-nbs-7"
   },"163": {
-    "doc": "Set up Kubernetes",
+    "doc": "Deploy cluster services",
     "title": "Enable Linkerd for the default namespace",
     "content": "Linkerd provides mutual TLS (mTLS) between the NBS 7 microservices, all of which are deployed to the default Kubernetes namespace. Complete these steps to enable Linkerd for that namespace: . | Annotate the default namespace: . kubectl annotate namespace default \"linkerd.io/inject=enabled\" . The output should be namespace/default annotated. | Verify that the annotation is in place: . kubectl get namespace default -o=jsonpath='{.metadata.annotations}' . The output should include \"linkerd.io/inject\":\"enabled\". | If this is an update rather than a new installation, that is, if you already completed steps in the Deploy NBS 7 microservices section for this environment, restart the pods in the default namespace so that each pod gets a Linkerd sidecar container: . kubectl get pods -n default -o custom-columns=\":metadata.name\" | xargs kubectl delete pod -n default . Restarted pods show 2/2 in the READY column of kubectl get pods output. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#enable-linkerd-for-the-default-namespace",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#enable-linkerd-for-the-default-namespace"
   },"164": {
-    "doc": "Set up Kubernetes",
+    "doc": "Deploy cluster services",
     "title": "In this section",
-    "content": "Complete the pages in this section in order: . | Deploy core services: Get the NEDSS-Helm charts and install the core Kubernetes services that NBS 7 depends on, including the Traefik ingress controller and cert-manager. | Deploy and configure Keycloak: Install Keycloak, configure the NBS realms and service clients, and complete the final validation of Traefik and Keycloak. | . ",
+    "content": "Complete the pages in this section in order: . | Deploy core services: Get the NEDSS-Helm charts, then install the core Kubernetes services that NBS 7 depends on, including the Traefik ingress controller, cert-manager, and the Cluster Autoscaler. | Deploy and configure Keycloak: Install Keycloak, create the NBS service and user realms, configure service clients, retrieve client secrets, and complete the final validation of Traefik and Keycloak. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#in-this-section",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/kubernetes-setup.html#in-this-section"
   },"165": {
-    "doc": "Set up Kubernetes",
-    "title": "Set up Kubernetes",
+    "doc": "Deploy cluster services",
+    "title": "Deploy cluster services",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/kubernetes-setup.html",
     
@@ -1618,7 +1618,7 @@
   },"231": {
     "doc": "NBS 7 prerequisites",
     "title": "Required tools and software",
-    "content": "You will need a local or cloud-hosted workstation (for example, AWS CloudShell, Azure Cloud Shell, or a local laptop) with specific tools installed to support deployment and ongoing maintenance. The following table lists the minimum supported versions of the required software. The Cloud prerequisites page lists additional tools and the specific versions used in testing. | Software | Minimum version | . | Kubernetes CLI | kubectl 1.25 | . | Helm CLI | 3.0 | . | Terraform CLI | 1.15.6 | . | GitHub CLI | latest | . | Cloud provider CLI | latest AWS or Azure CLI version | . | Docker | 20.x | . For installation instructions specific to your cloud provider, see Cloud prerequisites. ",
+    "content": "You will need a local or cloud-hosted workstation (for example, AWS CloudShell, Azure Cloud Shell, or a local laptop) with specific tools installed to support deployment and ongoing maintenance. The following table lists the minimum supported versions of the required software. The Cloud prerequisites page lists additional tools and the specific versions used in testing. | Software | Minimum version | . | Kubernetes CLI | kubectl 1.25 | . | Helm CLI | 3.0 | . | Terraform CLI | 1.15.6 | . | GitHub CLI | Latest | . | Cloud provider CLI | Latest AWS or Azure CLI version | . | Docker | 20.x | . For installation instructions specific to your cloud provider, see Cloud prerequisites. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/prerequisites.html#required-tools-and-software",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/prerequisites.html#required-tools-and-software"
@@ -1667,7 +1667,7 @@
   },"238": {
     "doc": "Provision cloud environment",
     "title": "Validate database access",
-    "content": "Your NBS 7 environment requires access to your NBS 6 SQL Server database. Confirm this access before you run Terraform provisioning. AWS . If your database is in Amazon RDS, review the inbound rules on the security groups attached to your database instance. Confirm that the Classless Inter-Domain Routing (CIDR) block you intend to use for your NBS 7 VPC (modern-cidr) is allowed to access the database. For example, if the modern-cidr is 10.20.0.0/16, at least one rule in a security group associated with your database must allow MSSQL inbound access from that block: . Azure . If your database is in Azure, in the same VNet as your NBS 7 environment, Azure allows all internal traffic within a VNet by default. To confirm, in the Azure Portal, go to the network security group attached to your database and confirm that the default inbound rules are present: . Alternatively, an inbound security rule on that network security group is sufficient if it allows port 1433, with the destination set to the VNet of your database and the source set to the IP addresses of your AKS cluster. ",
+    "content": "Your NBS 7 environment requires access to your NBS 6 SQL Server database. Confirm this access before you run Terraform provisioning. AWS . If your database is in Amazon RDS, review the inbound rules on the security groups attached to your database instance. Confirm that the Classless Inter-Domain Routing (CIDR) block you intend to use for your NBS 7 VPC (modern-cidr) is allowed to access the database. For example, if the modern-cidr is 10.20.0.0/16, at least one rule in a security group associated with your database must allow MSSQL inbound access from that block: . Azure . If your database is in Azure, in the same VNet as your NBS 7 environment, Azure allows all internal traffic within a VNet by default. To confirm, in the Azure Portal, go to the network security group attached to your database and confirm that the default inbound rules are present: . Alternatively, an inbound security rule on that network security group is sufficient if it allows port 1433, with the destination set to the VNet of your database and the source set to the IP addresses of your AKS cluster. Self-managed SQL Server . If your database is not in Amazon RDS and not in Azure, for example a self-managed SQL Server instance on Amazon EC2 or on premises, confirm that Windows Firewall on the database server allows inbound traffic on TCP port 1433. Security group and network security group rules in your cloud environment do not open the host firewall. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#validate-database-access",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#validate-database-access"
@@ -1681,14 +1681,14 @@
   },"240": {
     "doc": "Provision cloud environment",
     "title": "Prepare Terraform files and configuration",
-    "content": "Complete these steps to download the infrastructure code and prepare your environment-specific Terraform files: . | Go to the NEDSS-Infrastructure v7.13.0 release page. Under Assets, download the nbs-infrastructure-v7.13.0.zip file. | Unzip the downloaded file. | Open a terminal and change into the top-level directory from the unzipped file: . cd nbs-infrastructure-v7.13.0 . | To hold your environment-specific configuration files, create a new directory in terraform/&lt;cloud-provider&gt;/. Give the directory an easily identifiable name in the format nbs7-&lt;STLT&gt;-&lt;environment&gt;: . cd terraform/&lt;cloud-provider&gt; mkdir nbs7-mySTLT-test . | Copy the sample code from terraform/&lt;cloud-provider&gt;/samples/ into your new environment directory, and change into that directory: . cp -pr samples/* ./nbs7-mySTLT-test cd nbs7-mySTLT-test . The samples contain a directory for each NBS 7 Terraform layer. Each directory name starts with a number that sets the order in which you apply the layers: . $ ls -F | sort 0-landing-zone/ 1-nbs7/ 2-applications/ . The README in the NEDSS-Infrastructure repository explains the layered Terraform design. Skip the 1-nbs6 layer. The Cloud prerequisites require an existing NBS 6 instance, so you do not provision one here. | In each Terraform layer directory, update the terraform.tfvars and terraform.tf files with your environment-specific values. The commentary in those files provides detailed instructions. Do not edit files in the individual Terraform modules. If you plan to deploy the Data Compare tool on AWS, also add the following variables to your terraform.tfvars before you apply. If you deploy to a non-default namespace, adjust the datacompare_namespace_and_service value accordingly. create_datacompare_irsa = true datacompare_s3_bucket_name = \"&lt;your-s3-bucket-name&gt;\" datacompare_s3_bucket_keyname_prefix = \"&lt;your-key-prefix&gt;\" datacompare_namespace_and_service = [\"default:data-compare-api-service\", \"default:data-compare-processor-service\"] . This creates the AWS Identity and Access Management (IAM) role (&lt;eks-cluster-name&gt;-datacompare-role) and S3 access policy that the Data Compare pods require. The role ARN is referenced during Data Compare deployment. | . ",
+    "content": "Complete these steps to download the infrastructure code and prepare your environment-specific Terraform files: . | Go to the NEDSS-Infrastructure v7.13.0 release page. Under Assets, download the nbs-infrastructure-v7.13.0.zip file. | Unzip the downloaded file. | Open a terminal and change into the top-level directory from the unzipped file: . cd nbs-infrastructure-v7.13.0 . | To hold your environment-specific configuration files, create a new directory in terraform/&lt;cloud-provider&gt;/. Give the directory an easily identifiable name in the format nbs7-&lt;STLT&gt;-&lt;environment&gt;: . cd terraform/&lt;cloud-provider&gt; mkdir nbs7-mySTLT-test . | Copy the sample code from terraform/&lt;cloud-provider&gt;/samples/ into your new environment directory, and change into that directory: . cp -pr samples/* ./nbs7-mySTLT-test cd nbs7-mySTLT-test . The samples contain a directory for each NBS 7 Terraform layer. Each directory name starts with a number that sets the order in which you apply the layers: . $ ls -F | sort 0-landing-zone/ 1-nbs7/ 2-applications/ . The README in the NEDSS-Infrastructure repository explains the layered Terraform design. Skip the 1-nbs6 layer. The Cloud prerequisites require an existing NBS 6 instance, so you do not provision one here. | In each Terraform layer directory, update the terraform.tfvars and terraform.tf files with your environment-specific values. The commentary in those files provides detailed instructions. Do not edit files in the individual Terraform modules. If you plan to deploy the Data Compare tool on AWS, enable the Data Compare resources in the 1-nbs7 layer before you apply. The commentary in that layer’s terraform.tfvars describes the setting and any values it requires. Terraform then creates the AWS Identity and Access Management (IAM) role (&lt;eks-cluster-name&gt;-datacompare-role) and S3 access policy that the Data Compare pods require. The role ARN is referenced during Data Compare deployment. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#prepare-terraform-files-and-configuration",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#prepare-terraform-files-and-configuration"
   },"241": {
     "doc": "Provision cloud environment",
     "title": "Run Terraform provisioning",
-    "content": "For each Terraform layer directory, this section initializes the directory, generates an execution plan, and applies the changes. Repeat the following steps for each layer in your environment directory, in the numeric order of the directory names. The following commands assume that you run Terraform authenticated to the same AWS account or Azure subscription that contains your existing NBS 6 application. | In a terminal, change to the Terraform layer directory that contains the terraform.tfvars and terraform.tf files you updated in Prepare Terraform files and configuration: . cd nbs-infrastructure-v7.13.0/terraform/&lt;cloud-provider&gt;/nbs7-&lt;STLT&gt;-&lt;environment&gt;/&lt;number&gt;-&lt;layer-description&gt; . | Initialize Terraform: . terraform init . | Generate an execution plan. The plan shows the changes that a corresponding terraform apply command would make to the resources in your cloud provider: . terraform plan -out=tfplan . The command prints a summary line such as the following: . Plan: 142 to add, 0 to change, 0 to destroy. Carefully review the full plan output and verify that the changes exactly match your intention before you continue. If you change your Terraform code, if resources in your account or subscription change by other means, or if significant time passes during your review, rerun terraform plan -out=tfplan and review it again. Never run terraform apply -auto-approve, because it applies changes without review and can be highly destructive. | Apply the changes from the plan: . terraform apply tfplan . The command prints a summary line, and its numbers should match the numbers from the plan summary: . Apply complete! Resources: 142 added, 0 changed, 0 destroyed. | If the apply command prints errors, review and resolve the errors, then rerun the plan and apply steps. | . ",
+    "content": "For each Terraform layer directory, this section initializes the directory, generates an execution plan, and applies the changes. Repeat the following steps for each layer in your environment directory, in the numeric order of the directory names. The following commands assume that you run Terraform authenticated to the same AWS account or Azure subscription that contains your existing NBS 6 application. | In a terminal, change to the Terraform layer directory that contains the terraform.tfvars and terraform.tf files you updated in Prepare Terraform files and configuration: . cd nbs-infrastructure-v7.13.0/terraform/&lt;cloud-provider&gt;/nbs7-&lt;STLT&gt;-&lt;environment&gt;/&lt;number&gt;-&lt;layer-description&gt; . | Initialize Terraform: . terraform init . | Generate an execution plan. The plan shows the changes that a corresponding terraform apply command would make to the resources in your cloud provider: . terraform plan -out=tfplan . The command prints a summary line such as the following: . Plan: 142 to add, 0 to change, 0 to destroy. Carefully review the full plan output and verify that the changes exactly match your intention before you continue. If you change your Terraform code, if resources in your account or subscription change by other means, or if significant time passes during your review, rerun terraform plan -out=tfplan and review it again. Use caution if you run terraform apply -auto-approve, because it applies changes without review. | Apply the changes from the plan: . terraform apply tfplan . The command prints a summary line, and its numbers should match the numbers from the plan summary: . Apply complete! Resources: 142 added, 0 changed, 0 destroyed. | If the apply command prints errors, review and resolve the errors, then rerun the plan and apply steps. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#run-terraform-provisioning",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#run-terraform-provisioning"
@@ -1716,7 +1716,7 @@
   },"245": {
     "doc": "Provision cloud environment",
     "title": "Next steps",
-    "content": "Continue to Set up Kubernetes to deploy the core services and Keycloak. ",
+    "content": "Continue to Deploy cluster services to deploy the core services and Keycloak. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/provision-cloud-infrastructure/provision-cloud-environment.html#next-steps"
