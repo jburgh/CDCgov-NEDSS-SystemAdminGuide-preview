@@ -1394,7 +1394,7 @@
   },"199": {
     "doc": "Maintain NBS 7",
     "title": "In this section",
-    "content": "The maintenance section of this guide contains procedures for recurring maintenance work such as upgrades, infrastructure version changes, and operational configuration updates. | Enable verbose truncation warnings: Enable SQL Server Trace Flag 460 for NBS 7 to surface detailed error messages for diagnosing data truncation errors. | Update the Kubernetes control plane: Use Terraform to upgrade the Kubernetes version for the control plane and nodes of your NBS 7 cluster. | Back up and restore on Amazon RDS | . Additional maintenance procedures are added to this section as they are documented. If the procedure you need is not yet covered here, contact nbs@cdc.gov. ",
+    "content": "The maintenance section of this guide contains procedures for recurring maintenance work such as upgrades, infrastructure version changes, and operational configuration updates. | Enable verbose truncation warnings: Enable SQL Server Trace Flag 460 for NBS 7 to surface detailed error messages for diagnosing data truncation errors. | Update the Kubernetes control plane: Use Terraform to upgrade the Kubernetes version for the control plane and nodes of your NBS 7 cluster. | Back up and restore on Amazon RDS: Use the Amazon RDS stored procedures to back up and restore SQL Server databases, including restoring RDB under a new name for RTR. | . Additional maintenance procedures are added to this section as they are documented. If the procedure you need is not yet covered here, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7.html#in-this-section",
     
     "relUrl": "/docs/maintain-nbs7.html#in-this-section"
