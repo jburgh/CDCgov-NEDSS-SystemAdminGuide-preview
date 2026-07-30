@@ -2255,7 +2255,7 @@
   },"322": {
     "doc": "Deploy real-time reporting",
     "title": "Enable Change Data Capture",
-    "content": "Change Data Capture (CDC) streams row-level changes from NBS_ODSE and NBS_SRTE to Kafka, where RTR services load them into the reporting database. Enabling CDC requires sysadmin permissions, so run the bootstrap scripts with a sysadmin account. In the following scripts, the terms cdc and CDC appear as part of SQL Server column and parameter names and refer to Change Data Capture, not the Centers for Disease Control and Prevention. To enable CDC, apply the bootstrap scripts in order: . | Bootstrap script 101 to enable CDC on NBS_ODSE | Bootstrap script 102 to enable CDC on NBS_SRTE | . ",
+    "content": "In this section, the terms cdc and CDC appear as part of SQL Server column and parameter names and refer to Change Data Capture, not the Centers for Disease Control and Prevention. Change Data Capture (CDC) streams row-level changes from NBS_ODSE and NBS_SRTE to Kafka, where RTR services load them into the reporting database. To enable CDC on NBS_ODSE and NBS_SRTE: . | Using a sysadmin account, apply Bootstrap script 101. CDC requires sysadmin permissions. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/real-time-reporting.html#enable-change-data-capture",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/real-time-reporting.html#enable-change-data-capture"
