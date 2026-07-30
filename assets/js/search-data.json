@@ -2528,24 +2528,24 @@
   },"361": {
     "doc": "Undeploy NBS 7",
     "title": "Remove DNS entries",
-    "content": "Remove the DNS records for this environment from your DNS provider: . | app.&lt;site_name&gt;.&lt;domain&gt;.com | data.&lt;site_name&gt;.&lt;domain&gt;.com | . ",
+    "content": "Remove the DNS records for this environment from your DNS provider: . | app.&lt;site_name&gt;.&lt;domain&gt;.com | data.&lt;site_name&gt;.&lt;domain&gt;.com | nifi.&lt;site_name&gt;.&lt;domain&gt;.com (if you created a NiFi record during deployment) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-dns-entries",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-dns-entries"
   },"362": {
     "doc": "Undeploy NBS 7",
     "title": "Remove Helm ingress resources",
-    "content": "List the current Helm releases in the ingress-nginx namespace and verify the release name before uninstalling: . helm list --namespace ingress-nginx helm uninstall --namespace ingress-nginx ingress-nginx . ",
+    "content": "List the current Helm releases in the traefik namespace and verify the release name before uninstalling: . helm list --namespace traefik helm uninstall --namespace traefik traefik . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-helm-ingress-resources",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-helm-ingress-resources"
   },"363": {
     "doc": "Undeploy NBS 7",
-    "title": "Empty the OTEL collector S3 bucket",
-    "content": "Empty the S3 bucket used by the OpenTelemetry (OTEL) collector (splunk-otel-collector) for log storage before running terraform destroy. Terraform cannot delete a non-empty S3 bucket and the destroy will fail if this step is skipped. Complete this step manually in the AWS Console or using the AWS CLI. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#empty-the-otel-collector-s3-bucket",
+    "title": "Empty the OTEL collector storage bucket (AWS only)",
+    "content": "On AWS, empty the S3 bucket that the OpenTelemetry (OTEL) collector uses for log storage before you run terraform destroy. Terraform cannot delete a non-empty S3 bucket, so the destroy fails if you skip this step. Complete this step manually in the AWS console or with the AWS CLI. On Azure, observability uses Azure Monitor, which Terraform removes as part of terraform destroy. No manual storage cleanup is required. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#empty-the-otel-collector-storage-bucket-aws-only",
     
-    "relUrl": "/docs/undeploy-nbs7.html#empty-the-otel-collector-s3-bucket"
+    "relUrl": "/docs/undeploy-nbs7.html#empty-the-otel-collector-storage-bucket-aws-only"
   },"364": {
     "doc": "Undeploy NBS 7",
     "title": "Destroy Terraform-managed infrastructure",
