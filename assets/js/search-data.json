@@ -546,11 +546,11 @@
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/data-ingestion.html"
   },"78": {
     "doc": "Data processing",
-    "title": "Deploy the Data Processing service for NBS 7",
+    "title": "Deploy Real Time Ingestion (RTI) data processing for NBS 7",
     "content": "This page walks through deploying the Real Time Ingestion (RTI) data processing service using the data-processing-service Helm chart from the NEDSS-Helm repository for NBS version 7.13. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing.html#deploy-the-data-processing-service-for-nbs-7",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing.html#deploy-real-time-ingestion-rti-data-processing-for-nbs-7",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing.html#deploy-the-data-processing-service-for-nbs-7"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing.html#deploy-real-time-ingestion-rti-data-processing-for-nbs-7"
   },"79": {
     "doc": "Data processing",
     "title": "On this page",
@@ -1037,7 +1037,7 @@
   },"148": {
     "doc": "NBS 7 full deployment",
     "title": "In this section",
-    "content": "Complete the following pages in order, including any nested subpages. Each phase builds on the infrastructure and configuration from the phase before it: . | NBS 7 prerequisites: Prerequisites for NBS 7 deployment, including NBS 6 readiness, network access, DNS, security, and local management machine setup. | Provision cloud infrastructure: Provision cloud infrastructure for NBS 7 on AWS or Azure before installing Kubernetes services. | Deploy cluster services: Enable Linkerd, deploy the core Kubernetes services, and deploy and configure Keycloak before you install the NBS 7 microservices. | Deploy NBS 7 microservices: Install and configure NBS 7 application services using Helm, including Elasticsearch, NiFi, and the Modernization API. | Post-deploy cleanup: Steps to remove temporary deployment artifacts and tighten access after a successful NBS 7 installation. | . ",
+    "content": "Complete the following pages in order, including any nested subpages. Each phase builds on the infrastructure and configuration from the phase before it: . | NBS 7 prerequisites: Prerequisites for NBS 7 deployment, including NBS 6 readiness, network access, DNS, security, and local management machine setup. | Provision cloud infrastructure: Provision cloud infrastructure for NBS 7 on AWS or Azure before installing Kubernetes services. | Deploy cluster services: Enable Linkerd, deploy the core Kubernetes services, and deploy and configure Keycloak before you install the NBS 7 microservices. | Deploy NBS 7 microservices: Install and configure NBS 7 application services using Helm, including Elasticsearch, NiFi, and the Modernization API. | Validate deployment: Confirm that every deployed NBS 7 component was validated, then run system-level checks across the full deployment before go-live. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy.html#in-this-section",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy.html#in-this-section"
@@ -1920,23 +1920,23 @@
     "doc": "Post-deploy cleanup",
     "title": "Post-install cleanup for NBS 7 deployments",
     "content": "After go-live is confirmed stable, complete the following cleanup tasks to remove temporary artifacts from the deployment process and tighten your security posture. Complete these steps only after go-live has been validated and your team confirms that the production environment is stable. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html#post-install-cleanup-for-nbs-7-deployments",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/post-deploy-cleanup.html#post-install-cleanup-for-nbs-7-deployments",
     
-    "relUrl": "/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html#post-install-cleanup-for-nbs-7-deployments"
+    "relUrl": "/docs/deploy-nbs7/post-deploy-cleanup.html#post-install-cleanup-for-nbs-7-deployments"
   },"275": {
     "doc": "Post-deploy cleanup",
     "title": "Cleanup checklist",
     "content": "The following table contains common cleanup tasks that might not apply to your deployment scenario. Confirm which apply to your configuration before proceeding. | Task | Notes | . | Remove or rotate temporary deployment credentials | Revoke any service account tokens, API keys, or database passwords created specifically for the installation process | . | Remove installer or Kubernetes setup jobs | Delete one-time jobs or pods that ran during Kubernetes setup and are no longer needed | . | Remove migration environment resources | Decommission dev or staging environments used during the cutover if they are no longer needed | . | Archive NBS 6 resources | Once production NBS 7 is confirmed stable, follow your jurisdiction’s data retention policy for NBS 6 application and configuration artifacts | . | Review IAM roles and permissions | Remove any over-permissioned roles granted during deployment; confirm only operations-level access remains | . | Confirm monitoring and alerting coverage | Verify that observability tooling is capturing production-level baselines and that alert thresholds are set appropriately | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html#cleanup-checklist",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/post-deploy-cleanup.html#cleanup-checklist",
     
-    "relUrl": "/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html#cleanup-checklist"
+    "relUrl": "/docs/deploy-nbs7/post-deploy-cleanup.html#cleanup-checklist"
   },"276": {
     "doc": "Post-deploy cleanup",
     "title": "Post-deploy cleanup",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/post-deploy-cleanup.html",
     
-    "relUrl": "/docs/deploy-nbs7/full-deploy/post-deploy-cleanup.html"
+    "relUrl": "/docs/deploy-nbs7/post-deploy-cleanup.html"
   },"277": {
     "doc": "NBS 7 prerequisites",
     "title": "Prerequisites for NBS 7 deployment",
@@ -2458,7 +2458,7 @@
   },"351": {
     "doc": "Java service",
     "title": "Next steps",
-    "content": "Continue to Post-deploy cleanup. ",
+    "content": "Continue to Validate the deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#next-steps"
@@ -2739,51 +2739,51 @@
     "doc": "Validate deployment",
     "title": "Validate your NBS 7 deployment",
     "content": "Each NBS 7 component includes its own validation steps as part of its deployment page. This page has two purposes: to confirm that you completed the validation for every component you deployed, and to run the system-level checks that can only be done once the full deployment is in place. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#validate-your-nbs-7-deployment",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#validate-your-nbs-7-deployment"
   },"392": {
     "doc": "Validate deployment",
     "title": "On this page",
     "content": ". | Before you validate | Confirm component validation | Run system-level checks | Confirm monitoring and go-live readiness | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#on-this-page",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#on-this-page"
   },"393": {
     "doc": "Validate deployment",
     "title": "Before you validate",
     "content": "Confirm the following before you start: . | Deployment of all required components is complete. | A development or staging environment is available with representative test data. | You have admin credentials to access the NBS UI. | Your NBS 6 database refresh is complete and accessible from the test environment. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#before-you-validate",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#before-you-validate"
   },"394": {
     "doc": "Validate deployment",
     "title": "Confirm component validation",
     "content": "Each deployment page includes validation steps for that component. If you followed the full deployment, you completed these steps as you deployed each service. If you used the quick deployment path, or skipped any validation, complete it now using the linked pages. Confirm that each component you deployed passed its validation: . | Component | What its validation confirms | Validation steps | . | Elasticsearch, Modernization API, and NiFi | Name resolution works, routing between NBS 6 and NBS 7 is correct, database connectivity from NBS 7 components works, and search indices are created and populated | Manual validation | . | Modernization API | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing | Data processing handles ELR data correctly and returns expected status codes | API testing and integration | . | Case notifications | The Case Notification service processes and routes notifications correctly | API testing | . | NND service (Data Sync) | Data Sync API endpoints are reachable and credentials are valid | Validate API endpoints | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#confirm-component-validation",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-component-validation",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#confirm-component-validation"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-component-validation"
   },"395": {
     "doc": "Validate deployment",
     "title": "Run system-level checks",
     "content": "The following system-level checks confirm that the services work together and that data flows correctly across the full deployment. Run them after all component validation passes: . | Log in to the NBS UI, for example at https://app.&lt;your-domain&gt;/nbs/login. | Confirm that patient search returns results using test records. | Create a test investigation and confirm that it appears correctly in the UI. | Confirm that ELR data ingested during testing is visible in the UI and correctly attributed. This confirms the full ingestion path, from the Data Ingestion API through to display. | Review application logs across services for unexpected errors or warnings. | Confirm that monitoring and alerting are configured and capturing baseline metrics across the deployment. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#run-system-level-checks",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#run-system-level-checks",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#run-system-level-checks"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#run-system-level-checks"
   },"396": {
     "doc": "Validate deployment",
     "title": "Confirm monitoring and go-live readiness",
     "content": "When all component validation and system-level checks pass, your deployment is ready for go-live. To remove temporary deployment artifacts and tighten access, continue to Post-deploy cleanup. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness"
   },"397": {
     "doc": "Validate deployment",
     "title": "Validate deployment",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html"
+    "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html"
   },"398": {
     "doc": "Validate API endpoints",
     "title": "Validate API endpoints",
