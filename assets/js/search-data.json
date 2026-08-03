@@ -2738,45 +2738,45 @@
   },"391": {
     "doc": "Validate deployment",
     "title": "Validate your NBS 7 deployment",
-    "content": "Before go-live, confirm that all deployed components are functioning correctly and that data flows as expected from ingestion through to the NBS interface. Work through validation in sequence: start with core microservices, then confirm ingestion and notification pipelines, then run system-level checks across the NBS UI. ",
+    "content": "Each NBS 7 component includes its own validation steps as part of its deployment page. This page has two purposes: to confirm that you completed the validation for every component you deployed, and to run the system-level checks that can only be done once the full deployment is in place. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validate-your-nbs-7-deployment"
   },"392": {
     "doc": "Validate deployment",
     "title": "On this page",
-    "content": ". | Before you validate | Validation sequence | System-level checks | Next steps | . ",
+    "content": ". | Before you validate | Confirm component validation | Run system-level checks | Confirm monitoring and go-live readiness | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#on-this-page"
   },"393": {
     "doc": "Validate deployment",
     "title": "Before you validate",
-    "content": "Confirm the following before starting: . | Deployment of all required microservices is complete for your chosen configuration | A development or staging environment is available with representative test data | You have admin credentials to access the NBS UI | Your NBS 6 database refresh is complete and accessible from the test environment | . ",
+    "content": "Confirm the following before you start: . | Deployment of all required components is complete. | A development or staging environment is available with representative test data. | You have admin credentials to access the NBS UI. | Your NBS 6 database refresh is complete and accessible from the test environment. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate",
     
     "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#before-you-validate"
   },"394": {
     "doc": "Validate deployment",
-    "title": "Validation sequence",
-    "content": "Work through the areas in this table in order. Resolve failures before moving to the next area. | Validation area | What it confirms | Documentation | . | Elasticsearch, Modernization API, and NiFi (manual validation) | Name resolution is working; routing between NBS 6 and NBS 7 subsystems is correct; database connectivity from NBS 7 components is working; search indices are created and populated | Manual validation | . | Modernization API smoke test | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search smoke test | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion smoke test | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API testing | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing RTI integration | Real Time Ingestion processes ELR data correctly and returns expected status codes | API testing and integration | . | Case notification API testing | Case notification service is processing and routing notifications correctly | API testing | . | NND service API endpoints | Data sync API endpoints are reachable and credentials are valid | Validate API endpoints | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence",
+    "title": "Confirm component validation",
+    "content": "Each deployment page includes validation steps for that component. If you followed the full deployment, you completed these steps as you deployed each service. If you used the quick deployment path, or skipped any validation, complete it now using the linked pages. Confirm that each component you deployed passed its validation: . | Component | What its validation confirms | Validation steps | . | Elasticsearch, Modernization API, and NiFi | Name resolution works, routing between NBS 6 and NBS 7 is correct, database connectivity from NBS 7 components works, and search indices are created and populated | Manual validation | . | Modernization API | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing | Data processing handles ELR data correctly and returns expected status codes | API testing and integration | . | Case notifications | The Case Notification service processes and routes notifications correctly | API testing | . | NND service (Data Sync) | Data Sync API endpoints are reachable and credentials are valid | Validate API endpoints | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#confirm-component-validation",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#validation-sequence"
+    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#confirm-component-validation"
   },"395": {
     "doc": "Validate deployment",
-    "title": "System-level checks",
-    "content": "After all component-level validation passes, confirm overall system behavior before proceeding to go-live: . | Log in to the NBS UI (for example, https://app.example.com/nbs/login). | Verify that patient search returns results using test records. | Create a test investigation and confirm it appears correctly in the UI. | Confirm that ELR data ingested during testing is visible and correctly attributed. | Review application logs across services for unexpected errors or warnings. | Confirm that monitoring and alerting are configured and capturing baseline metrics. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#system-level-checks",
+    "title": "Run system-level checks",
+    "content": "The following system-level checks confirm that the services work together and that data flows correctly across the full deployment. Run them after all component validation passes: . | Log in to the NBS UI, for example at https://app.&lt;your-domain&gt;/nbs/login. | Confirm that patient search returns results using test records. | Create a test investigation and confirm that it appears correctly in the UI. | Confirm that ELR data ingested during testing is visible in the UI and correctly attributed. This confirms the full ingestion path, from the Data Ingestion API through to display. | Review application logs across services for unexpected errors or warnings. | Confirm that monitoring and alerting are configured and capturing baseline metrics across the deployment. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#run-system-level-checks",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#system-level-checks"
+    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#run-system-level-checks"
   },"396": {
     "doc": "Validate deployment",
-    "title": "Next steps",
-    "content": "When all validation areas pass, finalize your cutover checklist and launch NBS 7 in production. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#next-steps",
+    "title": "Confirm monitoring and go-live readiness",
+    "content": "When all component validation and system-level checks pass, your deployment is ready for go-live. To remove temporary deployment artifacts and tighten access, continue to Post-deploy cleanup. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness",
     
-    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#next-steps"
+    "relUrl": "/docs/deploy-nbs7/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness"
   },"397": {
     "doc": "Validate deployment",
     "title": "Validate deployment",
