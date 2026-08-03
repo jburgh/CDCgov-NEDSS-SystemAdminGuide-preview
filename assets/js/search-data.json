@@ -176,7 +176,7 @@
   },"25": {
     "doc": "Architecture overview",
     "title": "How NBS 7 relates to NBS 6",
-    "content": "NBS 7 does not replace NBS 6 all at once. It runs alongside your existing NBS 6 system and takes over functionality incrementally, an approach known as the strangler fig pattern. Users move between modern NBS 7 features and classic NBS 6 features during the transition. As the modern system gains functionality, they rely on it for more of their work. NBS 7 runs in its own virtual network, separate from NBS 6. The two networks are peered so that NBS 7 can reach the NBS 6 application and database. NBS 7 reuses your existing NBS 6 database rather than migrating the data to a new store. ",
+    "content": "NBS 7 does not replace NBS 6 all at once. It runs alongside your existing NBS 6 system and takes over functionality incrementally, an approach known as the strangler fig pattern. Users move between modern NBS 7 features and classic NBS 6 features during the transition. As the modern system gains functionality, they rely on it for more of their work. NBS 7 reuses the NBS 6 database rather than migrating the data to a new store. As a result, NBS 7 requires network access to the NBS 6 application and database. In a typical deployment, NBS 7 runs in its own virtual network, peered with the network that hosts NBS 6 to provide this access. Establishing this connectivity is part of your chosen network configuration. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/architecture-and-microservices.html#how-nbs-7-relates-to-nbs-6",
     
     "relUrl": "/docs/nbs7-introduction/architecture-and-microservices.html#how-nbs-7-relates-to-nbs-6"
