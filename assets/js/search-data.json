@@ -1254,7 +1254,7 @@
   },"179": {
     "doc": "Kafka connector",
     "title": "Deploy the Kafka connector for real-time reporting (RTR)",
-    "content": "This page walks through deploying the Kafka sink connector using the Kafka connector Helm chart from the NEDSS-Helm repository for NBS version 7.13. The connector consumes RTR topics and writes transformed data into reporting tables. ",
+    "content": "This page walks through deploying the Kafka sink connector using the ‘kafka-connect-sink’ Helm chart from the NEDSS-Helm repository for NBS version 7.13. The connector consumes RTR topics and writes transformed data into reporting tables. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/kafka-connector.html#deploy-the-kafka-connector-for-real-time-reporting-rtr",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/kafka-connector.html#deploy-the-kafka-connector-for-real-time-reporting-rtr"
@@ -1275,7 +1275,7 @@
   },"182": {
     "doc": "Kafka connector",
     "title": "Deploy the Kafka connector using Helm",
-    "content": "Complete the following steps to deploy the Kafka connector Helm chart from the charts/kafka-connect-sink/ directory of your cloned NEDSS-Helm repository: . | In the kafka-connect-sink chart directory, open the values file for your cloud provider: . | AWS: kafka-connect-sink/values.yaml | Azure: kafka-connect-sink/values-azure.yaml | . | Search the values file for EXAMPLE and fill in your environment-specific values. See the Helm values reference for help determining values. | Install the Helm chart: . helm install -f ./kafka-connect-sink/values.yaml cp-kafka-connect-server ./kafka-connect-sink/ . | Verify the pod is running: . kubectl get deployment cp-kafka-connect-server . | . After the Kafka connector deploys successfully, continue to Java service. ",
+    "content": "Complete the following steps to deploy the Kafka connector Helm chart from the charts/kafka-connect-sink/ directory of your cloned NEDSS-Helm repository: . | In the kafka-connect-sink chart directory, open the values file for your cloud provider: . | AWS: kafka-connect-sink/values.yaml | Azure: kafka-connect-sink/values-azure.yaml | . | Search the values file for EXAMPLE and fill in your environment-specific values. See the Helm values reference for help determining values. | Install the Helm chart: . | AWS: . helm install -f ./kafka-connect-sink/values.yaml cp-kafka-connect-server ./kafka-connect-sink/ . | Azure: . helm install -f ./kafka-connect-sink/values-azure.yaml cp-kafka-connect-server ./kafka-connect-sink/ . | . | Verify the pod is running: . kubectl get deployment cp-kafka-connect-server . | . After the Kafka connector deploys successfully, continue to Java service. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/kafka-connector.html#deploy-the-kafka-connector-using-helm",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/kafka-connector.html#deploy-the-kafka-connector-using-helm"
