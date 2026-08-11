@@ -2499,740 +2499,733 @@
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/real-time-reporting.html"
   },"357": {
     "doc": "NBS 7 release history",
-    "title": "History of enhancements in NBS 7 releases",
-    "content": "This page summarizes the new features and notable fixes introduced in each NBS 7 release, starting with the most recent release. Use this page to see what capabilities NBS 7 has gained over time and which release introduced them. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#history-of-enhancements-in-nbs-7-releases",
+    "title": "History of changes in NBS 7 releases",
+    "content": "This page summarizes the new features and notable fixes introduced in each NBS 7 release, starting with the most recent release. Use this page to see what capabilities NBS 7 has gained over time and which release introduced them. The tables on this page omit some patch releases, including 7.4.1-7.4.3, 7.6.1, 7.9.1, and 7.10.3. These releases focused on UI refinements and minor fixes. For information on NBS version support, see the Supported NBS versions page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#history-of-changes-in-nbs-7-releases",
     
-    "relUrl": "/docs/nbs7-introduction/release-history.html#history-of-enhancements-in-nbs-7-releases"
+    "relUrl": "/docs/nbs7-introduction/release-history.html#history-of-changes-in-nbs-7-releases"
   },"358": {
     "doc": "NBS 7 release history",
-    "title": "On this page",
-    "content": ". | 7.13: Azure support, RTR launch, SAS removed from reporting | 7.12: Infrastructure currency | 7.11: RTR reporting in RDB, expanded Patient Profile | 7.10: Data Availability API, RTR migration completed | 7.9: Session timeout warning, sortable search columns | 7.8: Flexible date search, more RTR datamarts | 7.7: On-premises Data Sync Service, full patient entry in one page | 7.6: RTR launches, customizable search tables | 7.5: Keycloak by default, RTR groundwork | 7.4: Page Builder completed, high-volume ingestion fixes | 7.3: Page Builder 2.0 | 7.2: ReportStream integration, Keycloak identity provider | 7.1: Data Ingestion Service launch | 7.0: Initial modernized release | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#on-this-page",
-    
-    "relUrl": "/docs/nbs7-introduction/release-history.html#on-this-page"
-  },"359": {
-    "doc": "NBS 7 release history",
     "title": "7.13: Azure support, RTR launch, SAS removed from reporting",
-    "content": "NBS 7.13, released in July 2026, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.13 | New feature | Added Microsoft Azure as a supported deployment platform, alongside AWS. | Jurisdictions can choose a cloud provider based on existing contracts rather than being locked to AWS. | . | 7.13 | New feature | Introduced layered Terraform: infrastructure split into independently deployable landing-zone, nbs7, and applications layers, each with its own state file. | Infrastructure changes are isolated and lower-risk. A failure in one layer does not block the others. | . | 7.13 | New feature | Real-Time Reporting (RTR) reaches data and UI parity with MasterETL, with a simplified 3-step installation, down from separate admin accounts, a Liquibase deployment, and manual data-load scripts. | Near-real-time reporting data becomes a realistic option for STLTs, not just a beta. | . | 7.13 | New feature | Reporting module rebuilt on Python, removing the SAS dependency for most reports. Includes a modernized, accessible UI with grouped filters and a guided advanced-filter query builder. | STLTs no longer need to maintain SAS licenses for standard reporting. | . | 7.13 | New feature | Consolidated 6 RTR microservices into 1 (reporting-pipeline-service), retired the XML-HL7 parser service, and merged the data extraction service into the case notification service. | Fewer services to install, patch, and monitor lowers ongoing operating cost. | . | 7.13 | Notable fix | Corrected RDB data quality issues found by comparing MasterETL and RTR output, documented in full in the release appendix, so jurisdictions running UAT do not mistake intentional corrections for defects. | Smoother RTR adoption testing. | . | 7.13 | Notable fix | Fixed a risk where back-button navigation could incorrectly auto-approve or auto-reject case notifications. Modernized Patient File is now disabled by default until a jurisdiction opts in. | Prevents an unreviewed case notification from being approved or rejected by mistake. | . ",
+    "content": "Latest supported version . NBS 7.13, released in July 2026, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.13 | New feature | Added Microsoft Azure as a supported deployment platform, alongside AWS. See Provision cloud infrastructure. | Jurisdictions can choose a cloud provider based on existing contracts rather than being locked to AWS. | . | 7.13 | New feature | Introduced layered Terraform: infrastructure split into independently deployable landing-zone, nbs7, and applications layers, each with its own state file. See Provision the cloud environment with Terraform. | Infrastructure changes are isolated and lower-risk. A failure in one layer does not block the others. | . | 7.13 | New feature | Real-Time Reporting (RTR) reaches data and UI parity with MasterETL, with a simplified 3-step installation, down from separate admin accounts, a Liquibase deployment, and manual data-load scripts. See Deploy real-time-reporting. | Near-real-time reporting data becomes a viable option for STLTs. | . | 7.13 | New feature | Reporting module rebuilt on Python, removing the SAS dependency for most reports. Includes a modernized, accessible UI with grouped filters and a guided advanced-filter query builder. | STLTs no longer need to maintain SAS licenses for standard reporting. | . | 7.13 | New feature | Consolidated six RTR microservices into one reporting-pipeline-service, retired the XML-HL7 parser service, and merged the data extraction service into the case notification service. | Fewer services to install, patch, and monitor lowers ongoing operating cost. | . | 7.13 | Notable fix | Corrected RDB data quality issues found by comparing MasterETL and RTR output, documented in full in the release appendix, so jurisdictions running UAT do not mistake intentional corrections for defects. | Smoother RTR adoption testing. | . | 7.13 | Notable fix | Fixed a risk where back-button navigation could incorrectly auto-approve or auto-reject case notifications. Modernized Patient File is now disabled by default until a jurisdiction opts in. | Prevents an unreviewed case notification from being approved or rejected by mistake. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#713-azure-support-rtr-launch-sas-removed-from-reporting",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#713-azure-support-rtr-launch-sas-removed-from-reporting"
-  },"360": {
+  },"359": {
     "doc": "NBS 7 release history",
     "title": "7.12: Infrastructure currency",
-    "content": "NBS 7.12, released in May 2026, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.12 | New feature | Replaced Ingress NGINX with Traefik ahead of the NGINX end-of-life date. | Avoids running an unsupported ingress controller. | . | 7.12 | New feature | Upgraded Elasticsearch 7 to 9. Support for Elasticsearch 7 ended January 2026; Elasticsearch 9 is supported through 2029. | Keeps Patient Search infrastructure on a supported version. | . | 7.12 | New feature | Upgraded the Kubernetes control plane to 1.35. Kubernetes 1.32.5 was set to be discontinued March 31, 2026. | Avoids extended-support licensing costs on EKS and AKS. | . | 7.12 | Notable fix | Stabilized NND Sync at version 1.1.3 after testing found it more reliable than version 1.1.5. | Fewer sync-related issues for jurisdictions running NND Service. | . ",
+    "content": "Supported version . NBS 7.12, released in May 2026, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.12 | New feature | Replaced Ingress NGINX with Traefik ahead of the NGINX end-of-life date. | Avoids running an unsupported ingress controller. | . | 7.12 | New feature | Upgraded Elasticsearch 7 to 9. Support for Elasticsearch 7 ended January 2026; Elasticsearch 9 is supported through 2029. | Keeps Patient Search infrastructure on a supported version. | . | 7.12 | New feature | Upgraded the Kubernetes control plane to 1.35. Kubernetes 1.32.5 was set to be discontinued March 31, 2026. | Avoids extended-support licensing costs on EKS and AKS. | . | 7.12 | Notable fix | Stabilized NND Sync at version 1.1.3 after testing found it more reliable than version 1.1.5. | Fewer sync-related issues for jurisdictions running NND Service. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#712-infrastructure-currency",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#712-infrastructure-currency"
-  },"361": {
+  },"360": {
     "doc": "NBS 7 release history",
     "title": "7.11: RTR reporting in RDB, expanded Patient Profile",
-    "content": "NBS 7.11.0 and 7.11.1, released in August 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.11.0 | New feature | RTR reporting enabled through SAS reports integrated with the RDB, with least-privilege service accounts and automatic retry for post-processing failures. | RTR data becomes usable in actual reports for the first time, not just populated in the background. | . | 7.11.1 | New feature | Patient Profile expanded: editable demographics, superseded-record indicators, and clinical data access for vaccinations, morbidity reports, investigations, documents, treatments, lab reports, and birth records. | A single, more complete patient record view for case investigators. | . | 7.11.0 | Notable fix | Improved skip links, heading structure, landmark navigation, and ARIA labeling across Patient Search and New Patient. | Accessibility, Section 508-relevant. | . | 7.11.1 | Notable fix | Corrected CDA XML county and country mapping errors, and a missing pregnancy-status display issue, from eCR ingestion. | Data accuracy for ingested case report data. | . ",
+    "content": "Unsupported version . NBS 7.11.0 and 7.11.1, released in August 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.11.0 | New feature | RTR reporting enabled through SAS reports integrated with the RDB, with least-privilege service accounts and automatic retry for post-processing failures. | RTR data becomes usable in reports for the first time. | . | 7.11.1 | New feature | Patient Profile expanded: editable demographics, superseded-record indicators, and clinical data access for vaccinations, morbidity reports, investigations, documents, treatments, lab reports, and birth records. | A single, more complete patient record view for case investigators. | . | 7.11.0 | Notable fix | Improved skip links, heading structure, landmark navigation, and ARIA labeling across Patient Search and New Patient. | Accessibility, Section 508 improvement. | . | 7.11.1 | Notable fix | Corrected CDA XML county and country mapping errors, and a missing pregnancy-status display issue, from eCR ingestion. | Data accuracy for ingested case report data. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#711-rtr-reporting-in-rdb-expanded-patient-profile",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#711-rtr-reporting-in-rdb-expanded-patient-profile"
-  },"362": {
+  },"361": {
     "doc": "NBS 7 release history",
     "title": "7.10: Data Availability API, RTR migration completed",
-    "content": "NBS 7.10.0 through 7.10.3, released between June and July 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.10.0 | New feature | First release of the Data Availability API. STLTs can register custom SQL queries and sync their local databases with the cloud RDB. | Gives STLTs programmatic, self-service access to reporting data instead of relying on CDC-built reports alone. | . | 7.10.0 | New feature | Completed migration of all identified tables for the first release of RTR. Testing began the following sprint. | RTR reaches full table coverage for the first time. | . | 7.10.1 | New feature | Began migrating the notification and case-notification pipeline from Rhapsody to Java, including a modularized HL7 parser. | Early groundwork for the microservice consolidation completed later, in 7.13. | . | 7.10.1-7.10.2 | Notable fix | Added screen reader announcements for “no results found” and required-field indicators, and full keyboard navigation for combo boxes, dropdowns, date pickers, and charts. | Accessibility, Section 508-relevant. A meaningful jump in keyboard and screen reader coverage. | . ",
+    "content": "Unsupported version . NBS 7.10.0 through 7.10.3, released between June and July 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.10.0 | New feature | First release of the Data Availability API. STLTs can register custom SQL queries and sync their local databases with the cloud RDB. | Gives STLTs programmatic, self-service access to reporting data instead of relying on CDC-built reports alone. | . | 7.10.0 | New feature | Completed migration of all identified tables for the first release of RTR. Testing began the following sprint. | RTR reaches full table coverage for the first time. | . | 7.10.1 | New feature | Began migrating the notification and case-notification pipeline from Rhapsody to Java, including a modularized HL7 parser. | Early groundwork for the microservice consolidation completed later, in 7.13. | . | 7.10.1-7.10.2 | Notable fix | Added screen reader announcements for “no results found” and required-field indicators, and full keyboard navigation for combo boxes, dropdowns, date pickers, and charts. | Accessibility, Section 508 improvement. A meaningful jump in keyboard and screen reader coverage. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#710-data-availability-api-rtr-migration-completed",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#710-data-availability-api-rtr-migration-completed"
-  },"363": {
+  },"362": {
     "doc": "NBS 7 release history",
     "title": "7.9: Session timeout warning, sortable search columns",
-    "content": "NBS 7.9.0 through 7.9.3, released between March and May 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.9.0 | New feature | Users receive an idle-session warning after 28 minutes, with a 2-minute notice before logout. | Reduces unexpected data loss from session timeouts. | . | 7.9.0 | New feature | Patient Search results become sortable and filterable by address, phone, ID, email, sex, and date of birth or age. Results respect user permissions. | More usable search results for high-volume users. | . | 7.9.0-7.9.3 | New feature | Continued RTR table migration: 93 of 163 tables by 7.9.0, reaching 146 of 163 by 7.9.3, covering diseases, vaccinations, antimicrobials, and contact-tracing tables. | Steady progress toward full real-time reporting coverage. | . | 7.9.2 | New feature | Data Ingestion service supports SFTP retrieval with configurable file paths and types, ingestion from multiple folders, and date-range error lookups. | More flexible, more auditable ingestion configuration for admins. | . ",
+    "content": "Unsupported version . NBS 7.9.0 through 7.9.3, released between March and May 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.9.0 | New feature | Users receive an idle-session warning after 28 minutes, with a 2-minute notice before logout. | Reduces unexpected data loss from session timeouts. | . | 7.9.0 | New feature | Patient Search results become sortable and filterable by address, phone, ID, email, sex, and date of birth or age. Results respect user permissions. | More usable search results for high-volume users. | . | 7.9.0-7.9.3 | New feature | Continued RTR table migration: 93 of 163 tables by 7.9.0, reaching 146 of 163 by 7.9.3, covering diseases, vaccinations, antimicrobials, and contact-tracing tables. | Steady progress toward full real-time reporting coverage. | . | 7.9.2 | New feature | Data Ingestion service supports SFTP retrieval with configurable file paths and types, ingestion from multiple folders, and date-range error lookups. | More flexible, more auditable ingestion configuration for admins. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#79-session-timeout-warning-sortable-search-columns",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#79-session-timeout-warning-sortable-search-columns"
-  },"364": {
+  },"363": {
     "doc": "NBS 7 release history",
     "title": "7.8: Flexible date search, more RTR datamarts",
-    "content": "NBS 7.8.0 through 7.8.3, released between December 2024 and February 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.8.0 | New feature | Patient Search supports multiple patient IDs and flexible date criteria, including day, month, year, and date ranges. | More precise search for investigators working partial records. | . | 7.8.3 | New feature | Added CRS, Rubella, Morbidity, Measles, Generic Case, and Case Lab datamarts, plus supporting dimensions, to the RTR pipeline. | Continued RTR coverage. Several condition-specific reports move toward real-time data. | . | 7.8.1 | Notable fix | Fixed Patient Search returning no results when searching by last name, and corrected date of birth display in results. | Core search reliability. | . | 7.8.1 | Notable fix | Prevented duplicate patient records from being created when the Save button was selected repeatedly. | Data integrity. | . ",
+    "content": "Unsupported version . NBS 7.8.0 through 7.8.3, released between December 2024 and February 2025, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.8.0 | New feature | Patient Search supports multiple patient IDs and flexible date criteria, including day, month, year, and date ranges. | More precise search for investigators working partial records. | . | 7.8.3 | New feature | Added CRS, Rubella, Morbidity, Measles, Generic Case, and Case Lab datamarts, plus supporting dimensions, to the RTR pipeline. | Continued RTR coverage. Several condition-specific reports move toward real-time data. | . | 7.8.1 | Notable fix | Fixed Patient Search returning no results when searching by last name, and corrected date of birth display in results. | Core search reliability. | . | 7.8.1 | Notable fix | Prevented duplicate patient records from being created when the Save button was selected repeatedly. | Data integrity. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#78-flexible-date-search-more-rtr-datamarts",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#78-flexible-date-search-more-rtr-datamarts"
-  },"365": {
+  },"364": {
     "doc": "NBS 7 release history",
     "title": "7.7: On-premises Data Sync Service, full patient entry in one page",
-    "content": "NBS 7.7.0 through 7.7.2, released between October and December 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.7.0 | New feature | New on-premises Data Sync Service synchronizes cloud NBS data to an S3 bucket, local directory, or local database on a flexible schedule. | Gives STLTs a supported way to keep local systems current with cloud data. | . | 7.7.0 | New feature | Data Ingestion API can now ingest eCR XML in PHDC format, with Rhapsody Route Integration documentation. | Adds electronic case reporting as a supported ingestion type. | . | 7.7.0 | New feature | Users can enter a full patient record, including extended data, from a single new-patient page instead of visiting Patient Profile separately. | Faster case and patient intake workflow. | . | 7.7.1 | New feature | Data Ingestion ELR pipeline gained an optional Near Real-Time Ingestion (NRTI) mode for event-based processing. | Faster lab report availability where NRTI is enabled. | . | 7.7.2 | New feature | Added Lab100 and Lab101 datamarts to the RTR pipeline. | Continued RTR datamart coverage expansion. | . ",
+    "content": "Unsupported version . NBS 7.7.0 through 7.7.2, released between October and December 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.7.0 | New feature | New on-premises Data Sync Service synchronizes cloud NBS data to an S3 bucket, local directory, or local database on a flexible schedule. | Gives STLTs a supported way to keep local systems current with cloud data. | . | 7.7.0 | New feature | Data Ingestion API can now ingest eCR XML in PHDC format, with Rhapsody Route Integration documentation. | Adds electronic case reporting as a supported ingestion type. | . | 7.7.0 | New feature | Users can enter a full patient record, including extended data, from a single new-patient page instead of visiting Patient Profile separately. | Faster case and patient intake workflow. | . | 7.7.1 | New feature | Data Ingestion ELR pipeline gained an optional Near Real-Time Ingestion (NRTI) mode for event-based processing. | Faster lab report availability where NRTI is enabled. | . | 7.7.2 | New feature | Added Lab100 and Lab101 datamarts to the RTR pipeline. | Continued RTR datamart coverage expansion. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#77-on-premises-data-sync-service-full-patient-entry-in-one-page",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#77-on-premises-data-sync-service-full-patient-entry-in-one-page"
-  },"366": {
+  },"365": {
     "doc": "NBS 7 release history",
     "title": "7.6: RTR launches, customizable search tables",
-    "content": "NBS 7.6.0 through 7.6.2, released between September and October 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.6.0 | New feature | Real-Time Reporting (RTR) introduced, starting with the Hepatitis Datamart, replacing the existing batch ETL process for that datamart. | First working instance of a long-term goal: real-time instead of overnight-batch reporting data. | . | 7.6.0 | New feature | New on-premises API lets systems hosted on-premises retrieve data from a cloud-hosted NBS database, without disrupting existing outbound NNDSS routes. | Supports hybrid cloud and on-premises architectures during migration. | . | 7.6.0 | New feature | Search results for Patients, Lab Reports, and Investigations gained a customizable table view: sortable, filterable, and persisted with a shareable, bookmarkable URL. | Investigators can save and share specific search views. | . | 7.6.2 | New feature | Added a new API for ELR PHDC (eCR) data ingestion, and added the Public Health Case Fact (PHCF) Datamart to the RTR pipeline, for 2 datamarts total. | Broadens both ingestion formats and RTR coverage. | . ",
+    "content": "Unsupported version . NBS 7.6.0 through 7.6.2, released between September and October 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.6.0 | New feature | Real-Time Reporting (RTR) introduced, starting with the Hepatitis Datamart, replacing the existing batch ETL process for that datamart. [SME REVIEW: link to RTR guide page] | First working instance of a long-term goal: real-time instead of overnight-batch reporting data. | . | 7.6.0 | New feature | New on-premises API lets systems hosted on-premises retrieve data from a cloud-hosted NBS database, without disrupting existing outbound NNDSS routes. | Supports hybrid cloud and on-premises architectures during migration. | . | 7.6.0 | New feature | Search results for Patients, Lab Reports, and Investigations gained a customizable table view: sortable, filterable, and persisted with a shareable, bookmarkable URL. | Investigators can save and share specific search views. | . | 7.6.2 | New feature | Added a new API for ELR PHDC (eCR) data ingestion, and added the Public Health Case Fact (PHCF) Datamart to the RTR pipeline, for 2 datamarts total. | Broadens both ingestion formats and RTR coverage. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#76-rtr-launches-customizable-search-tables",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#76-rtr-launches-customizable-search-tables"
-  },"367": {
+  },"366": {
     "doc": "NBS 7 release history",
     "title": "7.5: Keycloak by default, RTR groundwork",
-    "content": "NBS 7.5.0 and 7.5.3, released in August 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.5.0 | New feature | NBS now ships with an integrated Keycloak identity provider by default, securing access and database connections even without a jurisdiction-provided identity provider or single sign-on. | Removes a dependency on STLTs standing up their own identity provider. | . | 7.5.0 | New feature | New login and home page with installation guides, feature overviews, and CDC links. Updated to support NBS 6.0.16. | Easier onboarding for new NBS 7 users and admins. | . | 7.5.3 | New feature | Completed foundational infrastructure and testing for RTR in the cloud, ahead of the first Hepatitis Datamart release in 7.6.0. | First concrete step toward replacing overnight batch reporting. | . ",
+    "content": "Unsupported version . NBS 7.5.0 and 7.5.3, released in August 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.5.0 | New feature | NBS now ships with an integrated Keycloak identity provider by default, securing access and database connections even without a jurisdiction-provided identity provider or single sign-on. | Removes a dependency on STLTs standing up their own identity provider. | . | 7.5.0 | New feature | New login and home page with installation guides, feature overviews, and CDC links. Updated to support NBS 6.0.16. | Easier onboarding for new NBS 7 users and admins. | . | 7.5.3 | New feature | Completed foundational infrastructure and testing for RTR in the cloud, ahead of the first Hepatitis Datamart release in 7.6.0. | First concrete step toward replacing overnight batch reporting. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#75-keycloak-by-default-rtr-groundwork",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#75-keycloak-by-default-rtr-groundwork"
-  },"368": {
+  },"367": {
     "doc": "NBS 7 release history",
     "title": "7.4: Page Builder completed, high-volume ingestion fixes",
-    "content": "NBS 7.4.0 through 7.4.4, released between April and July 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.4.0 | New feature | Completed Page Builder delivery: preview pages before publishing, manage sections, tabs, and questions, and reorder and group elements. | Investigation page configuration becomes fully self-service. | . | 7.4.0 | New feature | Data Ingestion API now accepts HL7 ELR text files through SFTP. | Additional intake path for jurisdictions using file-based transfer. | . | 7.4.0 | Notable fix | Resolved an out-of-memory error that limited how many ELRs could be posted during high-volume ingestion, and corrected mandatory-field validation timing. | Reliability during surge periods, such as outbreak reporting volume. | . | 7.4.0 | Notable fix | Upgraded to the latest Spring Boot version to close known security vulnerabilities. | Security patching with no user-facing change. | . | 7.4.4 | Notable fix | Fixed the timestamp for patient address changes not being recorded. | Data audit accuracy. | . ",
+    "content": "Unsupported version . NBS 7.4.0 through 7.4.4, released between April and July 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.4.0 | New feature | Completed Page Builder delivery: preview pages before publishing, manage sections, tabs, and questions, and reorder and group elements. | Investigation page configuration becomes fully self-service. | . | 7.4.0 | New feature | Data Ingestion API now accepts HL7 ELR text files through SFTP. | Additional intake path for jurisdictions using file-based transfer. | . | 7.4.0 | Notable fix | Resolved an out-of-memory error that limited how many ELRs could be posted during high-volume ingestion, and corrected mandatory-field validation timing. | Reliability during surge periods, such as outbreak reporting volume. | . | 7.4.0 | Notable fix | Upgraded to the latest Spring Boot version to close known security vulnerabilities. | Security patching with no user-facing change. | . | 7.4.4 | Notable fix | Fixed the timestamp for patient address changes not being recorded. | Data audit accuracy. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#74-page-builder-completed-high-volume-ingestion-fixes",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#74-page-builder-completed-high-volume-ingestion-fixes"
-  },"369": {
+  },"368": {
     "doc": "NBS 7 release history",
     "title": "7.3: Page Builder 2.0",
-    "content": "NBS 7.3.0 through 7.3.3, released between February and April 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.3.0 | New feature | Page Builder 2.0: create condition-specific investigation pages, manage conditions and value sets, import templates, and browse, search, and export the page library. | First step toward configurable investigation pages instead of hardcoded classic NBS forms. | . | 7.3.2 | New feature | Edited or deleted demographic data now writes to patient history tables, matching NBS 6 audit behavior. | Preserves a change history for patient records, supporting data governance. | . | 7.3.0 | Notable fix | Improved screen reader heading structure and keyboard navigation on Patient Search and Patient Profile. | Accessibility, Section 508-relevant. | . | 7.3.1 | Notable fix | Corrected event search results for notification status, and added autocomplete for ordering and reporting facility and provider search. | Search accuracy for event investigators. | . | 7.3.3 | Notable fix | Fixed “Clear All” not resetting search filters, and corrected screen reader interaction issues on the new patient form. | Accessibility and search reliability. | . ",
+    "content": "Unsupported version . NBS 7.3.0 through 7.3.3, released between February and April 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.3.0 | New feature | Page Builder 2.0: create condition-specific investigation pages, manage conditions and value sets, import templates, and browse, search, and export the page library. | First step toward configurable investigation pages instead of hardcoded classic NBS forms. | . | 7.3.2 | New feature | Edited or deleted demographic data now writes to patient history tables, matching NBS 6 audit behavior. | Preserves a change history for patient records, supporting data governance. | . | 7.3.0 | Notable fix | Improved screen reader heading structure and keyboard navigation on Patient Search and Patient Profile. | Accessibility, Section 508 improvement. | . | 7.3.1 | Notable fix | Corrected event search results for notification status, and added autocomplete for ordering and reporting facility and provider search. | Search accuracy for event investigators. | . | 7.3.3 | Notable fix | Fixed “Clear All” not resetting search filters, and corrected screen reader interaction issues on the new patient form. | Accessibility and search reliability. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#73-page-builder-20",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#73-page-builder-20"
-  },"370": {
+  },"369": {
     "doc": "NBS 7 release history",
     "title": "7.2: ReportStream integration, Keycloak identity provider",
-    "content": "NBS 7.2.0 through 7.2.2, released between January and February 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.2.0 | New feature | Added ReportStream setup so HL7 ELR can be sent directly to NBS from ReportStream, plus CLI onboarding commands for status checks and error review. | Expands lab report intake options beyond direct Rhapsody routes. | . | 7.2.1 | New feature | Added secure service-to-service authentication to the Data Ingestion Pipeline using Keycloak, and extended CLI support from Mac-only to Windows and Linux. | Secures data ingestion traffic and removes an operating system restriction on admin tooling. | . | 7.2.0 | Notable fix | Lab reports were not appearing on Patient Profile. Replaced the Elasticsearch-based lookup with a direct database call. | Fixes a core clinical data visibility gap. | . | 7.2.2 | Notable fix | Fixed lab report dates defaulting to 01/01/1970, prevented duplicate race entries, and removed the ability to delete, rather than edit, administrative comments. | Data integrity on patient records. | . ",
+    "content": "Unsupported version . NBS 7.2.0 through 7.2.2, released between January and February 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.2.0 | New feature | Added ReportStream setup so HL7 ELR can be sent directly to NBS from ReportStream, plus CLI onboarding commands for status checks and error review. | Expands lab report intake options beyond direct Rhapsody routes. | . | 7.2.1 | New feature | Added secure service-to-service authentication to the Data Ingestion Pipeline using Keycloak, and extended CLI support from Mac-only to Windows and Linux. | Secures data ingestion traffic and removes an operating system restriction on admin tooling. | . | 7.2.0 | Notable fix | Lab reports were not appearing on Patient Profile. Replaced the Elasticsearch-based lookup with a direct database call. | Fixes a core clinical data visibility gap. | . | 7.2.2 | Notable fix | Fixed lab report dates defaulting to 01/01/1970, prevented duplicate race entries, and removed the ability to delete, rather than edit, administrative comments. | Data integrity on patient records. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#72-reportstream-integration-keycloak-identity-provider",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#72-reportstream-integration-keycloak-identity-provider"
-  },"371": {
+  },"370": {
     "doc": "NBS 7 release history",
     "title": "7.1: Data Ingestion Service launch",
-    "content": "NBS 7.1.0 and 7.1.1, released between November and December 2023, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.1.0 | New feature | First release of the Data Ingestion Service: accepts HL7 v2.3.1 and v2.5.1 ELR, audits all incoming messages, validates against standard rules, and checks for duplicates. | Lays the foundation for automated, auditable lab report ingestion instead of manual entry. | . | 7.1.0 | Notable fix | Fixed a page crash when entering text beyond a field’s character limit during patient data entry. | Prevents data entry from failing outright on long input. | . | 7.1.1 | Notable fix | Corrected patient search failures for “Other” gender, partial phone number matching, and event search by processing status. | Core search reliability. | . ",
+    "content": "Unsupported version . NBS 7.1.0 and 7.1.1, released between November and December 2023, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.1.0 | New feature | First release of the Data Ingestion Service: accepts HL7 v2.3.1 and v2.5.1 ELR, audits all incoming messages, validates against standard rules, and checks for duplicates. | Lays the foundation for automated, auditable lab report ingestion instead of manual entry. | . | 7.1.0 | Notable fix | Fixed a page crash when entering text beyond a field’s character limit during patient data entry. | Prevents data entry from failing outright on long input. | . | 7.1.1 | Notable fix | Corrected patient search failures for “Other” gender, partial phone number matching, and event search by processing status. | Core search reliability. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#71-data-ingestion-service-launch",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#71-data-ingestion-service-launch"
-  },"372": {
+  },"371": {
     "doc": "NBS 7 release history",
     "title": "7.0: Initial modernized release",
-    "content": "NBS 7.0.0 and 7.0.1, released between September and November 2023, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.0.0 | New feature | First modernized release: Patient Search, Patient Profile with Summary, Events, and Demographics tabs, Patient Data Entry, and Patient Delete, running alongside classic NBS 6. | Established the modernized UI foundation that all later releases build on. | . | 7.0.1 | Notable fix | Corrected session logout routing, SSN, hyphenated-name, and phone number search failures, and patient profile fields not reflecting new names or multiple races. | Search and login reliability for early adopters. | . ",
+    "content": "Unsupported version . NBS 7.0.0 and 7.0.1, released between September and November 2023, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.0.0 | New feature | First modernized release: Patient Search, Patient Profile with Summary, Events, and Demographics tabs, Patient Data Entry, and Patient Delete, running alongside classic NBS 6. | Established the modernized UI foundation that all later releases build on. | . | 7.0.1 | Notable fix | Corrected session logout routing, SSN, hyphenated-name, and phone number search failures, and patient profile fields not reflecting new names or multiple races. | Search and login reliability for early adopters. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#70-initial-modernized-release",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html#70-initial-modernized-release"
-  },"373": {
+  },"372": {
     "doc": "NBS 7 release history",
     "title": "NBS 7 release history",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html",
     
     "relUrl": "/docs/nbs7-introduction/release-history.html"
-  },"374": {
+  },"373": {
     "doc": "Document history",
     "title": "Revision history",
     "content": "This table records significant updates to the NBS 7 System Administrator Guide. Entries are added for each NBS release and for substantial content changes between releases. | Date | Author | Description | . | August 14, 2026 | Jill Shaheen (Skylight Digital) | New content: Revised and restructured deployment instructions for 7.13.0 including Azure and AWS guidance | . | August 14, 2026 | Jill Shaheen (Skylight Digital) | Archived 7.12.0 Admin Guide | . | August 14, 2026 | Jill Shaheen (Skylight Digital) | Updated Update the Kubernetes control plane to include Azure guidance | . | July 28, 2026 | Jill Shaheen (Skylight Digital) | New content: Before you deploy | . | July 27, 2026 | Jill Shaheen (Skylight Digital) | New content: Supported NBS versions, Glossary, and Back up and restore on Amazon RDS | . | June 1, 2026 | Jill Shaheen (Skylight Digital) | New content: Get support | . | June 1, 2026 | Jill Shaheen (Skylight Digital) | New content: Upgrade the Kubernetes control plane | . | April 28, 2026 | Kate Saul, Jill Shaheen (Skylight Digital) | Replace NGINX with Traefik instructions | . | April 24, 2026 | Jill Shaheen (Skylight Digital) | RTR deployment content audit (7.12) | . | April 17, 2026 | Jill Shaheen (Skylight Digital) | Full site restructure | . | August 19, 2025 | Anand Logan, Upasana Pattnaik, Kashyap Ramakur, Aaron Chapman, Duc Nguyen, Chuck Moss, Serban Zamfir | 7.11.0 Minor Release | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/revision-history.html#revision-history",
     
     "relUrl": "/docs/revision-history.html#revision-history"
-  },"375": {
+  },"374": {
     "doc": "Document history",
     "title": "Document history",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/revision-history.html",
     
     "relUrl": "/docs/revision-history.html"
-  },"376": {
+  },"375": {
     "doc": "Java service",
     "title": "Deploy the RTR Java service for NBS 7",
     "content": "This page walks through deploying the real-time reporting (RTR) Java service using the reporting-pipeline-service Helm chart from the NEDSS-Helm repository for NBS version 7.13. The service processes streamed events from Kafka and loads domain-specific reporting data. Deploying the Java service is a two-phase process. The first deployment seeds the nrt_* caching tables that RTR depends on. Once seeding is complete, you upgrade the release with post-processing enabled. Schedule a maintenance window and notify users that NBS will be unavailable. Database changes made while the RTR service is being deployed might not propagate to your reporting database. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#deploy-the-rtr-java-service-for-nbs-7",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#deploy-the-rtr-java-service-for-nbs-7"
-  },"377": {
+  },"376": {
     "doc": "Java service",
     "title": "On this page",
     "content": ". | Prerequisites | Deploy the RTR Java service using Helm | Monitor seeding progress | Enable post-processing | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#on-this-page"
-  },"378": {
+  },"377": {
     "doc": "Java service",
     "title": "Prerequisites",
     "content": "This page assumes you’ve completed Before you begin for the microservices phase and each microservice deployment page before this one, in order. The page immediately before this one is Kafka connector. Confirm the following before you continue: . | You are connected to the correct Kubernetes cluster. Run kubectl config current-context to confirm. | You have your database credentials and domain values available. See the Helm values reference if you need help determining any values. | . Deploying the Java service takes significant time and database space. Before you deploy, verify that the Kafka cluster you created in Provision cloud environment is scaled for your database size. An undersized Kafka cluster can cause the deployment to fail. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#prerequisites"
-  },"379": {
+  },"378": {
     "doc": "Java service",
     "title": "Deploy the RTR Java service using Helm",
     "content": "Complete the following steps to deploy the reporting-pipeline-service Helm chart from the charts/reporting-pipeline-service/ directory of your cloned NEDSS-Helm repository: . | Search values.yaml for EXAMPLE and fill in your environment-specific values. See the Helm values reference for help determining values. | Confirm that post-processing is disabled in values.yaml for the initial deployment: . featureFlag: postProcessingEnable: \"false\" . | Install the Helm chart: . helm install -f reporting-pipeline-service/values.yaml reporting-pipeline-service ./reporting-pipeline-service/ . | Verify the pods are running: . kubectl get deployment reporting-pipeline-service . Expected output: . NAME READY UP-TO-DATE AVAILABLE AGE reporting-pipeline-service 1/1 1 1 16m . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#deploy-the-rtr-java-service-using-helm",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#deploy-the-rtr-java-service-using-helm"
-  },"380": {
+  },"379": {
     "doc": "Java service",
     "title": "Monitor seeding progress",
     "content": "The /actuator/lag endpoint reports how far behind the service is in consuming its Kafka topics. Use it to determine when initial seeding is complete. Retrieve information on reporting-pipeline-service lag in your browser. Replace &lt;exampledomain&gt; with your actual domain (see Deploy Traefik ingress controller): . https://data.&lt;exampledomain&gt;/reporting-pipeline-svc/actuator/lag . When all messagesQueued values are 0, seeding is complete. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#monitor-seeding-progress",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#monitor-seeding-progress"
-  },"381": {
+  },"380": {
     "doc": "Java service",
     "title": "Enable post-processing",
     "content": "After seeding is complete, upgrade the release with post-processing enabled: . | Update values.yaml to enable post-processing: . featureFlag: postProcessingEnable: \"true\" . | Upgrade the release: . helm upgrade -f reporting-pipeline-service/values.yaml reporting-pipeline-service ./reporting-pipeline-service/ . | Verify the pods restarted cleanly: . kubectl rollout status deployment/reporting-pipeline-service kubectl get deployment reporting-pipeline-service . | Confirm the service is healthy. Replace &lt;exampledomain&gt; with your actual domain (see Deploy Traefik ingress controller): . https://data.&lt;exampledomain&gt;/reporting-pipeline-svc/actuator/health . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#enable-post-processing",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#enable-post-processing"
-  },"382": {
+  },"381": {
     "doc": "Java service",
     "title": "Next steps",
     "content": "Continue to Validate RTR installation. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html#next-steps"
-  },"383": {
+  },"382": {
     "doc": "Java service",
     "title": "Java service",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-java-services.html"
-  },"384": {
+  },"383": {
     "doc": "Validate RTR installation",
     "title": "Validate the RTR installation",
     "content": "Use this page for lightweight checks that confirm real-time reporting (RTR) is running before you run full end-to-end pipeline validation. These checks confirm that the RTR services started successfully, that database migration configuration is accounted for, and that the reporting-pipeline-service registered the Debezium and Kafka Connect connectors. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#validate-the-rtr-installation",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#validate-the-rtr-installation"
-  },"385": {
+  },"384": {
     "doc": "Validate RTR installation",
     "title": "On this page",
     "content": ". | Scope | Check service status | Check reporting-pipeline-service health | Check database migration status | Check connector registration | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#on-this-page"
-  },"386": {
+  },"385": {
     "doc": "Validate RTR installation",
     "title": "Scope",
     "content": "These checks validate the RTR deployment, application startup, database migration configuration, and connector registration. They do not replace full data-flow validation. Validate external dependencies separately, according to your organization’s infrastructure and change-management process. These include the managed Kafka cluster, SQL Server connectivity, Change Data Capture enablement, and database change-approval procedures. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#scope",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#scope"
-  },"387": {
+  },"386": {
     "doc": "Validate RTR installation",
     "title": "Check service status",
     "content": "List the RTR pods in your namespace. Replace &lt;namespace&gt; with your namespace, or omit the flag to use your current namespace: . kubectl get pods -n &lt;namespace&gt; . The RTR services are: . | debezium | kafka-connect-sink | reporting-pipeline-service | . All RTR pods should be in the Running state, and the READY column should show that all containers are ready, for example 1/1 or 2/2. No pods should be in Pending, CrashLoopBackOff, Error, or another unexpected state. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-service-status",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-service-status"
-  },"388": {
+  },"387": {
     "doc": "Validate RTR installation",
     "title": "Check reporting-pipeline-service health",
     "content": "Confirm that the reporting-pipeline-service pod is healthy and that its Kubernetes readiness and liveness probes are passing: . kubectl describe pod -l app=reporting-pipeline-service -n &lt;namespace&gt; . Then check the application health endpoint from inside the pod: . kubectl exec -n &lt;namespace&gt; deploy/reporting-pipeline-service -- \\ curl -s http://localhost:8095/actuator/health . The pod should be Running, its containers should be Ready, and there should be no recent failed readiness or liveness probe events. The health endpoint should return status UP. Because the reporting-pipeline-service handles connector setup, connector health should also be UP. If the service reports DOWN, check the reporting-pipeline-service logs before continuing. The following example shows a healthy response: . { \"status\": \"UP\", \"groups\": [\"liveness\", \"readiness\"], \"components\": { \"connectors\": { \"status\": \"UP\", \"details\": { \"debezium\": { \"odse-main-connector\": \"RUNNING\", \"odse-schema-only-connector\": \"RUNNING\", \"odse-meta-connector\": \"RUNNING\", \"srte-connector\": \"RUNNING\" }, \"kafkaConnect\": { \"Kafka-Connect-SqlServer-Sink\": \"RUNNING\" } } }, \"db\": { \"status\": \"UP\", \"details\": { \"database\": \"Microsoft SQL Server\", \"validationQuery\": \"isValid()\" } }, \"livenessState\": { \"status\": \"UP\" }, \"readinessState\": { \"status\": \"UP\" } } } . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-reporting-pipeline-service-health",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-reporting-pipeline-service-health"
-  },"389": {
+  },"388": {
     "doc": "Validate RTR installation",
     "title": "Check database migration status",
     "content": "Automatic Liquibase migration is enabled by default. The LIQUIBASE_AUTOMIGRATION_ENABLE environment variable controls it: . | Unset: automatic migration is enabled. | true: automatic migration is enabled. | false: migrations must be applied separately through your approved database change process. | . Review the Liquibase actuator output: . kubectl exec -n &lt;namespace&gt; deploy/reporting-pipeline-service -- \\ curl -s http://localhost:8095/actuator/liquibase . If needed, check the application logs: . kubectl logs -n &lt;namespace&gt; deploy/reporting-pipeline-service --tail=300 . If automatic migration is enabled, the service starts without Liquibase errors and the actuator output shows the executed changelogs. If automatic migration is disabled, confirm that the approved migration SQL was applied before continuing. In either case, there should be no changelog, database connection, permission, or migration errors. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-database-migration-status",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-database-migration-status"
-  },"390": {
+  },"389": {
     "doc": "Validate RTR installation",
     "title": "Check connector registration",
     "content": "The health check confirms connector health. This check confirms that the expected connector definitions were registered. Debezium and Kafka Connect run as services, but the reporting-pipeline-service registers the connectors during startup. Confirm that the connector service URLs are available to the reporting-pipeline-service: . kubectl exec -n &lt;namespace&gt; deploy/reporting-pipeline-service -- \\ printenv | grep -E 'DEBEZIUM_CONNECT_URL|KAFKA_CONNECT_URL' . List the registered Debezium connectors: . kubectl exec -n &lt;namespace&gt; deploy/reporting-pipeline-service -- sh -c \\ 'curl -sf \"$DEBEZIUM_CONNECT_URL/connectors\"' . The expected Debezium connectors are: . | odse-main-connector | odse-schema-only-connector | odse-meta-connector | srte-connector | . List the registered Kafka Connect connectors: . kubectl exec -n &lt;namespace&gt; deploy/reporting-pipeline-service -- sh -c \\ 'curl -sf \"$KAFKA_CONNECT_URL/connectors\"' . The expected Kafka Connect connector is: . | Kafka-Connect-SqlServer-Sink | . The connector lists should include the expected Debezium source connectors and the Kafka Connect SQL Server sink connector. If a list is empty, is missing connectors, or the command fails, check the reporting-pipeline-service logs first, because that service registers the connectors. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-connector-registration",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#check-connector-registration"
-  },"391": {
+  },"390": {
     "doc": "Validate RTR installation",
     "title": "Next steps",
     "content": "When all checks pass, run full end-to-end validation to confirm data movement across the pipeline. Then continue to Validate the NBS 7 deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html#next-steps"
-  },"392": {
+  },"391": {
     "doc": "Validate RTR installation",
     "title": "Validate RTR installation",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/rtr-validation.html"
-  },"393": {
+  },"392": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "Component reference: Real-Time Reporting (RTR)",
     "content": "RTR provides an event-driven reporting pipeline for near-real-time reporting. RTR eventually replaces the classic MasterETL batch process. During migration, both run in parallel until full feature equivalence is met. The following components are added to your NBS 7 deployment when you deploy RTR. For information on benefits and impact on operating costs, see Operational considerations. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#component-reference-real-time-reporting-rtr",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#component-reference-real-time-reporting-rtr"
-  },"394": {
+  },"393": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "On this page",
     "content": ". | Debezium | Kafka and Kafka Connect | RTR domain services | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#on-this-page",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#on-this-page"
-  },"395": {
+  },"394": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "Debezium",
     "content": "An open-source Change Data Capture (CDC) platform. | Attribute | Description | . | What it does in NBS 7 | Monitors the NBS database for changes in real time and streams those changes to Kafka as they occur. Debezium is the entry point for the RTR pipeline. Without it, downstream RTR components have no data to process. | . | Dependencies | Requires the NBS database (NBS_ODSE) as its source. Streams data to the Kafka cluster. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#debezium",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#debezium"
-  },"396": {
+  },"395": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "Kafka and Kafka Connect",
     "content": "Apache Kafka is an open-source event-streaming platform. Kafka Connect is the framework that moves data between Kafka and other systems. | Attribute | Description | . | What it does in NBS 7 | Acts as the message bus for the RTR pipeline. Kafka receives change events from Debezium and delivers them to the RTR domain services. Kafka Connect writes the processed output to RDB_Modern staging tables for post-processing and reporting. | . | Dependencies | Receives events from Debezium. Delivers messages to RTR domain services. Kafka Connect writes processed data to RDB_Modern. Requires sufficient cluster resources; Kafka is one of the more operationally demanding components in the RTR stack. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#kafka-and-kafka-connect",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#kafka-and-kafka-connect"
-  },"397": {
+  },"396": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "RTR domain services",
     "content": "Starting in NBS 7.13, the five entity-specific Spring Boot services previously used for reporting (investigation-service, person-service, observation-service, organization-service, and ldfdata-service) have been consolidated into a single reporting pipeline service that transforms streaming data from Kafka into reportable public health records. Jurisdictions planning to deploy RTR will need to upgrade to NBS 7.13 or later. Check with your CDC NBS point of contact for the current deployment state. | Attribute | Description | . | What it does in NBS 7 | Consumes Kafka messages for each entity type (investigations, patients, organizations, observations, and LDF data), runs stored procedures to retrieve and format the data, and produces processed records for downstream storage in RDB_Modern. A post-processing service then populates analytical datamarts and fact tables from the staging data. | . | Dependencies | Requires Kafka (message source) and NBS_ODSE (operational data store). Populates RDB_Modern staging tables, which are then consumed by the post-processing service. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html#rtr-domain-services",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html#rtr-domain-services"
-  },"398": {
+  },"397": {
     "doc": "Real-Time Reporting (RTR)",
     "title": "Real-Time Reporting (RTR)",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/component-reference/rtr.html",
     
     "relUrl": "/docs/before-you-deploy/component-reference/rtr.html"
-  },"399": {
+  },"398": {
     "doc": "Service integrations",
     "title": "Service integrations for data ingestion",
     "content": "To install Rhapsody or SFTP service integrations, see the following documents: . | Data Ingestion Rhapsody Route Integration.pdf | Data Ingestion SFTP Manual File Drop Off.pdf | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#service-integrations-for-data-ingestion"
-  },"400": {
+  },"399": {
     "doc": "Service integrations",
     "title": "Next steps",
     "content": "Continue to API testing. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html#next-steps"
-  },"401": {
+  },"400": {
     "doc": "Service integrations",
     "title": "Service integrations",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/service-integrations.html"
-  },"402": {
+  },"401": {
     "doc": "Smoke test",
     "title": "Smoke test for data ingestion",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#smoke-test-for-data-ingestion"
-  },"403": {
+  },"402": {
     "doc": "Smoke test",
     "title": "On this page",
     "content": ". | Overview | Prerequisites | Scope | Run Data Ingestion Smoke Test | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#on-this-page"
-  },"404": {
+  },"403": {
     "doc": "Smoke test",
     "title": "Overview",
     "content": "The data ingestion service is integrated with the Keycloak server to authenticate its public Data Ingestion API (DI API) endpoints. As the Client Credentials Grant type flow is used for authentication in the data ingestion service, we require the Client Id and Client Secret values to create the JWT token and make API calls. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#overview"
-  },"405": {
+  },"404": {
     "doc": "Smoke test",
     "title": "Prerequisites",
     "content": ". | Keycloak server and the necessary configurations are set up. | Installation of Postman application to test the end-to-end flow. | If you already have Postman application in your system, skip this step. | Visit the official Postman website at www.postman.com and navigate to the Downloads section: Download Postman. | Download the version that is appropriate for your operating system. Once the download is complete, open and install it accordingly. | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#prerequisites"
-  },"406": {
+  },"405": {
     "doc": "Smoke test",
     "title": "Scope",
     "content": ". | Only ELR Data that are HL7 messages with ORU RO1 Data type are in scope. | Only HL7 messages with versions 2.3.1 and 2.5.1 are in scope. | The data ingestion service supports the transmit of HL7 messages with FHS header segments. | . Note: Posting the same HL7 message more than once is allowed, but be aware that due to a duplicate check, the validation will fail within the data ingestion system. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#scope"
-  },"407": {
+  },"406": {
     "doc": "Smoke test",
     "title": "Run Data Ingestion Smoke Test",
     "content": "To load the Data Ingestion API collection in Postman, complete the following steps: . | Open Postman and select Import. | In the import window, select New-Data-Ingestion.postman_collection.json from the release package. | Select Open. | . The collection loads with all requests for the Data Ingestion service. Step 1: Token Generation API . Select the Token Generation API in the New-Data-Ingestion Postman collection. Update the clientid and clientsecret values, then select Send to generate a new token. Note: Tokens expire after 1 hour. They must be regenerated using the same token endpoint after 1 hour or when they expire in order to make DI API calls. Step 2: Ingesting Data API . Select Ingesting Data API in New-Data-Ingestionpostman collection and then select Authorization tab and select Bearer Token as the type. Paste the token that was generated via Token Generation API in previous step into the token text box. Select the Headers section and enter the values within the clientid and clientsecret headers. A sample HL7 message has already been added to the request body section. Select Send button. UUID is displayed as a response. Please save this UUID which is useful to determine the status of the HL7 message. Wait 10-20 seconds before checking the status of Ingested Data API in Classic NBS. It takes a moment to generate an XML record into the NBS_Interface table after posting the HL7 message. Step 3: Check detailed status of Ingested Data API in Classic NBS . Select the Checking Status of Ingested Data API in the New-Data-Ingestion Postman collection and then select the Authorization tab. Paste the token that was generated via Token Generation API into the token text box. Select the Headers section and enter the values within the clientid and clientsecret headers. Within the API URL, append the UUID generated as part of the response from the Ingesting Data API. Select Send button. By Default, all the status goes to QUEUED status. The Classic Wildfly scheduler runs the batch job and processes this record. The scheduler is set to pick up and process the records every two minutes. Wait for two minutes and then select the Send button again. This time, the status should be Success. The following API provides the ELR Ingestion status: . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#run-data-ingestion-smoke-test"
-  },"408": {
+  },"407": {
     "doc": "Smoke test",
     "title": "Next steps",
     "content": "Continue to Service integrations. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html#next-steps"
-  },"409": {
+  },"408": {
     "doc": "Smoke test",
     "title": "Smoke test",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/smoke-test.html"
-  },"410": {
+  },"409": {
     "doc": "Get support for NBS 7",
     "title": "Get support for NBS 7",
     "content": "Use this page to understand when to contact CDC for help with NBS 7 planning, deployment, validation, and ongoing maintenance. Start with the guidance in this admin guide when it covers your issue, then contact CDC if you need clarification, encounter a blocker, or cannot find the procedure you need. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html",
     
     "relUrl": "/docs/support.html"
-  },"411": {
+  },"410": {
     "doc": "Get support for NBS 7",
     "title": "On this page",
     "content": ". | When to contact CDC | Start with the right resource | Before you contact CDC | Release and documentation updates | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#on-this-page",
     
     "relUrl": "/docs/support.html#on-this-page"
-  },"412": {
+  },"411": {
     "doc": "Get support for NBS 7",
     "title": "When to contact CDC",
     "content": "CDC provides deployment support to public health jurisdictions interested in or using the CDC-provided NBS application. Reach out if your jurisdiction needs help with any of the following: . | Evaluating whether NBS 7 is the right next step for your jurisdiction | Resolving a deployment blocker during cloud, cluster, or microservices setup | Troubleshooting validation failures before go-live | Identifying the right maintenance procedure after go-live | Locating documentation that is not yet covered in this guide | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#when-to-contact-cdc",
     
     "relUrl": "/docs/support.html#when-to-contact-cdc"
-  },"413": {
+  },"412": {
     "doc": "Get support for NBS 7",
     "title": "Start with the right resource",
     "content": "Use the resource that best matches where you are in the process. | If you need help with… | Start here | . | Deployment steps for infrastructure, microservices, identity, or validation | Deploy NBS 7 | . | Post-go-live operations, upgrades, or runtime configuration | Maintain NBS 7 | . If you need help with readiness, staffing, cloud prerequisites, or go/no-go planning, or if the guide does not answer your question, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#start-with-the-right-resource",
     
     "relUrl": "/docs/support.html#start-with-the-right-resource"
-  },"414": {
+  },"413": {
     "doc": "Get support for NBS 7",
     "title": "Before you contact CDC",
     "content": "Before submitting an email or NBS Central ticket, include enough context for the support team to understand where you are in the process and what has already been tried. When possible, include: . | Your jurisdiction name | Your NBS 6 version and target NBS 7 version | Your cloud provider and deployment configuration | The deployment phase you are in, such as planning, installation, testing, or steady state | The page or procedure you were following when the issue occurred | The exact error message, affected component, and time of failure | Relevant logs, screenshots, or command output with sensitive information removed | A short summary of what changed immediately before the issue started | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#before-you-contact-cdc",
     
     "relUrl": "/docs/support.html#before-you-contact-cdc"
-  },"415": {
+  },"414": {
     "doc": "Get support for NBS 7",
     "title": "Release and documentation updates",
     "content": "This guide reflects the currently documented deployment and maintenance procedures, but NBS 7 is under active development. For the latest documented procedures: . | Review the relevant sections in this guide before starting work | Check this guide’s revision history for newly published guidance | Check NBS Central for release-related updates | Contact nbs@cdc.gov if you need help with something that is not yet documented | . Access to NBS Central requires a login. To register for an NBS Central account, choose Register at the top of the login screen. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#release-and-documentation-updates",
     
     "relUrl": "/docs/support.html#release-and-documentation-updates"
-  },"416": {
+  },"415": {
     "doc": "Supported NBS versions",
     "title": "Supported NBS versions",
     "content": "NBS 7 integrates with and is tested against specific versions of NBS 6. Use this page to verify that your NBS 6 version is supported and compatible with your target NBS 7 version before you begin deployment. For the supported Microsoft Windows Server and SQL Server versions for your database server, and the workstation tool versions needed to deploy, see Cloud prerequisites. Migrating from the latest supported NBS 6 version to the latest NBS 7 version provides the smoothest path to NBS 7. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-versions",
     
     "relUrl": "/docs/supported-versions.html#supported-nbs-versions"
-  },"417": {
+  },"416": {
     "doc": "Supported NBS versions",
     "title": "Supported NBS 7 versions",
-    "content": "The following NBS 7 versions are supported: . | 7.13.0 | 7.12.0 | . ",
+    "content": "The following NBS 7 versions are supported: . | 7.13.0 | 7.12.0 | . To see what changed in each of these releases, see the History of changes in NBS 7 releases. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-7-versions",
     
     "relUrl": "/docs/supported-versions.html#supported-nbs-7-versions"
-  },"418": {
+  },"417": {
     "doc": "Supported NBS versions",
     "title": "Supported NBS 6 versions",
     "content": "The following NBS 6 versions are supported: . | 6.0.19.1 (requires NBS 7.13.0) | 6.0.18.1 | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-6-versions",
     
     "relUrl": "/docs/supported-versions.html#supported-nbs-6-versions"
-  },"419": {
+  },"418": {
     "doc": "Supported NBS versions",
     "title": "Supported NBS 6 and NBS 7 version combinations",
     "content": "Use the following table to verify that your NBS 6 version is compatible with your target NBS 7 version before you begin deployment. | Supported NBS 6 version | Works with 7.13.0 | Works with 7.12.0 | . | 6.0.19.1 | ✓ Yes | No | . | 6.0.18.1 | ✓ Yes | ✓ Yes | . This table lists the supported NBS version combinations as of the latest NBS 7 release. Versions not listed are not supported, even if a combination appears to work in your environment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html#supported-nbs-6-and-nbs-7-version-combinations",
     
     "relUrl": "/docs/supported-versions.html#supported-nbs-6-and-nbs-7-version-combinations"
-  },"420": {
+  },"419": {
     "doc": "Supported NBS versions",
     "title": "Supported NBS versions",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/supported-versions.html",
     
     "relUrl": "/docs/supported-versions.html"
-  },"421": {
+  },"420": {
     "doc": "Undeploy NBS 7",
     "title": "Remove an NBS 7 environment",
     "content": "Use this procedure to decommission an NBS 7 environment that was deployed using Terraform and Helm. This applies to development, staging, and production environments. Complete the steps in the order shown. Helm resources must be removed before you run terraform destroy. These steps are irreversible. Removing ingress resources immediately interrupts access to NBS 7 endpoints in this environment. Running terraform destroy permanently deletes all infrastructure managed by this Terraform workspace. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-an-nbs-7-environment",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-an-nbs-7-environment"
-  },"422": {
+  },"421": {
     "doc": "Undeploy NBS 7",
     "title": "Before you begin",
     "content": ". | Confirm that this is the correct environment and that you have approval to decommission it | Verify that any data you need to retain has been exported or backed up | Confirm that no active users or dependent systems are connected to this environment | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#before-you-begin",
     
     "relUrl": "/docs/undeploy-nbs7.html#before-you-begin"
-  },"423": {
+  },"422": {
     "doc": "Undeploy NBS 7",
     "title": "Remove DNS entries",
     "content": "Remove the DNS records for this environment from your DNS provider: . | app.&lt;site_name&gt;.&lt;domain&gt;.com | data.&lt;site_name&gt;.&lt;domain&gt;.com | nifi.&lt;site_name&gt;.&lt;domain&gt;.com (if you created a NiFi record during deployment) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-dns-entries",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-dns-entries"
-  },"424": {
+  },"423": {
     "doc": "Undeploy NBS 7",
     "title": "Remove Helm ingress resources",
     "content": "List the current Helm releases in the traefik namespace and verify the release name before uninstalling: . helm list --namespace traefik helm uninstall --namespace traefik traefik . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#remove-helm-ingress-resources",
     
     "relUrl": "/docs/undeploy-nbs7.html#remove-helm-ingress-resources"
-  },"425": {
+  },"424": {
     "doc": "Undeploy NBS 7",
     "title": "Empty the OTEL collector storage bucket (AWS only)",
     "content": "On AWS, empty the S3 bucket that the OpenTelemetry (OTEL) collector uses for log storage before you run terraform destroy. Terraform cannot delete a non-empty S3 bucket, so the destroy fails if you skip this step. Complete this step manually in the AWS console or with the AWS CLI. On Azure, observability uses Azure Monitor, which Terraform removes as part of terraform destroy. No manual storage cleanup is required. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#empty-the-otel-collector-storage-bucket-aws-only",
     
     "relUrl": "/docs/undeploy-nbs7.html#empty-the-otel-collector-storage-bucket-aws-only"
-  },"426": {
+  },"425": {
     "doc": "Undeploy NBS 7",
     "title": "Destroy Terraform-managed infrastructure",
     "content": "terraform destroy . Review the plan output carefully before confirming. Terraform will display a summary of all resources it will delete. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html#destroy-terraform-managed-infrastructure",
     
     "relUrl": "/docs/undeploy-nbs7.html#destroy-terraform-managed-infrastructure"
-  },"427": {
+  },"426": {
     "doc": "Undeploy NBS 7",
     "title": "Undeploy NBS 7",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/undeploy-nbs7.html",
     
     "relUrl": "/docs/undeploy-nbs7.html"
-  },"428": {
+  },"427": {
     "doc": "Midpoint validation",
     "title": "Validate Elasticsearch, Modernization API, and Apache NiFi",
     "content": "After deploying Elasticsearch, Modernization API, and NiFi, validate all three services before continuing with the remaining microservices. After you finish the validation section, proceed to Deploy NBS Gateway. Successful validation confirms that: . | Name resolution is working | Traffic routing between NBS 6 and NBS 7 is working | Routing from NBS 7 components to the database is working | Search indices have been created, populated, and are available | . Search indices may take longer to populate depending on the size of your database. A larger database could take 3-6 hours. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#validate-elasticsearch-modernization-api-and-apache-nifi",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#validate-elasticsearch-modernization-api-and-apache-nifi"
-  },"429": {
+  },"428": {
     "doc": "Midpoint validation",
     "title": "In this section",
     "content": "This mid-point validation covers the following: . | Manual validation for Elasticsearch, Modernization API, and NiFi: Test end-to-end functionality by searching patient records in the NBS UI. | API smoke test for Modernization API: Run the nbs-test-api.sh smoke test against the Modernization API. | Web UI smoke test for NBS interface and search: Run the nbs-test-webui.sh smoke test against the NBS web interface. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#in-this-section",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html#in-this-section"
-  },"430": {
+  },"429": {
     "doc": "Midpoint validation",
     "title": "Midpoint validation",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi.html"
-  },"431": {
+  },"430": {
     "doc": "Validate deployment",
     "title": "Validate your NBS 7 deployment",
     "content": "Each NBS 7 component includes its own validation steps as part of its deployment page. This page has two purposes: to confirm that you completed the validation for every component you deployed, and to run the system-level checks that can only be done once the full deployment is in place. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#validate-your-nbs-7-deployment",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#validate-your-nbs-7-deployment"
-  },"432": {
+  },"431": {
     "doc": "Validate deployment",
     "title": "On this page",
     "content": ". | Before you validate | Confirm component validation | Run system-level checks | Confirm monitoring and go-live readiness | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#on-this-page"
-  },"433": {
+  },"432": {
     "doc": "Validate deployment",
     "title": "Before you validate",
     "content": "Confirm the following before you start: . | Deployment of all required components is complete. | A development or staging environment is available with representative test data. | You have admin credentials to access the NBS UI. | Your NBS 6 database refresh is complete and accessible from the test environment. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#before-you-validate",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#before-you-validate"
-  },"434": {
+  },"433": {
     "doc": "Validate deployment",
     "title": "Confirm component validation",
     "content": "Each deployment page includes validation steps for that component. If you followed the full deployment, you completed these steps as you deployed each service. If you used the quick deployment path, or skipped any validation, complete it now using the linked pages. Confirm that each component you deployed passed its validation: . | Component | What its validation confirms | Validation steps | . | Elasticsearch, Modernization API, and NiFi | Name resolution works, routing between NBS 6 and NBS 7 is correct, database connectivity from NBS 7 components works, and search indices are created and populated | Manual validation | . | Modernization API | API endpoints respond and return expected results | API smoke test | . | NBS UI and patient search | The NBS interface is accessible and patient search returns results | Web UI smoke test | . | Data ingestion | Individual ELR and eCR messages are accepted and routed correctly | Smoke test | . | Data ingestion API | Data ingestion API endpoints are reachable and functioning | API testing | . | Data processing | Data processing handles ELR data correctly and returns expected status codes | API testing and integration | . | Case notifications | The Case Notification service processes and routes notifications correctly | API testing | . | NND service (Data Sync) | Data Sync API endpoints are reachable and credentials are valid | Validate API endpoints | . | Real-time reporting (RTR) | RTR services started, database migrated, and connectors registered | Validate RTR installation | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-component-validation",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-component-validation"
-  },"435": {
+  },"434": {
     "doc": "Validate deployment",
     "title": "Run system-level checks",
     "content": "The following system-level checks confirm that the services work together and that data flows correctly across the full deployment. Run them after all component validation passes: . | Log in to the NBS UI, for example at https://app.&lt;your-domain&gt;/nbs/login. | Confirm that patient search returns results using test records. | Create a test investigation and confirm that it appears correctly in the UI. | Confirm that ELR data ingested during testing is visible in the UI and correctly attributed. This confirms the full ingestion path, from the Data Ingestion API through to display. | Review application logs across services for unexpected errors or warnings. | Confirm that monitoring and alerting are configured and capturing baseline metrics across the deployment. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#run-system-level-checks",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#run-system-level-checks"
-  },"436": {
+  },"435": {
     "doc": "Validate deployment",
     "title": "Confirm monitoring and go-live readiness",
     "content": "When all component validation and system-level checks pass, your deployment is ready for go-live. To remove temporary deployment artifacts and tighten access, continue to Post-deploy cleanup. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html#confirm-monitoring-and-go-live-readiness"
-  },"437": {
+  },"436": {
     "doc": "Validate deployment",
     "title": "Validate deployment",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/full-deploy/validate-the-deployment.html",
     
     "relUrl": "/docs/deploy-nbs7/full-deploy/validate-the-deployment.html"
-  },"438": {
+  },"437": {
     "doc": "Endpoint validation",
     "title": "Validate API endpoints",
     "content": "Use this check to confirm that your environment can reach the Data Sync API before you sync data. In production, the Data Sync service calls these endpoints. System administrators still need to validate connectivity and credentials during setup. Complete Deploy Data Sync service API (cloud) before starting this page. After you finish validating, proceed to Deploy NND Sync or Deploy Data Availability (on-premises). This page is part of the optional NND Service (Data Sync) section. CDC is evaluating long-term support for this service. If your STLT has a use case, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-api-endpoints",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-api-endpoints"
-  },"439": {
+  },"438": {
     "doc": "Endpoint validation",
     "title": "On this page",
     "content": ". | Prerequisites | Validate token generation in Postman | Validate service endpoints in Swagger | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#on-this-page"
-  },"440": {
+  },"439": {
     "doc": "Endpoint validation",
     "title": "Prerequisites",
     "content": "Complete the Deploy Data Sync service API deployment before you begin. This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. You need a Keycloak client ID and client secret for the Data Sync service, nnd-keycloak-client. Retrieve these from your Keycloak instance. See Import service clients and retrieve secrets on the Deploy and configure Keycloak page. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#prerequisites"
-  },"441": {
+  },"440": {
     "doc": "Endpoint validation",
     "title": "Validate token generation in Postman",
     "content": "The token endpoint returns a JWT token that clients use to access secured Data Sync endpoints. Send a POST request to the following endpoint: . https://data.&lt;your-site&gt;.&lt;your-domain&gt;.com/data-sync/api/auth/token . Use NONE as the authorization type. | Open Postman and send a POST request to the token endpoint. | Add two request headers using the credentials from your Keycloak instance: . | clientid | clientsecret | . The following screenshot shows the request configured in Postman: . | Select Send. | Confirm that the response status is 200 OK and that a JWT token returns. The following screenshot shows an example successful response: . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-token-generation-in-postman"
-  },"442": {
+  },"441": {
     "doc": "Endpoint validation",
     "title": "Validate service endpoints in Swagger",
     "content": "After token generation succeeds, validate the service endpoints in Swagger: . https://&lt;host&gt;/data-sync/swagger-ui/index.html . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#validate-service-endpoints-in-swagger"
-  },"443": {
+  },"442": {
     "doc": "Endpoint validation",
     "title": "Next steps",
     "content": "Continue to Deploy NND Sync. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html#next-steps"
-  },"444": {
+  },"443": {
     "doc": "Endpoint validation",
     "title": "Endpoint validation",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/nnd-service/validating-api-endpoints.html"
-  },"445": {
+  },"444": {
     "doc": "Working with a vendor",
     "title": "Vendor-managed NBS 7 deployments",
     "content": "If you plan to use a vendor to host or maintain NBS 7, confirm that they can: . | Deploy Kubernetes-based applications on AWS or Azure | Manage Terraform-based infrastructure provisioning | Support ongoing cloud infrastructure operations, including monitoring and incident response | . NBS 7 is a recent system with limited deployment history. Do not expect vendors to have direct NBS 7 experience. Evaluate vendors on their Kubernetes and cloud infrastructure expertise instead. You can share the component reference section of this guide with vendors to help them scope the work accurately. Share the following with your vendor before scoping work: . | The component reference section of this guide | The NBS 7 Migration Info Sheet (available from CDC) | Your current NBS 6 hosting setup and data volumes | . Then: . | Contact nbs@cdc.gov to let CDC know you are planning a vendor-managed deployment and to access vendor coordination resources. | Work with your vendor to review the NBS 7 deployment phases to plan your timeline. | Refer to the component reference for the configuration parameters your vendor will need. | . Vendors with Kubernetes and cloud infrastructure expertise can deploy NBS 7, but they will need detailed technical guidance from CDC and from this guide to do it accurately. Plan for a close working relationship between your vendor and the CDC NBS team, especially during initial deployment. Also plan for the funding needed to sustain vendor support beyond initial deployment. Ongoing maintenance costs are a common planning gap. Use the NBS 7 Resource Estimator to support cloud cost projections (NBS Central login required; see Additional resources). ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/vendor-managed-deployment.html#vendor-managed-nbs-7-deployments",
     
     "relUrl": "/docs/before-you-deploy/vendor-managed-deployment.html#vendor-managed-nbs-7-deployments"
-  },"446": {
+  },"445": {
     "doc": "Working with a vendor",
     "title": "Working with a vendor",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/before-you-deploy/vendor-managed-deployment.html",
     
     "relUrl": "/docs/before-you-deploy/vendor-managed-deployment.html"
-  },"447": {
+  },"446": {
     "doc": "Enable verbose truncation warnings",
     "title": "Enable SQL Server verbose truncation warnings",
     "content": "SQL Server Trace Flag 460 provides detailed error messages when string or binary data truncation occurs. This is particularly useful for diagnosing data truncation errors when saving investigations in NBS, as it includes column names and data types in error messages rather than generic truncation warnings. For more information, see the Microsoft SQL Server documentation on VERBOSE_TRUNCATION_WARNINGS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#enable-sql-server-verbose-truncation-warnings",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#enable-sql-server-verbose-truncation-warnings"
-  },"448": {
+  },"447": {
     "doc": "Enable verbose truncation warnings",
     "title": "On this page",
     "content": ". | Benefits for NBS Operations | Method 1: Enable at SQL Server Startup (Persistent) | Method 2: Enable on Running Instance (No Restart Required) | Verifying Trace Flag Status | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#on-this-page",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#on-this-page"
-  },"449": {
+  },"448": {
     "doc": "Enable verbose truncation warnings",
     "title": "Benefits for NBS Operations",
     "content": "When Trace Flag 460 is enabled, truncation errors will provide detailed information such as: . | The specific column name where truncation occurred | The data type and size of the column | The actual length of the data being inserted | . This detailed information significantly reduces troubleshooting time when diagnosing data integrity issues during investigation saves or other database operations in NBS. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#benefits-for-nbs-operations",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#benefits-for-nbs-operations"
-  },"450": {
+  },"449": {
     "doc": "Enable verbose truncation warnings",
     "title": "Method 1: Enable at SQL Server Startup (Persistent)",
     "content": "To enable Trace Flag 460 permanently across SQL Server restarts: . | Open SQL Server Configuration Manager | Navigate to SQL Server Services | Right-click on your SQL Server instance and select Properties | Navigate to the Startup Parameters tab | Add the parameter: -T460 | Click Add then Apply | Restart the SQL Server service for the change to take effect | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#method-1-enable-at-sql-server-startup-persistent",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#method-1-enable-at-sql-server-startup-persistent"
-  },"451": {
+  },"450": {
     "doc": "Enable verbose truncation warnings",
     "title": "Method 2: Enable on Running Instance (No Restart Required)",
     "content": "To enable Trace Flag 460 on a live SQL Server instance without restarting: . -- Enable trace flag 460 globally for all connections DBCC TRACEON(460, -1); . Note: This method enables the trace flag immediately but it will be disabled when SQL Server restarts. For persistent configuration across restarts, use Method 1. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#method-2-enable-on-running-instance-no-restart-required",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#method-2-enable-on-running-instance-no-restart-required"
-  },"452": {
+  },"451": {
     "doc": "Enable verbose truncation warnings",
     "title": "Verifying Trace Flag Status",
     "content": "To verify that Trace Flag 460 is enabled: . -- Check if trace flag 460 is enabled DBCC TRACESTATUS(460); . Expected output when enabled: . TraceFlag Status Global Session 460 1 1 0 . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html#verifying-trace-flag-status",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html#verifying-trace-flag-status"
-  },"453": {
+  },"452": {
     "doc": "Enable verbose truncation warnings",
     "title": "Enable verbose truncation warnings",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verbose-truncation.html",
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html"
-  },"454": {
+  },"453": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test for NBS interface and search",
     "content": "The nbs-test-webui.sh script tests end-to-end functionality through the NBS web interface by logging in, navigating to Advanced Search, and searching for patient records. Use this test to confirm that the NBS UI, search, and authentication are working correctly after deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search"
-  },"455": {
+  },"454": {
     "doc": "Web UI smoke test",
     "title": "On this page",
     "content": ". | Prerequisites | Run the smoke test | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page"
-  },"456": {
+  },"455": {
     "doc": "Web UI smoke test",
     "title": "Prerequisites",
     "content": "To run the smoke test, you need: . | Authenticated access to your NBS environment | A database user with access to patient records | A shell environment with curl installed (AWS CloudShell works if you use it, or any system with Bash and curl available) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites"
-  },"457": {
+  },"456": {
     "doc": "Web UI smoke test",
     "title": "Run the smoke test",
     "content": "Run the nbs-test-webui.sh script from the NEDSS-Infrastructure repository. See the README in that folder for usage instructions and current script status. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test"
-  },"458": {
+  },"457": {
     "doc": "Web UI smoke test",
     "title": "Next steps",
     "content": "After successfully completing the validation steps, continue to Deploy NBS Gateway. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#next-steps"
-  },"459": {
+  },"458": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html"
-  },"460": {
+  },"459": {
     "doc": "Wildfly server",
     "title": "WildFly server configuration",
     "content": "Configure the Windows Task Scheduler on your NBS 6 WildFly server to run the ELR Importer batch process. | Connect to the NBS 6 Windows server using a remote desktop client such as Microsoft Remote Desktop. You will need the server’s hostname or IP address, username, and password. | Follow the Windows Task Scheduler for ELR Importer (PDF) guide to create and configure the scheduled task. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
-  },"461": {
+  },"460": {
     "doc": "Wildfly server",
     "title": "Next steps",
     "content": "Continue to Smoke test. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#next-steps"
-  },"462": {
+  },"461": {
     "doc": "Wildfly server",
     "title": "Wildfly server",
     "content": " ",
