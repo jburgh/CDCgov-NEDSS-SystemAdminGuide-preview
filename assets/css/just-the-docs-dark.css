@@ -7919,6 +7919,63 @@ blockquote.warning-title > p:last-child {
   margin-bottom: 0;
 }
 
+.label:not(g),
+.label-blue:not(g),
+.label-green:not(g),
+.label-purple:not(g),
+.label-red:not(g),
+.label-yellow:not(g) {
+  padding: 4px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p.note::before,
+blockquote.note::before,
+p.note > .note-title,
+blockquote.note > .note-title,
+p.note-title > p:first-child,
+blockquote.note-title > p:first-child,
+p.important::before,
+blockquote.important::before,
+p.important > .important-title,
+blockquote.important > .important-title,
+p.important-title > p:first-child,
+blockquote.important-title > p:first-child {
+  color: #1B1B1B;
+}
+
+.label:not(g) {
+  background-color: #565C65;
+  color: #FFFFFF;
+}
+
+.label-blue:not(g) {
+  background-color: #00BDE3;
+  color: #000000;
+}
+
+.label-green:not(g) {
+  background-color: #00A91C;
+  color: #FFFFFF;
+}
+
+.label-purple:not(g) {
+  background-color: #7C4CB5;
+  color: #FFFFFF;
+}
+
+.label-red:not(g) {
+  background-color: #B51D09;
+  color: #FFFFFF;
+}
+
+.label-yellow:not(g) {
+  background-color: #FFBE2E;
+  color: #000000;
+}
+
 @media (min-width: 31.25rem) {
   .site-title {
     font-size: 24px !important;
@@ -7929,7 +7986,7 @@ blockquote.warning-title > p:last-child {
 }
 
 .text-green {
-  color: #008A17;
+  color: #4D8055;
   font-weight: bold;
 }
 

@@ -588,7 +588,7 @@ h6,
   margin-bottom: 1em;
   font-weight: 500;
   line-height: 1.25;
-  color: #1a1a1a;
+  color: #1B1B1B;
 }
 
 p {
@@ -597,7 +597,7 @@ p {
 }
 
 a {
-  color: #005DAA;
+  color: #005EA2;
   text-decoration: none;
 }
 
@@ -607,7 +607,7 @@ a:not([class]) {
   text-underline-offset: 2px;
 }
 a:not([class]):hover {
-  text-decoration-color: rgba(0, 93, 170, 0.45);
+  text-decoration-color: rgba(0, 94, 162, 0.45);
 }
 
 code {
@@ -787,7 +787,7 @@ blockquote {
   align-items: center;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #1a1a1a;
+  color: #1B1B1B;
   outline-offset: -1px;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -877,7 +877,7 @@ blockquote {
 .icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #005DAA;
+  color: #005EA2;
 }
 
 .main-content {
@@ -1027,7 +1027,7 @@ blockquote {
   display: inline-block;
   width: 100%;
   height: 100%;
-  color: #005DAA;
+  color: #005EA2;
   visibility: hidden;
 }
 .main-content .anchor-heading:hover svg,
@@ -1170,7 +1170,7 @@ blockquote {
   text-decoration: none;
 }
 .nav-list .nav-list-item .nav-list-link:hover, .nav-list .nav-list-item .nav-list-link.active {
-  color: rgb(0, 79.05, 144.5);
+  color: rgb(0, 79.2037037037, 136.5);
   background-image: linear-gradient(-90deg, rgb(234.8, 236.82, 244.9) 0%, rgba(234.8, 236.82, 244.9, 0.8) 80%, rgba(234.8, 236.82, 244.9, 0) 100%);
 }
 .nav-list .nav-list-item .nav-list-expander {
@@ -1179,7 +1179,7 @@ blockquote {
   width: 3rem;
   height: 3rem;
   padding: 0.75rem;
-  color: #005DAA;
+  color: #005EA2;
   outline-offset: -1px;
 }
 @media (min-width: 50rem) {
@@ -1249,10 +1249,10 @@ blockquote {
   padding: 0;
 }
 .nav-list.nav-category-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list-link {
-  color: #005DAA;
+  color: #005EA2;
 }
 .nav-list.nav-category-list > .nav-list-item > .nav-list > .nav-list-item > .nav-list-expander {
-  color: #005DAA;
+  color: #005EA2;
 }
 
 .aux-nav {
@@ -1441,7 +1441,7 @@ h6,
   color: #fff;
   text-transform: uppercase;
   vertical-align: middle;
-  background-color: rgb(173.4, 203.16, 227.8);
+  background-color: #73B3E7;
   border-radius: 12px;
 }
 .label:not(g),
@@ -1456,20 +1456,20 @@ h6,
 }
 
 .label-green:not(g) {
-  background-color: rgb(153.54, 204.27, 84.12);
+  background-color: #446443;
 }
 
 .label-purple:not(g) {
-  background-color: rgb(215.45, 182.55, 206.35);
+  background-color: #7C4CB5;
 }
 
 .label-red:not(g) {
-  background-color: rgb(202.54, 61.5, 109.66);
+  background-color: #8B1303;
 }
 
 .label-yellow:not(g) {
   color: #44434d;
-  background-color: rgb(241.14, 196.92, 119.04);
+  background-color: #E5A000;
 }
 
 .btn {
@@ -1481,7 +1481,7 @@ h6,
   font-size: inherit;
   font-weight: 500;
   line-height: 1.5;
-  color: #005DAA;
+  color: #005EA2;
   text-decoration: none;
   vertical-align: baseline;
   cursor: pointer;
@@ -1500,7 +1500,7 @@ h6,
   box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.25);
 }
 .btn:hover, .btn.zeroclipboard-is-hover {
-  color: rgb(0, 87.42, 159.8);
+  color: rgb(0, 88.0814814815, 151.8);
 }
 .btn:hover, .btn:active, .btn.zeroclipboard-is-hover, .btn.zeroclipboard-is-active {
   text-decoration: none;
@@ -1523,12 +1523,12 @@ h6,
 }
 
 .btn-outline {
-  color: #005DAA;
+  color: #005EA2;
   background: transparent;
   box-shadow: inset 0 0 0 2px #e6e1e8;
 }
 .btn-outline:hover, .btn-outline:active, .btn-outline.zeroclipboard-is-hover, .btn-outline.zeroclipboard-is-active {
-  color: rgb(0, 81.84, 149.6);
+  color: rgb(0, 82.162962963, 141.6);
   text-decoration: none;
   background-color: transparent;
   box-shadow: inset 0 0 0 3px #e6e1e8;
@@ -1544,82 +1544,82 @@ h6,
 
 .btn-primary {
   color: #fff;
-  background-color: rgb(0, 87.42, 159.8);
-  background-image: linear-gradient(rgb(0, 106.95, 195.5), rgb(0, 87.42, 159.8));
+  background-color: rgb(0, 88.0814814815, 151.8);
+  background-image: linear-gradient(rgb(0, 108.7962962963, 187.5), rgb(0, 88.0814814815, 151.8));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .btn-primary:hover, .btn-primary.zeroclipboard-is-hover {
   color: #fff;
-  background-color: rgb(0, 81.84, 149.6);
-  background-image: linear-gradient(rgb(0, 98.58, 180.2), rgb(0, 81.84, 149.6));
+  background-color: rgb(0, 82.162962963, 141.6);
+  background-image: linear-gradient(rgb(0, 99.9185185185, 172.2), rgb(0, 82.162962963, 141.6));
 }
 .btn-primary:active, .btn-primary.selected, .btn-primary.zeroclipboard-is-active {
-  background-color: rgb(0, 79.05, 144.5);
+  background-color: rgb(0, 79.2037037037, 136.5);
   background-image: none;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .btn-primary.selected:hover {
-  background-color: rgb(0, 65.1, 119);
+  background-color: rgb(0, 64.4074074074, 111);
 }
 
 .btn-purple {
   color: #fff;
-  background-color: rgb(211.848125, 175.951875, 201.919375);
-  background-image: linear-gradient(rgb(224.4546875, 199.0453125, 217.4265625), rgb(211.848125, 175.951875, 201.919375));
+  background-color: rgb(119.0102766798, 72.1865612648, 174.6134387352);
+  background-image: linear-gradient(rgb(137.2035573123, 94.0415019763, 188.4584980237), rgb(119.0102766798, 72.1865612648, 174.6134387352));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .btn-purple:hover, .btn-purple.zeroclipboard-is-hover {
   color: #fff;
-  background-color: rgb(208.24625, 169.35375, 197.48875);
-  background-image: linear-gradient(rgb(219.051875, 189.148125, 210.780625), rgb(208.24625, 169.35375, 197.48875));
+  background-color: rgb(114.0916996047, 69.2031620553, 167.3968379447);
+  background-image: linear-gradient(rgb(129.2814229249, 83.2166007905, 183.9833992095), rgb(114.0916996047, 69.2031620553, 167.3968379447));
 }
 .btn-purple:active, .btn-purple.selected, .btn-purple.zeroclipboard-is-active {
-  background-color: rgb(206.4453125, 166.0546875, 195.2734375);
+  background-color: rgb(111.6324110672, 67.7114624506, 163.7885375494);
   background-image: none;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .btn-purple.selected:hover {
-  background-color: rgb(197.440625, 149.559375, 184.196875);
+  background-color: rgb(99.3359683794, 60.2529644269, 145.7470355731);
 }
 
 .btn-blue {
   color: #fff;
-  background-color: rgb(104.55, 159.42, 204.85);
-  background-image: linear-gradient(rgb(131.325, 176.43, 213.775), rgb(104.55, 159.42, 204.85));
+  background-color: rgb(24.2779220779, 63.4961038961, 119.5220779221);
+  background-image: linear-gradient(rgb(30.3051948052, 79.2597402597, 149.1948051948), rgb(24.2779220779, 63.4961038961, 119.5220779221));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .btn-blue:hover, .btn-blue.zeroclipboard-is-hover {
   color: #fff;
-  background-color: rgb(96.9, 154.56, 202.3);
-  background-image: linear-gradient(rgb(119.85, 169.14, 209.95), rgb(96.9, 154.56, 202.3));
+  background-color: rgb(22.5558441558, 58.9922077922, 111.0441558442);
+  background-image: linear-gradient(rgb(27.7220779221, 72.5038961039, 136.4779220779), rgb(22.5558441558, 58.9922077922, 111.0441558442));
 }
 .btn-blue:active, .btn-blue.selected, .btn-blue.zeroclipboard-is-active {
-  background-color: rgb(93.075, 152.13, 201.025);
+  background-color: rgb(21.6948051948, 56.7402597403, 106.8051948052);
   background-image: none;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .btn-blue.selected:hover {
-  background-color: rgb(73.95, 139.98, 194.65);
+  background-color: rgb(17.3896103896, 45.4805194805, 85.6103896104);
 }
 
 .btn-green {
   color: #fff;
-  background-color: rgb(148.8701204819, 201.935060241, 76.254939759);
-  background-image: linear-gradient(rgb(165.2146987952, 210.1073493976, 103.7826506024), rgb(148.8701204819, 201.935060241, 76.254939759));
+  background-color: rgb(63.8467065868, 93.8922155689, 62.9077844311);
+  background-image: linear-gradient(rgb(78.3832335329, 115.2694610778, 77.2305389222), rgb(63.8467065868, 93.8922155689, 62.9077844311));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .btn-green:hover, .btn-green.zeroclipboard-is-hover {
   color: #fff;
-  background-color: rgb(144.2002409639, 199.6001204819, 68.3898795181);
-  background-image: linear-gradient(rgb(158.2098795181, 206.604939759, 91.985060241), rgb(144.2002409639, 199.6001204819, 68.3898795181));
+  background-color: rgb(59.6934131737, 87.7844311377, 58.8155688623);
+  background-image: linear-gradient(rgb(72.1532934132, 106.1077844311, 71.0922155689), rgb(59.6934131737, 87.7844311377, 58.8155688623));
 }
 .btn-green:active, .btn-green.selected, .btn-green.zeroclipboard-is-active {
-  background-color: rgb(141.8653012048, 198.4326506024, 64.4573493976);
+  background-color: rgb(57.6167664671, 84.7305389222, 56.7694610778);
   background-image: none;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .btn-green.selected:hover {
-  background-color: rgb(128.7054216867, 183.0477108434, 54.3422891566);
+  background-color: rgb(47.2335329341, 69.4610778443, 46.5389221557);
 }
 
 .btn-reset {
@@ -1697,7 +1697,7 @@ h6,
   outline-offset: -1px;
 }
 .search-input:focus + .search-label .search-icon {
-  color: #005DAA;
+  color: #005EA2;
 }
 
 .search-label {
@@ -1821,7 +1821,7 @@ h6,
   width: 1rem;
   height: 1rem;
   margin-right: 0.5rem;
-  color: #005DAA;
+  color: #005EA2;
   flex-shrink: 0;
 }
 .search-result-doc .search-result-doc-title {
@@ -1907,7 +1907,7 @@ h6,
   width: 3.5rem;
   height: 3.5rem;
   background-color: #fff;
-  border: 1px solid rgba(0, 93, 170, 0.3);
+  border: 1px solid rgba(0, 94, 162, 0.3);
   border-radius: 1.75rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   align-items: center;
@@ -2087,7 +2087,7 @@ div.highlighter-rouge > button:focus,
 div.listingblock > div.content > button:focus,
 figure.highlight > button:focus {
   opacity: 1;
-  outline: 2px solid #005DAA;
+  outline: 2px solid #005EA2;
 }
 div.highlighter-rouge:hover > button,
 div.listingblock > div.content:hover > button,
@@ -2248,83 +2248,83 @@ pre.highlight {
 }
 
 .text-blue-000 {
-  color: rgb(229.5, 238.8, 246.5) !important;
+  color: #CFE7FF !important;
 }
 
 .text-blue-100 {
-  color: rgb(173.4, 203.16, 227.8) !important;
+  color: #73B3E7 !important;
 }
 
 .text-blue-200 {
-  color: rgb(112.2, 164.28, 207.4) !important;
+  color: #1A4480 !important;
 }
 
 .text-blue-300 {
-  color: rgb(35.7, 115.68, 181.9) !important;
+  color: #005EA2 !important;
 }
 
 .text-green-000 {
-  color: rgb(234.48, 244.74, 220.44) !important;
+  color: #ECF3EC !important;
 }
 
 .text-green-100 {
-  color: rgb(209.4, 232.2, 178.2) !important;
+  color: #70E17B !important;
 }
 
 .text-green-200 {
-  color: rgb(183.18, 219.09, 134.04) !important;
+  color: #00A91C !important;
 }
 
 .text-green-300 {
-  color: rgb(153.54, 204.27, 84.12) !important;
+  color: #446443 !important;
 }
 
 .text-purple-000 {
-  color: rgb(241.44, 230.16, 238.32) !important;
+  color: #E7E3FA !important;
 }
 
 .text-purple-100 {
-  color: rgb(215.45, 182.55, 206.35) !important;
+  color: #7C4CB5 !important;
 }
 
 .text-purple-200 {
-  color: rgb(189.46, 134.94, 174.38) !important;
+  color: #54278F !important;
 }
 
 .text-purple-300 {
-  color: rgb(157.82, 76.98, 135.46) !important;
+  color: #54278F !important;
 }
 
 .text-yellow-000 {
-  color: rgb(250.8, 237.4, 213.8) !important;
+  color: #FAF3D1 !important;
 }
 
 .text-yellow-100 {
-  color: rgb(245.76, 216.28, 164.36) !important;
+  color: #FEE685 !important;
 }
 
 .text-yellow-200 {
-  color: rgb(241.14, 196.92, 119.04) !important;
+  color: #E5A000 !important;
 }
 
 .text-yellow-300 {
-  color: rgb(236.1, 175.8, 69.6) !important;
+  color: #FFBE2E !important;
 }
 
 .text-red-000 {
-  color: rgb(247.68, 228, 234.72) !important;
+  color: #F8DFE2 !important;
 }
 
 .text-red-100 {
-  color: rgb(233.65, 176.25, 195.85) !important;
+  color: #F2938C !important;
 }
 
 .text-red-200 {
-  color: rgb(219.62, 124.5, 156.98) !important;
+  color: #D83933 !important;
 }
 
 .text-red-300 {
-  color: rgb(202.54, 61.5, 109.66) !important;
+  color: #8B1303 !important;
 }
 
 .bg-grey-dk-000 {
@@ -2364,83 +2364,83 @@ pre.highlight {
 }
 
 .bg-blue-000 {
-  background-color: rgb(229.5, 238.8, 246.5) !important;
+  background-color: #CFE7FF !important;
 }
 
 .bg-blue-100 {
-  background-color: rgb(173.4, 203.16, 227.8) !important;
+  background-color: #73B3E7 !important;
 }
 
 .bg-blue-200 {
-  background-color: rgb(112.2, 164.28, 207.4) !important;
+  background-color: #1A4480 !important;
 }
 
 .bg-blue-300 {
-  background-color: rgb(35.7, 115.68, 181.9) !important;
+  background-color: #005EA2 !important;
 }
 
 .bg-green-000 {
-  background-color: rgb(234.48, 244.74, 220.44) !important;
+  background-color: #ECF3EC !important;
 }
 
 .bg-green-100 {
-  background-color: rgb(209.4, 232.2, 178.2) !important;
+  background-color: #70E17B !important;
 }
 
 .bg-green-200 {
-  background-color: rgb(183.18, 219.09, 134.04) !important;
+  background-color: #00A91C !important;
 }
 
 .bg-green-300 {
-  background-color: rgb(153.54, 204.27, 84.12) !important;
+  background-color: #446443 !important;
 }
 
 .bg-purple-000 {
-  background-color: rgb(241.44, 230.16, 238.32) !important;
+  background-color: #E7E3FA !important;
 }
 
 .bg-purple-100 {
-  background-color: rgb(215.45, 182.55, 206.35) !important;
+  background-color: #7C4CB5 !important;
 }
 
 .bg-purple-200 {
-  background-color: rgb(189.46, 134.94, 174.38) !important;
+  background-color: #54278F !important;
 }
 
 .bg-purple-300 {
-  background-color: rgb(157.82, 76.98, 135.46) !important;
+  background-color: #54278F !important;
 }
 
 .bg-yellow-000 {
-  background-color: rgb(250.8, 237.4, 213.8) !important;
+  background-color: #FAF3D1 !important;
 }
 
 .bg-yellow-100 {
-  background-color: rgb(245.76, 216.28, 164.36) !important;
+  background-color: #FEE685 !important;
 }
 
 .bg-yellow-200 {
-  background-color: rgb(241.14, 196.92, 119.04) !important;
+  background-color: #E5A000 !important;
 }
 
 .bg-yellow-300 {
-  background-color: rgb(236.1, 175.8, 69.6) !important;
+  background-color: #FFBE2E !important;
 }
 
 .bg-red-000 {
-  background-color: rgb(247.68, 228, 234.72) !important;
+  background-color: #F8DFE2 !important;
 }
 
 .bg-red-100 {
-  background-color: rgb(233.65, 176.25, 195.85) !important;
+  background-color: #F2938C !important;
 }
 
 .bg-red-200 {
-  background-color: rgb(219.62, 124.5, 156.98) !important;
+  background-color: #D83933 !important;
 }
 
 .bg-red-300 {
-  background-color: rgb(202.54, 61.5, 109.66) !important;
+  background-color: #8B1303 !important;
 }
 
 .d-block {
@@ -7302,7 +7302,7 @@ a.skip-to-main {
 
 a.skip-to-main:focus,
 a.skip-to-main:active {
-  color: #005DAA;
+  color: #005EA2;
   background-color: #fff;
   left: auto;
   top: auto;
@@ -7312,7 +7312,7 @@ a.skip-to-main:active {
   margin: 10px 35%;
   padding: 5px;
   border-radius: 15px;
-  border: 4px solid #005DAA;
+  border: 4px solid #005EA2;
   text-align: center;
   font-size: 1.2em;
   z-index: 999;
@@ -7323,14 +7323,14 @@ div.opaque {
 }
 
 p.highlight, blockquote.highlight {
-  border: 1px rgb(241.44, 230.16, 238.32) solid;
-  border-left: 4px solid rgb(157.82, 76.98, 135.46);
+  border: 1px #E7E3FA solid;
+  border-left: 4px solid #54278F;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.highlight > .highlight-title, blockquote.highlight > .highlight-title {
-  color: rgb(157.82, 76.98, 135.46);
+  color: #54278F;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7339,8 +7339,8 @@ p.highlight > .highlight-title, blockquote.highlight > .highlight-title {
 }
 
 p.highlight-title, blockquote.highlight-title {
-  border: 1px rgb(241.44, 230.16, 238.32) solid;
-  border-left: 4px solid rgb(157.82, 76.98, 135.46);
+  border: 1px #E7E3FA solid;
+  border-left: 4px solid #54278F;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7348,7 +7348,7 @@ p.highlight-title, blockquote.highlight-title {
 p.highlight-title > p:first-child, blockquote.highlight-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: rgb(157.82, 76.98, 135.46);
+  color: #54278F;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7379,14 +7379,14 @@ blockquote.highlight-title > p:last-child {
 }
 
 p.important, blockquote.important {
-  border: 1px rgb(250.8, 237.4, 213.8) solid;
-  border-left: 4px solid rgb(236.1, 175.8, 69.6);
+  border: 1px #FAF3D1 solid;
+  border-left: 4px solid #FFBE2E;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.important::before, blockquote.important::before {
-  color: rgb(236.1, 175.8, 69.6);
+  color: #FFBE2E;
   content: "Important";
   display: block;
   font-weight: bold;
@@ -7395,7 +7395,7 @@ p.important::before, blockquote.important::before {
   padding-bottom: 0.125rem;
 }
 p.important > .important-title, blockquote.important > .important-title {
-  color: rgb(236.1, 175.8, 69.6);
+  color: #FFBE2E;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7404,8 +7404,8 @@ p.important > .important-title, blockquote.important > .important-title {
 }
 
 p.important-title, blockquote.important-title {
-  border: 1px rgb(250.8, 237.4, 213.8) solid;
-  border-left: 4px solid rgb(236.1, 175.8, 69.6);
+  border: 1px #FAF3D1 solid;
+  border-left: 4px solid #FFBE2E;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7413,7 +7413,7 @@ p.important-title, blockquote.important-title {
 p.important-title > p:first-child, blockquote.important-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: rgb(236.1, 175.8, 69.6);
+  color: #FFBE2E;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7444,14 +7444,14 @@ blockquote.important-title > p:last-child {
 }
 
 p.new, blockquote.new {
-  border: 1px rgb(234.48, 244.74, 220.44) solid;
-  border-left: 4px solid rgb(153.54, 204.27, 84.12);
+  border: 1px #ECF3EC solid;
+  border-left: 4px solid #446443;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.new::before, blockquote.new::before {
-  color: rgb(153.54, 204.27, 84.12);
+  color: #446443;
   content: "New";
   display: block;
   font-weight: bold;
@@ -7460,7 +7460,7 @@ p.new::before, blockquote.new::before {
   padding-bottom: 0.125rem;
 }
 p.new > .new-title, blockquote.new > .new-title {
-  color: rgb(153.54, 204.27, 84.12);
+  color: #446443;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7469,8 +7469,8 @@ p.new > .new-title, blockquote.new > .new-title {
 }
 
 p.new-title, blockquote.new-title {
-  border: 1px rgb(234.48, 244.74, 220.44) solid;
-  border-left: 4px solid rgb(153.54, 204.27, 84.12);
+  border: 1px #ECF3EC solid;
+  border-left: 4px solid #446443;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7478,7 +7478,7 @@ p.new-title, blockquote.new-title {
 p.new-title > p:first-child, blockquote.new-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: rgb(153.54, 204.27, 84.12);
+  color: #446443;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7509,14 +7509,14 @@ blockquote.new-title > p:last-child {
 }
 
 p.note, blockquote.note {
-  border: 1px rgb(229.5, 238.8, 246.5) solid;
-  border-left: 4px solid rgb(35.7, 115.68, 181.9);
+  border: 1px #CFE7FF solid;
+  border-left: 4px solid #005EA2;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.note::before, blockquote.note::before {
-  color: rgb(35.7, 115.68, 181.9);
+  color: #005EA2;
   content: "Note";
   display: block;
   font-weight: bold;
@@ -7525,7 +7525,7 @@ p.note::before, blockquote.note::before {
   padding-bottom: 0.125rem;
 }
 p.note > .note-title, blockquote.note > .note-title {
-  color: rgb(35.7, 115.68, 181.9);
+  color: #005EA2;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7534,8 +7534,8 @@ p.note > .note-title, blockquote.note > .note-title {
 }
 
 p.note-title, blockquote.note-title {
-  border: 1px rgb(229.5, 238.8, 246.5) solid;
-  border-left: 4px solid rgb(35.7, 115.68, 181.9);
+  border: 1px #CFE7FF solid;
+  border-left: 4px solid #005EA2;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7543,7 +7543,7 @@ p.note-title, blockquote.note-title {
 p.note-title > p:first-child, blockquote.note-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: rgb(35.7, 115.68, 181.9);
+  color: #005EA2;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7574,14 +7574,14 @@ blockquote.note-title > p:last-child {
 }
 
 p.warning, blockquote.warning {
-  border: 1px rgb(247.68, 228, 234.72) solid;
-  border-left: 4px solid rgb(202.54, 61.5, 109.66);
+  border: 1px #F8DFE2 solid;
+  border-left: 4px solid #8B1303;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
 }
 p.warning::before, blockquote.warning::before {
-  color: rgb(202.54, 61.5, 109.66);
+  color: #8B1303;
   content: "Warning";
   display: block;
   font-weight: bold;
@@ -7590,7 +7590,7 @@ p.warning::before, blockquote.warning::before {
   padding-bottom: 0.125rem;
 }
 p.warning > .warning-title, blockquote.warning > .warning-title {
-  color: rgb(202.54, 61.5, 109.66);
+  color: #8B1303;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7599,8 +7599,8 @@ p.warning > .warning-title, blockquote.warning > .warning-title {
 }
 
 p.warning-title, blockquote.warning-title {
-  border: 1px rgb(247.68, 228, 234.72) solid;
-  border-left: 4px solid rgb(202.54, 61.5, 109.66);
+  border: 1px #F8DFE2 solid;
+  border-left: 4px solid #8B1303;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 0.8rem;
@@ -7608,7 +7608,7 @@ p.warning-title, blockquote.warning-title {
 p.warning-title > p:first-child, blockquote.warning-title > p:first-child {
   margin-top: 0;
   margin-bottom: 0;
-  color: rgb(202.54, 61.5, 109.66);
+  color: #8B1303;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
@@ -7638,6 +7638,63 @@ blockquote.warning-title > p:last-child {
   margin-bottom: 0;
 }
 
+.label:not(g),
+.label-blue:not(g),
+.label-green:not(g),
+.label-purple:not(g),
+.label-red:not(g),
+.label-yellow:not(g) {
+  padding: 4px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p.note::before,
+blockquote.note::before,
+p.note > .note-title,
+blockquote.note > .note-title,
+p.note-title > p:first-child,
+blockquote.note-title > p:first-child,
+p.important::before,
+blockquote.important::before,
+p.important > .important-title,
+blockquote.important > .important-title,
+p.important-title > p:first-child,
+blockquote.important-title > p:first-child {
+  color: #1B1B1B;
+}
+
+.label:not(g) {
+  background-color: #565C65;
+  color: #FFFFFF;
+}
+
+.label-blue:not(g) {
+  background-color: #00BDE3;
+  color: #000000;
+}
+
+.label-green:not(g) {
+  background-color: #00A91C;
+  color: #FFFFFF;
+}
+
+.label-purple:not(g) {
+  background-color: #7C4CB5;
+  color: #FFFFFF;
+}
+
+.label-red:not(g) {
+  background-color: #B51D09;
+  color: #FFFFFF;
+}
+
+.label-yellow:not(g) {
+  background-color: #FFBE2E;
+  color: #000000;
+}
+
 @media (min-width: 31.25rem) {
   .site-title {
     font-size: 24px !important;
@@ -7648,7 +7705,7 @@ blockquote.warning-title > p:last-child {
 }
 
 .text-green {
-  color: #008A17;
+  color: #4D8055;
   font-weight: bold;
 }
 
