@@ -7661,7 +7661,19 @@ blockquote.important::before,
 p.important > .important-title,
 blockquote.important > .important-title,
 p.important-title > p:first-child,
-blockquote.important-title > p:first-child {
+blockquote.important-title > p:first-child,
+p.new::before,
+blockquote.new::before,
+p.new > .new-title,
+blockquote.new > .new-title,
+p.new-title > p:first-child,
+blockquote.new-title > p:first-child,
+p.warning::before,
+blockquote.warning::before,
+p.warning > .warning-title,
+blockquote.warning > .warning-title,
+p.warning-title > p:first-child,
+blockquote.warning-title > p:first-child {
   color: #1B1B1B;
 }
 
