@@ -41,54 +41,54 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/api-smoke-test.html"
   },"6": {
-    "doc": "API testing and integration",
-    "title": "Test RTI API integration for Data Processing",
-    "content": "Use this page to validate Real Time Ingestion (RTI) by sending ELR data through the data ingestion endpoint and verifying RTI processing outcomes. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing",
+    "doc": "API testing",
+    "title": "Test and integrate case notification APIs",
+    "content": "Use this page to validate Public Health Information Network Messaging System (PHIMNS) property configuration and supporting dependencies for Case Notification services. Deploy the Notification service before starting this page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis"
   },"7": {
-    "doc": "API testing and integration",
+    "doc": "API testing",
     "title": "On this page",
-    "content": ". | Prerequisites | Run the integration test | Validate ingestion and RTI processing status | Next steps | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page",
+    "content": ". | Configure PHIMNS properties | Verify Kafka configuration | Verify deployment and database changes | Next steps | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page"
   },"8": {
-    "doc": "API testing and integration",
-    "title": "Prerequisites",
-    "content": "This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites",
+    "doc": "API testing",
+    "title": "Configure PHIMNS properties",
+    "content": "The Case Notification service requires PHINMS properties to route case notifications correctly. Complete the following steps to configure them. | Retrieve the following values from your integration engine configuration: . | Required property: . | nbs_certificate_url | . | Optional properties: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Share the values with your CDC partners. CDC will update the NBS_Case_Notification_Config table in NBS_MSGOUTE using the following script: . USE NBS_MSGOUTE; UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = '&lt;value&gt;', phin_encryption = '&lt;value&gt;', phin_route = '&lt;value&gt;', phin_signature = '&lt;value&gt;', phin_public_key_address = '&lt;value&gt;', phin_public_key_base_dn = '&lt;value&gt;', phin_public_key_dn = '&lt;value&gt;', phin_recipient = '&lt;value&gt;', phin_priority = '&lt;value&gt;' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . If you host NBS on-premises without CDC support, you have full database access and can run this script yourself. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties"
   },"9": {
-    "doc": "API testing and integration",
-    "title": "Run the integration test",
-    "content": "This section covers submitting an ELR payload and triggering RTI processing. | Follow the Data Ingestion API (DI API) testing guide to submit ELR payloads. | In the API testing guide, locate the ELR ingestion endpoint (/api/elrs) and add the version header to that endpoint in the ELR ingestion API call: . | version: 1 uses the legacy batch importer flow. | version: 2 bypasses the legacy batch importer and triggers RTI. | . For RTI testing, this header is the only required API change. The following screenshot shows the version header set to 2 in Postman: . | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test",
+    "doc": "API testing",
+    "title": "Verify Kafka configuration",
+    "content": "The Case Notification service uses Kafka to receive events from the Debezium source connector. Correct Kafka configuration ensures that new records inserted into NBS_ODSE.CN_transportq_out are detected and routed through the pipeline. | Configure Kafka broker: Use one of the available Kafka broker endpoints (Private endpoints - Plaintext) in the values file located in the NEDSS-Helm/charts/debezium-case-notifications directory. The number of brokers varies by environment. | Confirm Debezium connector: Confirm that the Debezium source connector deployed in Deploy the Debezium Kafka source connector is running on the NBS_ODSE.CN_transportq_out table before proceeding. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration"
   },"10": {
-    "doc": "API testing and integration",
-    "title": "Validate ingestion and RTI processing status",
-    "content": "Use the DI API status endpoint (/api/elrs/status-details) to verify processing status after submission. | Legacy flow status values in NBS_Interface: QUEUED, FAILED, SUCCESS. | RTI flow status values in NBS_Interface: RTI_QUEUED, RTI_FAILURE, RTI_SUCCESS_STEP_N. | . RTI processing can complete in three status steps: . | RTI_SUCCESS_STEP_1: Data passed through core processing and should be available in the ODSE database. | RTI_SUCCESS_STEP_2: Applies when a WDS algorithm is configured; the service runs WDS comparison. | RTI_SUCCESS_STEP_3: Triggered after WDS completes; the service assigns the appropriate action for the ingested payload. | . The following screenshot shows an example response from the status endpoint with an RTI_SUCCESS_STEP_1 result: . The following screenshot shows an example response with an RTI_SUCCESS_STEP_3 result: . If ingestion and RTI processing are not working as expected, troubleshoot before continuing. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status",
+    "doc": "API testing",
+    "title": "Verify deployment and database changes",
+    "content": "The Case Notification service includes a built-in Liquibase integration that automatically applies database changes during deployment. Use the following checks to confirm the service deployed successfully and data is routing correctly. | Confirm pod status: Confirm that the case-notification-service pod is stable and running. The pod will not start if Liquibase fails. | If Liquibase fails: Check the pod logs for errors. Database change details can be reviewed in the NEDSS-NNDSS-Case-Notifications repository. | If notifications do not appear: Check the dead letter table (DLT). Faulty events that cannot be processed are routed to MSGOUTE.case_notification_dlt. Check this table if case notifications are not appearing in the expected output tables (MSGOUTE.transportq_out or MSGOUTE.netsstransportq_out). | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes"
   },"11": {
-    "doc": "API testing and integration",
+    "doc": "API testing",
     "title": "Next steps",
-    "content": "Continue to NND Service (Data Sync). ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#next-steps",
+    "content": "After verifying these configurations, proceed to deploy the data ingestion service (DI API) or real-time reporting (RTR) based on your deployment plan. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#next-steps",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#next-steps"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#next-steps"
   },"12": {
-    "doc": "API testing and integration",
-    "title": "API testing and integration",
+    "doc": "API testing",
+    "title": "API testing",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html"
   },"13": {
     "doc": "API testing",
     "title": "API testing for data ingestion",
@@ -111,54 +111,54 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/api-testing.html"
   },"16": {
-    "doc": "API testing",
-    "title": "Test and integrate case notification APIs",
-    "content": "Use this page to validate Public Health Information Network Messaging System (PHIMNS) property configuration and supporting dependencies for Case Notification services. Deploy the Notification service before starting this page. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis",
+    "doc": "API testing and integration",
+    "title": "Test RTI API integration for Data Processing",
+    "content": "Use this page to validate Real Time Ingestion (RTI) by sending ELR data through the data ingestion endpoint and verifying RTI processing outcomes. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#test-and-integrate-case-notification-apis"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#test-rti-api-integration-for-data-processing"
   },"17": {
-    "doc": "API testing",
+    "doc": "API testing and integration",
     "title": "On this page",
-    "content": ". | Configure PHIMNS properties | Verify Kafka configuration | Verify deployment and database changes | Next steps | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page",
+    "content": ". | Prerequisites | Run the integration test | Validate ingestion and RTI processing status | Next steps | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#on-this-page"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#on-this-page"
   },"18": {
-    "doc": "API testing",
-    "title": "Configure PHIMNS properties",
-    "content": "The Case Notification service requires PHINMS properties to route case notifications correctly. Complete the following steps to configure them. | Retrieve the following values from your integration engine configuration: . | Required property: . | nbs_certificate_url | . | Optional properties: . | phin_encryption | phin_route | phin_signature | phin_public_key_address | phin_public_key_base_dn | phin_public_key_dn | phin_recipient | phin_priority | . | . | Share the values with your CDC partners. CDC will update the NBS_Case_Notification_Config table in NBS_MSGOUTE using the following script: . USE NBS_MSGOUTE; UPDATE NBS_Case_Notification_Config SET nbs_certificate_url = '&lt;value&gt;', phin_encryption = '&lt;value&gt;', phin_route = '&lt;value&gt;', phin_signature = '&lt;value&gt;', phin_public_key_address = '&lt;value&gt;', phin_public_key_base_dn = '&lt;value&gt;', phin_public_key_dn = '&lt;value&gt;', phin_recipient = '&lt;value&gt;', phin_priority = '&lt;value&gt;' WHERE config_name = 'NON_STD_CASE_NOTIFICATION' . | . If you host NBS on-premises without CDC support, you have full database access and can run this script yourself. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties",
+    "doc": "API testing and integration",
+    "title": "Prerequisites",
+    "content": "This procedure uses Postman to send API requests. Download and install Postman from the Postman installation page. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#configure-phimns-properties"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#prerequisites"
   },"19": {
-    "doc": "API testing",
-    "title": "Verify Kafka configuration",
-    "content": "The Case Notification service uses Kafka to receive events from the Debezium source connector. Correct Kafka configuration ensures that new records inserted into NBS_ODSE.CN_transportq_out are detected and routed through the pipeline. | Configure Kafka broker: Use one of the available Kafka broker endpoints (Private endpoints - Plaintext) in the values file located in the NEDSS-Helm/charts/debezium-case-notifications directory. The number of brokers varies by environment. | Confirm Debezium connector: Confirm that the Debezium source connector deployed in Deploy the Debezium Kafka source connector is running on the NBS_ODSE.CN_transportq_out table before proceeding. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration",
+    "doc": "API testing and integration",
+    "title": "Run the integration test",
+    "content": "This section covers submitting an ELR payload and triggering RTI processing. | Follow the Data Ingestion API (DI API) testing guide to submit ELR payloads. | In the API testing guide, locate the ELR ingestion endpoint (/api/elrs) and add the version header to that endpoint in the ELR ingestion API call: . | version: 1 uses the legacy batch importer flow. | version: 2 bypasses the legacy batch importer and triggers RTI. | . For RTI testing, this header is the only required API change. The following screenshot shows the version header set to 2 in Postman: . | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-kafka-configuration"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#run-the-integration-test"
   },"20": {
-    "doc": "API testing",
-    "title": "Verify deployment and database changes",
-    "content": "The Case Notification service includes a built-in Liquibase integration that automatically applies database changes during deployment. Use the following checks to confirm the service deployed successfully and data is routing correctly. | Confirm pod status: Confirm that the case-notification-service pod is stable and running. The pod will not start if Liquibase fails. | If Liquibase fails: Check the pod logs for errors. Database change details can be reviewed in the NEDSS-NNDSS-Case-Notifications repository. | If notifications do not appear: Check the dead letter table (DLT). Faulty events that cannot be processed are routed to MSGOUTE.case_notification_dlt. Check this table if case notifications are not appearing in the expected output tables (MSGOUTE.transportq_out or MSGOUTE.netsstransportq_out). | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes",
+    "doc": "API testing and integration",
+    "title": "Validate ingestion and RTI processing status",
+    "content": "Use the DI API status endpoint (/api/elrs/status-details) to verify processing status after submission. | Legacy flow status values in NBS_Interface: QUEUED, FAILED, SUCCESS. | RTI flow status values in NBS_Interface: RTI_QUEUED, RTI_FAILURE, RTI_SUCCESS_STEP_N. | . RTI processing can complete in three status steps: . | RTI_SUCCESS_STEP_1: Data passed through core processing and should be available in the ODSE database. | RTI_SUCCESS_STEP_2: Applies when a WDS algorithm is configured; the service runs WDS comparison. | RTI_SUCCESS_STEP_3: Triggered after WDS completes; the service assigns the appropriate action for the ingested payload. | . The following screenshot shows an example response from the status endpoint with an RTI_SUCCESS_STEP_1 result: . The following screenshot shows an example response with an RTI_SUCCESS_STEP_3 result: . If ingestion and RTI processing are not working as expected, troubleshoot before continuing. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#verify-deployment-and-database-changes"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#validate-ingestion-and-rti-processing-status"
   },"21": {
-    "doc": "API testing",
+    "doc": "API testing and integration",
     "title": "Next steps",
-    "content": "After verifying these configurations, proceed to deploy the data ingestion service (DI API) or real-time reporting (RTR) based on your deployment plan. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#next-steps",
+    "content": "Continue to NND Service (Data Sync). ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#next-steps",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html#next-steps"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html#next-steps"
   },"22": {
-    "doc": "API testing",
-    "title": "API testing",
+    "doc": "API testing and integration",
+    "title": "API testing and integration",
     "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html",
     
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/api-testing.html"
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing/api-testing.html"
   },"23": {
     "doc": "Architecture overview",
     "title": "NBS 7 architecture",
@@ -594,110 +594,110 @@
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-processing.html"
   },"85": {
-    "doc": "Debezium",
-    "title": "Deploy Debezium for real-time reporting (RTR)",
-    "content": "This page walks through deploying the Debezium connector using the Debezium Helm chart from the NEDSS-Helm repository for NBS version 7.13. The connector captures change data from source tables and publishes events to Kafka topics for RTR processing. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr"
-  },"86": {
-    "doc": "Debezium",
-    "title": "On this page",
-    "content": ". | Prerequisites | Deploy Debezium using Helm | Troubleshoot Debezium | Next steps | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page"
-  },"87": {
-    "doc": "Debezium",
-    "title": "Prerequisites",
-    "content": "This page assumes you’ve completed Before you begin for the microservices phase and the database setup on Deploy real-time reporting, including enabling Change Data Capture. Have your database credentials and Kafka endpoint values available. See the Helm values reference if you need help determining any values. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#prerequisites",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#prerequisites"
-  },"88": {
-    "doc": "Debezium",
-    "title": "Deploy Debezium using Helm",
-    "content": "Complete the following steps to deploy the Debezium Helm chart from the charts/debezium/ directory of your cloned NEDSS-Helm repository: . | In the debezium chart directory, open the values file for your cloud provider: . | AWS: debezium/values.yaml | Azure: debezium/values-azure.yaml | . | Search the values file for EXAMPLE and fill in your environment-specific values. See the Helm values reference for help determining values. | Install the Helm chart: . | AWS: debezium/values.yaml . helm install -f ./debezium/values.yaml debezium-connect ./debezium/ . | Azure: debezium/values-azure.yaml . helm install -f ./debezium/values-azure.yaml debezium-connect ./debezium/ . | . | Verify the pod is running: . kubectl get deployment debezium-connect-debezium-rtr-connect . | . After Debezium deploys successfully, continue to Kafka connector. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-using-helm",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-using-helm"
-  },"89": {
-    "doc": "Debezium",
-    "title": "Troubleshoot Debezium",
-    "content": "If the service has trouble connecting to the database, run the following command to reset the ConfigMap: . kubectl delete configmap debezium-rtr-connect . If issues persist, email nbs@cdc.gov. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshoot-debezium",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshoot-debezium"
-  },"90": {
-    "doc": "Debezium",
-    "title": "Next steps",
-    "content": "Continue to Kafka connector. ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#next-steps",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#next-steps"
-  },"91": {
-    "doc": "Debezium",
-    "title": "Debezium",
-    "content": " ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html",
-    
-    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html"
-  },"92": {
     "doc": "Debezium Kafka connector",
     "title": "Deploy the Debezium Kafka source connector for NBS 7 case notifications",
     "content": "This page walks through enabling Change Data Capture (CDC) and deploying the Debezium source connector used by Case Notification services. Complete Case notifications before starting this page. After you finish the connector deployment, proceed to deploying the Case Notification service. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-kafka-source-connector-for-nbs-7-case-notifications"
-  },"93": {
+  },"86": {
     "doc": "Debezium Kafka connector",
     "title": "On this page",
     "content": ". | Prerequisites | Enable Change Data Capture | Deploy the Debezium connector using Helm | Troubleshooting | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#on-this-page"
-  },"94": {
+  },"87": {
     "doc": "Debezium Kafka connector",
     "title": "Prerequisites",
     "content": "This page assumes you’ve completed Before you begin for the microservices phase and Data Processing deployment. If your deployment plan includes NND Service (Data Sync), complete it before this page. | Have your database credentials, domain values, and Kafka endpoint available. See the Helm values reference for help determining any values. | Confirm that the case-notification-service Keycloak client has been imported. See Import service clients and retrieve secrets if you need help. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#prerequisites"
-  },"95": {
+  },"88": {
     "doc": "Debezium Kafka connector",
     "title": "Enable Change Data Capture",
     "content": "In this section, the terms cdc and CDC appear as part of SQL Server column and parameter names and refer to Change Data Capture, not the Centers for Disease Control and Prevention. Enable Change Data Capture on NBS_ODSE before deploying the connector. Sysadmin permissions are required. | Enable Change Data Capture on NBS_ODSE: . exec msdb.dbo.rds_cdc_enable_db 'NBS_ODSE'; . | Verify the configuration. A value of is_cdc_enabled=1 indicates successful configuration: . SELECT name, is_cdc_enabled FROM sys.databases; . | Enable Change Data Capture for the required table in NBS_ODSE: . USE NBS_ODSE; exec sys.sp_cdc_enable_table @source_schema = N'dbo', @source_name = N'CN_transportq_out', @role_name = NULL; . | Verify Change Data Capture is enabled for ODSE tables: . USE NBS_ODSE; SELECT name, case when is_tracked_by_cdc = 1 then 'YES' else 'NO' end as is_tracked_by_cdc FROM sys.tables WHERE is_tracked_by_cdc = 1; . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#enable-change-data-capture"
-  },"96": {
+  },"89": {
     "doc": "Debezium Kafka connector",
     "title": "Deploy the Debezium connector using Helm",
     "content": "Complete the following steps to deploy the ‘debezium-case-notifications’ Helm chart from the charts/debezium-case-notifications/ directory of your cloned NEDSS-Helm repository: . | In the debezium-case-notifications chart directory, open the values file for your cloud provider: . | AWS: debezium-case-notifications/values.yaml | Azure: debezium-case-notifications/values-azure.yaml | . | In the values file, search for EXAMPLE and fill in your environment-specific values. The Helm values reference lists the values to use. The connector’s SQL Server config is preconfigured for the NBS_ODSE database and doesn’t need to change. | Install the connector: . | AWS: helm install debezium-case-notification-service-connect ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml | Azure: helm install debezium-case-notification-service-connect ./debezium-case-notifications -f ./debezium-case-notifications/values-azure.yaml | . | Confirm the pod is running: . kubectl get pods . | . If the pod is not in a running state, wait and troubleshoot before continuing to deploy the Case Notification service. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#deploy-the-debezium-connector-using-helm"
-  },"97": {
+  },"90": {
     "doc": "Debezium Kafka connector",
     "title": "Troubleshooting",
     "content": "If the service has trouble connecting to the database, delete the ConfigMap and then reinstall the chart to recreate it: . | Delete the ConfigMap: . kubectl delete configmap case-notification-connect . | Reinstall the chart: . | AWS: helm upgrade debezium-case-notification-service-connect ./debezium-case-notifications -f ./debezium-case-notifications/values.yaml | Azure: helm upgrade debezium-case-notification-service-connect ./debezium-case-notifications -f ./debezium-case-notifications/values-azure.yaml | . | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#troubleshooting"
-  },"98": {
+  },"91": {
     "doc": "Debezium Kafka connector",
     "title": "Next steps",
     "content": "Continue to Notification service. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html#next-steps"
-  },"99": {
+  },"92": {
     "doc": "Debezium Kafka connector",
     "title": "Debezium Kafka connector",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/case-notification/debezium.html"
+  },"93": {
+    "doc": "Debezium",
+    "title": "Deploy Debezium for real-time reporting (RTR)",
+    "content": "This page walks through deploying the Debezium connector using the Debezium Helm chart from the NEDSS-Helm repository for NBS version 7.13. The connector captures change data from source tables and publishes events to Kafka topics for RTR processing. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-for-real-time-reporting-rtr"
+  },"94": {
+    "doc": "Debezium",
+    "title": "On this page",
+    "content": ". | Prerequisites | Deploy Debezium using Helm | Troubleshoot Debezium | Next steps | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#on-this-page"
+  },"95": {
+    "doc": "Debezium",
+    "title": "Prerequisites",
+    "content": "This page assumes you’ve completed Before you begin for the microservices phase and the database setup on Deploy real-time reporting, including enabling Change Data Capture. Have your database credentials and Kafka endpoint values available. See the Helm values reference if you need help determining any values. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#prerequisites",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#prerequisites"
+  },"96": {
+    "doc": "Debezium",
+    "title": "Deploy Debezium using Helm",
+    "content": "Complete the following steps to deploy the Debezium Helm chart from the charts/debezium/ directory of your cloned NEDSS-Helm repository: . | In the debezium chart directory, open the values file for your cloud provider: . | AWS: debezium/values.yaml | Azure: debezium/values-azure.yaml | . | Search the values file for EXAMPLE and fill in your environment-specific values. See the Helm values reference for help determining values. | Install the Helm chart: . | AWS: debezium/values.yaml . helm install -f ./debezium/values.yaml debezium-connect ./debezium/ . | Azure: debezium/values-azure.yaml . helm install -f ./debezium/values-azure.yaml debezium-connect ./debezium/ . | . | Verify the pod is running: . kubectl get deployment debezium-connect-debezium-rtr-connect . | . After Debezium deploys successfully, continue to Kafka connector. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-using-helm",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#deploy-debezium-using-helm"
+  },"97": {
+    "doc": "Debezium",
+    "title": "Troubleshoot Debezium",
+    "content": "If the service has trouble connecting to the database, run the following command to reset the ConfigMap: . kubectl delete configmap debezium-rtr-connect . If issues persist, email nbs@cdc.gov. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshoot-debezium",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#troubleshoot-debezium"
+  },"98": {
+    "doc": "Debezium",
+    "title": "Next steps",
+    "content": "Continue to Kafka connector. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#next-steps",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html#next-steps"
+  },"99": {
+    "doc": "Debezium",
+    "title": "Debezium",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html",
+    
+    "relUrl": "/docs/deploy-nbs7/microservices-deployment/real-time-reporting/debezium.html"
   },"100": {
     "doc": "Deploy core services",
     "title": "Deploy core Kubernetes services",
@@ -2569,18 +2569,18 @@
     "relUrl": "/docs/nbs7-introduction/release-history.html#75-keycloak-by-default-rtr-groundwork"
   },"367": {
     "doc": "NBS 7 release history",
-    "title": "7.4: Page Builder completed, high-volume ingestion fixes",
-    "content": "Unsupported version . NBS 7.4.0 through 7.4.4, released between April and July 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.4.0 | New feature | Completed Page Builder delivery: preview pages before publishing, manage sections, tabs, and questions, and reorder and group elements. | Investigation page configuration becomes fully self-service. | . | 7.4.0 | New feature | Data Ingestion API now accepts HL7 ELR text files through SFTP. | Additional intake path for jurisdictions using file-based transfer. | . | 7.4.0 | Notable fix | Resolved an out-of-memory error that limited how many ELRs could be posted during high-volume ingestion, and corrected mandatory-field validation timing. | Reliability during surge periods, such as outbreak reporting volume. | . | 7.4.0 | Notable fix | Upgraded to the latest Spring Boot version to close known security vulnerabilities. | Security patching with no user-facing change. | . | 7.4.4 | Notable fix | Fixed the timestamp for patient address changes not being recorded. | Data audit accuracy. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#74-page-builder-completed-high-volume-ingestion-fixes",
+    "title": "7.4: High-volume ingestion fixes",
+    "content": "Unsupported version . NBS 7.4.0 through 7.4.4, released between April and July 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.4.0 | New feature | Data Ingestion API now accepts HL7 ELR text files through SFTP. | Additional intake path for jurisdictions using file-based transfer. | . | 7.4.0 | Notable fix | Resolved an out-of-memory error that limited how many ELRs could be posted during high-volume ingestion, and corrected mandatory-field validation timing. | Reliability during surge periods, such as outbreak reporting volume. | . | 7.4.0 | Notable fix | Upgraded to the latest Spring Boot version to close known security vulnerabilities. | Security patching with no user-facing change. | . | 7.4.4 | Notable fix | Fixed the timestamp for patient address changes not being recorded. | Data audit accuracy. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#74-high-volume-ingestion-fixes",
     
-    "relUrl": "/docs/nbs7-introduction/release-history.html#74-page-builder-completed-high-volume-ingestion-fixes"
+    "relUrl": "/docs/nbs7-introduction/release-history.html#74-high-volume-ingestion-fixes"
   },"368": {
     "doc": "NBS 7 release history",
-    "title": "7.3: Page Builder 2.0",
-    "content": "Unsupported version . NBS 7.3.0 through 7.3.3, released between February and April 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.3.0 | New feature | Page Builder 2.0: create condition-specific investigation pages, manage conditions and value sets, import templates, and browse, search, and export the page library. | First step toward configurable investigation pages instead of hardcoded classic NBS forms. | . | 7.3.2 | New feature | Edited or deleted demographic data now writes to patient history tables, matching NBS 6 audit behavior. | Preserves a change history for patient records, supporting data governance. | . | 7.3.0 | Notable fix | Improved screen reader heading structure and keyboard navigation on Patient Search and Patient Profile. | Accessibility, Section 508 improvement. | . | 7.3.1 | Notable fix | Corrected event search results for notification status, and added autocomplete for ordering and reporting facility and provider search. | Search accuracy for event investigators. | . | 7.3.3 | Notable fix | Fixed “Clear All” not resetting search filters, and corrected screen reader interaction issues on the new patient form. | Accessibility and search reliability. | . ",
-    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#73-page-builder-20",
+    "title": "7.3: Data governance and integrity",
+    "content": "Unsupported version . NBS 7.3.0 through 7.3.3, released between February and April 2024, added the following enhancements and fixes: . | Patch | Type | Enhancement | STLT benefit | . | 7.3.2 | New feature | Edited or deleted demographic data now writes to patient history tables, matching NBS 6 audit behavior. | Preserves a change history for patient records, supporting data governance. | . | 7.3.0 | Notable fix | Improved screen reader heading structure and keyboard navigation on Patient Search and Patient Profile. | Accessibility, Section 508 improvement. | . | 7.3.1 | Notable fix | Corrected event search results for notification status, and added autocomplete for ordering and reporting facility and provider search. | Search accuracy for event investigators. | . | 7.3.3 | Notable fix | Fixed “Clear All” not resetting search filters, and corrected screen reader interaction issues on the new patient form. | Accessibility and search reliability. | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/nbs7-introduction/release-history.html#73-data-governance-and-integrity",
     
-    "relUrl": "/docs/nbs7-introduction/release-history.html#73-page-builder-20"
+    "relUrl": "/docs/nbs7-introduction/release-history.html#73-data-governance-and-integrity"
   },"369": {
     "doc": "NBS 7 release history",
     "title": "7.2: ReportStream integration, Keycloak identity provider",
