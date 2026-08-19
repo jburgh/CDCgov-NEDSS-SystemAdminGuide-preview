@@ -18,7 +18,6 @@ This guide is the authoritative reference for formatting, front matter, and acce
 | `has_children` | **Required** when this page has child pages | **Omit** | Tells JTD to render an expand arrow in the nav. Without it, child pages exist but the parent page shows no arrow and may not nest visibly. |
 | `has_toc` | **Set `false`** on parent pages that provide a manual "In this section" list | **Omit** | JTD auto-renders a table of contents of child pages at the bottom of every `has_children` page. Set `has_toc: false` to suppress it when the page provides its own richer child list. See [Parent landing pages](#parent-landing-pages). |
 | `parent` | **Required** for child pages | **Omit** | Sets the parent page. The value must exactly match the `title:` of the intended parent. Case-sensitive. |
-| `grand_parent` | **Required** for grandchild pages | **Omit** | Sets the grandparent page. Required when a page's `parent` is itself a child page. Must exactly match the grandparent's `title:`. |
 | `description` | **Optional, recommended** | **Optional** | 1–2 sentences describing the page's purpose. JTD uses this for search result snippets and the HTML `<meta name="description">` tag. See [Writing descriptions](#writing-descriptions). |
 | `redirect_from` | Optional — plugin feature | **Omit** | From the `jekyll-redirect-from` gem. Redirects one or more old URLs to this page. Use only when a page has been moved or renamed to preserve existing links. See [Redirects](#redirects). |
 | `nav_enabled` | **Omit** — remove on sight | **Omit** — remove on sight | **Non-standard. Has no effect.** Not a JTD front matter key. See [Note on nav_enabled](#note-on-nav_enabled). |
@@ -53,19 +52,6 @@ description: DESCRIPTION  # Optional.
 ---
 ```
 
-#### Grandchild page (has a parent and a grandparent)
-
-```yaml
----
-title: TITLE                        # Required.
-layout: page                        # Required.
-parent: PARENT_TITLE                # Required. Must exactly match the direct parent's title:.
-grand_parent: GRANDPARENT_TITLE     # Required for grandchild pages. Must exactly match the grandparent's title:.
-nav_order: NAV_ORDER                # Required. Controls position among siblings under the same parent.
-description: DESCRIPTION            # Optional.
----
-```
-
 #### Guide preview page (_guide_preview/ directory)
 
 ```yaml
@@ -76,7 +62,7 @@ description: DESCRIPTION  # Optional.
 ---
 ```
 
-Nav keys (`nav_order`, `parent`, `has_children`, `grand_parent`) are **intentionally omitted** from guide preview pages. The `just_the_docs.collections` setting in `_config.yml` already excludes these pages from the left nav and search index. Nav keys on these pages have no effect and create misleading front matter.
+Nav keys (`nav_order`, `parent`, and `has_children`) are **intentionally omitted** from guide preview pages. The `just_the_docs.collections` setting in `_config.yml` already excludes these pages from the left nav and search index. Nav keys on these pages have no effect and create misleading front matter.
 
 ### How nav_order works
 
@@ -310,19 +296,9 @@ The `-title` variants follow the same usage rules as their base types — the va
 | `new` | Documenting a feature added in the current or recent release |
 | `highlight` | Short tip or emphasis without a formal label; use sparingly |
 
-### Callout color contrast
+### Callout accessibility
 
-JTD callouts use a `-000` background tint and `-300` foreground accent. The ratios below apply to the accent-on-tint combination (left border stripe and any title text). Body text inside callouts inherits the standard dark body color at 17.40:1 — these ratios do not affect paragraph readability.
-
-| Callout type | Foreground (`-300`) | Background (`-000`) | Ratio | AA normal | Notes |
-|---|---|---|---|---|---|
-| Note (blue) | #2474B6 | #E6EFF7 | 4.25 : 1 | ⚠️ Borderline | 0.25 below 4.5:1 AA threshold; body text unaffected. |
-| Important (yellow) | #ECB046 | #FBEDD6 | 1.67 : 1 | Fail | Accent color only; body text passes at 17.40:1. |
-| Warning (red) | #CB3E6E | #F8E4EB | 3.88 : 1 | Fail | Passes 3.0:1 large-text threshold; body text passes. |
-| New (green) | #9ACC54 | #EAF5DC | 1.67 : 1 | Fail | Accent color only; body text passes at 17.40:1. |
-| Highlight (purple) | #A1518B | #F1E9EE | 4.14 : 1 | Fail | 0.36 below 4.5:1; body text passes. |
-
-Before treating any callout as non-compliant, verify in a built-site browser using DevTools color picker to confirm which elements actually render in the accent color. These are known theme-level constraints — see [Known accessibility limitations](#known-accessibility-limitations).
+Callout contrast ratios and their WCAG AA status are recorded in the [Accessibility Compliance Record](#callout-color-contrast), alongside the brand, body, and tag pairings. For the `highlight` callout's title-less limitation, see the [Available types](#highlight--purple-no-label) note above.
 
 ---
 
@@ -377,7 +353,7 @@ Spell out an acronym at its first use on each page, with the acronym in parenthe
 
 **First use means first RENDERED use.** Front matter fields (`description:`, `parent:`) do not render in the page body, so an expansion that appears only in front matter does not count. A reader must encounter the spelled-out form in visible prose before the bare acronym appears.
 
-Every acronym used in the guide should also have an entry in `_data/glossary.yml`.
+Every acronym used in the guide should also have an entry in `_data/glossary.yml`. To surface that entry as an inline hover definition, see [Glossary tooltips](#glossary-tooltips).
 
 ### Service names are namespace-specific
 
@@ -683,69 +659,130 @@ WCAG 2.1 AA contrast thresholds:
 
 ### Brand and body color contrast
 
-The following pairings are used across the site and have been verified against WCAG 2.1 AA.
+The site uses the NBS Design System palette (defined as `$nbs-*` tokens in `_sass/color_schemes/colors.scss`). The following pairings are used across the site and have been verified against WCAG 2.1 AA.
 
 | Foreground | Background | Ratio | AA normal | AA large |
 |------------|-----------|-------|-----------|----------|
-| `$cdc-blue` #005DAA | White #FFFFFF | 6.68 : 1 | Pass | Pass |
-| `$body-heading-color` #1A1A1A | White #FFFFFF | 17.40 : 1 | Pass | Pass |
-| `$cdc-blue` #005DAA | JTD sidebar #F5F6FA | 6.20 : 1 | Pass | Pass |
+| Link / brand — NBS Primary/primary #005EA2 | White #FFFFFF | 6.72 : 1 | Pass | Pass |
+| Body heading — NBS Base/darkest #1B1B1B | White #FFFFFF | 17.22 : 1 | Pass | Pass |
+| Link / active nav — #005EA2 | JTD sidebar #F5F6FA | 6.23 : 1 | Pass | Pass |
+| `.text-green` inline emphasis — NBS Success/dark #4D8055 (bold) | White #FFFFFF | 4.63 : 1 | Pass | Pass |
+
+### Callout color contrast
+
+Each callout maps to an NBS color group: a light tint (`-000`) fills the background and the group's mid "chip" color (`-300`) forms the left bar. The callout **title is rendered in dark ink (`#1B1B1B`)**, not the accent color, so it clears WCAG AA normal-text contrast on every tint. Because the type label is conveyed by ink text, the colored bar is decorative reinforcement — color is never the sole indicator, satisfying WCAG 2.1 SC 1.4.1 (Use of Color).
+
+| Callout | Config color | Left-bar chip (`-300`) | Background (`-000`) | Ink title on bg | AA normal |
+|---|---|---|---|---|---|
+| Note | blue | Info/info #00BDE3 | #E7F6F8 | 15.5 : 1 | Pass |
+| Important | yellow | Warning/warning #FFBE2E | #FAF3D1 | 15.4 : 1 | Pass |
+| New | green | Success/success #00A91C | #ECF3EC | 15.3 : 1 | Pass |
+| Warning | red | Error/error #D54309 | #F4E3DB | 13.8 : 1 | Pass |
+| Highlight | purple | Neutral Accent/accent #7C4CB5 | #E7E3FA | n/a — title-less | see note |
+
+Body text inside callouts inherits the standard dark body color and passes comfortably on every tint. The left-bar chip colors are intentionally low-contrast against their own tint (they are decorative and meaning is carried by the ink title), so they are not held to the 3:1 graphical-object threshold. The one exception is `highlight`, which has no title text — see [Known accessibility limitations](#known-accessibility-limitations).
+
+### Tag and label color contrast
+
+Documentation tags (`.label` variants, defined in `_sass/custom/custom.scss`) use NBS tag tokens and render **bold and uppercase**. All pass WCAG AA normal-text contrast except Success — see [Known accessibility limitations](#known-accessibility-limitations).
+
+| Tag | NBS token | Text | Ratio | AA normal | AA large |
+|---|---|---|---|---|---|
+| Default | Base/dark #565C65 | White | 6.74 : 1 | Pass | Pass |
+| Info (blue) | Info/info #00BDE3 | Black | 9.39 : 1 | Pass | Pass |
+| Success (green) | Success/success #00A91C | White | 3.14 : 1 | ⚠️ Fail | Pass |
+| Accent (purple) | Neutral Accent/accent #7C4CB5 | White | 5.90 : 1 | Pass | Pass |
+| Error (red) | Error/dark #B51D09 | White | 6.68 : 1 | Pass | Pass |
+| Warning (yellow) | Warning/warning #FFBE2E | Black | 12.66 : 1 | Pass | Pass |
 
 ### Known accessibility limitations
 
-The following issues are documented and tracked. They represent theme or infrastructure constraints, not authoring errors.
+The following issues are documented and tracked. They represent deliberate design decisions or theme constraints, not authoring errors.
 
 | Area | Issue | Status |
 |------|-------|--------|
-| Callout accent colors | Yellow-on-yellow-tint (1.67:1) and green-on-green-tint (1.67:1) fail WCAG AA for accent elements. Body text contrast is unaffected. | Known; body text passes. Accent-only failure pending upstream theme resolution. |
-| Red callout | Red-300 on red-000 (3.88:1) fails AA normal text threshold for accent elements. | Known; body text passes. |
-| Blue callout | Blue-300 on blue-000 (4.25:1) is borderline — 0.25 below the 4.5:1 AA normal threshold for accent elements. | Known; body text passes. Verify in built site. |
-| Highlight callout | No `title:` text label; color can become the sole type indicator if used incorrectly. | Unused in `docs/`; use sparingly and pair with clear wording. |
+| Success tag (green) | NBS Success/success #00A91C with white text is 3.14:1 — below the 4.5:1 normal-text AA threshold. Tags render bold + uppercase, which qualifies as large text (3:1 threshold). | Accepted by design; compliant under the large-text threshold only. Do not reuse this green for small or normal-weight text. |
+| Highlight callout | No `title:` text label; the purple bar can become the sole type indicator if used without supporting wording. | Unused in `docs/`; use sparingly and pair with clear wording. |
 
-### Tooltip usage syntax
+## Glossary tooltips
 
-Use the `term-tooltip` include for glossary-style terms that need an inline definition.
+Glossary terms can be surfaced as inline tooltips that reveal a definition on hover or keyboard focus, using the `term-tooltip.html` include. This section covers how to **apply** tooltips in content. For how to **author** the term definitions themselves — definition style, cross-links, and provider scoping — see the contributor guidance at the top of [`_data/glossary.yml`](../_data/glossary.yml).
 
-1. Add or update the term definition in `_data/glossary.yml`.
-1. Reference the term inline using the include.
-1. Use a page-unique `id` value for each tooltip instance.
-1. If a page already defines the term in plain language on first mention, keep that first mention as-is and use the include on later mentions.
-1. If the first mention is the only place the term appears or the usage is ambiguous, leave a note for review instead of forcing a tooltip.
+### How the include works
 
-**Data-driven definition (preferred):**
+The include renders a term as an accessible button; hovering or focusing it reveals the matching glossary definition. `key` is the **slugified glossary term** (lowercase, spaces to hyphens, punctuation dropped): `managed node group` becomes `managed-node-group`.
+
+**Data-driven (preferred) — looks up the definition in `_data/glossary.yml`:**
 
 ```liquid
-{% include term-tooltip.html key="kubernetes" term="Kubernetes" id="kubernetes-runtime" %}
+{% include term-tooltip.html key="kubernetes" term="Kubernetes" id="arch-kubernetes" %}
 ```
 
-- `key`: lookup key in `_data/glossary.yml`
-- `term`: visible text in the paragraph
-- `id`: unique suffix used to build the tooltip element ID
+- `key`: slug of the glossary term to look up
+- `term`: the visible text shown in the paragraph
+- `id`: a page-unique suffix used to build the tooltip element ID (see [Tooltip IDs](#tooltip-ids))
 
-**Inline definition (one-off):**
+**Inline one-off — supplies the definition directly, no glossary entry:**
 
 ```liquid
 {% include term-tooltip.html term="Helm" id="helm-runtime" definition="A package manager for Kubernetes." %}
 ```
 
-**In-paragraph example:**
+### Which terms to tag
 
-```markdown
-NBS 7 runs on {% include term-tooltip.html key="kubernetes" term="Kubernetes" id="kubernetes-home" %} and relies on Terraform.
-```
+Tag the first eligible mention of:
 
-When a page introduces a term plainly first, follow-on uses can use the include:
+- **Acronyms** that have a glossary entry (AWS, EKS, STLT, DI API, and so on). This is the primary driver — the guide must spell out acronyms even when the audience likely knows them, and the tooltip satisfies that requirement inline.
+- **Key technical proper nouns** (Kubernetes, Terraform, Helm, Keycloak, Traefik, and so on).
+- **Product and version names** where the distinction carries meaning — `NBS`, `NBS 6`, and `NBS 7` are in scope, because telling the versions apart is important to the reader.
 
-```markdown
-The content assumes familiarity with your cloud platform, {% include term-tooltip.html key="kubernetes" term="Kubernetes" id="kubernetes-audience" %}, Terraform, Helm, and related administration tasks.
-```
+Do **not** tag common-English-word glossary terms (`condition`, `node`, `pod`, `container`, `observation`, `jurisdiction`, and similar) unless the word is clearly used as the defined technical concept at that spot. Over-tagging makes pages noisy and undercuts the signal.
 
-### Tooltip accessibility verification checklist
+### Placement rules
 
-When adding or modifying tooltip terms, verify all of the following before merge:
+- Tag the **first eligible mention** on a page. Add **at most one** tooltip per term per page.
+- **Table cells count as eligible text.** Reference tables and changelog/release-history tables are in scope — tag the first mention of a term even when it falls inside a table.
+- **Skip** mentions in headings, code blocks and spans, and image alt text — tag the next eligible mention instead. Front matter never counts. **Bold definition labels are taggable** — for example a component name at the start of a list item (`**Keycloak:** ...`) may carry the tooltip.
+- **External links — either a link or a tooltip on a given mention, not both:**
+  - If the link only points somewhere **informational that the tooltip already conveys** — an encyclopedia definition, or a tool's top-level project homepage — **replace the link with the tooltip.** Do not link tools to their homepages merely to link them; it clutters prose without adding anything the tooltip lacks.
+  - Keep the link only when it points to something the tooltip **cannot** provide — a **specific** page such as installation steps, an API reference, or targeted official documentation — and put the tooltip on a **different** mention (or leave the term untagged there if it has no other mention).
+
+### Tooltip in place — the standard treatment
+
+Keep the first-use spell-out **and** add the tooltip. The glossary definition carries more than the acronym expansion, so showing both is not redundant.
+
+- **Acronyms with an expansion:** spell out fully in prose followed by `(ACR)` on first use — **add the spell-out if it is missing** (see [Acronym first use](#acronym-first-use)) — and wrap the **acronym** inside the parentheses in the tooltip. Later mentions stay bare, with no tooltip.
+
+  Before:
+
+  ```markdown
+  ...via Amazon Elastic Kubernetes Service (Amazon EKS) and Terraform workflows.
+  ```
+
+  After:
+
+  ```markdown
+  ...via Amazon Elastic Kubernetes Service ({% include term-tooltip.html key="amazon-eks" term="Amazon EKS" id="arch-amazon-eks" %}) and Terraform workflows.
+  ```
+
+- **Proper nouns or concepts with no acronym:** wrap the term itself on its first mention.
+- **Alias entries** (a term whose definition is only "See *X*"): point `key` at the **target** entry so the hover shows a real definition — for example `term="NBS 6" key="classic-nbs"`.
+- **Inflected forms:** set `term` to the word as written and `key` to the canonical slug — for example `term="peered" key="peering"`.
+
+### Removing redundant prose
+
+After tagging, remove prose that merely restates the **generic** definition the tooltip now carries. **Keep** NBS-specific context, cross-cloud equivalents, and anything the glossary omits by design — the glossary holds general definitions, while the guide holds NBS-specific usage.
+
+### Tooltip IDs
+
+Build each `id` as `<page-slug>-<term-slug>` so it is unique within its page — for example `arch-di-api` or `k8s-upgrade-node-group`. If a term is tagged in two different spelled forms on one page (rare), suffix the second to keep it unique.
+
+### Accessibility verification checklist
+
+When adding or modifying tooltips, verify all of the following before merge:
 
 1. **Keyboard open/close:** `Tab` to the term opens the tooltip; `Escape` closes it.
-1. **Hover/focus persistence:** Tooltip remains visible while hovered or while trigger has focus.
+1. **Hover/focus persistence:** Tooltip remains visible while hovered or while the trigger has focus.
 1. **Dismiss without moving pointer:** `Escape` closes any open tooltip even when opened by mouse hover.
 1. **Screen reader announcement:** Trigger has `aria-describedby` that points to a unique tooltip `id`, and the tooltip uses `role="tooltip"`.
 1. **State sync:** Tooltip visibility and ARIA state remain synchronized (`hidden` with `aria-hidden`).
