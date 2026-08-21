@@ -2892,7 +2892,7 @@
   },"413": {
     "doc": "Get support for NBS 7",
     "title": "Start with the right resource",
-    "content": "Use the resource that best matches where you are in the process. | If you need help with… | Start here | . | Deployment steps for infrastructure, microservices, identity, or validation | Deploy NBS 7 | . | Post-go-live operations, upgrades, or runtime configuration | Maintain NBS 7 | . If you need help with readiness, staffing, cloud prerequisites, or go/no-go planning, or if the guide does not answer your question, contact nbs@cdc.gov. ",
+    "content": "Use the resource that best matches where you are in the process. | If you need help with… | Start here | . | Readiness, staffing, cloud prerequisites, or go or no-go planning | Before you deploy NBS 7 | . | Deployment steps for infrastructure, microservices, identity, or validation | Deploy NBS 7 | . | Post-go-live operations, upgrades, or runtime configuration | Maintain NBS 7 | . If the guide does not answer your question, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/support.html#start-with-the-right-resource",
     
     "relUrl": "/docs/support.html#start-with-the-right-resource"
