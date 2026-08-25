@@ -1527,7 +1527,7 @@
   },"218": {
     "doc": "Maintain NBS 7",
     "title": "In this section",
-    "content": "The maintenance section of this guide contains procedures for recurring maintenance work such as upgrades, infrastructure version changes, and operational configuration updates. | Enable verbose truncation warnings: Enable SQL Server Trace Flag 460 for NBS 7 to surface detailed error messages for diagnosing data truncation errors. | Update the Kubernetes control plane: Use Terraform to upgrade the Kubernetes version for the control plane and nodes of your NBS 7 cluster. | Back up and restore on Amazon RDS: Use the Amazon RDS stored procedures to back up and restore SQL Server databases, including restoring RDB under a new name for RTR. | . Additional maintenance procedures are added to this section as they are documented. If the procedure you need is not yet covered here, contact nbs@cdc.gov. ",
+    "content": "The maintenance section of this guide contains procedures for recurring maintenance work such as upgrades, infrastructure version changes, and operational configuration updates. | Verify container image authenticity: Inspect the build provenance attestation for an NBS container image to confirm it was built by CDC and has not been altered. | Back up and restore on Amazon RDS: Use the Amazon RDS stored procedures to back up and restore SQL Server databases, including restoring RDB under a new name for RTR. | Update the Kubernetes control plane: Use Terraform to upgrade the Kubernetes version for the control plane and nodes of your NBS 7 cluster. | Enable verbose truncation warnings: Enable SQL Server Trace Flag 460 for NBS 7 to surface detailed error messages for diagnosing data truncation errors. | . Additional maintenance procedures are added to this section as they are documented. If the procedure you need is not yet covered here, contact nbs@cdc.gov. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7.html#in-this-section",
     
     "relUrl": "/docs/maintain-nbs7.html#in-this-section"
@@ -3177,62 +3177,111 @@
     
     "relUrl": "/docs/maintain-nbs7/verbose-truncation.html"
   },"454": {
+    "doc": "Verify container image authenticity",
+    "title": "Verify NBS container image authenticity",
+    "content": "CDC publishes NBS container images through Quay.io. Because images travel across the public internet before reaching your infrastructure, you should verify that the image you pulled matches what CDC built before you deploy it. Every NBS container image includes a build provenance attestation, a cryptographically verifiable record of how the image was built. This article explains how to verify the authenticity of NBS container images. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#verify-nbs-container-image-authenticity",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#verify-nbs-container-image-authenticity"
+  },"455": {
+    "doc": "Verify container image authenticity",
+    "title": "On this page",
+    "content": ". | Before you begin | Inspect the provenance attestation | Determine whether to trust the image | Resources | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#on-this-page",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#on-this-page"
+  },"456": {
+    "doc": "Verify container image authenticity",
+    "title": "Before you begin",
+    "content": "Confirm the following before you begin: . | You have Docker installed with the buildx plugin. Docker Desktop 4.x and later include buildx by default. Docker Engine 23.0 and later include it as standard. | You know the image name and version tag you want to verify (for example, quay.io/us-cdcgov/cdc-nbs-modernization/elasticsearch:9.4.2). | . Public NBS repositories on Quay.io allow anonymous read access. You do not need to log in to inspect an image. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#before-you-begin",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#before-you-begin"
+  },"457": {
+    "doc": "Verify container image authenticity",
+    "title": "Inspect the provenance attestation",
+    "content": "To verify the authenticity of an NBS container image: . | Run the imagetools inspect command against the image. Replace &lt;image-name&gt; and &lt;version-tag&gt; with the image that you want to verify: . docker buildx imagetools inspect \\ quay.io/us-cdcgov/cdc-nbs-modernization/&lt;image-name&gt;:&lt;version-tag&gt; \\ --format \"\" . Docker outputs a JSON object describing how the image was built. If the command returns {} or an error, see Determine whether to trust the image. | Confirm the following fields in the response match your expectations: . | Field | Description | How to verify | . | predicate.buildDefinition.externalParameters.workflow | References a workflow file within a CDC-owned public repository, typically under github.com/CDCgov/. | Open that URL in a browser to confirm the workflow file exists and is public. | . | predicate.buildDefinition.externalParameters.workflow.ref | The git branch or tag the workflow ran on. | For official releases, this value is refs/heads/main or a release tag. | . | predicate.runDetails.builder.id | The Continuous Integration (CI) system that built the image. | This value points to https://github.com/CDCgov/.... | . | predicate.buildDefinition.resolvedDependencies | The base image or images the container was built on, pinned by content digest (SHA256). | Look up these digests in Docker Hub or the vendor’s registry to confirm them. | . | predicate.runDetails.metadata.startedOn | The build timestamp. | This value matches the release date of the version you are pulling. | . | . The following is a trimmed example of provenance output from an NBS container build, showing the fields from the preceding table: . { \"SLSA\": { \"buildDefinition\": { \"buildType\": \"https://github.com/moby/buildkit/blob/master/docs/attestations/slsa-definitions.md\", \"externalParameters\": { \"configSource\": { \"uri\": \"git+https://github.com/CDCgov/NEDSS-Modernization@refs/heads/main\", \"digest\": { \"sha1\": \"c43414b4b98e9ddf4203acc05f6094c867f30e3e\" }, \"path\": \"Dockerfile\" } }, \"resolvedDependencies\": [ { \"uri\": \"pkg:docker/docker.elastic.co/elasticsearch/elasticsearch@9.4.2?platform=linux%2Famd64\", \"digest\": { \"sha256\": \"be5f49784ff5ec8a5b5d7ba17f944d9d6b10c067f596ee93e6b6cb82d2dd874c\" } } ] }, \"runDetails\": { \"builder\": { \"id\": \"https://github.com/CDCgov/NEDSS-Modernization/.github/workflows/Build-and-deploy-elasticsearch.yaml@refs/heads/main\" }, \"metadata\": { \"invocationId\": \"https://github.com/CDCgov/NEDSS-Modernization/actions/runs/31208223551/attempts/1\", \"startedOn\": \"2026-08-07T18:44:32.555259476Z\", \"finishedOn\": \"2026-08-07T18:44:32.967529283Z\" } } } } . Full output is much longer than this example. mode=max provenance includes the complete Dockerfile, embedded as base64, and full build environment details. The fields in the preceding table are the most useful fields for verification. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#inspect-the-provenance-attestation",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#inspect-the-provenance-attestation"
+  },"458": {
+    "doc": "Verify container image authenticity",
+    "title": "Determine whether to trust the image",
+    "content": "The image is trustworthy when the response is a populated JSON object and every field matches its expected value in the field verification table. If the response is empty, returns an error, or any field does not match, contact the NBS team at nbs@cdc.gov before you deploy the image. ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#determine-whether-to-trust-the-image",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#determine-whether-to-trust-the-image"
+  },"459": {
+    "doc": "Verify container image authenticity",
+    "title": "Resources",
+    "content": "For background on the underlying standard and tooling referenced in this task, see: . | Supply-chain Levels for Software Artifacts (SLSA) framework overview | Docker BuildKit attestations documentation | NBS Modernization repository on GitHub | . ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html#resources",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html#resources"
+  },"460": {
+    "doc": "Verify container image authenticity",
+    "title": "Verify container image authenticity",
+    "content": " ",
+    "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/maintain-nbs7/verify-images.html",
+    
+    "relUrl": "/docs/maintain-nbs7/verify-images.html"
+  },"461": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test for NBS interface and search",
     "content": "The nbs-test-webui.sh script tests end-to-end functionality through the NBS web interface by logging in, navigating to Advanced Search, and searching for patient records. Use this test to confirm that the NBS UI, search, and authentication are working correctly after deployment. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#web-ui-smoke-test-for-nbs-interface-and-search"
-  },"455": {
+  },"462": {
     "doc": "Web UI smoke test",
     "title": "On this page",
     "content": ". | Prerequisites | Run the smoke test | Next steps | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#on-this-page"
-  },"456": {
+  },"463": {
     "doc": "Web UI smoke test",
     "title": "Prerequisites",
     "content": "To run the smoke test, you need: . | Authenticated access to your NBS environment | A database user with access to patient records | A shell environment with curl installed (AWS CloudShell works if you use it, or any system with Bash and curl available) | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#prerequisites"
-  },"457": {
+  },"464": {
     "doc": "Web UI smoke test",
     "title": "Run the smoke test",
     "content": "Run the nbs-test-webui.sh script from the NEDSS-Infrastructure repository. See the README in that folder for usage instructions and current script status. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#run-the-smoke-test"
-  },"458": {
+  },"465": {
     "doc": "Web UI smoke test",
     "title": "Next steps",
     "content": "After successfully completing the validation steps, continue to Deploy NBS Gateway. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html#next-steps"
-  },"459": {
+  },"466": {
     "doc": "Web UI smoke test",
     "title": "Web UI smoke test",
     "content": " ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/validate-es-mapi-nifi/web-ui-smoke-test.html"
-  },"460": {
+  },"467": {
     "doc": "Wildfly server",
     "title": "WildFly server configuration",
     "content": "Configure the Windows Task Scheduler on your NBS 6 WildFly server to run the ELR Importer batch process. | Connect to the NBS 6 Windows server using a remote desktop client such as Microsoft Remote Desktop. You will need the server’s hostname or IP address, username, and password. | Follow the Windows Task Scheduler for ELR Importer (PDF) guide to create and configure the scheduled task. | . ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#wildfly-server-configuration"
-  },"461": {
+  },"468": {
     "doc": "Wildfly server",
     "title": "Next steps",
     "content": "Continue to Smoke test. ",
     "url": "/CDCgov-NEDSS-SystemAdminGuide-preview/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#next-steps",
     
     "relUrl": "/docs/deploy-nbs7/microservices-deployment/data-ingestion/wildfly-server-config.html#next-steps"
-  },"462": {
+  },"469": {
     "doc": "Wildfly server",
     "title": "Wildfly server",
     "content": " ",
