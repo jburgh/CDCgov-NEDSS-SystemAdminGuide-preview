@@ -7988,6 +7988,31 @@ blockquote.warning-title > p:first-child {
   color: #000000;
 }
 
+.label .glossary-term__trigger,
+.label-green .glossary-term__trigger {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.label:has(.glossary-term__trigger),
+.label-green:has(.glossary-term__trigger) {
+  cursor: help;
+  transition: box-shadow 0.12s ease;
+}
+
+.label:has(.glossary-term__trigger):hover,
+.label:has(.glossary-term__trigger):focus-within,
+.label-green:has(.glossary-term__trigger):hover,
+.label-green:has(.glossary-term__trigger):focus-within {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label:has(.glossary-term__trigger),
+  .label-green:has(.glossary-term__trigger) {
+    transition: none;
+  }
+}
 @media (min-width: 31.25rem) {
   .site-title {
     font-size: 24px !important;
@@ -8049,6 +8074,7 @@ blockquote.warning-title > p:first-child {
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 400;
+  text-transform: none;
   left: 0;
   line-height: 1.4;
   max-width: min(24rem, 90vw);
